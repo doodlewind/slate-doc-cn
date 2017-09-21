@@ -1,0 +1,854 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Schema · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="selection.html" />
+    
+    
+    <link rel="prev" href="node.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Walkthroughs</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../walkthroughs/installing-slate.html">
+            
+                <a href="../../walkthroughs/installing-slate.html">
+            
+                    
+                    Installing Slate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../walkthroughs/adding-event-handlers.html">
+            
+                <a href="../../walkthroughs/adding-event-handlers.html">
+            
+                    
+                    Adding Event Handlers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../walkthroughs/defining-custom-block-nodes.html">
+            
+                <a href="../../walkthroughs/defining-custom-block-nodes.html">
+            
+                    
+                    Defining Custom Block Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../walkthroughs/applying-custom-formatting.html">
+            
+                <a href="../../walkthroughs/applying-custom-formatting.html">
+            
+                    
+                    Applying Custom Formatting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../../walkthroughs/using-plugins.html">
+            
+                <a href="../../walkthroughs/using-plugins.html">
+            
+                    
+                    Using Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../../walkthroughs/saving-to-a-database.html">
+            
+                <a href="../../walkthroughs/saving-to-a-database.html">
+            
+                    
+                    Saving to a Database
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../../walkthroughs/saving-and-loading-html-content.html">
+            
+                <a href="../../walkthroughs/saving-and-loading-html-content.html">
+            
+                    
+                    Saving and Loading HTML Content
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">General</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../general/faq.html">
+            
+                <a href="../../general/faq.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../general/resources.html">
+            
+                <a href="../../general/resources.html">
+            
+                    
+                    Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Slate Core</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="block.html">
+            
+                <a href="block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="change.html">
+            
+                <a href="change.html">
+            
+                    
+                    Change
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="character.html">
+            
+                <a href="character.html">
+            
+                    
+                    Character
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="data.html">
+            
+                <a href="data.html">
+            
+                    
+                    Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="document.html">
+            
+                <a href="document.html">
+            
+                    
+                    Document
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="inline.html">
+            
+                <a href="inline.html">
+            
+                    
+                    Inline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="mark.html">
+            
+                <a href="mark.html">
+            
+                    
+                    Mark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="node.html">
+            
+                <a href="node.html">
+            
+                    
+                    Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.9" data-path="schema.html">
+            
+                <a href="schema.html">
+            
+                    
+                    Schema
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="selection.html">
+            
+                <a href="selection.html">
+            
+                    
+                    Selection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="state.html">
+            
+                <a href="state.html">
+            
+                    
+                    State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="text.html">
+            
+                <a href="text.html">
+            
+                    
+                    Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="utils.html">
+            
+                <a href="utils.html">
+            
+                    
+                    setKeyGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="utils.html">
+            
+                <a href="utils.html">
+            
+                    
+                    resetKeyGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Slate React</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../slate-react/editor.html">
+            
+                <a href="../slate-react/editor.html">
+            
+                    
+                    Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../slate-react/placeholder.html">
+            
+                <a href="../slate-react/placeholder.html">
+            
+                    
+                    Placeholder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../slate-react/custom-nodes.html">
+            
+                <a href="../slate-react/custom-nodes.html">
+            
+                    
+                    Custom Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../slate-react/plugins.html">
+            
+                <a href="../slate-react/plugins.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../slate-react/core-plugin.html">
+            
+                <a href="../slate-react/core-plugin.html">
+            
+                    
+                    Core Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../slate-react/utils.html">
+            
+                <a href="../slate-react/utils.html">
+            
+                    
+                    findDOMNode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Other Packages</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../slate-html-serializer/">
+            
+                <a href="../slate-html-serializer/">
+            
+                    
+                    slate-html-serializer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../slate-hyperscript/">
+            
+                <a href="../slate-hyperscript/">
+            
+                    
+                    slate-hyperscript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../slate-plain-serializer/">
+            
+                <a href="../slate-plain-serializer/">
+            
+                    
+                    slate-plain-serializer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="../slate-prop-types/">
+            
+                <a href="../slate-prop-types/">
+            
+                    
+                    slate-prop-types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="../slate-simulator/">
+            
+                <a href="../slate-simulator/">
+            
+                    
+                    slate-simulator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Schema</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="schemas">Schemas</h1>
+<p>Every Slate editor has a &quot;schema&quot; associated with it, which contains information about the structure of its content. It lets you specify how to render each different type of node. And for more advanced use cases it lets you enforce rules about what the content of the editor can and cannot be.</p>
+<ul>
+<li><a href="#properties">Properties</a><ul>
+<li><a href="#marks"><code>marks</code></a></li>
+<li><a href="#nodes"><code>nodes</code></a></li>
+<li><a href="#rules"><code>rules</code></a></li>
+</ul>
+</li>
+<li><a href="#rule-properties">Rule Properties</a><ul>
+<li><a href="#decorate"><code>decorate</code></a></li>
+<li><a href="#match"><code>match</code></a></li>
+<li><a href="#normalize"><code>normalize</code></a></li>
+<li><a href="#render"><code>render</code></a></li>
+<li><a href="#validate"><code>validate</code></a></li>
+</ul>
+</li>
+<li><a href="#static-methods">Static Methods</a><ul>
+<li><a href="#schemaisschema"><code>Schema.isSchema</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="properties">Properties</h2>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  nodes<span class="token punctuation">:</span> Object<span class="token punctuation">,</span>
+  marks<span class="token punctuation">:</span> Object<span class="token punctuation">,</span>
+  rules<span class="token punctuation">:</span> Array
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The top-level properties of a schema all give you a way to define <code>rules</code> that the schema enforces. The <code>nodes</code> and <code>marks</code> properties are just convenient ways to define the most common set of rules.</p>
+<h3 id="marks"><code>marks</code></h3>
+<p><code>Object type: Component || Function || Object || String</code></p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  bold<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>strong<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  bold<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    fontWeight<span class="token punctuation">:</span> <span class="token string">&apos;bold&apos;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  bold<span class="token punctuation">:</span> <span class="token string">&apos;my-bold-class-name&apos;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>An object that defines the <a href="mark.html"><code>Marks</code></a> in the schema by <code>type</code>. Each key in the object refers to a mark by its <code>type</code>. The value defines how Slate will render the mark, and can either be a React component, an object of styles, or a class name.</p>
+<h3 id="nodes"><code>nodes</code></h3>
+<p><code>Object<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type,</span> <span class="token attr-name">Component</span> <span class="token attr-name">||</span> <span class="token attr-name">Function</span><span class="token punctuation">&gt;</span></span></code> <br>
+<code>Object<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type,</span> <span class="token attr-name">Rule</span><span class="token punctuation">&gt;</span></span></code></p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  quote<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>blockquote <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>blockquote<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  code<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    render<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+    decorate<span class="token punctuation">:</span> myCodeHighlighter
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>An object that defines the <a href="block.html"><code>Block</code></a> and <a href="inline.html"><code>Inline</code></a> nodes in the schema by <code>type</code>. Each key in the object refers to a node by its <code>type</code>. The values defines how Slate will render the node, and can optionally define any other property of a schema <code>Rule</code>.</p>
+<h3 id="rules"><code>rules</code></h3>
+<p><code>Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Rule</span><span class="token punctuation">&gt;</span></span></code></p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    match<span class="token punctuation">:</span> <span class="token punctuation">{</span> kind<span class="token punctuation">:</span> <span class="token string">&apos;block&apos;</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">&apos;code&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    render<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+    decorate<span class="token punctuation">:</span> myCodeHighlighter
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<p>An array of rules that define the schema&apos;s behavior. Each of the rules are evaluated in order to determine a match.</p>
+<p>Internally, the <code>marks</code> and <code>nodes</code> properties of a schema are simply converted into <code>rules</code>.</p>
+<h2 id="rule-properties">Rule Properties</h2>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  match<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  decorate<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  normalize<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  render<span class="token punctuation">:</span> Component <span class="token operator">||</span> Function <span class="token operator">||</span> Object <span class="token operator">||</span> String<span class="token punctuation">,</span>
+  validate<span class="token punctuation">:</span> Function
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Slate schemas are built up of a set of rules. Each of the properties will add certain functionality to the schema, based on the properties it defines. </p>
+<h3 id="match"><code>match</code></h3>
+<p><code>Function match(object: Node || Mark)</code></p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  match<span class="token punctuation">:</span> <span class="token punctuation">(</span>object<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> object<span class="token punctuation">.</span>kind <span class="token operator">==</span> <span class="token string">&apos;block&apos;</span> <span class="token operator">&amp;&amp;</span> object<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">&apos;code&apos;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>match</code> property is the only required property of a rule. It determines which objects the rule applies to. </p>
+<h3 id="decorate"><code>decorate</code></h3>
+<p><code>Function decorate(text: Node, object: Node) =&gt; List<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Characters</span><span class="token punctuation">&gt;</span></span></code></p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  decorate<span class="token punctuation">:</span> <span class="token punctuation">(</span>text<span class="token punctuation">,</span> node<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token punctuation">{</span> characters <span class="token punctuation">}</span> <span class="token operator">=</span> text
+    <span class="token keyword">let</span> first <span class="token operator">=</span> characters<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> <span class="token punctuation">{</span> marks <span class="token punctuation">}</span> <span class="token operator">=</span> first
+    <span class="token keyword">let</span> mark <span class="token operator">=</span> Mark<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">&apos;bold&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    marks <span class="token operator">=</span> marks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>mark<span class="token punctuation">)</span>
+    first <span class="token operator">=</span> first<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">{</span> marks <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    characters <span class="token operator">=</span> characters<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> first<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> characters
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>decorate</code> property allows you define a function that will apply extra marks to all of the ranges of text inside a node. It is called with a <a href="text.html"><code>Text</code></a> node and the matched node. It should return a list of characters with the desired marks, which will then be added to the text before rendering.</p>
+<h3 id="normalize"><code>normalize</code></h3>
+<p><code>Function normalize(change: Change, object: Node, failure: Any) =&gt; Change</code></p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  normalize<span class="token punctuation">:</span> <span class="token punctuation">(</span>change<span class="token punctuation">,</span> node<span class="token punctuation">,</span> invalidChildren<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    invalidChildren<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      change<span class="token punctuation">.</span><span class="token function">removeNodeByKey</span><span class="token punctuation">(</span>child<span class="token punctuation">.</span>key<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> change
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>normalize</code> property is a function to run that recovers the editor&apos;s state after the <code>validate</code> property of a rule has determined that an object is invalid. It is passed a <a href="change.html"><code>Change</code></a> that it can use to make modifications. It is also passed the return value of the <code>validate</code> function, which makes it easy to quickly determine the failure reason from the validation.</p>
+<h3 id="render"><code>render</code></h3>
+<p><code>Component</code> <br>
+<code>Function</code> <br>
+<code>Object</code> <br>
+<code>String</code></p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  render<span class="token punctuation">:</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>render</code> property determines which React component Slate will use to render a <a href="node.html"><code>Node</code></a> or <a href="mark.html"><code>Mark</code></a>. Mark renderers can also be defined as an object of styles or a class name string for convenience.</p>
+<h3 id="validate"><code>validate</code></h3>
+<p><code>Function validate(object: Node) =&gt; Any || Void</code></p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  validate<span class="token punctuation">:</span> <span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> invalidChildren <span class="token operator">=</span> node<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>child <span class="token operator">=</span><span class="token operator">&gt;</span> child<span class="token punctuation">.</span>kind <span class="token operator">==</span> <span class="token string">&apos;block&apos;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> invalidChildren<span class="token punctuation">.</span>size <span class="token operator">?</span> invalidChildren <span class="token punctuation">:</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>validate</code> property allows you to define a constraint that the matching object must abide by. It should return either <code>Void</code> if the object is valid, or any non-void value if it is invalid. This makes it easy to return the exact reason that the object is invalid, which makes it simple to recover from the invalid state with the <code>normalize</code> property.</p>
+<h2 id="static-methods">Static Methods</h2>
+<h3 id="schemaisschema"><code>Schema.isSchema</code></h3>
+<p><code>Schema.isSchema(maybeSchema: Any) =&gt; Boolean</code></p>
+<p>Returns a boolean if the passed in argument is a <code>Schema</code>.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="node.html" class="navigation navigation-prev " aria-label="Previous page: Node">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="selection.html" class="navigation navigation-next " aria-label="Next page: Selection">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Schema","level":"4.9","depth":1,"next":{"title":"Selection","level":"4.10","depth":1,"path":"reference/slate/selection.md","ref":"./reference/slate/selection.md","articles":[]},"previous":{"title":"Node","level":"4.8","depth":1,"path":"reference/slate/node.md","ref":"./reference/slate/node.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/schema.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-21T17:22:15.932Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

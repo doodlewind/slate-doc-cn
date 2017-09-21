@@ -1,0 +1,899 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Defining Custom Block Nodes · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="applying-custom-formatting.html" />
+    
+    
+    <link rel="prev" href="adding-event-handlers.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Walkthroughs</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="installing-slate.html">
+            
+                <a href="installing-slate.html">
+            
+                    
+                    Installing Slate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="adding-event-handlers.html">
+            
+                <a href="adding-event-handlers.html">
+            
+                    
+                    Adding Event Handlers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="defining-custom-block-nodes.html">
+            
+                <a href="defining-custom-block-nodes.html">
+            
+                    
+                    Defining Custom Block Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="applying-custom-formatting.html">
+            
+                <a href="applying-custom-formatting.html">
+            
+                    
+                    Applying Custom Formatting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="using-plugins.html">
+            
+                <a href="using-plugins.html">
+            
+                    
+                    Using Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="saving-to-a-database.html">
+            
+                <a href="saving-to-a-database.html">
+            
+                    
+                    Saving to a Database
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="saving-and-loading-html-content.html">
+            
+                <a href="saving-and-loading-html-content.html">
+            
+                    
+                    Saving and Loading HTML Content
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">General</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../general/faq.html">
+            
+                <a href="../general/faq.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../general/resources.html">
+            
+                <a href="../general/resources.html">
+            
+                    
+                    Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Slate Core</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../reference/slate/block.html">
+            
+                <a href="../reference/slate/block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../reference/slate/change.html">
+            
+                <a href="../reference/slate/change.html">
+            
+                    
+                    Change
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../reference/slate/character.html">
+            
+                <a href="../reference/slate/character.html">
+            
+                    
+                    Character
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../reference/slate/data.html">
+            
+                <a href="../reference/slate/data.html">
+            
+                    
+                    Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../reference/slate/document.html">
+            
+                <a href="../reference/slate/document.html">
+            
+                    
+                    Document
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../reference/slate/inline.html">
+            
+                <a href="../reference/slate/inline.html">
+            
+                    
+                    Inline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../reference/slate/mark.html">
+            
+                <a href="../reference/slate/mark.html">
+            
+                    
+                    Mark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../reference/slate/node.html">
+            
+                <a href="../reference/slate/node.html">
+            
+                    
+                    Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../reference/slate/schema.html">
+            
+                <a href="../reference/slate/schema.html">
+            
+                    
+                    Schema
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../reference/slate/selection.html">
+            
+                <a href="../reference/slate/selection.html">
+            
+                    
+                    Selection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="../reference/slate/state.html">
+            
+                <a href="../reference/slate/state.html">
+            
+                    
+                    State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="../reference/slate/text.html">
+            
+                <a href="../reference/slate/text.html">
+            
+                    
+                    Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="../reference/slate/utils.html">
+            
+                <a href="../reference/slate/utils.html">
+            
+                    
+                    setKeyGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="../reference/slate/utils.html">
+            
+                <a href="../reference/slate/utils.html">
+            
+                    
+                    resetKeyGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Slate React</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../reference/slate-react/editor.html">
+            
+                <a href="../reference/slate-react/editor.html">
+            
+                    
+                    Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../reference/slate-react/placeholder.html">
+            
+                <a href="../reference/slate-react/placeholder.html">
+            
+                    
+                    Placeholder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../reference/slate-react/custom-nodes.html">
+            
+                <a href="../reference/slate-react/custom-nodes.html">
+            
+                    
+                    Custom Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../reference/slate-react/plugins.html">
+            
+                <a href="../reference/slate-react/plugins.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../reference/slate-react/core-plugin.html">
+            
+                <a href="../reference/slate-react/core-plugin.html">
+            
+                    
+                    Core Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../reference/slate-react/utils.html">
+            
+                <a href="../reference/slate-react/utils.html">
+            
+                    
+                    findDOMNode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Other Packages</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../reference/slate-html-serializer/">
+            
+                <a href="../reference/slate-html-serializer/">
+            
+                    
+                    slate-html-serializer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../reference/slate-hyperscript/">
+            
+                <a href="../reference/slate-hyperscript/">
+            
+                    
+                    slate-hyperscript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../reference/slate-plain-serializer/">
+            
+                <a href="../reference/slate-plain-serializer/">
+            
+                    
+                    slate-plain-serializer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="../reference/slate-prop-types/">
+            
+                <a href="../reference/slate-prop-types/">
+            
+                    
+                    slate-prop-types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="../reference/slate-simulator/">
+            
+                <a href="../reference/slate-simulator/">
+            
+                    
+                    slate-simulator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Defining Custom Block Nodes</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><br></p>
+<p></p><p align="center"><strong>Previous:</strong><br><a href="adding-event-handlers.html">Adding Event Handlers</a></p>
+<br><p></p>
+<h1 id="defining-custom-block-nodes">Defining Custom Block Nodes</h1>
+<p>In our previous example, we started with a paragraph, but we never actually told Slate anything about the <code>paragraph</code> block type. We just let it use its internal default renderer, which uses a plain old <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span></code>.</p>
+<p>But that&apos;s not all you can do. Slate lets you define any type of custom blocks you want, like block quotes, code blocks, list items, etc.</p>
+<p>We&apos;ll show you how. Let&apos;s start with our app from earlier:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+
+  state <span class="token operator">=</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">:</span> initialState
+  <span class="token punctuation">}</span>
+
+  onChange <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  onKeyDown <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>which <span class="token operator">!=</span> <span class="token number">55</span> <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>shiftKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
+
+    event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    change<span class="token punctuation">.</span><span class="token function">insertText</span><span class="token punctuation">(</span><span class="token string">&apos;and&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>Editor
+        state<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>state<span class="token punctuation">}</span>
+        onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onChange<span class="token punctuation">}</span>
+        onKeyDown<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onKeyDown<span class="token punctuation">}</span>
+      <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Now let&apos;s add &quot;code blocks&quot; to our editor.</p>
+<p>The problem is, code blocks won&apos;t just be rendered as a plain paragraph, they&apos;ll need to be rendered differently. To make that happen, we need to define a &quot;renderer&quot; for <code>code</code> nodes</p>
+<p>Node renderers are just simple React components, like so:</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Define a React component renderer for our code blocks.</span>
+<span class="token keyword">function</span> <span class="token function">CodeNode</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Pretty simple.</p>
+<p>See the <code>props.attributes</code> reference? Slate passes attributes that should be rendered on the top-most element of your blocks, so that you don&apos;t have to build them up yourself. You <strong>must</strong> mix the attributes into your component.</p>
+<p>And see that <code>props.children</code> reference? Slate will automatically render all of the children of a block for you, and then pass them to you just like any other React component would, via <code>props.children</code>. That way you don&apos;t have to muck around with rendering the proper text nodes or anything like that. You <strong>must</strong> render the children as the lowest leaf in your component.</p>
+<p>Now, let&apos;s add that renderer to our <code>Editor</code>:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">CodeNode</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+
+  state <span class="token operator">=</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">:</span> initialState<span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true">// Add a &quot;schema&quot; to our app&apos;s state that we can pass to the Editor.</span>
+    schema<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      nodes<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        code<span class="token punctuation">:</span> CodeNode
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  onChange <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  onKeyDown <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>which <span class="token operator">!=</span> <span class="token number">55</span> <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>shiftKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
+
+    event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    change<span class="token punctuation">.</span><span class="token function">insertText</span><span class="token punctuation">(</span><span class="token string">&apos;and&apos;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token comment" spellcheck="true">// Pass in the `schema` property...</span>
+      <span class="token operator">&lt;</span>Editor
+        schema<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>schema<span class="token punctuation">}</span>
+        state<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>state<span class="token punctuation">}</span>
+        onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onChange<span class="token punctuation">}</span>
+        onKeyDown<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onKeyDown<span class="token punctuation">}</span>
+      <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Okay, but now we&apos;ll need a way for the user to actually turn a block into a code block. So let&apos;s change our <code>onKeyDown</code> function to add a <code>&#x2318;-Alt-C</code> shortcut that does just that:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">CodeNode</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+
+  state <span class="token operator">=</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">:</span> initialState<span class="token punctuation">,</span>
+    schema<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      nodes<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        code<span class="token punctuation">:</span> CodeNode
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  onChange <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  onKeyDown <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Return with no changes if it&apos;s not the &quot;`&quot; key with cmd/ctrl pressed.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>which <span class="token operator">!=</span> <span class="token number">67</span> <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>metaKey <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>altKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
+
+    <span class="token comment" spellcheck="true">// Prevent the &quot;`&quot; from being inserted by default.</span>
+    event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// Otherwise, set the currently selected blocks type to &quot;code&quot;.</span>
+    change<span class="token punctuation">.</span><span class="token function">setBlock</span><span class="token punctuation">(</span><span class="token string">&apos;code&apos;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>Editor
+        schema<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>schema<span class="token punctuation">}</span>
+        state<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>state<span class="token punctuation">}</span>
+        onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onChange<span class="token punctuation">}</span>
+        onKeyDown<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onKeyDown<span class="token punctuation">}</span>
+      <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Now, if you press <code>&#x2318;-Alt-C</code>, the block your cursor is in should turn into a code block! Magic!</p>
+<p>But we forgot one thing. When you hit <code>&#x2318;-Alt-C</code> again, it should change the code block back into a paragraph. To do that, we&apos;ll need to add a bit of logic to change the type we set based on whether any of the currently selected blocks are already a code block:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">CodeNode</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+
+  state <span class="token operator">=</span> <span class="token punctuation">{</span>
+    state<span class="token punctuation">:</span> initialState<span class="token punctuation">,</span>
+    schema<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      nodes<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        code<span class="token punctuation">:</span> CodeNode
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  onChange <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  onKeyDown <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>which <span class="token operator">!=</span> <span class="token number">67</span> <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>metaKey <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>altKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
+
+    event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// Determine whether any of the currently selected blocks are code blocks.</span>
+    <span class="token keyword">const</span> isCode <span class="token operator">=</span> change<span class="token punctuation">.</span>state<span class="token punctuation">.</span>blocks<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>block <span class="token operator">=</span><span class="token operator">&gt;</span> block<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">&apos;code&apos;</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// Toggle the block type depending on `isCode`.</span>
+    change<span class="token punctuation">.</span><span class="token function">setBlock</span><span class="token punctuation">(</span>isCode <span class="token operator">?</span> <span class="token string">&apos;paragraph&apos;</span> <span class="token punctuation">:</span> <span class="token string">&apos;code&apos;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>Editor
+        schema<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>schema<span class="token punctuation">}</span>
+        state<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>state<span class="token punctuation">}</span>
+        onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onChange<span class="token punctuation">}</span>
+        onKeyDown<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>onKeyDown<span class="token punctuation">}</span>
+      <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>And there you have it! If you press <code>&#x2318;-Alt-C</code> while inside a code block, it should turn back into a paragraph!</p>
+<p><br></p>
+<p></p><p align="center"><strong>Next:</strong><br><a href="applying-custom-formatting.html">Applying Custom Formatting</a></p>
+<br><p></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="adding-event-handlers.html" class="navigation navigation-prev " aria-label="Previous page: Adding Event Handlers">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="applying-custom-formatting.html" class="navigation navigation-next " aria-label="Next page: Applying Custom Formatting">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Defining Custom Block Nodes","level":"2.3","depth":1,"next":{"title":"Applying Custom Formatting","level":"2.4","depth":1,"path":"walkthroughs/applying-custom-formatting.md","ref":"./walkthroughs/applying-custom-formatting.md","articles":[]},"previous":{"title":"Adding Event Handlers","level":"2.2","depth":1,"path":"walkthroughs/adding-event-handlers.md","ref":"./walkthroughs/adding-event-handlers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/defining-custom-block-nodes.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-21T17:22:15.932Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

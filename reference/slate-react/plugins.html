@@ -1,0 +1,878 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Plugins · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="core-plugin.html" />
+    
+    
+    <link rel="prev" href="custom-nodes.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Walkthroughs</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../walkthroughs/installing-slate.html">
+            
+                <a href="../../walkthroughs/installing-slate.html">
+            
+                    
+                    Installing Slate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../walkthroughs/adding-event-handlers.html">
+            
+                <a href="../../walkthroughs/adding-event-handlers.html">
+            
+                    
+                    Adding Event Handlers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../walkthroughs/defining-custom-block-nodes.html">
+            
+                <a href="../../walkthroughs/defining-custom-block-nodes.html">
+            
+                    
+                    Defining Custom Block Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../walkthroughs/applying-custom-formatting.html">
+            
+                <a href="../../walkthroughs/applying-custom-formatting.html">
+            
+                    
+                    Applying Custom Formatting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../../walkthroughs/using-plugins.html">
+            
+                <a href="../../walkthroughs/using-plugins.html">
+            
+                    
+                    Using Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../../walkthroughs/saving-to-a-database.html">
+            
+                <a href="../../walkthroughs/saving-to-a-database.html">
+            
+                    
+                    Saving to a Database
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../../walkthroughs/saving-and-loading-html-content.html">
+            
+                <a href="../../walkthroughs/saving-and-loading-html-content.html">
+            
+                    
+                    Saving and Loading HTML Content
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">General</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../general/faq.html">
+            
+                <a href="../../general/faq.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../general/resources.html">
+            
+                <a href="../../general/resources.html">
+            
+                    
+                    Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Slate Core</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../slate/block.html">
+            
+                <a href="../slate/block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../slate/change.html">
+            
+                <a href="../slate/change.html">
+            
+                    
+                    Change
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../slate/character.html">
+            
+                <a href="../slate/character.html">
+            
+                    
+                    Character
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../slate/data.html">
+            
+                <a href="../slate/data.html">
+            
+                    
+                    Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../slate/document.html">
+            
+                <a href="../slate/document.html">
+            
+                    
+                    Document
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../slate/inline.html">
+            
+                <a href="../slate/inline.html">
+            
+                    
+                    Inline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../slate/mark.html">
+            
+                <a href="../slate/mark.html">
+            
+                    
+                    Mark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../slate/node.html">
+            
+                <a href="../slate/node.html">
+            
+                    
+                    Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../slate/schema.html">
+            
+                <a href="../slate/schema.html">
+            
+                    
+                    Schema
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../slate/selection.html">
+            
+                <a href="../slate/selection.html">
+            
+                    
+                    Selection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="../slate/state.html">
+            
+                <a href="../slate/state.html">
+            
+                    
+                    State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="../slate/text.html">
+            
+                <a href="../slate/text.html">
+            
+                    
+                    Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="../slate/utils.html">
+            
+                <a href="../slate/utils.html">
+            
+                    
+                    setKeyGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="../slate/utils.html">
+            
+                <a href="../slate/utils.html">
+            
+                    
+                    resetKeyGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Slate React</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="editor.html">
+            
+                <a href="editor.html">
+            
+                    
+                    Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="placeholder.html">
+            
+                <a href="placeholder.html">
+            
+                    
+                    Placeholder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="custom-nodes.html">
+            
+                <a href="custom-nodes.html">
+            
+                    
+                    Custom Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.4" data-path="plugins.html">
+            
+                <a href="plugins.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="core-plugin.html">
+            
+                <a href="core-plugin.html">
+            
+                    
+                    Core Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="utils.html">
+            
+                <a href="utils.html">
+            
+                    
+                    findDOMNode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Other Packages</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../slate-html-serializer/">
+            
+                <a href="../slate-html-serializer/">
+            
+                    
+                    slate-html-serializer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../slate-hyperscript/">
+            
+                <a href="../slate-hyperscript/">
+            
+                    
+                    slate-hyperscript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../slate-plain-serializer/">
+            
+                <a href="../slate-plain-serializer/">
+            
+                    
+                    slate-plain-serializer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="../slate-prop-types/">
+            
+                <a href="../slate-prop-types/">
+            
+                    
+                    slate-prop-types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="../slate-simulator/">
+            
+                <a href="../slate-simulator/">
+            
+                    
+                    slate-simulator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Plugins</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="plugins">Plugins</h1>
+<p>Plugins can be attached to an editor to alter its behavior in different ways. Plugins are just simple Javascript objects, containing a set of properties that control different behaviors&#x2014;event handling, change handling, rendering, etc.</p>
+<p>Each editor has a &quot;middleware stack&quot; of plugins, which has a specific order.</p>
+<p>When the editor needs to resolve a plugin-related handler, it will loop through its plugin stack, searching for the first plugin that successfully returns a value. After receiving that value, the editor will <strong>not</strong> continue to search the remaining plugins; it returns early. If you&apos;d like for the stack to continue, a plugin handler should return <code>undefined</code>.</p>
+<ul>
+<li><a href="#conventions">Conventions</a></li>
+<li><a href="#event-handle-properties">Event Handler Properties</a><ul>
+<li><a href="#onbeforeinput"><code>onBeforeInput</code></a></li>
+<li><a href="#onblur"><code>onBlur</code></a></li>
+<li><a href="#onfocus"><code>onFocus</code></a></li>
+<li><a href="#oncopy"><code>onCopy</code></a></li>
+<li><a href="#oncut"><code>onCut</code></a></li>
+<li><a href="#ondrop"><code>onDrop</code></a></li>
+<li><a href="#onkeydown"><code>onKeyDown</code></a></li>
+<li><a href="#onkeyup"><code>onKeyUp</code></a></li>
+<li><a href="#onpaste"><code>onPaste</code></a></li>
+<li><a href="#onselect"><code>onSelect</code></a></li>
+</ul>
+</li>
+<li><a href="#other-properties">Other Properties</a><ul>
+<li><a href="#onchange"><code>onChange</code></a></li>
+<li><a href="#onbeforechange"><code>onBeforeChange</code></a></li>
+<li><a href="#render"><code>render</code></a></li>
+<li><a href="#schema"><code>schema</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="conventions">Conventions</h2>
+<p>A plugin should always export a function that takes options. This way even if it doesn&apos;t take any options now, it won&apos;t be a breaking API change to take more options in the future. So a basic plugin might look like this:</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">MySlatePlugin</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Return properties that describe your logic here...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="event-handler-properties">Event Handler Properties</h2>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  onBeforeInput<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onBlur<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onFocus<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onCopy<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onCut<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onDrop<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onKeyDown<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onKeyUp<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onPaste<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
+  onSelect<span class="token punctuation">:</span> Function
+<span class="token punctuation">}</span>
+</code></pre>
+<p>All of the event handler properties are passed the same React <code>event</code> object you are used to from React&apos;s event handlers. They are also passed a <code>data</code> object with Slate-specific information relating to the event, the current <code>change</code> of the editor, and the <code>editor</code> instance itself.</p>
+<p>Each event handler can choose to return a new <code>change</code> object, in which case the editor&apos;s state will be updated. If nothing is returned, the editor will simply continue resolving the plugin stack.</p>
+<h3 id="onbeforeinput"><code>onBeforeInput</code></h3>
+<p><code>Function onBeforeInput(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called right before a string of text is inserted into the <code>contenteditable</code> element.</p>
+<p>Make sure to <code>event.preventDefault()</code> if you do not want the default insertion behavior to occur! If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<h3 id="onblur"><code>onBlur</code></h3>
+<p><code>Function onBlur(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called when the editor&apos;s <code>contenteditable</code> element is blurred. If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<h3 id="onfocus"><code>onFocus</code></h3>
+<p><code>Function onFocus(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called when the editor&apos;s <code>contenteditable</code> element is focused. If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<h3 id="oncopy"><code>onCopy</code></h3>
+<p><code>Function onCopy(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called when there is a copy event in the editor&apos;s <code>contenteditable</code> element.</p>
+<p>The <code>data</code> object contains a <code>type</code> string and associated data for that type. Right now the only type supported is <code>&quot;fragment&quot;</code>:</p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;fragment&apos;</span><span class="token punctuation">,</span>
+  fragment<span class="token punctuation">:</span> Document
+<span class="token punctuation">}</span>
+</code></pre>
+<p>If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<h3 id="oncut"><code>onCut</code></h3>
+<p><code>Function onCut(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is equivalent to the <code>onCopy</code> handler. If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<h3 id="ondrop"><code>onDrop</code></h3>
+<p><code>Function onDrop(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called when the user drops content into the <code>contenteditable</code> element. The event is already prevented by default, so you must define a state change to have any affect occur.</p>
+<p>The <code>data</code> object is a convenience object created to standardize the drop metadata across browsers. Every data object has a <code>type</code> property, which can be one of <code>text</code>, <code>html</code> or <code>files</code>, and a <code>target</code> property which is a <a href="../slate/selection.html"><code>Selection</code></a> indicating where the drop occurred. Depending on the type, its structure will be:</p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;text&apos;</span><span class="token punctuation">,</span>
+  target<span class="token punctuation">:</span> Selection<span class="token punctuation">,</span>
+  text<span class="token punctuation">:</span> String
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;html&apos;</span><span class="token punctuation">,</span>
+  target<span class="token punctuation">:</span> Selection<span class="token punctuation">,</span>
+  text<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+  html<span class="token punctuation">:</span> String
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;files&apos;</span><span class="token punctuation">,</span>
+  target<span class="token punctuation">:</span> Selection<span class="token punctuation">,</span>
+  files<span class="token punctuation">:</span> FileList
+<span class="token punctuation">}</span>
+</code></pre>
+<p>If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<h3 id="onkeydown"><code>onKeyDown</code></h3>
+<p><code>Function onKeyDown(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called when any key is pressed in the <code>contenteditable</code> element, before any action is taken.</p>
+<p>The <code>data</code> object contains the <code>key</code> which is a string name of the key that was pressed, as well as it&apos;s <code>code</code>. It also contains a series of helpful utility properties for determining hotkey logic. For example, <code>isCtrl</code> which is true if the <code>control</code> key was pressed, or</p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  key<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+  code<span class="token punctuation">:</span> Number<span class="token punctuation">,</span>
+  isAlt<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+  isCmd<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+  isCtrl<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+  isLine<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+  isMeta<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+  isMod<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+  isModAlt<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+  isShift<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span>
+  isWord<span class="token punctuation">:</span> Boolean
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>isMod</code> boolean is <code>true</code> if the <code>control</code> key was pressed on Windows or the <code>command</code> key was pressed on Mac <em>without</em> the <code>alt/option</code> key also being pressed. This is a convenience for adding hotkeys like <code>command+b</code>.</p>
+<p>The <code>isModAlt</code> boolean is <code>true</code> if the <code>control</code> key was pressed on Windows or the <code>command</code> key was pressed on Mac <em>and</em> the <code>alt/option</code> key was also being pressed. This is a convenience for secondary hotkeys like <code>command+option+1</code>.</p>
+<p>The <code>isLine</code> and <code>isWord</code> booleans represent whether the &quot;line modifier&quot; or &quot;word modifier&quot; hotkeys are pressed when deleting or moving the cursor. For example, on a Mac <code>option + right</code> moves the cursor to the right one word at a time.</p>
+<p>Make sure to <code>event.preventDefault()</code> if you do not want the default insertion behavior to occur! If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<h3 id="onkeyup"><code>onKeyUp</code></h3>
+<p><code>Function onKeUp(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called when any key is released in the <code>contenteditable</code> element.</p>
+<p>The <code>data</code> object contains the same information as the <code>data</code> object of <code>onKeyDown</code>.</p>
+<h3 id="onpaste"><code>onPaste</code></h3>
+<p><code>Function onPaste(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called when the user pastes content into the <code>contenteditable</code> element. The event is already prevented by default, so you must define a state change to have any affect occur.</p>
+<p>The <code>data</code> object is a convenience object created to standardize the paste metadata across browsers. Every data object has a <code>type</code> property, which can be one of <code>text</code>, <code>html</code> or <code>files</code>. Depending on the type, it&apos;s structure will be:</p>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;text&apos;</span><span class="token punctuation">,</span>
+  text<span class="token punctuation">:</span> String
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;html&apos;</span><span class="token punctuation">,</span>
+  text<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+  html<span class="token punctuation">:</span> String
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;files&apos;</span><span class="token punctuation">,</span>
+  files<span class="token punctuation">:</span> FileList
+<span class="token punctuation">}</span>
+</code></pre>
+<p>If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<h3 id="onselect"><code>onSelect</code></h3>
+<p><code>Function onSelect(event: Event, data: Object, change: Change, editor: Editor) =&gt; Change || Void</code></p>
+<p>This handler is called whenever the native DOM selection changes.</p>
+<p>The <code>data</code> object contains a <a href="../slate/selection.html"><code>Selection</code></a> object representing the new selection.</p>
+<p>If no other plugin handles this event, it will be handled by the <a href="core.md">Core plugin</a>.</p>
+<p><em>Note: This is <strong>not</strong> Slate&apos;s internal selection representation (although it mirrors it). If you want to get notified when Slate&apos;s selection changes, use the <a href="editor.html#onchange"><code>onChange</code></a> property of the <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Editor</span><span class="token punctuation">&gt;</span></span></code>. This handler is instead meant to give you lower-level access to the DOM selection handling, which <strong>is not always triggered</strong> as you&apos;d expect.</em></p>
+<h2 id="other-properties">Other Properties</h2>
+<pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
+  onChange<span class="token punctuation">:</span> Function
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="onchange"><code>onChange</code></h3>
+<p><code>Function onChange(change: Change) =&gt; Any || Void</code></p>
+<p>The <code>onChange</code> handler isn&apos;t a native browser event handler. Instead, it is invoked whenever the editor state changes. This allows plugins to augment a change however they want.</p>
+<h3 id="onbeforechange"><code>onBeforeChange</code></h3>
+<p><code>Function onBeforeChange(change: Change) =&gt; Change || Void</code></p>
+<p>The <code>onBeforeChange</code> handler isn&apos;t a native browser event handler. Instead, it is invoked whenever the editor receives a new state and before propagating a new change to <code>onChange</code>.</p>
+<h3 id="render"><code>render</code></h3>
+<p><code>Function render(props: Object, state: State, editor: Editor) =&gt; Object || Void</code></p>
+<p>The <code>render</code> property allows you to define higher-order-component-like behavior. It is passed all of the properties of the editor, including <code>props.children</code>. You can then choose to wrap the existing <code>children</code> in any custom elements or proxy the properties however you choose. This can be useful for rendering toolbars, styling the editor, rendering validation, etc. Remember that the <code>render</code> function has to render <code>props.children</code> for editor&apos;s children to render.</p>
+<h3 id="schema"><code>schema</code></h3>
+<p><code>Object</code></p>
+<p>The <code>schema</code> property allows you to define a set of rules that will be added to the editor&apos;s schema. The rules from each of the schemas returned by the plugins are collected into a single schema for the editor, and the rules are applied in the same order as the plugin stack.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="custom-nodes.html" class="navigation navigation-prev " aria-label="Previous page: Custom Nodes">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="core-plugin.html" class="navigation navigation-next " aria-label="Next page: Core Plugin">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Plugins","level":"5.4","depth":1,"next":{"title":"Core Plugin","level":"5.5","depth":1,"path":"reference/slate-react/core-plugin.md","ref":"./reference/slate-react/core-plugin.md","articles":[]},"previous":{"title":"Custom Nodes","level":"5.3","depth":1,"path":"reference/slate-react/custom-nodes.md","ref":"./reference/slate-react/custom-nodes.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/plugins.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-21T17:22:15.932Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

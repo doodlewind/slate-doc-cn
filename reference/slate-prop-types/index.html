@@ -1,0 +1,803 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>slate-prop-types · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../slate-simulator/" />
+    
+    
+    <link rel="prev" href="../slate-plain-serializer/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Walkthroughs</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../walkthroughs/installing-slate.html">
+            
+                <a href="../../walkthroughs/installing-slate.html">
+            
+                    
+                    Installing Slate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../walkthroughs/adding-event-handlers.html">
+            
+                <a href="../../walkthroughs/adding-event-handlers.html">
+            
+                    
+                    Adding Event Handlers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../walkthroughs/defining-custom-block-nodes.html">
+            
+                <a href="../../walkthroughs/defining-custom-block-nodes.html">
+            
+                    
+                    Defining Custom Block Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../walkthroughs/applying-custom-formatting.html">
+            
+                <a href="../../walkthroughs/applying-custom-formatting.html">
+            
+                    
+                    Applying Custom Formatting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../../walkthroughs/using-plugins.html">
+            
+                <a href="../../walkthroughs/using-plugins.html">
+            
+                    
+                    Using Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../../walkthroughs/saving-to-a-database.html">
+            
+                <a href="../../walkthroughs/saving-to-a-database.html">
+            
+                    
+                    Saving to a Database
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../../walkthroughs/saving-and-loading-html-content.html">
+            
+                <a href="../../walkthroughs/saving-and-loading-html-content.html">
+            
+                    
+                    Saving and Loading HTML Content
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">General</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../general/faq.html">
+            
+                <a href="../../general/faq.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../general/resources.html">
+            
+                <a href="../../general/resources.html">
+            
+                    
+                    Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Slate Core</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../slate/block.html">
+            
+                <a href="../slate/block.html">
+            
+                    
+                    Block
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../slate/change.html">
+            
+                <a href="../slate/change.html">
+            
+                    
+                    Change
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../slate/character.html">
+            
+                <a href="../slate/character.html">
+            
+                    
+                    Character
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../slate/data.html">
+            
+                <a href="../slate/data.html">
+            
+                    
+                    Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../slate/document.html">
+            
+                <a href="../slate/document.html">
+            
+                    
+                    Document
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../slate/inline.html">
+            
+                <a href="../slate/inline.html">
+            
+                    
+                    Inline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../slate/mark.html">
+            
+                <a href="../slate/mark.html">
+            
+                    
+                    Mark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../slate/node.html">
+            
+                <a href="../slate/node.html">
+            
+                    
+                    Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../slate/schema.html">
+            
+                <a href="../slate/schema.html">
+            
+                    
+                    Schema
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../slate/selection.html">
+            
+                <a href="../slate/selection.html">
+            
+                    
+                    Selection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="../slate/state.html">
+            
+                <a href="../slate/state.html">
+            
+                    
+                    State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="../slate/text.html">
+            
+                <a href="../slate/text.html">
+            
+                    
+                    Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="../slate/utils.html">
+            
+                <a href="../slate/utils.html">
+            
+                    
+                    setKeyGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="../slate/utils.html">
+            
+                <a href="../slate/utils.html">
+            
+                    
+                    resetKeyGenerator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Slate React</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../slate-react/editor.html">
+            
+                <a href="../slate-react/editor.html">
+            
+                    
+                    Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../slate-react/placeholder.html">
+            
+                <a href="../slate-react/placeholder.html">
+            
+                    
+                    Placeholder
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../slate-react/custom-nodes.html">
+            
+                <a href="../slate-react/custom-nodes.html">
+            
+                    
+                    Custom Nodes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../slate-react/plugins.html">
+            
+                <a href="../slate-react/plugins.html">
+            
+                    
+                    Plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../slate-react/core-plugin.html">
+            
+                <a href="../slate-react/core-plugin.html">
+            
+                    
+                    Core Plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../slate-react/utils.html">
+            
+                <a href="../slate-react/utils.html">
+            
+                    
+                    findDOMNode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Other Packages</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../slate-html-serializer/">
+            
+                <a href="../slate-html-serializer/">
+            
+                    
+                    slate-html-serializer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../slate-hyperscript/">
+            
+                <a href="../slate-hyperscript/">
+            
+                    
+                    slate-hyperscript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../slate-plain-serializer/">
+            
+                <a href="../slate-plain-serializer/">
+            
+                    
+                    slate-plain-serializer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    slate-prop-types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="../slate-simulator/">
+            
+                <a href="../slate-simulator/">
+            
+                    
+                    slate-simulator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >slate-prop-types</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="slate-prop-types"><code>slate-prop-types</code></h1>
+<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> Types <span class="token keyword">from</span> <span class="token string">&apos;slate-prop-types&apos;</span>
+</code></pre>
+<p>A set of React prop types for Slate editors and plugins.</p>
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#exports">Exports</a><ul>
+<li><a href="#block"><code>block</code></a></li>
+<li><a href="#blocks"><code>blocks</code></a></li>
+<li><a href="#change"><code>change</code></a></li>
+<li><a href="#character"><code>character</code></a></li>
+<li><a href="#characters"><code>characters</code></a></li>
+<li><a href="#data"><code>data</code></a></li>
+<li><a href="#document"><code>document</code></a></li>
+<li><a href="#history"><code>history</code></a></li>
+<li><a href="#inline"><code>inline</code></a></li>
+<li><a href="#inlines"><code>inlines</code></a></li>
+<li><a href="#mark"><code>mark</code></a></li>
+<li><a href="#marks"><code>marks</code></a></li>
+<li><a href="#node"><code>node</code></a></li>
+<li><a href="#nodes"><code>nodes</code></a></li>
+<li><a href="#range"><code>range</code></a></li>
+<li><a href="#ranges"><code>ranges</code></a></li>
+<li><a href="#schema"><code>schema</code></a></li>
+<li><a href="#selection"><code>selection</code></a></li>
+<li><a href="#stack"><code>stack</code></a></li>
+<li><a href="#state"><code>state</code></a></li>
+<li><a href="#text"><code>text</code></a></li>
+<li><a href="#texts"><code>texts</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="example">Example</h2>
+<pre class="language-"><code class="lang-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span>
+<span class="token keyword">import</span> Types <span class="token keyword">from</span> <span class="token string">&apos;slate-prop-types&apos;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Toolbar</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+
+  propTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
+    block<span class="token punctuation">:</span> Types<span class="token punctuation">.</span>block<span class="token punctuation">,</span>
+    schema<span class="token punctuation">:</span> Types<span class="token punctuation">.</span>schema<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
+    state<span class="token punctuation">:</span> Types<span class="token punctuation">.</span>state<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token operator">...</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="exports">Exports</h2>
+<h3 id="block"><code>block</code></h3>
+<p>Ensure that a value is a Slate <code>Block</code>.</p>
+<h3 id="blocks"><code>blocks</code></h3>
+<p>Ensure that a value is an immutable <code>List</code> of Slate <a href="../slate/block.html"><code>Block</code></a> objects.</p>
+<h3 id="change"><code>change</code></h3>
+<p>Ensure that a value is a Slate <code>Change</code>.</p>
+<h3 id="character"><code>character</code></h3>
+<p>Ensure that a value is a Slate <code>Character</code>.</p>
+<h3 id="characters"><code>characters</code></h3>
+<p>Ensure that a value is an immutable <code>List</code> of Slate <code>Character</code> objects.</p>
+<h3 id="data"><code>data</code></h3>
+<p>Ensure that a value is a Slate <code>Data</code>.</p>
+<h3 id="document"><code>document</code></h3>
+<p>Ensure that a value is a Slate <code>Document</code>.</p>
+<h3 id="history"><code>history</code></h3>
+<p>Ensure that a value is a Slate <code>History</code>.</p>
+<h3 id="inline"><code>inline</code></h3>
+<p>Ensure that a value is a Slate <code>Inline</code>.</p>
+<h3 id="inlines"><code>inlines</code></h3>
+<p>Ensure that a value is an immutable <code>List</code> of Slate <a href="../slate/inline.html"><code>Inline</code></a> objects.</p>
+<h3 id="mark"><code>mark</code></h3>
+<p>Ensure that a value is a Slate <code>Mark</code>.</p>
+<h3 id="marks"><code>marks</code></h3>
+<p>Ensure that a value is an immutable <code>Set</code> of Slate <code>Mark</code> objects.</p>
+<h3 id="node"><code>node</code></h3>
+<p>Ensure that a value is a Slate <code>Node</code>.</p>
+<h3 id="nodes"><code>nodes</code></h3>
+<p>Ensure that a value is an immutable <code>List</code> of Slate <code>Node</code> objects.</p>
+<h3 id="range"><code>range</code></h3>
+<p>Ensure that a value is a Slate <code>Range</code>.</p>
+<h3 id="ranges"><code>ranges</code></h3>
+<p>Ensure that a value is an immutable <code>List</code> of Slate <code>Range</code> objects.</p>
+<h3 id="schema"><code>schema</code></h3>
+<p>Ensure that a value is a Slate <code>Schema</code>.</p>
+<h3 id="selection"><code>selection</code></h3>
+<p>Ensure that a value is a Slate <code>Selection</code>.</p>
+<h3 id="stack"><code>stack</code></h3>
+<p>Ensure that a value is a Slate <code>Stack</code>.</p>
+<h3 id="state"><code>state</code></h3>
+<p>Ensure that a value is a Slate <code>State</code>.</p>
+<h3 id="text"><code>text</code></h3>
+<p>Ensure that a value is a Slate <code>Text</code>.</p>
+<h3 id="texts"><code>texts</code></h3>
+<p>Ensure that a value is a Slate <code>Texts</code>.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../slate-plain-serializer/" class="navigation navigation-prev " aria-label="Previous page: slate-plain-serializer">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../slate-simulator/" class="navigation navigation-next " aria-label="Next page: slate-simulator">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"slate-prop-types","level":"6.4","depth":1,"next":{"title":"slate-simulator","level":"6.5","depth":1,"path":"reference/slate-simulator/index.md","ref":"./reference/slate-simulator/index.md","articles":[]},"previous":{"title":"slate-plain-serializer","level":"6.3","depth":1,"path":"reference/slate-plain-serializer/index.md","ref":"./reference/slate-plain-serializer/index.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-prop-types/index.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-21T17:22:15.932Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
