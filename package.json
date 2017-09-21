@@ -1,0 +1,23 @@
+{
+  "name": "slate-doc-cn",
+  "version": "0.24.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gitbook-plugin-prism": "^2.3.0",
+    "gitbook-plugin-github": "^2.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.0.0",
+    "gitbook-cli": "^2.3.2"
+  },
+  "scripts": {
+    "page": "gitbook build && node index.js"
+  },
+  "keywords": [
+    "slate",
+    "doc"
+  ],
+  "author": "doodlewind",
+  "license": "MIT"
+}
