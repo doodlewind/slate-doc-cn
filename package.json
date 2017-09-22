@@ -1,8 +1,7 @@
 {
   "name": "slate-doc-cn",
   "version": "0.24.1",
-  "description": "",
-  "main": "index.js",
+  "description": "slate.js doc Chinese translation",
   "dependencies": {
     "gitbook-plugin-prism": "^2.3.0",
     "gitbook-plugin-github": "^2.0.0"
@@ -12,12 +11,13 @@
     "gitbook-cli": "^2.3.2"
   },
   "scripts": {
-    "page": "gitbook build && node index.js"
+    "site": "gitbook build && gh-pages -d _book"
   },
   "keywords": [
     "slate",
     "doc"
   ],
+  "repository": "https://github.com/doodlewind/slate-doc-cn.git",
   "author": "doodlewind",
   "license": "MIT"
 }
