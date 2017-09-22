@@ -1,22 +1,22 @@
 
-- [Introduction](./Introduction.md)
+- [介绍](./Introduction.md)
 
 
-## Walkthroughs
+## 实战
 
-- [Installing Slate](./walkthroughs/installing-slate.md)
-- [Adding Event Handlers](./walkthroughs/adding-event-handlers.md)
-- [Defining Custom Block Nodes](./walkthroughs/defining-custom-block-nodes.md)
-- [Applying Custom Formatting](./walkthroughs/applying-custom-formatting.md)
-- [Using Plugins](./walkthroughs/using-plugins.md)
-- [Saving to a Database](./walkthroughs/saving-to-a-database.md)
-- [Saving and Loading HTML Content](./walkthroughs/saving-and-loading-html-content.md)
+- [安装 Slate](./walkthroughs/installing-slate.md)
+- [添加事件处理器](./walkthroughs/adding-event-handlers.md)
+- [定制 Block 节点](./walkthroughs/defining-custom-block-nodes.md)
+- [应用自定义格式](./walkthroughs/applying-custom-formatting.md)
+- [使用插件](./walkthroughs/using-plugins.md)
+- [保存到数据库](./walkthroughs/saving-to-a-database.md)
+- [存取 HTML 内容](./walkthroughs/saving-and-loading-html-content.md)
 
 
-## General
+## 通用
 
 - [FAQ](./general/faq.md)
-- [Resources](./general/resources.md)
+- [相关资源](./general/resources.md)
 
 
 ## Slate Core
