@@ -5,7 +5,7 @@
 
 通过 Slate，你可以构建出类似 [Medium](https://medium.com/)、[Dropbox Paper](https://www.dropbox.com/paper) 或者 [Canvas](https://usecanvas.com/) 这样使用直观、富交互、体验业已成为 Web 应用标杆的编辑器。同时，你也无需担心在代码实现上陷入复杂度的泥潭之中。
 
-Slate 之所以能做到这一点，是因为它的所有逻辑都是通过一系列的插件实现的。这样，你就再也不会被某项特性 _在_ 或 _不在_ 编辑器【核心】边界之内的问题所困扰了。你可以将它理解为在 [React](https://facebook.github.io/react/) 和 [Immutable](https://facebook.github.io/immutable-js/) 基础上，一种可插拔的 `contenteditable` 实现。它也受到了 [Draft.js](https://facebook.github.io/draft-js/)，[Prosemirror](http://prosemirror.net/) 和 [Quill](http://quilljs.com/) 这些类库的启发。
+Slate 之所以能做到这一点，是因为它的所有逻辑都是通过一系列的插件实现的。这样，你就再也不会被某项特性 _在_ 或 _不在_ 编辑器【核心】边界之内的问题所困扰了。你可以将它理解为在 [React](https://facebook.github.io/react/) 和 [Immutable](https://facebook.github.io/immutable-js/) 基础上，一种可插拔的 `contenteditable` 实现。另外，它的灵感来自于 [Draft.js](https://facebook.github.io/draft-js/)，[Prosemirror](http://prosemirror.net/) 和 [Quill](http://quilljs.com/) 等类库。
 
 _**Slate 目前还处于 beta 状态**。目前它已经可用，但你可能需要通过 pull request 修复若干复杂使用场景下的问题。_
 
@@ -15,7 +15,7 @@ _**Slate 目前还处于 beta 状态**。目前它已经可用，但你可能需
 
 为什么发明 Slate 呢？好吧…_（注意，这部分内容包含了一些[我](https://github.com/ianstormtaylor)的个人观点！）_
 
-在发明 Slate 之前，我尝试了许多不同的富文本编辑器。我发现虽然它们在编写简单示例时基本没有问题，但一旦你想要构建一些类似 [Medium](https://medium.com/)、[Dropbox Paper](https://www.dropbox.com/paper) 或者 [Canvas](https://usecanvas.com/) 这样的内容，你就必须使用各种奇技淫巧来实现你所期望的用户体验。并且，某些体验甚至是无法实现的。在这个过程中，你的代码会变得越来越难维护。
+在发明 Slate 之前，我尝试了许多不同的富文本编辑器。我发现虽然它们在编写简单示例时基本没有问题，但一旦想要构建一些类似 [Medium](https://medium.com/)、[Dropbox Paper](https://www.dropbox.com/paper) 或者 [Canvas](https://usecanvas.com/) 这样的内容，你就必须使用各种奇技淫巧来实现你所期望的用户体验。并且，某些体验甚至是无法实现的。在这个过程中，你的代码会变得越来越难维护。
 
 当然，这些都是我的个人观点，并且如果这些类库满足了你的需求，放心用！不过，如果在使用它们的过程中你都遇到了相似的问题，那么也许你会喜欢上 Slate。让我来介绍一下 Slate 是如何解决这些问题的吧…
 
