@@ -1,108 +1,108 @@
 
-# Introduction
+# 介绍
 
-[Slate](http://slatejs.org) is a _completely_ customizable framework for building rich text editors. [GitHub ⬈](https://github.com/ianstormtaylor/slate)
+[Slate](http://slatejs.org) 是一个 _完全_ 可定制的富文本编辑框架。[GitHub ⬈](https://github.com/ianstormtaylor/slate)
 
-Slate lets you build rich, intuitive editors like those in [Medium](https://medium.com/), [Dropbox Paper](https://www.dropbox.com/paper) or [Canvas](https://usecanvas.com/)—which are becoming table stakes for applications on the web—without your codebase getting mired in complexity.
+通过 Slate，你可以构建出类似 [Medium](https://medium.com/)、[Dropbox Paper](https://www.dropbox.com/paper) 或者 [Canvas](https://usecanvas.com/) 这样使用直观、富交互、体验业已成为 Web 应用标杆的编辑器。同时，你也无需担心在代码实现上陷入复杂度的泥潭之中。
 
-It can do this because all of its logic is implemented with a series of plugins, so you aren't ever constrained by what _is_ or _isn't_ in "core". You can think of it like a pluggable implementation of `contenteditable` built on top of [React](https://facebook.github.io/react/) and [Immutable](https://facebook.github.io/immutable-js/). It was inspired by libraries like [Draft.js](https://facebook.github.io/draft-js/), [Prosemirror](http://prosemirror.net/) and [Quill](http://quilljs.com/).
+Slate 之所以能做到这一点，是因为它的所有逻辑都是通过一系列的插件实现的。这样，你就再也不会被某项特性 _在_ 或 _不在_ 编辑器【核心】边界之内的问题所困扰了。你可以将它理解为在 [React](https://facebook.github.io/react/) 和 [Immutable](https://facebook.github.io/immutable-js/) 基础上，一种可插拔的 `contenteditable` 实现。它也受到了 [Draft.js](https://facebook.github.io/draft-js/)，[Prosemirror](http://prosemirror.net/) 和 [Quill](http://quilljs.com/) 这些类库的启发。
 
-_**Slate is currently in beta**. It's useable now, but you might need to pull request a fix or two for advanced use cases._
-
+_**Slate 目前还处于 beta 状态**。目前它已经可用，但你可能需要通过 pull request 修复若干复杂使用场景下的问题。_
 
 <br/>
 
 ### Why?
 
-Why create Slate? Well... _(Beware: this section has a few of [my](https://github.com/ianstormtaylor) opinions!)_
+为什么发明 Slate 呢？好吧…_（注意，这部分内容包含了一些[我](https://github.com/ianstormtaylor)的个人观点！）_
 
-Before creating Slate, I tried a lot of the other rich text libraries out there. What I found was that while getting simple examples to work might be possible, once you start trying to build something like [Medium](https://medium.com/), [Dropbox Paper](https://www.dropbox.com/paper) or [Canvas](https://usecanvas.com/), you have to resort to very hacky things to get the user experience you want. And some experiences are just impossible. On the way, your codebase becomes harder and harder to maintain.
+在发明 Slate 之前，我尝试了许多不同的富文本编辑器。我发现虽然它们在编写简单示例时基本没有问题，但一旦你想要构建一些类似 [Medium](https://medium.com/)、[Dropbox Paper](https://www.dropbox.com/paper) 或者 [Canvas](https://usecanvas.com/) 这样的内容，你就必须使用各种奇技淫巧来实现你所期望的用户体验。并且，某些体验甚至是无法实现的。在这个过程中，你的代码会变得越来越难维护。
 
-Of course those are my own opinions, and if those libraries solve your needs, use them! But if you've tried using any of those libraries you might have run into similar problems. If so, you might like Slate. Which brings me to how Slate solves all of that...
+当然，这些都是我的个人观点，并且如果这些类库满足了你的需求，放心用！不过，如果在使用它们的过程中你都遇到了相似的问题，那么也许你会喜欢上 Slate。让我来介绍一下 Slate 是如何解决这些问题的吧…
 
 
 <br/>
 
-### Principles
+### 原则
 
-Slate tries to solve the question of "[Why?](#why)" with a few principles:
+Slate 尝试通过一些原则来解决 "[Why?](#why)" 这一节中的问题：
 
-1. **First-class plugins.** The most important part of Slate is that plugins are first-class entities—the core editor logic is even implemented as its own plugin. That means you can _completely_ customize the editing experience, to build complex editors like Medium's or Canvas's without having to fight against the library's assumptions.
+1. **作为一等公民的插件。** 在 Slate 中最重要的一点是，插件是一等公民（first-class）的实体——甚至连编辑器的核心逻辑都是通过插件实现的。这意味着你能够 _完全地_ 定制编辑体验，构建出对标 Medium 和 Canvas 那样的复杂编辑器，而无需对抗各种类库的预设条件。
 
-2. **Schema-less core.** Slate's core logic doesn't assume anything about the schema of the data you'll be editing, which means that there are no assumptions baked into the library that'll trip you up when you need to go beyond basic usage.
+2. **精简 Schema 的核心。** Slate 的核心逻辑并不对你所编辑的数据结构做任何假设，这意味着你在需要应对复杂场景时不会被编辑器预置的内容所束缚（译者注：此处 Schema 可理解为类似 XML Schema 的文档结构规范）。
 
-3. **Nested document model.** The document model used for Slate is a nested, recursive tree, just like the DOM itself. This means that creating complex components like tables or nested block quotes are possible for advanced use cases. But it's also easy to keep it simple by only using a single level of hierarchy.
+3. **支持嵌套的文档模型。** Slate 所使用的文档模型是一棵嵌套的、递归的树，和 DOM 本身十分接近。这使得构建表格和嵌套引用等能够满足进阶需求的复杂组件成为了可能。当然，你同样可以使用单一的层级关系以保证简单性。
 
-4. **Stateless and immutable data.** By using React and Immutable.js, the Slate editor is built in a stateless fashion using immutable data structures, which leads to much easier to reason about code, and a much easier time writing plugins.
+4. **无状态、不可变的数据。** 通过使用 React 和 Immutable.js，我们是基于不可变数据结构，以无状态的方式构建 Slate 编辑器的。这大大降低了理解代码的难度，也节约了大量开发插件的时间。
 
-5. **Intuitive changes.** Slate's content is edited using "changes", that are designed to be high level and extremely intuitive to use, so that writing plugins and custom functionality is as simple as possible.
+5. **直观的 changes。** Slate 中的内容是通过 "change" 来编辑的，这是一种被设计为支持高阶使用，且极其符合直觉的概念。这样，我们就能够通过它来尽可能简单地编写插件和自定义功能了。
 
-6. **Collaboration-ready data model.** The data model Slate uses—specifically how changes are applied to the document—has been designed to allow for collaborative editing to be layered on top, so you won't need to rethink everything if you decide to make your editor collaborative. (More work is required on this!)
+6. **为协同编辑准备的数据模型。** Slate 使用的数据模型——尤其是由 change 更改文档的方式——在设计时就已考虑到对协同编辑的支持。所以，如果你决定为编辑器添加协作功能，你不需要进行彻底的重构。（当然，这还需要你投入更多的努力！）
 
-7. **Clear "core" boundaries.** With a plugin-first architecture, and a schema-less core, it becomes a lot clearer where the boundary is between "core" and "custom", which means that the core experience doesn't get bogged down in edge cases.
-
+7. **明确的【核心】边界划分。** 通过插件优先的架构与精简 Schema 的内核，Slate 对于【核心】和【自定义】有着明确得多的划分，从而保证核心的编辑体验不会为各种边缘情况所困扰。
 
 <br/>
 
 ### Demo
 
-Check out the [**live demo**](http://slatejs.org) of all of the examples!
+[**在线示例**](http://slatejs.org)页中可查看全部示例！
 
 
 <br/>
 
-### Examples
+### 示例
 
-To get a sense for how you might use Slate, check out a few of the examples:
+为了对如何使用 Slate 有个基础的概念，不妨查阅如下的若干示例：
 
-- [**Plain text**](https://github.com/ianstormtaylor/slate/tree/master/examples/plain-text) — showing the most basic case: a glorified `<textarea>`.
-- [**Rich text**](https://github.com/ianstormtaylor/slate/tree/master/examples/rich-text) — showing the features you'd expect from a basic editor.
-- [**Auto-markdown**](https://github.com/ianstormtaylor/slate/tree/master/examples/markdown-preview) — showing how to add key handlers for Markdown-like shortcuts.
-- [**Links**](https://github.com/ianstormtaylor/slate/tree/master/examples/links) — showing how wrap text in inline nodes with associated data.
-- [**Images**](https://github.com/ianstormtaylor/slate/tree/master/examples/images) — showing how to use void (text-less) nodes to add images.
-- [**Hovering menu**](https://github.com/ianstormtaylor/slate/tree/master/examples/hovering-menu) — showing how a contextual hovering menu can be implemented.
-- [**Tables**](https://github.com/ianstormtaylor/slate/tree/master/examples/tables) — showing how to nest blocks to render more advanced components.
-- [**Paste HTML**](https://github.com/ianstormtaylor/slate/tree/master/examples/paste-html) — showing how to use an HTML serializer to handle pasted HTML.
-- [**Code Highlighting**](https://github.com/ianstormtaylor/slate/tree/master/examples/code-highlighting) — showing how to use decorators to dynamically mark text.
+- [**纯文本**](https://github.com/ianstormtaylor/slate/tree/master/examples/plain-text) — 展示了最基础的情形：一个经过美化的 `<textarea>`。
+- [**富文本**](https://github.com/ianstormtaylor/slate/tree/master/examples/rich-text) — 展示了一个能满足基本功能性需求的富文本编辑器。
+- [**自动 Markdown**](https://github.com/ianstormtaylor/slate/tree/master/examples/markdown-preview) — 展示了如何通过添加关键的事件 handler 来处理类似 Markdown 的快捷键。
+- [**链接**](https://github.com/ianstormtaylor/slate/tree/master/examples/links) — 展示了如何将纯文本与其关联的数据 wrap 为 inline 节点。 
+- [**图片**](https://github.com/ianstormtaylor/slate/tree/master/examples/images) — 展示了如何使用 void（无文本）节点来添加图片。
+- [**悬浮菜单**](https://github.com/ianstormtaylor/slate/tree/master/examples/hovering-menu) — 展示了如何实现一个上下文相关的悬浮菜单。
+- [**表格**](https://github.com/ianstormtaylor/slate/tree/master/examples/tables) — 展示了如何通过嵌套 block 节点来渲染更加高级的组件。
+- [**粘贴 HTML**](https://github.com/ianstormtaylor/slate/tree/master/examples/paste-html) — 展示了如何使用 HTML 序列化器来支持粘贴入的 HTML 内容。
+- [**代码高亮**](https://github.com/ianstormtaylor/slate/tree/master/examples/code-highlighting) — 展示了如何通过装饰器来动态标记文本。
 
-If you have an idea for an example that shows a common use case, pull request it!
+如果你对于展示泛用性的示例有着自己的想法，请提出 pull request 吧！
 
-
-<br/>
-
-### Plugins
-
-Slate encourages you to write small, reusable modules. Check out the public ones you can use in your project!
-
-- [`slate-auto-replace`](https://github.com/ianstormtaylor/slate-auto-replace) auto-replaces text as the user types. Useful for "smart" typography!
-- [`slate-collapse-on-escape`](https://github.com/ianstormtaylor/slate-collapse-on-escape) simply collapses the selection when `escape` is pressed.
-- [`slate-edit-code`](https://github.com/GitbookIO/slate-edit-code) adds code editing behavior like tab-to-indent, and enter-to-soft-break.
-- [`slate-edit-list`](https://github.com/GitbookIO/slate-edit-list) adds rich, nested list editing behavior.
-- [`slate-edit-table`](https://github.com/GitbookIO/slate-edit-table) adds complex table editing behavior!
-- [`slate-paste-linkify`](https://github.com/ianstormtaylor/slate-paste-linkify) wraps the selected text in a link when a URL is pasted from the clipboard.
-- [`slate-prism`](https://github.com/GitbookIO/slate-prism) highlights code blocks with [Prism.js](http://prismjs.com/)!
-- [`slate-soft-break`](https://github.com/ianstormtaylor/slate-soft-break) adds a soft break when `enter` is pressed.
-- [`slate-drop-or-paste-images`](https://github.com/ianstormtaylor/slate-drop-or-paste-images) lets users drop or paste images to insert them!
-- [**View all plugins on `npm`...**](https://www.npmjs.com/browse/keyword/slate)
 
 <br/>
 
-### Documentation
+### 插件
 
-If you're using Slate for the first time, check out the [Getting Started](http://docs.slatejs.org/walkthroughs/installing-slate.html) walkthroughs to familiarize yourself with Slate's architecture and mental models. Once you've gotten familiar with those, you'll probably want to check out the full [API Reference](http://docs.slatejs.org/reference/slate-react/editor.html).
+Slate 鼓励你编写小而可复用的模块。下面这些公用的插件已经在你的项目中可用！
 
-- [**Walkthroughs**](http://docs.slatejs.org/walkthroughs/installing-slate.html)
-- [**Reference**](http://docs.slatejs.org/reference/slate-react/editor.html)
+- [`slate-auto-replace`](https://github.com/ianstormtaylor/slate-auto-replace) 在用户输入时自动替换文本，对【智能】排版非常实用！
+- [`slate-collapse-on-escape`](https://github.com/ianstormtaylor/slate-collapse-on-escape) 在 `escape` 键按下时缩起当前 selection。
+- [`slate-edit-code`](https://github.com/GitbookIO/slate-edit-code) 支持形如 tab 缩进、enter 键软换行的代码编辑操作。
+- [`slate-edit-list`](https://github.com/GitbookIO/slate-edit-list) 支持富交互、嵌套的列表编辑操作。
+- [`slate-edit-table`](https://github.com/GitbookIO/slate-edit-table) 支持复杂的表格编辑！
+- [`slate-paste-linkify`](https://github.com/ianstormtaylor/slate-paste-linkify) 在由剪贴板粘贴入 URL 时，将选中的文本转换为链接。
+- [`slate-prism`](https://github.com/GitbookIO/slate-prism) 使用 [Prism.js](http://prismjs.com/) 支持代码高亮！
+- [`slate-soft-break`](https://github.com/ianstormtaylor/slate-soft-break) 在 `enter` 键按下时插入一个软换行。
+- [`slate-drop-or-paste-images`](https://github.com/ianstormtaylor/slate-drop-or-paste-images) 实现对用户拖拽或粘贴以插入图片的支持！
+- [**在 `npm` 上查看所有插件...**](https://www.npmjs.com/browse/keyword/slate)
+
+<br/>
+
+### 文档
+
+<!-- TODO 更新文档链接至中文页 -->
+
+如果这是你第一次使用 Slate，不妨查看 [Getting Started](http://docs.slatejs.org/walkthroughs/installing-slate.html) 中的实战部分来了解 Slate 的架构和思维模型。在你熟悉之后，还可以查看完整的 [API 参考](http://docs.slatejs.org/reference/slate-react/editor.html)。
+
+- [**实战**](http://docs.slatejs.org/walkthroughs/installing-slate.html)
+- [**API 参考**](http://docs.slatejs.org/reference/slate-react/editor.html)
 - [**FAQ**](http://docs.slatejs.org/general/faq.html)
-- [**Resources**](http://docs.slatejs.org/general/resources.html)
+- [**资源**](http://docs.slatejs.org/general/resources.html)
 
-If even that's not enough, you can always [read the source itself](./src), which is explained along with a handful of readme's and is heavily commented.
+如果这还不够，你还可以随时阅读添加了大量 Readme 并重度注释的[源码](./src)。
 
 
 <br/>
 
-### Contributing!
+### 贡献！
 
-All contributions are super welcome! Check out the [Contributing instructions](./Contributing.md) for more info!
+非常欢迎各种形式的贡献！查看[贡献指南](./Contributing.md)来了解更多信息吧！
 
-Slate is [MIT-licensed](./License.md).
+Slate 使用 [MIT 许可协议](./License.md)。
