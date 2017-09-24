@@ -127,7 +127,7 @@
                 <a href="adding-event-handlers.html">
             
                     
-                    添加事件处理器
+                    添加事件回调
             
                 </a>
             
@@ -624,22 +624,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="installing-slate">Installing Slate</h1>
-<p>Slate is an npm module, so to install it you do:</p>
+                                <h1 id="&#x5B89;&#x88C5;-slate">&#x5B89;&#x88C5; Slate</h1>
+<!-- TODO 更新 peer dependencies 及子模块 -->
+<p>Slate &#x662F;&#x4EE5; NPM &#x6A21;&#x5757;&#x7684;&#x65B9;&#x5F0F;&#x53D1;&#x5E03;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4F60;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5B89;&#x88C5;&#x5B83;&#xFF1A;</p>
 <pre class="language-"><code>npm install slate
-</code></pre><p>You&apos;ll also need to be sure to install Slate&apos;s peer dependencies for React:</p>
+</code></pre><p>&#x540C;&#x65F6;&#xFF0C;&#x4F60;&#x4E5F;&#x9700;&#x8981;&#x786E;&#x4FDD; React &#x5DF2;&#x4F5C;&#x4E3A; Slate &#x7684; peer dependencies &#x6B63;&#x786E;&#x5B89;&#x88C5;&#xFF1A;</p>
 <pre class="language-"><code>npm install react react-dom
-</code></pre><p><em>Note, if you&apos;d rather use a pre-bundled version of Slate, you can <code>npm install slate</code> and retrieve the bundled <code>dist/slate.js</code> file! Check out the <a href="using-the-bundled-source.md">Using the Bundled Source</a> guide for more information.</em></p>
-<p>Once you&apos;ve installed Slate, you&apos;ll need to import it.</p>
-<p>Slate exposes a set of modules that you&apos;ll use to build your editor. The most important of which is an <code>Editor</code> component.</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Import the Slate editor.</span>
+</code></pre><p><em>&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528; Slate &#x7684;&#x9884;&#x6784;&#x5EFA;&#x7248;&#x672C;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x6267;&#x884C; <code>npm install slate</code> &#x540E;&#x83B7;&#x53D6;&#x6253;&#x5305;&#x540E;&#x7684; <code>dist/slate.js</code> &#x6587;&#x4EF6;&#xFF01;&#x67E5;&#x9605;<a href="using-the-bundled-source.md">&#x4F7F;&#x7528;&#x6784;&#x5EFA;&#x540E;&#x6E90;&#x7801;</a>&#x6307;&#x5357;&#x4EE5;&#x4E86;&#x89E3;&#x66F4;&#x591A;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x3002;</em></p>
+<p>&#x5728;&#x5B8C;&#x6210;&#x5B89;&#x88C5; Slate &#x540E;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5BFC;&#x5165;&#x5B83;&#x3002;</p>
+<p>Slate &#x66B4;&#x9732;&#x4E86;&#x4E00;&#x5957;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x6A21;&#x5757;&#x3002;&#x5176;&#x4E2D;&#xFF0C;&#x6700;&#x91CD;&#x8981;&#x7684;&#x662F; <code>Editor</code> &#x7EC4;&#x4EF6;&#x3002;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x5BFC;&#x5165; Slate Editor</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Editor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 </code></pre>
-<p>In addition to rendering the editor, you need to give Slate a &quot;initial state&quot; to render as content. We&apos;ll use the <code>State</code> model that ships with Slate to create a new initial state that just contains a single paragraph block with some text in it:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Import the `State` model.</span>
+<p>&#x5728;&#x6E32;&#x67D3;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x4F60;&#x8FD8;&#x9700;&#x8981;&#x7ED9; Slate &#x4E00;&#x4E2A;&#x3010;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x3011;&#x4EE5;&#x4F5C;&#x4E3A;&#x5185;&#x5BB9;&#x6E32;&#x67D3;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528; Slate &#x9644;&#x5E26;&#x7684; <code>State</code> &#x6A21;&#x578B;&#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4EC5;&#x5305;&#x542B;&#x5355;&#x4E2A;&#x6BB5;&#x843D;&#x4E0B;&#x82E5;&#x5E72;&#x6587;&#x672C;&#x7684;&#x5168;&#x65B0;&#x521D;&#x59CB;&#x72B6;&#x6001;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x5BFC;&#x5165; `State` &#x6A21;&#x578B;&#x3002;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Editor<span class="token punctuation">,</span> State <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 
-<span class="token comment" spellcheck="true">// Create our initial state...</span>
+<span class="token comment" spellcheck="true">// &#x6784;&#x5EFA;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x2026;</span>
 <span class="token keyword">const</span> initialState <span class="token operator">=</span> State<span class="token punctuation">.</span><span class="token function">fromJSON</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   document<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     nodes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
@@ -661,8 +662,8 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>And now that we&apos;ve our initial state, we define our <code>App</code> and pass it into Slate&apos;s <code>Editor</code> component, like so:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Import React!</span>
+<p>&#x65E2;&#x7136;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x83B7;&#x5F97;&#x4E86;&#x521D;&#x59CB;&#x72B6;&#x6001;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x6211;&#x4EEC;&#x7684; <code>App</code> &#x5E76;&#x5C06;&#x5176;&#x4F20;&#x5165; Slate &#x7684; <code>Editor</code> &#x7EC4;&#x4EF6;&#x4E86;&#x3002;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x5BFC;&#x5165; React&#xFF01;</span>
 <span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Editor<span class="token punctuation">,</span> State <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 
@@ -687,20 +688,20 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Define our app...</span>
+<span class="token comment" spellcheck="true">// &#x5B9A;&#x4E49;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x2026;</span>
 <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
-  <span class="token comment" spellcheck="true">// Set the initial state when the app is first constructed.</span>
+  <span class="token comment" spellcheck="true">// &#x8BBE;&#x7F6E;&#x5E94;&#x7528;&#x521B;&#x5EFA;&#x65F6;&#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x3002;</span>
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
     state<span class="token punctuation">:</span> initialState
   <span class="token punctuation">}</span>
 
-  <span class="token comment" spellcheck="true">// On change, update the app&apos;s React state with the new editor state.</span>
+  <span class="token comment" spellcheck="true">// &#x53D1;&#x751F;&#x53D8;&#x66F4;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x65B0;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x72B6;&#x6001;&#x66F4;&#x65B0;&#x5E94;&#x7528;&#x7684; React &#x72B6;&#x6001;&#x3002;</span>
   onChange <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 
-  <span class="token comment" spellcheck="true">// Render the editor.</span>
+  <span class="token comment" spellcheck="true">// &#x6E32;&#x67D3;&#x7F16;&#x8F91;&#x5668;&#x3002;</span>
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
       <span class="token operator">&lt;</span>Editor
@@ -712,11 +713,11 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>You&apos;ll notice that the <code>onChange</code> handler passed into the <code>Editor</code> component just updates the app&apos;s state with the newest changed state. That way, when it re-renders the editor, the new state is reflected with your changes.</p>
-<p>And that&apos;s it! </p>
-<p>That&apos;s the most basic example of Slate. If you render that onto the page, you should see a paragraph with the text <code>A line of text in a paragraph.</code>. And when you type, you should see the text change!</p>
+<p>&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x4F20;&#x5165; <code>Editor</code> &#x7EC4;&#x4EF6;&#x7684; <code>onChange</code> &#x56DE;&#x8C03;&#x66F4;&#x65B0;&#x4E86;&#x5E94;&#x7528;&#x7684;&#x72B6;&#x6001;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5F53;&#x7F16;&#x8F91;&#x5668;&#x91CD;&#x7ED8;&#x65F6;&#xFF0C;&#x65B0;&#x7684;&#x72B6;&#x6001;&#x5C31;&#x4F1A;&#x901A;&#x8FC7;&#x4F60;&#x7684; change &#x53CD;&#x6620;&#x51FA;&#x6765;&#x4E86;&#x3002;</p>
+<p>&#x5C31;&#x662F;&#x8FD9;&#x6837;&#xFF01;</p>
+<p>&#x8FD9;&#x662F; Slate &#x6700;&#x57FA;&#x7840;&#x7684;&#x793A;&#x4F8B;&#x4E86;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5C06;&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x6E32;&#x67D3;&#x5230;&#x9875;&#x9762;&#x4E0A;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x4F1A;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x5199;&#x7740; <code>A line of text in a paragraph.</code> &#x6587;&#x672C;&#x7684;&#x6BB5;&#x843D;&#x3002;&#x5F53;&#x4F60;&#x8F93;&#x5165;&#x65F6;&#xFF0C;&#x6587;&#x672C;&#x5E94;&#x5F53;&#x5C31;&#x80FD;&#x53D8;&#x66F4;&#x4E86;&#xFF01;</p>
 <p><br></p>
-<p></p><p align="center"><strong>Next:</strong><br><a href="adding-event-handlers.html">Adding Event Handlers</a></p>
+<p></p><p align="center"><strong>Next:</strong><br><a href="adding-event-handlers.html">&#x6DFB;&#x52A0;&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;</a></p>
 <br><p></p>
 
                                 
@@ -750,7 +751,7 @@
                 </a>
                 
                 
-                <a href="adding-event-handlers.html" class="navigation navigation-next " aria-label="Next page: 添加事件处理器">
+                <a href="adding-event-handlers.html" class="navigation navigation-next " aria-label="Next page: 添加事件回调">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -761,7 +762,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"安装 Slate","level":"2.1","depth":1,"next":{"title":"添加事件处理器","level":"2.2","depth":1,"path":"walkthroughs/adding-event-handlers.md","ref":"./walkthroughs/adding-event-handlers.md","articles":[]},"previous":{"title":"介绍","level":"1.1","depth":1,"path":"Introduction.md","ref":"./Introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/installing-slate.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-23T03:13:23.648Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"安装 Slate","level":"2.1","depth":1,"next":{"title":"添加事件回调","level":"2.2","depth":1,"path":"walkthroughs/adding-event-handlers.md","ref":"./walkthroughs/adding-event-handlers.md","articles":[]},"previous":{"title":"介绍","level":"1.1","depth":1,"path":"Introduction.md","ref":"./Introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/installing-slate.md","mtime":"2017-09-23T08:20:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-24T03:09:53.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>添加事件处理器 · GitBook</title>
+        <title>添加事件回调 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -127,7 +127,7 @@
                 <a href="adding-event-handlers.html">
             
                     
-                    添加事件处理器
+                    添加事件回调
             
                 </a>
             
@@ -609,7 +609,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >添加事件处理器</a>
+        <a href=".." >添加事件回调</a>
     </h1>
 </div>
 
@@ -625,13 +625,13 @@
                                 <section class="normal markdown-section">
                                 
                                 <p><br></p>
-<p></p><p align="center"><strong>Previous:</strong><br><a href="installing-slate.html">Installing Slate</a></p>
+<p></p><p align="center"><strong>Previous:</strong><br><a href="installing-slate.html">&#x5B89;&#x88C5; Slate</a></p>
 <br><p></p>
-<h1 id="adding-event-handlers">Adding Event Handlers</h1>
-<p>Okay, so you&apos;ve got Slate installed and rendered on the page, and when you type in it, you can see the changes reflected. But you want to do more than just type a plaintext string.</p>
-<p>What makes Slate great is how easy it is to customize. Just like other React components you&apos;re used to, Slate allows you to pass in handlers that are triggered on certain events. You&apos;ve already seen on the <code>onChange</code> handler can be used to store the changed editor state, but let&apos;s try add something more...</p>
-<p>We&apos;ll show you how to use the <code>onKeyDown</code> handler to change the editor&apos;s content when the user presses a button.</p>
-<p>So we start with our app from earlier:</p>
+<h1 id="&#x6DFB;&#x52A0;&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;">&#x6DFB;&#x52A0;&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;</h1>
+<p>&#x5F88;&#x597D;&#xFF0C;&#x73B0;&#x5728;&#x4F60;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x4E86; Slate &#x5E76;&#x5C06;&#x5B83;&#x6E32;&#x67D3;&#x5230;&#x9875;&#x9762;&#x4E0A;&#x4E86;&#x3002;&#x5E76;&#x4E14;&#x5F53;&#x4F60;&#x8F93;&#x5165;&#x6587;&#x672C;&#x65F6;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x53D8;&#x66F4;&#x80FD;&#x591F;&#x663E;&#x793A;&#x51FA;&#x6765;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x7F16;&#x8F91;&#x4E00;&#x4E2A;&#x7EAF;&#x6587;&#x672C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x80AF;&#x5B9A;&#x6EE1;&#x8DB3;&#x4E0D;&#x4E86;&#x4F60;&#x3002;</p>
+<p>Slate &#x7684;&#x5F3A;&#x5927;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x5B83;&#x5341;&#x5206;&#x5BB9;&#x6613;&#x5B9A;&#x5236;&#x3002;&#x548C;&#x4F60;&#x6240;&#x4E60;&#x60EF;&#x7684; React &#x7EC4;&#x4EF6;&#x4E00;&#x6837;&#xFF0C;Slate &#x652F;&#x6301;&#x4F20;&#x5165;&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;&#xFF08;event handlers&#xFF09;&#x4EE5;&#x5728;&#x7279;&#x5B9A;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x65F6;&#x6267;&#x884C;&#x3002;&#x4F60;&#x5DF2;&#x7ECF;&#x770B;&#x5230;&#x4E86; <code>onChange</code> &#x56DE;&#x8C03;&#x53EF;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6539;&#x53D8;&#x540E;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x8FC7;&#x8BA9;&#x6211;&#x4EEC;&#x8BD5;&#x7740;&#x66F4;&#x8FDB;&#x4E00;&#x6B65;&#x5427;&#x2026;</p>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528; <code>onKeyDown</code> &#x56DE;&#x8C03;&#x4EE5;&#x5728;&#x7528;&#x6237;&#x6309;&#x952E;&#x65F6;&#x66F4;&#x6539;&#x7F16;&#x8F91;&#x5668;&#x5185;&#x5BB9;&#x3002;</p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x4ECE;&#x4E4B;&#x524D;&#x5B9E;&#x73B0;&#x7684;&#x5E94;&#x7528;&#x5F00;&#x59CB;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -653,7 +653,7 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>And now we&apos;ll add an <code>onKeyDown</code> handler:</p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5C06;&#x6DFB;&#x52A0; <code>onKeyDown</code> &#x56DE;&#x8C03;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -664,7 +664,7 @@
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 
-  <span class="token comment" spellcheck="true">// Define a new handler which prints the key code that was pressed.</span>
+  <span class="token comment" spellcheck="true">// &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x6309;&#x952E;&#x65F6;&#x8BB0;&#x5F55;&#x4E0B;&#x6309;&#x4E0B;&#x7684; key code&#x3002;</span>
   onKeyDown <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>which<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
@@ -681,9 +681,9 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Okay cool, so now when you press a key in the editor, you&apos;ll see the key&apos;s code printed to the console. Not very useful, but at least we know it&apos;s working.</p>
-<p>Now we want to make it actually change the content. For the purposes of our example, let&apos;s say we want to make it so that whenever a user types <code>&amp;</code> we actually add <code>and</code> to the content.</p>
-<p>Our <code>onKeyDown</code> handler might look like this:</p>
+<p>&#x4E0D;&#x9519;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x6BCF;&#x5F53;&#x5728;&#x7F16;&#x8F91;&#x5668;&#x4E2D;&#x6309;&#x952E;&#x65F6;&#xFF0C;&#x4F60;&#x5C31;&#x80FD;&#x770B;&#x5230;&#x952E;&#x4F4D;&#x5BF9;&#x5E94;&#x7684; code &#x663E;&#x793A;&#x5728;&#x63A7;&#x5236;&#x53F0;&#x4E2D;&#x4E86;&#x3002;&#x8FD9;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5927;&#x7528;&#x5904;&#xFF0C;&#x4E0D;&#x8FC7;&#x81F3;&#x5C11;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4EE3;&#x7801;&#x8DD1;&#x901A;&#x4E86;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x662F;&#x771F;&#x6B63;&#x5730;&#x66F4;&#x6539;&#x7F16;&#x8F91;&#x5185;&#x5BB9;&#x3002;&#x5BF9;&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#x800C;&#x8A00;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x59A8;&#x5B9E;&#x73B0;&#x5728;&#x7528;&#x6237;&#x6309;&#x4E0B; <code>&amp;</code> &#x65F6;&#x5411;&#x5185;&#x5BB9;&#x4E2D;&#x6DFB;&#x52A0; <code>and</code> &#x6765;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x7684; <code>onKeyDown</code> &#x56DE;&#x8C03;&#x5927;&#x81F4;&#x5E94;&#x8BE5;&#x5F62;&#x5982;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -695,13 +695,13 @@
   <span class="token punctuation">}</span>
 
   onKeyDown <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// Return with no changes if it&apos;s not the &quot;7&quot; key with shift pressed.</span>
+    <span class="token comment" spellcheck="true">// &#x82E5;&#x6309;&#x4E0B;&#x7684;&#x952E;&#x4E0D;&#x662F; shift + &quot;7&quot; &#x5219;&#x4E0D;&#x8FD4;&#x56DE; change&#x3002;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>which <span class="token operator">!=</span> <span class="token number">55</span> <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>shiftKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
 
-    <span class="token comment" spellcheck="true">// Prevent the ampersand character from being inserted.</span>
+    <span class="token comment" spellcheck="true">// &#x963B;&#x6B62;&#x63D2;&#x5165; &quot;&amp;&quot; &#x81F3;&#x7F16;&#x8F91;&#x5185;&#x5BB9;&#x7684;&#x884C;&#x4E3A;&#x3002;</span>
     event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    <span class="token comment" spellcheck="true">// Change the state by inserting &quot;and&quot; at the cursor&apos;s position.</span>
+    <span class="token comment" spellcheck="true">// &#x5728;&#x5F53;&#x524D;&#x5149;&#x6807;&#x4F4D;&#x7F6E;&#x63D2;&#x5165; &quot;and&quot; &#x5B57;&#x7B26;&#x4EE5;&#x66F4;&#x6539; state&#x3002;</span>
     change<span class="token punctuation">.</span><span class="token function">insertText</span><span class="token punctuation">(</span><span class="token string">&apos;and&apos;</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span>
@@ -718,10 +718,10 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>With that added, try typing <code>&amp;</code>, and you should see it automatically become <code>and</code> instead!</p>
-<p>That gives you a sense for what you can do with Slate&apos;s event handlers. Each one will be called with the <code>event</code> object, and the current <code>state</code> of the editor. And if you return a new <code>state</code>, the editor will be updated. Simple!</p>
+<p>&#x5728;&#x8FD9;&#x6837;&#x4FEE;&#x6539;&#x540E;&#xFF0C;&#x8BD5;&#x8BD5;&#x8F93;&#x5165; <code>&amp;</code>&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x5B83;&#x81EA;&#x52A8;&#x53D8;&#x6210;&#x4E86; <code>and</code>&#xFF01;</p>
+<p>&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#x5411;&#x4F60;&#x5C55;&#x793A;&#x4E86; Slate &#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x5728;&#x8C03;&#x7528;&#x65F6;&#x90FD;&#x4F1A;&#x4F20;&#x5165; <code>event</code> &#x5BF9;&#x8C61;&#x4E0E;&#x5F53;&#x524D;&#x7684;&#x7F16;&#x8F91;&#x5668; <code>state</code>&#x3002;&#x5982;&#x679C;&#x4F60;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>state</code>&#xFF0C;&#x7F16;&#x8F91;&#x5668;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x66F4;&#x65B0;&#x3002;&#x7B80;&#x5355;&#x5427;&#xFF01;</p>
 <p><br></p>
-<p></p><p align="center"><strong>Next:</strong><br><a href="defining-custom-block-nodes.html">Defining Custom Block Nodes</a></p>
+<p></p><p align="center"><strong>Next:</strong><br><a href="defining-custom-block-nodes.html">&#x5B9A;&#x5236; Block &#x8282;&#x70B9;</a></p>
 <br><p></p>
 
                                 
@@ -766,7 +766,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"添加事件处理器","level":"2.2","depth":1,"next":{"title":"定制 Block 节点","level":"2.3","depth":1,"path":"walkthroughs/defining-custom-block-nodes.md","ref":"./walkthroughs/defining-custom-block-nodes.md","articles":[]},"previous":{"title":"安装 Slate","level":"2.1","depth":1,"path":"walkthroughs/installing-slate.md","ref":"./walkthroughs/installing-slate.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/adding-event-handlers.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-23T03:13:23.648Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"添加事件回调","level":"2.2","depth":1,"next":{"title":"定制 Block 节点","level":"2.3","depth":1,"path":"walkthroughs/defining-custom-block-nodes.md","ref":"./walkthroughs/defining-custom-block-nodes.md","articles":[]},"previous":{"title":"安装 Slate","level":"2.1","depth":1,"path":"walkthroughs/installing-slate.md","ref":"./walkthroughs/installing-slate.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/adding-event-handlers.md","mtime":"2017-09-24T03:08:51.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-24T03:09:53.286Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
