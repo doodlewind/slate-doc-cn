@@ -5,7 +5,7 @@
 ## 实战
 
 - [安装 Slate](./walkthroughs/installing-slate.md)
-- [添加事件处理器](./walkthroughs/adding-event-handlers.md)
+- [添加事件回调](./walkthroughs/adding-event-handlers.md)
 - [定制 Block 节点](./walkthroughs/defining-custom-block-nodes.md)
 - [应用自定义格式](./walkthroughs/applying-custom-formatting.md)
 - [使用插件](./walkthroughs/using-plugins.md)
