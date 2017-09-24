@@ -1,15 +1,15 @@
 
 <br/>
-<p align="center"><strong>Previous:</strong><br/><a href="./adding-event-handlers.md">Adding Event Handlers</a></p>
+<p align="center"><strong>Previous:</strong><br/><a href="./adding-event-handlers.md">添加事件回调</a></p>
 <br/>
 
-# Defining Custom Block Nodes
+# 定制 Block 节点
 
-In our previous example, we started with a paragraph, but we never actually told Slate anything about the `paragraph` block type. We just let it use its internal default renderer, which uses a plain old `<div>`.
+在之前的示例中，我们使用了一个 paragraph 段落，不过我们实际上没有告诉 Slate 关于 `paragragph` block 类型的相关信息。我们只是让编辑器使用内置的默认 `<div>` 渲染器来渲染节点而已。
 
-But that's not all you can do. Slate lets you define any type of custom blocks you want, like block quotes, code blocks, list items, etc.
+不过我们能做的并不止于此。你可以通过 Slate 定义任何类型的自定义 block 节点，比如引用、代码块、列表项等。
 
-We'll show you how. Let's start with our app from earlier:
+下面我们将展示如何实现这一点。让我们从之前的应用开始吧：
 
 ```js
 class App extends React.Component {
@@ -44,26 +44,28 @@ class App extends React.Component {
 }
 ```
 
-Now let's add "code blocks" to our editor.
+现在让我们为编辑器添加【代码块】支持。
 
-The problem is, code blocks won't just be rendered as a plain paragraph, they'll need to be rendered differently. To make that happen, we need to define a "renderer" for `code` nodes
+这里主要的问题是，代码块并不像一个普通的段落那样渲染，它们需要不同的渲染方式。为了实现这一点，我们需要为 `code` 节点定义一个 "renderer"。
 
-Node renderers are just simple React components, like so:
+<!-- TODO 原文标点 typo -->
+
+节点（译者注，Node 对象）的 renderer 就是简单的 React 组件，像这样：
 
 ```js
-// Define a React component renderer for our code blocks.
+// 为代码块定义 React 组件以作为 renderer。
 function CodeNode(props) {
   return <pre {...props.attributes}><code>{props.children}</code></pre>
 }
 ```
 
-Pretty simple.
+非常简单。
 
-See the `props.attributes` reference? Slate passes attributes that should be rendered on the top-most element of your blocks, so that you don't have to build them up yourself. You **must** mix the attributes into your component.
+看到了 `props.attributes` 吗？Slate 将需要在 block 顶层渲染的属性通过这种方式传入，这样你就不用自己重复实现了。注意，你 **必须** 将属性混入组件中。
 
-And see that `props.children` reference? Slate will automatically render all of the children of a block for you, and then pass them to you just like any other React component would, via `props.children`. That way you don't have to muck around with rendering the proper text nodes or anything like that. You **must** render the children as the lowest leaf in your component.
+以及，看到了 `props.children` 吗？Slate 会自动为你渲染好 block 的所有子节点，并通过 `props.children` 的形式让你按照使用其它 React 组件的方式来使用。通过这种方式，你就不需要纠结于如何为节点渲染合适的文字子节点或其它内容了。注意，你 **必须** 将 children 作为组件末层的叶子节点渲染。
 
-Now, let's add that renderer to our `Editor`:
+现在，我们为 `Editor` 添加这个 renderer：
 
 ```js
 function CodeNode(props) {
@@ -74,7 +76,7 @@ class App extends React.Component {
 
   state = {
     state: initialState,
-    // Add a "schema" to our app's state that we can pass to the Editor.
+    // 为应用 state 添加 "schema" 以传入编辑器
     schema: {
       nodes: {
         code: CodeNode
@@ -97,7 +99,7 @@ class App extends React.Component {
 
   render() {
     return (
-      // Pass in the `schema` property...
+      // 传入 `schema` 属性…
       <Editor
         schema={this.state.schema}
         state={this.state.state}
@@ -110,7 +112,7 @@ class App extends React.Component {
 }
 ```
 
-Okay, but now we'll need a way for the user to actually turn a block into a code block. So let's change our `onKeyDown` function to add a `⌘-Alt-C` shortcut that does just that:
+可以了，不过我们现在需要让用户以某种方式真正地将一个普通的 block 节点转换为一个代码块。为此，我们在 `onKeyDown` 回调中添加一个 `⌘-Alt-C` 快捷键即可：
 
 ```js
 function CodeNode(props) {
@@ -133,13 +135,13 @@ class App extends React.Component {
   }
 
   onKeyDown = (event, data, change) => {
-    // Return with no changes if it's not the "`" key with cmd/ctrl pressed.
+    // 按下的不是 "`" + cmd + ctrl 时不返回 change。
     if (event.which != 67 || !event.metaKey || !event.altKey) return
 
-    // Prevent the "`" from being inserted by default.
+    // 阻止插入 "`" 字符的默认行为。
     event.preventDefault()
 
-    // Otherwise, set the currently selected blocks type to "code".
+    // 否则，将当前选中 block 设置为 "code"。
     change.setBlock('code')
     return true
   }
@@ -158,9 +160,9 @@ class App extends React.Component {
 }
 ```
 
-Now, if you press `⌘-Alt-C`, the block your cursor is in should turn into a code block! Magic!
+现在，当你按下 `⌘-Alt-C` 时，光标所在的 block 就会转换为代码块了！神奇吧！
 
-But we forgot one thing. When you hit `⌘-Alt-C` again, it should change the code block back into a paragraph. To do that, we'll need to add a bit of logic to change the type we set based on whether any of the currently selected blocks are already a code block:
+不过这里我们遗漏了一点。当你再次按下 `⌘-Alt-C` 时，应当将代码块转换回段落。要实现这个特性，我们需要添加一些判断，以根据当前选中的 block 是否为代码块来变换 block 类型：
 
 ```js
 function CodeNode(props) {
@@ -187,10 +189,10 @@ class App extends React.Component {
 
     event.preventDefault()
 
-    // Determine whether any of the currently selected blocks are code blocks.
+    // 判断当前选中 block 是否为代码块。
     const isCode = change.state.blocks.some(block => block.type == 'code')
 
-    // Toggle the block type depending on `isCode`.
+    // 根据 `isCode` 设置 block 类型。
     change.setBlock(isCode ? 'paragraph' : 'code')
     return true
   }
@@ -209,8 +211,8 @@ class App extends React.Component {
 }
 ```
 
-And there you have it! If you press `⌘-Alt-C` while inside a code block, it should turn back into a paragraph!
+搞定了！现在如果你在代码块中按下 `⌘-Alt-C`，就会将代码块转换回普通段落了！
 
 <br/>
-<p align="center"><strong>Next:</strong><br/><a href="./applying-custom-formatting.md">Applying Custom Formatting</a></p>
+<p align="center"><strong>Next:</strong><br/><a href="./applying-custom-formatting.md">应用自定义格式</a></p>
 <br/>
