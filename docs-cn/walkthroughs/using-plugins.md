@@ -1,17 +1,17 @@
 
 <br/>
-<p align="center"><strong>Previous:</strong><br/><a href="./applying-custom-formatting.md">Applying Custom Formatting</a></p>
+<p align="center"><strong>Previous:</strong><br/><a href="./applying-custom-formatting.md">应用自定义格式</a></p>
 <br/>
 
-# Using Plugins
+# 使用插件
 
-Up to now, everything we've learned has been about how to write one-off logic for your specific Slate editor. But one of the most beautiful things about Slate is actually its plugin system, and how it lets you write less one-off code.
+到目前为止，我们所学习的内容都是在编写为特定的 Slate 编辑器定制的一次性业务逻辑。不过，Slate 最漂亮的一点之一在于它的插件系统，以及它如何让你减少编写一次性业务代码的方式。
 
-In the previous guide, we actually wrote some pretty useful code for adding **bold** formatting to ranges of text when a key is pressed. But most of that code wasn't really specific to **bold** text; it could just as easily have applied to _italic_ text or `code` text if we switched a few variables.
+在上一节中我们编写了一些实用的代码，实现了在按键时为选择范围内的文本添加 **加粗** 格式。不过这些代码并不仅局限在 **加粗** 文本上，只要我们更改一些变量，它同样能很容易地应用到 _斜体_ 文本或 `代码块` 文本上。
 
-So let's break that logic out into it's a reusable plugin that can toggle _any_ mark on _any_ key press.
+所以让我们将业务逻辑抽取为可复用的插件，来开闭 _任何_ 按键事件触发的 _任何_ mark 类型啊。
 
-Starting with our app from earlier:
+从之前的应用开始：
 
 ```js
 class App extends React.Component {
@@ -50,35 +50,35 @@ class App extends React.Component {
 }
 ```
 
-Let's write a new function, that takes a set of options: the mark `type` to toggle and the key `code` to press.
+我们来编写一个接收下列参数的新函数：要开闭的 mark 类型 `type` 和按下的按键键值 `code`。
 
 ```js
 function MarkHotkey(options) {
-  // Grab our options from the ones passed in.
+  // 从用户传入的参数中获取选项值。
   const { type, code, isAltKey = false } = options
 }
 ```
 
-Okay, that was easy. But it doesn't do anything.
+好的，这不难实现。不过这并没有什么实际用处。
 
-To fix that, we need our plugin function to return a "plugin object" that Slate recognizes. Slate's plugin objects are just plain objects that have properties that map to the same handler on the `Editor`.
+要使插件真正工作，我们需要插件函数返回一个【插件对象】给 Slate。Slate 的插件对象实际上只是普通对象，但包含了映射到 `Editor` 中特定回调的属性。
 
-In this case our plugin object will have one property: a `onKeyDown` handler, with its logic copied right from our current app's code:
+在目前的情况下，我们的插件对象只需要包含一个属性：一个 `onKeyDown` 回调。我们可以从现在的应用代码中复制出其业务逻辑：
 
 ```js
 function MarkHotkey(options) {
   const { type, code, isAltKey = false } = options
 
-  // Return our "plugin" object, containing the `onKeyDown` handler.
+  // 返回我们包含了 `onKeyDown` 回调的插件对象。
   return {
     onKeyDown(event, data, change) {
-      // Check that the key pressed matches our `code` option.
+      // 检查按下的键是否匹配 `code` 选项。
       if (!event.metaKey || event.which != code || event.altKey != isAltKey) return
 
-      // Prevent the default characters from being inserted.
+      // 避免默认字符被插入。
       event.preventDefault()
 
-      // Toggle the mark `type`.
+      // 根据 `type` 来开闭 mark。
       change.toggleMark(type)
       return true
     }
@@ -86,22 +86,22 @@ function MarkHotkey(options) {
 }
 ```
 
-Boom! Now we're getting somewhere. That code is reusable for any type of mark.
+好了！现在我们有了明显进展，代码可以为任何类型的 mark 复用了。
 
-Now that we have our plugin, let's remove the hard-coded logic from our app, and replace it with our brand new `MarkHotkey` plugin instead, passing in the same options that will keep our **bold** functionality intact:
+既然我们已经编写了自己的插件，我们就可以将硬编码的逻辑从应用中移除，并将其替换为新的 `MarkHotkey` 插件了。传入同样的参数来保持我们的 **加粗** 功能完整：
 
 ```js
 function BoldMark(props) {
   return <strong>{props.children}</strong>
 }
 
-// Initialize our bold-mark-adding plugin.
+// 初始化加粗文本插件。
 const boldPlugin = MarkHotkey({
   type: 'bold',
   code: 66
 })
 
-// Create an array of plugins.
+// 创建插件数组。
 const plugins = [
   boldPlugin
 ]
@@ -123,7 +123,7 @@ class App extends React.Component {
 
   render() {
     return (
-      // Add the `plugins` property to the editor, and remove `onKeyDown`.
+      // 添加 `plugin` 属性到编辑器，并移除 `onKeyDown`。
       <Editor
         plugins={plugins}
         schema={this.state.schema}
@@ -136,12 +136,12 @@ class App extends React.Component {
 }
 ```
 
-Awesome. If you test out the editor now, you'll notice that everything still works just as it did before. But the beauty of the logic being encapsulated in a plugin is that we can add more mark types _extremely_ easily now!
+太棒了。如果你测试了现在的编辑器，你会注意到所有的东西都和之前一样工作，不过我们已经通过插件将逻辑优雅地封装了，这样我们就能够 _非常_ 容易地添加更多的 mark 类型了！
 
-Let's add _italic_, `code`, ~~strikethrough~~ and underline marks:
+让我们添加 _斜体_，`代码`、~~中划线~~ 和下划线 mark 吧：
 
 ```js
-// Initialize a plugin for each mark...
+// 为每种 mark 初始化一个插件…
 const plugins = [
   MarkHotkey({ code: 66, type: 'bold' }),
   MarkHotkey({ code: 67, type: 'code', isAltKey: true }),
@@ -157,7 +157,7 @@ class App extends React.Component {
     schema: {
       marks: {
         bold: props => <strong>{props.children}</strong>,
-        // Add our new mark renderers...
+        // 添加新的 mark renderer…
         code: props => <code>{props.children}</code>,
         italic: props => <em>{props.children}</em>,
         strikethrough: props => <del>{props.children}</del>,
@@ -184,35 +184,33 @@ class App extends React.Component {
 }
 ```
 
-And there you have it! We just added a ton of functionality to the editor with very little work. And we can keep all of our mark hotkey logic tested and isolated in a single place, making maintaining the code easier.
+这就是了！我们只做了一点微小的工作就为编辑器实现了一堆新特性！并且，我们能够将快捷键逻辑抽离并测试，使得代码更容易维护。
 
-Of course... now that it's reusable, we could actually make our `MarkHotkey` plugin a little easier to use. What if instead of a `code` argument it took the text of the `key` itself? That would make the calling code a lot clearer, since key codes are really obtuse.
+其实，除非你有键值有特殊的了解，你可能都不知道我们当前的快捷键是什么。
 
-In fact, unless you have weirdly good keycode knowledge, you probably have no idea what our current hotkeys actually are.
+我们来解决这个问题吧。
 
-Let's fix that.
+npm 上的 `keycode` 模块使得我们能够非常简单地解决这个问题。
 
-Using the `keycode` module in npm makes this dead simple.
-
-First install it:
+首先安装它：
 
 ```
 npm install keycode
 ```
 
-And then we can add it our plugin:
+然后我们将其添加到插件内：
 
 ```js
-// Import the keycode module.
+// 导入 keycode 模块。
 import keycode from `keycode`
 
 function MarkHotkey(options) {
-  // Change the options to take a `key`.
+  // 将选项转换为接受一个 `key`。
   const { type, key, isAltKey = false } = options
 
   return {
     onKeyDown(event, data, change) {
-      // Change the comparison to use the key name.
+      // 改变比较方式来使用按键名称。
       if (!event.metaKey || keycode(event.which) != key || event.altKey != isAltKey) return
       event.preventDefault()
       change.toggleMark(type)
@@ -222,10 +220,10 @@ function MarkHotkey(options) {
 }
 ```
 
-And now we can make our app code much clearer for the next person who reads it:
+这样我们就能够让代码对后来者而言易读得多了：
 
 ```js
-// Use the much clearer key names instead of key codes!
+// 使用清晰得多的按键名称而不是按键 code 值！
 const plugins = [
   MarkHotkey({ key: 'b', type: 'bold' }),
   MarkHotkey({ key: 'c', type: 'code', isAltKey: true }),
@@ -267,9 +265,8 @@ class App extends React.Component {
 }
 ```
 
-That's why plugins are awesome. They let you get really expressive while also making your codebase easier to manage. And since Slate is built with plugins as a primary consideration, using them is dead simple!
-
+这就是插件的强大支持了。插件在增强代码表达能力的同时也使得代码更精简。并且，由于 Slate 是将插件作为一等公民设计的，使用它们也是非常简单的！
 
 <br/>
-<p align="center"><strong>Next:</strong><br/><a href="./saving-to-a-database.md">Saving to a Database</a></p>
+<p align="center"><strong>Next:</strong><br/><a href="./saving-to-a-database.md">保存到数据库</a></p>
 <br/>
