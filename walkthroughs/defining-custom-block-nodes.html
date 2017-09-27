@@ -625,12 +625,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <p><br></p>
-<p></p><p align="center"><strong>Previous:</strong><br><a href="adding-event-handlers.html">Adding Event Handlers</a></p>
+<p></p><p align="center"><strong>Previous:</strong><br><a href="adding-event-handlers.html">&#x6DFB;&#x52A0;&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;</a></p>
 <br><p></p>
-<h1 id="defining-custom-block-nodes">Defining Custom Block Nodes</h1>
-<p>In our previous example, we started with a paragraph, but we never actually told Slate anything about the <code>paragraph</code> block type. We just let it use its internal default renderer, which uses a plain old <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span></code>.</p>
-<p>But that&apos;s not all you can do. Slate lets you define any type of custom blocks you want, like block quotes, code blocks, list items, etc.</p>
-<p>We&apos;ll show you how. Let&apos;s start with our app from earlier:</p>
+<h1 id="&#x5B9A;&#x5236;-block-&#x8282;&#x70B9;">&#x5B9A;&#x5236; Block &#x8282;&#x70B9;</h1>
+<p>&#x5728;&#x4E4B;&#x524D;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A; paragraph &#x6BB5;&#x843D;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x4E0A;&#x6CA1;&#x6709;&#x544A;&#x8BC9; Slate &#x5173;&#x4E8E; <code>paragragph</code> block &#x7C7B;&#x578B;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x3002;&#x6211;&#x4EEC;&#x53EA;&#x662F;&#x8BA9;&#x7F16;&#x8F91;&#x5668;&#x4F7F;&#x7528;&#x5185;&#x7F6E;&#x7684;&#x9ED8;&#x8BA4; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span></code> &#x6E32;&#x67D3;&#x5668;&#x6765;&#x6E32;&#x67D3;&#x8282;&#x70B9;&#x800C;&#x5DF2;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x80FD;&#x505A;&#x7684;&#x5E76;&#x4E0D;&#x6B62;&#x4E8E;&#x6B64;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; Slate &#x5B9A;&#x4E49;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x7684;&#x81EA;&#x5B9A;&#x4E49; block &#x8282;&#x70B9;&#xFF0C;&#x6BD4;&#x5982;&#x5F15;&#x7528;&#x3001;&#x4EE3;&#x7801;&#x5757;&#x3001;&#x5217;&#x8868;&#x9879;&#x7B49;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C06;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x70B9;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x4ECE;&#x4E4B;&#x524D;&#x7684;&#x5E94;&#x7528;&#x5F00;&#x59CB;&#x5427;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -662,18 +662,19 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Now let&apos;s add &quot;code blocks&quot; to our editor.</p>
-<p>The problem is, code blocks won&apos;t just be rendered as a plain paragraph, they&apos;ll need to be rendered differently. To make that happen, we need to define a &quot;renderer&quot; for <code>code</code> nodes</p>
-<p>Node renderers are just simple React components, like so:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Define a React component renderer for our code blocks.</span>
+<p>&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x4E3A;&#x7F16;&#x8F91;&#x5668;&#x6DFB;&#x52A0;&#x3010;&#x4EE3;&#x7801;&#x5757;&#x3011;&#x652F;&#x6301;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x7684;&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x4EE3;&#x7801;&#x5757;&#x5E76;&#x4E0D;&#x50CF;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;&#x6BB5;&#x843D;&#x90A3;&#x6837;&#x6E32;&#x67D3;&#xFF0C;&#x5B83;&#x4EEC;&#x9700;&#x8981;&#x4E0D;&#x540C;&#x7684;&#x6E32;&#x67D3;&#x65B9;&#x5F0F;&#x3002;&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E3A; <code>code</code> &#x8282;&#x70B9;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; &quot;renderer&quot;&#x3002;</p>
+<!-- TODO 原文标点 typo -->
+<p>&#x8282;&#x70B9;&#xFF08;&#x8BD1;&#x8005;&#x6CE8;&#xFF0C;Node &#x5BF9;&#x8C61;&#xFF09;&#x7684; renderer &#x5C31;&#x662F;&#x7B80;&#x5355;&#x7684; React &#x7EC4;&#x4EF6;&#xFF0C;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x4E3A;&#x4EE3;&#x7801;&#x5757;&#x5B9A;&#x4E49; React &#x7EC4;&#x4EF6;&#x4EE5;&#x4F5C;&#x4E3A; renderer&#x3002;</span>
 <span class="token keyword">function</span> <span class="token function">CodeNode</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Pretty simple.</p>
-<p>See the <code>props.attributes</code> reference? Slate passes attributes that should be rendered on the top-most element of your blocks, so that you don&apos;t have to build them up yourself. You <strong>must</strong> mix the attributes into your component.</p>
-<p>And see that <code>props.children</code> reference? Slate will automatically render all of the children of a block for you, and then pass them to you just like any other React component would, via <code>props.children</code>. That way you don&apos;t have to muck around with rendering the proper text nodes or anything like that. You <strong>must</strong> render the children as the lowest leaf in your component.</p>
-<p>Now, let&apos;s add that renderer to our <code>Editor</code>:</p>
+<p>&#x975E;&#x5E38;&#x7B80;&#x5355;&#x3002;</p>
+<p>&#x770B;&#x5230;&#x4E86; <code>props.attributes</code> &#x5417;&#xFF1F;Slate &#x5C06;&#x9700;&#x8981;&#x5728; block &#x9876;&#x5C42;&#x6E32;&#x67D3;&#x7684;&#x5C5E;&#x6027;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4F20;&#x5165;&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x5C31;&#x4E0D;&#x7528;&#x81EA;&#x5DF1;&#x91CD;&#x590D;&#x5B9E;&#x73B0;&#x4E86;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x4F60; <strong>&#x5FC5;&#x987B;</strong> &#x5C06;&#x5C5E;&#x6027;&#x6DF7;&#x5165;&#x7EC4;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x4EE5;&#x53CA;&#xFF0C;&#x770B;&#x5230;&#x4E86; <code>props.children</code> &#x5417;&#xFF1F;Slate &#x4F1A;&#x81EA;&#x52A8;&#x4E3A;&#x4F60;&#x6E32;&#x67D3;&#x597D; block &#x7684;&#x6240;&#x6709;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x901A;&#x8FC7; <code>props.children</code> &#x7684;&#x5F62;&#x5F0F;&#x8BA9;&#x4F60;&#x6309;&#x7167;&#x4F7F;&#x7528;&#x5176;&#x5B83; React &#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x4F7F;&#x7528;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x4F60;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x7EA0;&#x7ED3;&#x4E8E;&#x5982;&#x4F55;&#x4E3A;&#x8282;&#x70B9;&#x6E32;&#x67D3;&#x5408;&#x9002;&#x7684;&#x6587;&#x5B57;&#x5B50;&#x8282;&#x70B9;&#x6216;&#x5176;&#x5B83;&#x5185;&#x5BB9;&#x4E86;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x4F60; <strong>&#x5FC5;&#x987B;</strong> &#x5C06; children &#x4F5C;&#x4E3A;&#x7EC4;&#x4EF6;&#x672B;&#x5C42;&#x7684;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x6E32;&#x67D3;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A; <code>Editor</code> &#x6DFB;&#x52A0;&#x8FD9;&#x4E2A; renderer&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">CodeNode</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
@@ -682,7 +683,7 @@
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
     state<span class="token punctuation">:</span> initialState<span class="token punctuation">,</span>
-    <span class="token comment" spellcheck="true">// Add a &quot;schema&quot; to our app&apos;s state that we can pass to the Editor.</span>
+    <span class="token comment" spellcheck="true">// &#x4E3A;&#x5E94;&#x7528; state &#x6DFB;&#x52A0; &quot;schema&quot; &#x4EE5;&#x4F20;&#x5165;&#x7F16;&#x8F91;&#x5668;</span>
     schema<span class="token punctuation">:</span> <span class="token punctuation">{</span>
       nodes<span class="token punctuation">:</span> <span class="token punctuation">{</span>
         code<span class="token punctuation">:</span> CodeNode
@@ -705,7 +706,7 @@
 
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token comment" spellcheck="true">// Pass in the `schema` property...</span>
+      <span class="token comment" spellcheck="true">// &#x4F20;&#x5165; `schema` &#x5C5E;&#x6027;&#x2026;</span>
       <span class="token operator">&lt;</span>Editor
         schema<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>schema<span class="token punctuation">}</span>
         state<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>state<span class="token punctuation">}</span>
@@ -717,7 +718,7 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Okay, but now we&apos;ll need a way for the user to actually turn a block into a code block. So let&apos;s change our <code>onKeyDown</code> function to add a <code>&#x2318;-Alt-C</code> shortcut that does just that:</p>
+<p>&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x9700;&#x8981;&#x8BA9;&#x7528;&#x6237;&#x4EE5;&#x67D0;&#x79CD;&#x65B9;&#x5F0F;&#x771F;&#x6B63;&#x5730;&#x5C06;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684; block &#x8282;&#x70B9;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x4EE3;&#x7801;&#x5757;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5728; <code>onKeyDown</code> &#x56DE;&#x8C03;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; <code>&#x2318;-Alt-C</code> &#x5FEB;&#x6377;&#x952E;&#x5373;&#x53EF;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">CodeNode</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
@@ -738,13 +739,13 @@
   <span class="token punctuation">}</span>
 
   onKeyDown <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// Return with no changes if it&apos;s not the &quot;`&quot; key with cmd/ctrl pressed.</span>
+    <span class="token comment" spellcheck="true">// &#x6309;&#x4E0B;&#x7684;&#x4E0D;&#x662F; &quot;`&quot; + cmd + ctrl &#x65F6;&#x4E0D;&#x8FD4;&#x56DE; change&#x3002;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>which <span class="token operator">!=</span> <span class="token number">67</span> <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>metaKey <span class="token operator">||</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>altKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
 
-    <span class="token comment" spellcheck="true">// Prevent the &quot;`&quot; from being inserted by default.</span>
+    <span class="token comment" spellcheck="true">// &#x963B;&#x6B62;&#x63D2;&#x5165; &quot;`&quot; &#x5B57;&#x7B26;&#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x3002;</span>
     event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    <span class="token comment" spellcheck="true">// Otherwise, set the currently selected blocks type to &quot;code&quot;.</span>
+    <span class="token comment" spellcheck="true">// &#x5426;&#x5219;&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x9009;&#x4E2D; block &#x8BBE;&#x7F6E;&#x4E3A; &quot;code&quot;&#x3002;</span>
     change<span class="token punctuation">.</span><span class="token function">setBlock</span><span class="token punctuation">(</span><span class="token string">&apos;code&apos;</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span>
@@ -762,8 +763,8 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Now, if you press <code>&#x2318;-Alt-C</code>, the block your cursor is in should turn into a code block! Magic!</p>
-<p>But we forgot one thing. When you hit <code>&#x2318;-Alt-C</code> again, it should change the code block back into a paragraph. To do that, we&apos;ll need to add a bit of logic to change the type we set based on whether any of the currently selected blocks are already a code block:</p>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x5F53;&#x4F60;&#x6309;&#x4E0B; <code>&#x2318;-Alt-C</code> &#x65F6;&#xFF0C;&#x5149;&#x6807;&#x6240;&#x5728;&#x7684; block &#x5C31;&#x4F1A;&#x8F6C;&#x6362;&#x4E3A;&#x4EE3;&#x7801;&#x5757;&#x4E86;&#xFF01;&#x795E;&#x5947;&#x5427;&#xFF01;</p>
+<p>&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x9057;&#x6F0F;&#x4E86;&#x4E00;&#x70B9;&#x3002;&#x5F53;&#x4F60;&#x518D;&#x6B21;&#x6309;&#x4E0B; <code>&#x2318;-Alt-C</code> &#x65F6;&#xFF0C;&#x5E94;&#x5F53;&#x5C06;&#x4EE3;&#x7801;&#x5757;&#x8F6C;&#x6362;&#x56DE;&#x6BB5;&#x843D;&#x3002;&#x8981;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x5224;&#x65AD;&#xFF0C;&#x4EE5;&#x6839;&#x636E;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684; block &#x662F;&#x5426;&#x4E3A;&#x4EE3;&#x7801;&#x5757;&#x6765;&#x53D8;&#x6362; block &#x7C7B;&#x578B;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">CodeNode</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
@@ -788,10 +789,10 @@
 
     event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    <span class="token comment" spellcheck="true">// Determine whether any of the currently selected blocks are code blocks.</span>
+    <span class="token comment" spellcheck="true">// &#x5224;&#x65AD;&#x5F53;&#x524D;&#x9009;&#x4E2D; block &#x662F;&#x5426;&#x4E3A;&#x4EE3;&#x7801;&#x5757;&#x3002;</span>
     <span class="token keyword">const</span> isCode <span class="token operator">=</span> change<span class="token punctuation">.</span>state<span class="token punctuation">.</span>blocks<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>block <span class="token operator">=</span><span class="token operator">&gt;</span> block<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">&apos;code&apos;</span><span class="token punctuation">)</span>
 
-    <span class="token comment" spellcheck="true">// Toggle the block type depending on `isCode`.</span>
+    <span class="token comment" spellcheck="true">// &#x6839;&#x636E; `isCode` &#x8BBE;&#x7F6E; block &#x7C7B;&#x578B;&#x3002;</span>
     change<span class="token punctuation">.</span><span class="token function">setBlock</span><span class="token punctuation">(</span>isCode <span class="token operator">?</span> <span class="token string">&apos;paragraph&apos;</span> <span class="token punctuation">:</span> <span class="token string">&apos;code&apos;</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span>
@@ -809,9 +810,9 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>And there you have it! If you press <code>&#x2318;-Alt-C</code> while inside a code block, it should turn back into a paragraph!</p>
+<p>&#x641E;&#x5B9A;&#x4E86;&#xFF01;&#x73B0;&#x5728;&#x5982;&#x679C;&#x4F60;&#x5728;&#x4EE3;&#x7801;&#x5757;&#x4E2D;&#x6309;&#x4E0B; <code>&#x2318;-Alt-C</code>&#xFF0C;&#x5C31;&#x4F1A;&#x5C06;&#x4EE3;&#x7801;&#x5757;&#x8F6C;&#x6362;&#x56DE;&#x666E;&#x901A;&#x6BB5;&#x843D;&#x4E86;&#xFF01;</p>
 <p><br></p>
-<p></p><p align="center"><strong>Next:</strong><br><a href="applying-custom-formatting.html">Applying Custom Formatting</a></p>
+<p></p><p align="center"><strong>Next:</strong><br><a href="applying-custom-formatting.html">&#x5E94;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x683C;&#x5F0F;</a></p>
 <br><p></p>
 
                                 
@@ -856,7 +857,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"定制 Block 节点","level":"2.3","depth":1,"next":{"title":"应用自定义格式","level":"2.4","depth":1,"path":"walkthroughs/applying-custom-formatting.md","ref":"./walkthroughs/applying-custom-formatting.md","articles":[]},"previous":{"title":"添加事件回调","level":"2.2","depth":1,"path":"walkthroughs/adding-event-handlers.md","ref":"./walkthroughs/adding-event-handlers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/defining-custom-block-nodes.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-24T03:09:53.286Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"定制 Block 节点","level":"2.3","depth":1,"next":{"title":"应用自定义格式","level":"2.4","depth":1,"path":"walkthroughs/applying-custom-formatting.md","ref":"./walkthroughs/applying-custom-formatting.md","articles":[]},"previous":{"title":"添加事件回调","level":"2.2","depth":1,"path":"walkthroughs/adding-event-handlers.md","ref":"./walkthroughs/adding-event-handlers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/defining-custom-block-nodes.md","mtime":"2017-09-24T07:44:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

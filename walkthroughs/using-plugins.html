@@ -625,13 +625,13 @@
                                 <section class="normal markdown-section">
                                 
                                 <p><br></p>
-<p></p><p align="center"><strong>Previous:</strong><br><a href="applying-custom-formatting.html">Applying Custom Formatting</a></p>
+<p></p><p align="center"><strong>Previous:</strong><br><a href="applying-custom-formatting.html">&#x5E94;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x683C;&#x5F0F;</a></p>
 <br><p></p>
-<h1 id="using-plugins">Using Plugins</h1>
-<p>Up to now, everything we&apos;ve learned has been about how to write one-off logic for your specific Slate editor. But one of the most beautiful things about Slate is actually its plugin system, and how it lets you write less one-off code.</p>
-<p>In the previous guide, we actually wrote some pretty useful code for adding <strong>bold</strong> formatting to ranges of text when a key is pressed. But most of that code wasn&apos;t really specific to <strong>bold</strong> text; it could just as easily have applied to <em>italic</em> text or <code>code</code> text if we switched a few variables.</p>
-<p>So let&apos;s break that logic out into it&apos;s a reusable plugin that can toggle <em>any</em> mark on <em>any</em> key press.</p>
-<p>Starting with our app from earlier:</p>
+<h1 id="&#x4F7F;&#x7528;&#x63D2;&#x4EF6;">&#x4F7F;&#x7528;&#x63D2;&#x4EF6;</h1>
+<p>&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x6211;&#x4EEC;&#x6240;&#x5B66;&#x4E60;&#x7684;&#x5185;&#x5BB9;&#x90FD;&#x662F;&#x5728;&#x7F16;&#x5199;&#x4E3A;&#x7279;&#x5B9A;&#x7684; Slate &#x7F16;&#x8F91;&#x5668;&#x5B9A;&#x5236;&#x7684;&#x4E00;&#x6B21;&#x6027;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;Slate &#x6700;&#x6F02;&#x4EAE;&#x7684;&#x4E00;&#x70B9;&#x4E4B;&#x4E00;&#x5728;&#x4E8E;&#x5B83;&#x7684;&#x63D2;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x4EE5;&#x53CA;&#x5B83;&#x5982;&#x4F55;&#x8BA9;&#x4F60;&#x51CF;&#x5C11;&#x7F16;&#x5199;&#x4E00;&#x6B21;&#x6027;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x8282;&#x4E2D;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x4E86;&#x4E00;&#x4E9B;&#x5B9E;&#x7528;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x5728;&#x6309;&#x952E;&#x65F6;&#x4E3A;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6587;&#x672C;&#x6DFB;&#x52A0; <strong>&#x52A0;&#x7C97;</strong> &#x683C;&#x5F0F;&#x3002;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E9B;&#x4EE3;&#x7801;&#x5E76;&#x4E0D;&#x4EC5;&#x5C40;&#x9650;&#x5728; <strong>&#x52A0;&#x7C97;</strong> &#x6587;&#x672C;&#x4E0A;&#xFF0C;&#x53EA;&#x8981;&#x6211;&#x4EEC;&#x66F4;&#x6539;&#x4E00;&#x4E9B;&#x53D8;&#x91CF;&#xFF0C;&#x5B83;&#x540C;&#x6837;&#x80FD;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x5E94;&#x7528;&#x5230; <em>&#x659C;&#x4F53;</em> &#x6587;&#x672C;&#x6216; <code>&#x4EE3;&#x7801;&#x5757;</code> &#x6587;&#x672C;&#x4E0A;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x5C06;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x62BD;&#x53D6;&#x4E3A;&#x53EF;&#x590D;&#x7528;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x6765;&#x5F00;&#x95ED; <em>&#x4EFB;&#x4F55;</em> &#x6309;&#x952E;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x7684; <em>&#x4EFB;&#x4F55;</em> mark &#x7C7B;&#x578B;&#x554A;&#x3002;</p>
+<p>&#x4ECE;&#x4E4B;&#x524D;&#x7684;&#x5E94;&#x7528;&#x5F00;&#x59CB;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -667,47 +667,47 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Let&apos;s write a new function, that takes a set of options: the mark <code>type</code> to toggle and the key <code>code</code> to press.</p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x63A5;&#x6536;&#x4E0B;&#x5217;&#x53C2;&#x6570;&#x7684;&#x65B0;&#x51FD;&#x6570;&#xFF1A;&#x8981;&#x5F00;&#x95ED;&#x7684; mark &#x7C7B;&#x578B; <code>type</code> &#x548C;&#x6309;&#x4E0B;&#x7684;&#x6309;&#x952E;&#x952E;&#x503C; <code>code</code>&#x3002;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">MarkHotkey</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// Grab our options from the ones passed in.</span>
+  <span class="token comment" spellcheck="true">// &#x4ECE;&#x7528;&#x6237;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x4E2D;&#x83B7;&#x53D6;&#x9009;&#x9879;&#x503C;&#x3002;</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> code<span class="token punctuation">,</span> isAltKey <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token punctuation">}</span> <span class="token operator">=</span> options
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Okay, that was easy. But it doesn&apos;t do anything.</p>
-<p>To fix that, we need our plugin function to return a &quot;plugin object&quot; that Slate recognizes. Slate&apos;s plugin objects are just plain objects that have properties that map to the same handler on the <code>Editor</code>.</p>
-<p>In this case our plugin object will have one property: a <code>onKeyDown</code> handler, with its logic copied right from our current app&apos;s code:</p>
+<p>&#x597D;&#x7684;&#xFF0C;&#x8FD9;&#x4E0D;&#x96BE;&#x5B9E;&#x73B0;&#x3002;&#x4E0D;&#x8FC7;&#x8FD9;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5B9E;&#x9645;&#x7528;&#x5904;&#x3002;</p>
+<p>&#x8981;&#x4F7F;&#x63D2;&#x4EF6;&#x771F;&#x6B63;&#x5DE5;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x63D2;&#x4EF6;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x3010;&#x63D2;&#x4EF6;&#x5BF9;&#x8C61;&#x3011;&#x7ED9; Slate&#x3002;Slate &#x7684;&#x63D2;&#x4EF6;&#x5BF9;&#x8C61;&#x5B9E;&#x9645;&#x4E0A;&#x53EA;&#x662F;&#x666E;&#x901A;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x5305;&#x542B;&#x4E86;&#x6620;&#x5C04;&#x5230; <code>Editor</code> &#x4E2D;&#x7279;&#x5B9A;&#x56DE;&#x8C03;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x5728;&#x76EE;&#x524D;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x63D2;&#x4EF6;&#x5BF9;&#x8C61;&#x53EA;&#x9700;&#x8981;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF1A;&#x4E00;&#x4E2A; <code>onKeyDown</code> &#x56DE;&#x8C03;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ECE;&#x73B0;&#x5728;&#x7684;&#x5E94;&#x7528;&#x4EE3;&#x7801;&#x4E2D;&#x590D;&#x5236;&#x51FA;&#x5176;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">MarkHotkey</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> code<span class="token punctuation">,</span> isAltKey <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token punctuation">}</span> <span class="token operator">=</span> options
 
-  <span class="token comment" spellcheck="true">// Return our &quot;plugin&quot; object, containing the `onKeyDown` handler.</span>
+  <span class="token comment" spellcheck="true">// &#x8FD4;&#x56DE;&#x6211;&#x4EEC;&#x5305;&#x542B;&#x4E86; `onKeyDown` &#x56DE;&#x8C03;&#x7684;&#x63D2;&#x4EF6;&#x5BF9;&#x8C61;&#x3002;</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
     <span class="token function">onKeyDown</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// Check that the key pressed matches our `code` option.</span>
+      <span class="token comment" spellcheck="true">// &#x68C0;&#x67E5;&#x6309;&#x4E0B;&#x7684;&#x952E;&#x662F;&#x5426;&#x5339;&#x914D; `code` &#x9009;&#x9879;&#x3002;</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>metaKey <span class="token operator">||</span> event<span class="token punctuation">.</span>which <span class="token operator">!=</span> code <span class="token operator">||</span> event<span class="token punctuation">.</span>altKey <span class="token operator">!=</span> isAltKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
 
-      <span class="token comment" spellcheck="true">// Prevent the default characters from being inserted.</span>
+      <span class="token comment" spellcheck="true">// &#x907F;&#x514D;&#x9ED8;&#x8BA4;&#x5B57;&#x7B26;&#x88AB;&#x63D2;&#x5165;&#x3002;</span>
       event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-      <span class="token comment" spellcheck="true">// Toggle the mark `type`.</span>
+      <span class="token comment" spellcheck="true">// &#x6839;&#x636E; `type` &#x6765;&#x5F00;&#x95ED; mark&#x3002;</span>
       change<span class="token punctuation">.</span><span class="token function">toggleMark</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
       <span class="token keyword">return</span> <span class="token boolean">true</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Boom! Now we&apos;re getting somewhere. That code is reusable for any type of mark.</p>
-<p>Now that we have our plugin, let&apos;s remove the hard-coded logic from our app, and replace it with our brand new <code>MarkHotkey</code> plugin instead, passing in the same options that will keep our <strong>bold</strong> functionality intact:</p>
+<p>&#x597D;&#x4E86;&#xFF01;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x660E;&#x663E;&#x8FDB;&#x5C55;&#xFF0C;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x4E3A;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x7684; mark &#x590D;&#x7528;&#x4E86;&#x3002;</p>
+<p>&#x65E2;&#x7136;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x7F16;&#x5199;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x786C;&#x7F16;&#x7801;&#x7684;&#x903B;&#x8F91;&#x4ECE;&#x5E94;&#x7528;&#x4E2D;&#x79FB;&#x9664;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x66FF;&#x6362;&#x4E3A;&#x65B0;&#x7684; <code>MarkHotkey</code> &#x63D2;&#x4EF6;&#x4E86;&#x3002;&#x4F20;&#x5165;&#x540C;&#x6837;&#x7684;&#x53C2;&#x6570;&#x6765;&#x4FDD;&#x6301;&#x6211;&#x4EEC;&#x7684; <strong>&#x52A0;&#x7C97;</strong> &#x529F;&#x80FD;&#x5B8C;&#x6574;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">BoldMark</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>strong<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// Initialize our bold-mark-adding plugin.</span>
+<span class="token comment" spellcheck="true">// &#x521D;&#x59CB;&#x5316;&#x52A0;&#x7C97;&#x6587;&#x672C;&#x63D2;&#x4EF6;&#x3002;</span>
 <span class="token keyword">const</span> boldPlugin <span class="token operator">=</span> <span class="token function">MarkHotkey</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   type<span class="token punctuation">:</span> <span class="token string">&apos;bold&apos;</span><span class="token punctuation">,</span>
   code<span class="token punctuation">:</span> <span class="token number">66</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// Create an array of plugins.</span>
+<span class="token comment" spellcheck="true">// &#x521B;&#x5EFA;&#x63D2;&#x4EF6;&#x6570;&#x7EC4;&#x3002;</span>
 <span class="token keyword">const</span> plugins <span class="token operator">=</span> <span class="token punctuation">[</span>
   boldPlugin
 <span class="token punctuation">]</span>
@@ -729,7 +729,7 @@
 
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token comment" spellcheck="true">// Add the `plugins` property to the editor, and remove `onKeyDown`.</span>
+      <span class="token comment" spellcheck="true">// &#x6DFB;&#x52A0; `plugin` &#x5C5E;&#x6027;&#x5230;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5E76;&#x79FB;&#x9664; `onKeyDown`&#x3002;</span>
       <span class="token operator">&lt;</span>Editor
         plugins<span class="token operator">=</span><span class="token punctuation">{</span>plugins<span class="token punctuation">}</span>
         schema<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>schema<span class="token punctuation">}</span>
@@ -741,9 +741,9 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Awesome. If you test out the editor now, you&apos;ll notice that everything still works just as it did before. But the beauty of the logic being encapsulated in a plugin is that we can add more mark types <em>extremely</em> easily now!</p>
-<p>Let&apos;s add <em>italic</em>, <code>code</code>, <del>strikethrough</del> and underline marks:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Initialize a plugin for each mark...</span>
+<p>&#x592A;&#x68D2;&#x4E86;&#x3002;&#x5982;&#x679C;&#x4F60;&#x6D4B;&#x8BD5;&#x4E86;&#x73B0;&#x5728;&#x7684;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x4F60;&#x4F1A;&#x6CE8;&#x610F;&#x5230;&#x6240;&#x6709;&#x7684;&#x4E1C;&#x897F;&#x90FD;&#x548C;&#x4E4B;&#x524D;&#x4E00;&#x6837;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x901A;&#x8FC7;&#x63D2;&#x4EF6;&#x5C06;&#x903B;&#x8F91;&#x4F18;&#x96C5;&#x5730;&#x5C01;&#x88C5;&#x4E86;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x591F; <em>&#x975E;&#x5E38;</em> &#x5BB9;&#x6613;&#x5730;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x7684; mark &#x7C7B;&#x578B;&#x4E86;&#xFF01;</p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x6DFB;&#x52A0; <em>&#x659C;&#x4F53;</em>&#xFF0C;<code>&#x4EE3;&#x7801;</code>&#x3001;<del>&#x4E2D;&#x5212;&#x7EBF;</del> &#x548C;&#x4E0B;&#x5212;&#x7EBF; mark &#x5427;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x4E3A;&#x6BCF;&#x79CD; mark &#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x2026;</span>
 <span class="token keyword">const</span> plugins <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token function">MarkHotkey</span><span class="token punctuation">(</span><span class="token punctuation">{</span> code<span class="token punctuation">:</span> <span class="token number">66</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">&apos;bold&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token function">MarkHotkey</span><span class="token punctuation">(</span><span class="token punctuation">{</span> code<span class="token punctuation">:</span> <span class="token number">67</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">&apos;code&apos;</span><span class="token punctuation">,</span> isAltKey<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -759,7 +759,7 @@
     schema<span class="token punctuation">:</span> <span class="token punctuation">{</span>
       marks<span class="token punctuation">:</span> <span class="token punctuation">{</span>
         bold<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>strong<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">&gt;</span><span class="token punctuation">,</span>
-        <span class="token comment" spellcheck="true">// Add our new mark renderers...</span>
+        <span class="token comment" spellcheck="true">// &#x6DFB;&#x52A0;&#x65B0;&#x7684; mark renderer&#x2026;</span>
         code<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token punctuation">,</span>
         italic<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>em<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>em<span class="token operator">&gt;</span><span class="token punctuation">,</span>
         strikethrough<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>del<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>del<span class="token operator">&gt;</span><span class="token punctuation">,</span>
@@ -785,24 +785,23 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>And there you have it! We just added a ton of functionality to the editor with very little work. And we can keep all of our mark hotkey logic tested and isolated in a single place, making maintaining the code easier.</p>
-<p>Of course... now that it&apos;s reusable, we could actually make our <code>MarkHotkey</code> plugin a little easier to use. What if instead of a <code>code</code> argument it took the text of the <code>key</code> itself? That would make the calling code a lot clearer, since key codes are really obtuse.</p>
-<p>In fact, unless you have weirdly good keycode knowledge, you probably have no idea what our current hotkeys actually are.</p>
-<p>Let&apos;s fix that.</p>
-<p>Using the <code>keycode</code> module in npm makes this dead simple.</p>
-<p>First install it:</p>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x4E86;&#xFF01;&#x6211;&#x4EEC;&#x53EA;&#x505A;&#x4E86;&#x4E00;&#x70B9;&#x5FAE;&#x5C0F;&#x7684;&#x5DE5;&#x4F5C;&#x5C31;&#x4E3A;&#x7F16;&#x8F91;&#x5668;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x5806;&#x65B0;&#x7279;&#x6027;&#xFF01;&#x5E76;&#x4E14;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x5C06;&#x5FEB;&#x6377;&#x952E;&#x903B;&#x8F91;&#x62BD;&#x79BB;&#x5E76;&#x6D4B;&#x8BD5;&#xFF0C;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x66F4;&#x5BB9;&#x6613;&#x7EF4;&#x62A4;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#xFF0C;&#x9664;&#x975E;&#x4F60;&#x6709;&#x952E;&#x503C;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x90FD;&#x4E0D;&#x77E5;&#x9053;&#x6211;&#x4EEC;&#x5F53;&#x524D;&#x7684;&#x5FEB;&#x6377;&#x952E;&#x662F;&#x4EC0;&#x4E48;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5427;&#x3002;</p>
+<p>npm &#x4E0A;&#x7684; <code>keycode</code> &#x6A21;&#x5757;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x5730;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x5B89;&#x88C5;&#x5B83;&#xFF1A;</p>
 <pre class="language-"><code>npm install keycode
-</code></pre><p>And then we can add it our plugin:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Import the keycode module.</span>
+</code></pre><p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5C06;&#x5176;&#x6DFB;&#x52A0;&#x5230;&#x63D2;&#x4EF6;&#x5185;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x5BFC;&#x5165; keycode &#x6A21;&#x5757;&#x3002;</span>
 <span class="token keyword">import</span> keycode <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`keycode`</span></span>
 
 <span class="token keyword">function</span> <span class="token function">MarkHotkey</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// Change the options to take a `key`.</span>
+  <span class="token comment" spellcheck="true">// &#x5C06;&#x9009;&#x9879;&#x8F6C;&#x6362;&#x4E3A;&#x63A5;&#x53D7;&#x4E00;&#x4E2A; `key`&#x3002;</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> key<span class="token punctuation">,</span> isAltKey <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token punctuation">}</span> <span class="token operator">=</span> options
 
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
     <span class="token function">onKeyDown</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// Change the comparison to use the key name.</span>
+      <span class="token comment" spellcheck="true">// &#x6539;&#x53D8;&#x6BD4;&#x8F83;&#x65B9;&#x5F0F;&#x6765;&#x4F7F;&#x7528;&#x6309;&#x952E;&#x540D;&#x79F0;&#x3002;</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>metaKey <span class="token operator">||</span> <span class="token function">keycode</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>which<span class="token punctuation">)</span> <span class="token operator">!=</span> key <span class="token operator">||</span> event<span class="token punctuation">.</span>altKey <span class="token operator">!=</span> isAltKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
       event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       change<span class="token punctuation">.</span><span class="token function">toggleMark</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
@@ -811,8 +810,8 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>And now we can make our app code much clearer for the next person who reads it:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Use the much clearer key names instead of key codes!</span>
+<p>&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x591F;&#x8BA9;&#x4EE3;&#x7801;&#x5BF9;&#x540E;&#x6765;&#x8005;&#x800C;&#x8A00;&#x6613;&#x8BFB;&#x5F97;&#x591A;&#x4E86;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x4F7F;&#x7528;&#x6E05;&#x6670;&#x5F97;&#x591A;&#x7684;&#x6309;&#x952E;&#x540D;&#x79F0;&#x800C;&#x4E0D;&#x662F;&#x6309;&#x952E; code &#x503C;&#xFF01;</span>
 <span class="token keyword">const</span> plugins <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token function">MarkHotkey</span><span class="token punctuation">(</span><span class="token punctuation">{</span> key<span class="token punctuation">:</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">&apos;bold&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token function">MarkHotkey</span><span class="token punctuation">(</span><span class="token punctuation">{</span> key<span class="token punctuation">:</span> <span class="token string">&apos;c&apos;</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">&apos;code&apos;</span><span class="token punctuation">,</span> isAltKey<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -853,9 +852,9 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>That&apos;s why plugins are awesome. They let you get really expressive while also making your codebase easier to manage. And since Slate is built with plugins as a primary consideration, using them is dead simple!</p>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x63D2;&#x4EF6;&#x7684;&#x5F3A;&#x5927;&#x652F;&#x6301;&#x4E86;&#x3002;&#x63D2;&#x4EF6;&#x5728;&#x589E;&#x5F3A;&#x4EE3;&#x7801;&#x8868;&#x8FBE;&#x80FD;&#x529B;&#x7684;&#x540C;&#x65F6;&#x4E5F;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x66F4;&#x7CBE;&#x7B80;&#x3002;&#x5E76;&#x4E14;&#xFF0C;&#x7531;&#x4E8E; Slate &#x662F;&#x5C06;&#x63D2;&#x4EF6;&#x4F5C;&#x4E3A;&#x4E00;&#x7B49;&#x516C;&#x6C11;&#x8BBE;&#x8BA1;&#x7684;&#xFF0C;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#xFF01;</p>
 <p><br></p>
-<p></p><p align="center"><strong>Next:</strong><br><a href="saving-to-a-database.html">Saving to a Database</a></p>
+<p></p><p align="center"><strong>Next:</strong><br><a href="saving-to-a-database.html">&#x4FDD;&#x5B58;&#x5230;&#x6570;&#x636E;&#x5E93;</a></p>
 <br><p></p>
 
                                 
@@ -900,7 +899,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"使用插件","level":"2.5","depth":1,"next":{"title":"保存到数据库","level":"2.6","depth":1,"path":"walkthroughs/saving-to-a-database.md","ref":"./walkthroughs/saving-to-a-database.md","articles":[]},"previous":{"title":"应用自定义格式","level":"2.4","depth":1,"path":"walkthroughs/applying-custom-formatting.md","ref":"./walkthroughs/applying-custom-formatting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/using-plugins.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-24T03:09:53.286Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用插件","level":"2.5","depth":1,"next":{"title":"保存到数据库","level":"2.6","depth":1,"path":"walkthroughs/saving-to-a-database.md","ref":"./walkthroughs/saving-to-a-database.md","articles":[]},"previous":{"title":"应用自定义格式","level":"2.4","depth":1,"path":"walkthroughs/applying-custom-formatting.md","ref":"./walkthroughs/applying-custom-formatting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/using-plugins.md","mtime":"2017-09-27T05:46:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

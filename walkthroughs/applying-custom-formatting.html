@@ -625,12 +625,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <p><br></p>
-<p></p><p align="center"><strong>Previous:</strong><br><a href="defining-custom-block-nodes.html">Defining Custom Block Nodes</a></p>
+<p></p><p align="center"><strong>Previous:</strong><br><a href="defining-custom-block-nodes.html">&#x5B9A;&#x5236; Block &#x8282;&#x70B9;</a></p>
 <br><p></p>
-<h1 id="applying-custom-formatting">Applying Custom Formatting</h1>
-<p>In the previous guide we learned how to create custom block types that render chunks of text inside different containers. But Slate allows for more than just &quot;blocks&quot;.</p>
-<p>In this guide, we&apos;ll show you how to add custom formatting options, like <strong>bold</strong>, <em>italic</em>, <code>code</code> or <del>strikethrough</del>.</p>
-<p>So we start with our app from earlier:</p>
+<h1 id="&#x5E94;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x683C;&#x5F0F;">&#x5E94;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x683C;&#x5F0F;</h1>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x8282;&#x4E2D;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4E86;&#x89E3;&#x4E86;&#x5982;&#x4F55;&#x5B9A;&#x5236;&#x5728;&#x4E0D;&#x540C;&#x5BB9;&#x5668;&#x5185;&#x6E32;&#x67D3;&#x4E0D;&#x540C;&#x6587;&#x672C;&#x7684; block &#x8282;&#x70B9;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;Slate &#x6240;&#x652F;&#x6301;&#x7684;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F; &quot;block&quot; &#x800C;&#x5DF2;&#x3002;</p>
+<p>&#x5728;&#x672C;&#x6587;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x683C;&#x5F0F;&#x9009;&#x9879;&#xFF0C;&#x5982; <strong>&#x52A0;&#x7C97;</strong> &#x3001; <em>&#x659C;&#x4F53;</em> &#x3001;<code>&#x4EE3;&#x7801;&#x5757;</code> &#x6216; <del>&#x4E2D;&#x5212;&#x7EBF;</del> &#x7B49;&#x3002;</p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x4ECE;&#x4E4B;&#x524D;&#x7684;&#x5E94;&#x7528;&#x5F00;&#x59CB;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -668,7 +668,7 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>And now, we&apos;ll edit the <code>onKeyDown</code> handler to make it so that when you press <code>&#x2318;-B</code>, it will add a &quot;bold&quot; mark to the currently selected text:</p>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7F16;&#x8F91; <code>onKeyDown</code> &#x56DE;&#x8C03;&#x6765;&#x8BA9;&#x6309;&#x4E0B; <code>&#x2318;-B</code> &#x65F6;&#xFF0C;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; &quot;bold&quot; mark &#x5230;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x6587;&#x672C;&#x4E2D;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -687,15 +687,15 @@
   onKeyDown <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">,</span> data<span class="token punctuation">,</span> change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>metaKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
 
-    <span class="token comment" spellcheck="true">// Decide what to do based on the key code...</span>
+    <span class="token comment" spellcheck="true">// &#x6839;&#x636E;&#x6309;&#x952E;&#x952E;&#x503C;&#x5224;&#x65AD;&#x64CD;&#x4F5C;&#x2026;</span>
     <span class="token keyword">switch</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>which<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// When &quot;B&quot; is pressed, add a &quot;bold&quot; mark to the text.</span>
+      <span class="token comment" spellcheck="true">// &#x5F53;&#x6309;&#x4E0B; &quot;B&quot; &#x65F6;&#xFF0C;&#x4E3A;&#x6587;&#x672C;&#x6DFB;&#x52A0; &quot;bold&quot; mark&#x3002;</span>
       <span class="token keyword">case</span> <span class="token number">66</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
         event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         change<span class="token punctuation">.</span><span class="token function">addMark</span><span class="token punctuation">(</span><span class="token string">&apos;bold&apos;</span><span class="token punctuation">)</span>
         <span class="token keyword">return</span> <span class="token boolean">true</span>
       <span class="token punctuation">}</span>
-      <span class="token comment" spellcheck="true">// When &quot;`&quot; is pressed, keep our existing code block logic.</span>
+      <span class="token comment" spellcheck="true">// &#x5F53;&#x6309;&#x4E0B; &quot;`&quot; &#x65F6;&#xFF0C;&#x4ECD;&#x4F7F;&#x7528;&#x5DF2;&#x6709;&#x7684;&#x4EE3;&#x7801;&#x5757;&#x64CD;&#x4F5C;&#x903B;&#x8F91;&#x3002;</span>
       <span class="token keyword">case</span> <span class="token number">67</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>altKey<span class="token punctuation">)</span> <span class="token keyword">return</span>
         <span class="token keyword">const</span> isCode <span class="token operator">=</span> change<span class="token punctuation">.</span>state<span class="token punctuation">.</span>blocks<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>block <span class="token operator">=</span><span class="token operator">&gt;</span> block<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">&apos;code&apos;</span><span class="token punctuation">)</span>
@@ -719,17 +719,17 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Okay, so we&apos;ve got the hotkey handler setup... but! If you happen to now try selecting text and hitting <code>&#x2318;-B</code>, you&apos;ll get an error in your console. That&apos;s because we haven&apos;t told Slate how to render a &quot;bold&quot; mark.</p>
-<p>For every mark type you want to add to your schema, you need to give Slate a &quot;renderer&quot; for that mark, just like nodes. So let&apos;s define our <code>bold</code> mark:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Define a React component to render bold text with.</span>
+<p>&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x5FEB;&#x6377;&#x952E;&#x56DE;&#x8C03;&#x7684;&#x914D;&#x7F6E;&#x4E86;&#x2026;&#x4E0D;&#x8FC7;&#xFF01;&#x5982;&#x679C;&#x4F60;&#x8FD9;&#x65F6;&#x5019;&#x78B0;&#x5DE7;&#x9009;&#x4E2D;&#x4E86;&#x4E00;&#x6BB5;&#x6587;&#x672C;&#x5E76;&#x6309;&#x4E0B; <code>&#x2318;-B</code> &#x7684;&#x8BDD;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4E2D;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x6761;&#x62A5;&#x9519;&#x3002;&#x8FD9;&#x65F6;&#x7531;&#x4E8E;&#x4F60;&#x8FD8;&#x6CA1;&#x6709;&#x544A;&#x8BC9; Slate &#x5982;&#x4F55;&#x6E32;&#x67D3;&#x4E00;&#x4E2A; &quot;bold&quot; mark&#x3002;</p>
+<p>&#x5BF9;&#x6BCF;&#x79CD;&#x4F60;&#x60F3;&#x8981;&#x6DFB;&#x52A0;&#x5230; schema &#x4E2D;&#x7684; mark &#x7C7B;&#x578B;&#xFF0C;&#x4F60;&#x90FD;&#x9700;&#x8981;&#x5728; Slate &#x4E2D;&#x4E3A;&#x5B83;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x8282;&#x70B9;&#x90A3;&#x6837;&#x7684; &quot;renderer&quot;&#x3002;&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x5B9A;&#x4E49; <code>bold</code> &#x7C7B;&#x578B;&#x7684; mark &#x5427;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x5B9A;&#x4E49;&#x4E00;&#x4E2A; React &#x7EC4;&#x4EF6;&#x6765;&#x6E32;&#x67D3;&#x7C97;&#x4F53;&#x6587;&#x672C;&#x3002;</span>
 <span class="token keyword">function</span> <span class="token function">BoldMark</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>strong<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Pretty simple, right?</p>
-<p>And now, let&apos;s tell Slate about that mark.
-To do that, we&apos;ll add it to the <code>schema</code> object under a <code>marks</code> property.
-Also, let&apos;s allow our mark to be toggled by changing <code>addMark</code> to <code>toggleMark</code>.</p>
+<p>&#x591F;&#x7B80;&#x5355;&#x5427;&#xFF1F;</p>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x4E3A; Slate &#x6DFB;&#x52A0; mark &#x4FE1;&#x606F;&#x5427;&#x3002;
+&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06; mark &#x6DFB;&#x52A0;&#x5230; <code>schema</code> &#x5BF9;&#x8C61;&#x4E2D;&#x7684; <code>mark</code> &#x5C5E;&#x6027;&#x4E0B;&#x3002;
+&#x5E76;&#x4E14;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06; <code>addMark</code> &#x66F4;&#x6539;&#x4E3A; <code>toggleMark</code> &#x7684;&#x65B9;&#x5F0F;&#x6765;&#x652F;&#x6301;&#x5BF9; mark &#x7684;&#x5F00;&#x95ED;&#x3002;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">function</span> <span class="token function">BoldMark</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>strong<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
@@ -742,7 +742,7 @@ Also, let&apos;s allow our mark to be toggled by changing <code>addMark</code> t
       nodes<span class="token punctuation">:</span> <span class="token punctuation">{</span>
         code<span class="token punctuation">:</span> CodeNode
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token comment" spellcheck="true">// Add our &quot;bold&quot; mark to the schema...</span>
+      <span class="token comment" spellcheck="true">// &#x6DFB;&#x52A0; &quot;bold&quot; mark &#x5230; schema &#x4E2D;&#x2026;</span>
       marks<span class="token punctuation">:</span> <span class="token punctuation">{</span>
         bold<span class="token punctuation">:</span> BoldMark
       <span class="token punctuation">}</span>
@@ -785,9 +785,9 @@ Also, let&apos;s allow our mark to be toggled by changing <code>addMark</code> t
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Now, if you try selecting a piece of text and hitting <code>&#x2318;-B</code> you should see it turn bold! Magic!</p>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x53EA;&#x8981;&#x4F60;&#x9009;&#x4E2D;&#x4E86;&#x4E00;&#x6BB5;&#x6587;&#x672C;&#x5E76;&#x6309;&#x4E0B; <code>&#x2318;-B</code>&#xFF0C;&#x5C31;&#x80FD;&#x770B;&#x5230;&#x5B83;&#x88AB;&#x52A0;&#x7C97;&#x4E86;&#xFF01;&#x795E;&#x5947;&#x5427;&#xFF01;</p>
 <p><br></p>
-<p></p><p align="center"><strong>Next:</strong><br><a href="using-plugins.html">Using Plugins</a></p>
+<p></p><p align="center"><strong>Next:</strong><br><a href="using-plugins.html">&#x4F7F;&#x7528;&#x63D2;&#x4EF6;</a></p>
 <br><p></p>
 
                                 
@@ -832,7 +832,7 @@ Also, let&apos;s allow our mark to be toggled by changing <code>addMark</code> t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"应用自定义格式","level":"2.4","depth":1,"next":{"title":"使用插件","level":"2.5","depth":1,"path":"walkthroughs/using-plugins.md","ref":"./walkthroughs/using-plugins.md","articles":[]},"previous":{"title":"定制 Block 节点","level":"2.3","depth":1,"path":"walkthroughs/defining-custom-block-nodes.md","ref":"./walkthroughs/defining-custom-block-nodes.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/applying-custom-formatting.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-24T03:09:53.286Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"应用自定义格式","level":"2.4","depth":1,"next":{"title":"使用插件","level":"2.5","depth":1,"path":"walkthroughs/using-plugins.md","ref":"./walkthroughs/using-plugins.md","articles":[]},"previous":{"title":"定制 Block 节点","level":"2.3","depth":1,"path":"walkthroughs/defining-custom-block-nodes.md","ref":"./walkthroughs/defining-custom-block-nodes.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/applying-custom-formatting.md","mtime":"2017-09-26T14:53:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
