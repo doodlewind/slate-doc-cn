@@ -5,7 +5,7 @@
 import { Block } from 'slate'
 ```
 
-一个 Slate [`Document`](./document.md) 中的块级节点。Block 节点实现了 [`Node`](./node.md) 接口。
+Slate [`Document`](./document.md) 中的块级节点。Block 节点实现了 [`Node`](./node.md) 接口。
 
 Block 节点可以包含嵌套的 block 节点、inline 节点，以及 text 节点——就像 DOM 一样。它始终包含至少一个 text 节点作为子节点。
 
@@ -73,7 +73,7 @@ Block({
 ### `kind`
 `String`
 
-不可变的 String，值为 `block` 以便于将这类节点与 [`Inline`](./inline.md) 和 [`Text`](./text.md) 节点区分开。
+不可变的 String，值为 `'block'` 以便于将这类节点与 [`Inline`](./inline.md) 和 [`Text`](./text.md) 节点区分开。
 
 ### `text`
 `String`
@@ -98,6 +98,8 @@ Block({
 
 由 JSON `object` 创建一个 block。
 
+<!-- TODO 原文 value 为 maybeBlock -->
+
 ### `Block.isBlock`
 `Block.isBlock(value: Any) => Boolean`
 
@@ -106,7 +108,7 @@ Block({
 
 ## Node Methods
 
-Block 实现了 [`Node`](./node.md) 接口。对所有 node 实例方法的相关信息，参见 [`Node` 文档](./node.md)。
+Block 实现了 [`Node`](./node.md) 接口。对所有 node 方法的相关信息，参见 [`Node` 文档](./node.md)。
 
 
 ## Instance Methods

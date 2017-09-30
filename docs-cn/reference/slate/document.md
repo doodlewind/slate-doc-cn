@@ -5,11 +5,11 @@
 import { Document } from 'slate'
 ```
 
-The top-level node in Slate's document model.
+Slate 中文档模型的顶层节点。
 
-Documents are made up of block nodes, inline nodes, and text nodes—just like in the DOM. Note that direct descendants of a document node have to be block nodes.
+Document 是由 block 节点、inline 节点和 text 节点组成的——和 DOM 一致。注意 document 节点的直接子节点必须是 block 节点。
 
-In some places, you'll see mention of "fragments", which are also `Document` objects, just that aren't attached to the main `State`. For example, when cutting-and-pasting a selection of content, that content will be referred to as a document "fragment".
+在一些地方，你会看到 "fragment" 的概念，这实际上是未挂载到主 `State` 的 `Docuement` 对象。例如，在剪贴选择的内容时，我们认为内容是一个文档 "fragment"。
 
 - [Properties](#properties)
   - [`data`](#data)
@@ -37,12 +37,12 @@ Document({
 ### `data`
 `Immutable.Map`
 
-Arbitrary data associated with the document. Defaults to an empty `Map`.
+任意与 document 关联的 data 对象。默认为空 `Map`。
 
 ### `nodes`
 `Immutable.List`
 
-A list of child nodes.
+子节点列表。
 
 
 ## Computed Properties
@@ -50,12 +50,12 @@ A list of child nodes.
 ### `kind`
 `String`
 
-An immutable string value of `'document'` for easily separating this node from [`Block`](./block.md), [`Inline`](./inline.md) or [`Text`](./text.md) nodes.
+不可变的 String，值为 `document` 以便于将这类节点与 [`Block`](./block.md)、[`Inline`](./inline.md) 和 [`Text`](./text.md) 节点区分开。
 
 ### `text`
 `String`
 
-A concatenated string of all of the descendant [`Text`](./text.md) nodes of this node.
+该节点的全部子 [`Text`](./text.md) 节点连接成的字符串。
 
 
 ## Static Methods
@@ -63,22 +63,23 @@ A concatenated string of all of the descendant [`Text`](./text.md) nodes of this
 ### `Document.create`
 `Document.create(properties: Object) => Document`
 
-Create a block from a plain Javascript object of `properties`.
+<!-- TODO 原文 block 错误 -->
+由原生 JS 对象 `properties` 创建一个 document。
 
 ### `Document.fromJSON`
 `Document.fromJSON(object: Object) => Document`
 
-Create a document from a JSON `object`.
+由 JSON `object` 创建一个 document。
 
 ### `Document.isDocument`
 `Document.isDocument(maybeDocument: Any) => Boolean`
 
-Returns a boolean if the passed in argument is a `Document`.
+返回传入的参数是否为 `Document` 的 boolean 值。
 
 
 ## Node Methods
 
-Documents implement the [`Node`](./node.md) interface. For information about all of the node methods, see the [`Node` reference](./node.md).
+Document 实现了 [`Node`](./node.md) 接口。对所有 node 方法的相关信息，参见 [`Node` 文档](./node.md)。
 
 
 ## Instance Methods
@@ -86,4 +87,4 @@ Documents implement the [`Node`](./node.md) interface. For information about all
 ### `toJSON`
 `toJSON() => Object`
 
-Returns a JSON representation of the document.
+返回 document 的 JSON 表示。
