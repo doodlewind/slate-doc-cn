@@ -64,7 +64,7 @@ Document({
 `Document.create(properties: Object) => Document`
 
 <!-- TODO 原文 block 错误 -->
-由原生 JS 对象 `properties` 创建一个 document。
+由原生 JS `properties` 对象创建一个 document。
 
 ### `Document.fromJSON`
 `Document.fromJSON(object: Object) => Document`

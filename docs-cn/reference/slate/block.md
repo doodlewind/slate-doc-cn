@@ -50,7 +50,7 @@ Block({
 
 节点是否为 "void"，这意味着其没有子内容（如图片、视频等）。默认为 `false`。 
 
-注意即便节点为 "void，它仍然会包含一个空的 [`Text`](./text.md) 节点以保证适配其它操作的一致性。不过，在 Slate 渲染时这个 [`Text`](./text.md) 节点是不可见的。
+注意即便节点为 "void"，它仍然会包含一个空的 [`Text`](./text.md) 节点以保证适配其它操作的一致性。不过，在 Slate 渲染时这个 [`Text`](./text.md) 节点是不可见的。
 
 ### `key`
 `String`
@@ -86,7 +86,7 @@ Block({
 ### `Block.create`
 `Block.create(properties: Object) => Block`
 
-由原生 JS 对象 `properties` 创建一个 block。
+由原生 JS `properties` 对象创建一个 block。
 
 ### `Block.createList`
 `Block.createList(array: Array) => List`

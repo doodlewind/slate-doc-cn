@@ -5,9 +5,9 @@
 import { Inline } from 'slate'
 ```
 
-A inline node in a Slate [`Document`](./document.md). Inline nodes implement the [`Node`](./node.md) interface.
+Slate [`Document`](./document.md) Inline 节点实现了 [`Node`](./node.md) 接口。
 
-Inline nodes may contain nested inline nodes and text nodes—just like in the DOM. They always contain at least one text node child.
+Block 节点可以包含嵌套的 inline 节点以及 text 节点——就像 DOM 一样。它始终包含至少一个 text 节点作为子节点。
 
 - [Properties](#properties)
   - [`data`](#data)
@@ -43,29 +43,29 @@ Inline({
 ### `data`
 `Immutable.Map`
 
-Arbitrary data associated with the node. Defaults to an empty `Map`.
+与节点相关的任意数据。默认为一个空 `Map`。
 
 ### `isVoid`
 `Boolean`
 
-Whether the node is a "void" node, meaning that it has no child content (eg. emoji, icons, etc.). Defaults to `false`.
+节点是否为 "void"，这意味着其没有子内容（如 emoji 表情、图标等）。默认为 `false`。
 
-Note that even though a node may be "void", it will still contain a single, empty [`Text`](./text.md) node for consistency across other operations. However, when rendered by Slate that single [`Text`](./text.md) node will not be visible.
+注意即便节点为 "void"，它仍然会包含一个空的 [`Text`](./text.md) 节点以保证适配其它操作的一致性。不过，在 Slate 渲染时这个 [`Text`](./text.md) 节点是不可见的。
 
 ### `key`
 `String`
 
-A unique identifier for the node.
+节点的唯一标识。
 
 ### `nodes`
 `Immutable.List`
 
-A list of child nodes. Defaults to a list with a single text node child.
+子节点列表。默认为包含单一文本节点的列表。
 
 ### `type`
 `String`
 
-The custom type of the node (eg. `link` or `hashtag`).
+节点的自定义类型（如 `link` 或 `hashtag`）。
 
 
 ## Computed Properties
@@ -73,40 +73,42 @@ The custom type of the node (eg. `link` or `hashtag`).
 ### `kind`
 `String`
 
-An immutable string value of `'inline'` for easily separating this node from [`Block`](./block.md) or [`Text`](./text.md) nodes.
+不可变的 String，值为 `'inline'` 以便于将这类节点与 [`Block`](./block.md) 和 [`Text`](./text.md) 节点区分开。
 
 ### `text`
 `String`
 
-A concatenated string of all of the descendant [`Text`](./text.md) nodes of this node.
+该节点的全部子 [`Text`](./text.md) 节点连接成的字符串。
 
 
 ## Static Methods
 
 ### `Inline.create`
-`Inline.create(properties: Object) => Block`
+`Inline.create(properties: Object) => Inline`
 
-Create a block from a plain Javascript object of `properties`.
+<!-- TODO 原文签名与描述错误 -->
+
+由原生 JS `properties` 对象创建一个 inline。
 
 ### `Inline.createList`
 `Inline.createList(array: Array) => List`
 
-Create a list of inline nodes from a plain Javascript `array`.
+由原生 JS `array` 数组创建一个 inline 列表。
 
 ### `Inline.fromJSON`
 `Inline.fromJSON(object: Object) => Inline`
 
-Create an inline from a JSON `object`.
+由 JSON `object` 创建一个 inline。
 
 ### `Inline.isInline`
 `Inline.isInline(maybeInline: Any) => Boolean`
 
-Returns a boolean if the passed in argument is a `Inline`.
+返回传入的参数是否为 `Inline` 的 boolean 值。
 
 
 ## Node Methods
 
-Inlines implement the [`Node`](./node.md) interface. For information about all of the node methods, see the [`Node` reference](./node.md).
+Inline 实现了 [`Node`](./node.md) 接口。对所有 node 方法的相关信息，参见 [`Node` 文档](./node.md)。
 
 
 ## Instance Methods
@@ -114,4 +116,4 @@ Inlines implement the [`Node`](./node.md) interface. For information about all o
 ### `toJSON`
 `toJSON() => Object`
 
-Returns a JSON representation of the inline.
+返回 inline 的 JSON 表示。
