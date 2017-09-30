@@ -5,9 +5,9 @@
 import { Character } from 'slate'
 ```
 
-A character in a [`Text`](./text.md) node.
+[`Text`](./text.md) 节点内的一个字符。
 
-Characters are how Slate associates [`Marks`](./mark.md) with a range of text, for formatting.
+Character 是 Slate 将一段文本与 [`Mark`](./mark.md) 相组合以控制格式的方式。
 
 - [Properties](#properties)
   - [`marks`](#marks)
@@ -33,12 +33,12 @@ Character({
 ### `marks`
 `Immutable.Set`
 
-A set of [`Marks`](./mark.md) attached to the character.
+应用到 character 上的 [`Mark`](./mark.md) 集合。
 
 ### `text`
 `String`
 
-The text string of the character.
+Character 对应的文本字符串。
 
 
 ## Static Methods
@@ -46,22 +46,22 @@ The text string of the character.
 ### `Character.create`
 `Character.create(properties: Object) => Character`
 
-Create a character from a plain Javascript object of `properties`.
+由原生 JS `properties` 对象构造出一个 character。
 
 ### `Character.createList`
 `Character.createList(array: Array) => List`
 
-Create a list of characters from a plain Javascript `array`.
+由原生 JS `array` 数组构造出一个 character 列表。
 
 ### `Character.fromJSON`
 `Character.fromJSON(object: Object) => Character`
 
-Create a character from a JSON `object`.
+由 JSON `object` 创建一个 character。
 
 ### `Character.isCharacter`
 `Character.isCharacter(maybeCharacter: Any) => Boolean`
 
-Returns a boolean if the passed in argument is a `Character`.
+返回传入参数是否为 `Character` 的布尔值。
 
 
 ## Instance Methods
@@ -69,4 +69,4 @@ Returns a boolean if the passed in argument is a `Character`.
 ### `toJSON`
 `toJSON() => Object`
 
-Returns a JSON representation of the character.
+返回 character 的 JSON 表示。
