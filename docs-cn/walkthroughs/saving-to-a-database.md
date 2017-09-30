@@ -1,15 +1,15 @@
 
 <br/>
-<p align="center"><strong>Previous:</strong><br/><a href="./using-plugins.md">Using Plugins</a></p>
+<p align="center"><strong>Previous:</strong><br/><a href="./using-plugins.md">使用插件</a></p>
 <br/>
 
-# Saving to a Database
+# 保存到数据库
 
-Now that you've learned the basics of how to add functionality to the Slate editor, you might be wondering how you'd go about saving the content you've been editing, such that you can come back to your app later and have it load.
+既然现在你已经了解了 Slate 编辑器的基本功能了，现在你关注的可能是如何存储你编辑的内容，这样就可以在返回应用的时候下载了。
 
-In this guide, we'll show you how to add logic to save your Slate content to a database for storage and retrieval later.
+在这篇教程中，我们将展示如何控制 Slate 存取编辑内容到数据库。
 
-Let's start with a basic editor:
+我们从一个基础编辑器开始：
 
 ```js
 import { Editor, State } from 'slate'
@@ -57,11 +57,11 @@ class App extends React.Component {
 }
 ```
 
-That will render a basic Slate editor on your page, and when you type things will change. But if you refresh the page, everything will be reverted back to its original state—nothing saves!
+这会在页面上渲染出一个基础的 Slate 编辑器，在输入时内容会变动。不过如果你刷新页面，所有内容都会回退到一开始的空白状态！
 
-What we need to do is save the changes you make somewhere. For this example, we'll just be using [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), but it will give you an idea for where you'd need to add your own database hooks.
+我们现在需要把你的变更保存下来。在这个示例中，我们只会使用 [Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)，不过这已经足够让你在实际实现数据库存取时有一个基础的概念了。
 
-So, in our `onChange` handler, we need to save the `state`. But the `state` argument that `onChange` receives is an immutable object, so we can't just save it as-is. We need to serialize it to a format we understand first, like JSON!
+所以，我们需要在 `onChange` 回调中保存 `state` 状态。不过，`onChange` 中接受的 `state` 参数是一个不可变对象，我们不能够直接保存它。我们需要首先将其序列化为一个我们能够理解的格式，比如 JSON！
 
 ```js
 const initialState = State.fromJSON({
@@ -92,7 +92,7 @@ class App extends React.Component {
   }
 
   onChange = ({ state }) => {
-    // Save the state to Local Storage.
+    // 将 state 保存到 Local Storage。
     const content = JSON.stringify(state.toJSON())
     localStorage.setItem('content', content)
 
@@ -111,12 +111,12 @@ class App extends React.Component {
 }
 ```
 
-Now whenever you edit the page, if you look in Local Storage, you should see the `content` value changing.
+现在不管在什么时候编辑页面，只要你查看 Local Storage，你就能看到 `content` 值发生改变。
 
-But... if you refresh the page, everything is still reset. That's because we need to make sure the initial state is pulled from that same Local Storage location, like so:
+不过…如果你刷新页面，一切都要从头再来了。这是因为我们需要保证初始状态从同样的 Local Storage 位置中拉取出来，像这样：
 
 ```js
-// Update the initial content to be pulled from Local Storage if it exists.
+// 保证只要 Local Storage 中存在初始状态，则从中拉取之。
 const existingState = JSON.parse(localStorage.getItem('content'))
 const initialState = State.fromJSON(existingState || {
   document: {
@@ -164,9 +164,9 @@ class App extends React.Component {
 }
 ```
 
-Now you should be able to save changes across refreshes!
+现在你就能够在页面刷新后保存变更了！
 
-However, if you inspect the change handler, you'll notice that it's actually saving the Local Storage value on _every_ change to the editor, even when only the selection changes! This is because `onChange` is called for _every_ change. For Local Storage this doesn't really matter, but if you're saving things to a database via HTTP request this would result in a lot of unnecessary requests. You can fix this by checking against the previous `document` value.
+不过，如果你检查 change 回调，会发现目前 _每次_ 编辑器中的变更都会存储到 Local Storage 中，甚至只有选择范围变更时都会！这是因为 `onChange` 在 _每次_ 变更时都被调用了。对于 Local Storage 来说这倒没什么，不过如果你是将内容通过 HTTP 请求存储到数据库的话，这就会带来许多不必要的请求。你可以通过对比前一状态下 `document` 值的方式来修复这个问题。
 
 ```js
 const existingState = JSON.parse(localStorage.getItem('content'))
@@ -198,7 +198,7 @@ class App extends React.Component {
   }
 
   onChange = ({ state }) => {
-    // Check to see if the document has changed before saving.
+    // 保存前检查 document 是否改变。
     if (state.document != this.state.state.document) {
       const content = JSON.stringify(state.toJSON())
       localStorage.setItem('content', content)
@@ -219,14 +219,14 @@ class App extends React.Component {
 }
 ```
 
-Now you're content will be saved only when the content itself changes!
+现在你的内容就只有在变更时才会保存了！
 
-Success—you've got JSON in your database.
+搞定—你可以向数据库存储 JSON 了。
 
-But what if you want something other than JSON? Well, you'd need to serialize your state differently. For example, if you want to save your content as plain text instead of JSON, you can use the `Plain` serializer that ships with Slate, like so:
+不过如果你需要 JSON 以外的格式呢？好吧，你需要以不同的方式序列化 state 了。比如，如果你需要以纯文本而非 JSON 的形式存储内容，你可以通过 Slate 自带的 `Plain` 序列化器来实现。像这样：
 
 ```js
-// Switch to using the Plain serializer.
+// 切换到 Plain 序列化器。
 import { Editor, Plain } from 'slate'
 
 const existingState = localStorage.getItem('content')
@@ -259,11 +259,11 @@ class App extends React.Component {
 }
 ```
 
-That works! Now you're working with plain text.
+可以了！现在你保存的内容就是纯文本了。
 
-However, sometimes you may want something a bit more custom, and a bit more complex... good old fashioned HTML. In that case, check out the next guide...
+不过，有时候你可能会需要一些更加定制化的内容，并且也会更复杂…像经典的 HTML。这时候，看看下一篇教程吧…
 
 
 <br/>
-<p align="center"><strong>Next:</strong><br/><a href="./saving-and-loading-html-content.md">Saving and Loading HTML Content</a></p>
+<p align="center"><strong>Next:</strong><br/><a href="./saving-and-loading-html-content.md">存取 HTML 内容</a></p>
 <br/>
