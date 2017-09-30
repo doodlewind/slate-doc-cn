@@ -5,11 +5,11 @@
 
 # 使用插件
 
-到目前为止，我们所学习的内容都是在编写为特定的 Slate 编辑器定制的一次性业务逻辑。不过，Slate 最漂亮的一点之一在于它的插件系统，以及它如何让你减少编写一次性业务代码的方式。
+到目前为止，我们所学习的内容都是在编写为特定的 Slate 编辑器定制的一次性业务逻辑。不过，Slate 最漂亮的地方之一在于它的插件系统，它能够让你少些写这样的一次性业务代码。
 
 在上一节中我们编写了一些实用的代码，实现了在按键时为选择范围内的文本添加 **加粗** 格式。不过这些代码并不仅局限在 **加粗** 文本上，只要我们更改一些变量，它同样能很容易地应用到 _斜体_ 文本或 `代码块` 文本上。
 
-所以让我们将业务逻辑抽取为可复用的插件，来开闭 _任何_ 按键事件触发的 _任何_ mark 类型啊。
+所以让我们将业务逻辑抽取为可复用的插件，来开闭 _任何_ 按键事件触发的 _任何_ mark 类型吧。
 
 从之前的应用开始：
 
@@ -75,7 +75,7 @@ function MarkHotkey(options) {
       // 检查按下的键是否匹配 `code` 选项。
       if (!event.metaKey || event.which != code || event.altKey != isAltKey) return
 
-      // 避免默认字符被插入。
+      // 避免插入默认字符。
       event.preventDefault()
 
       // 根据 `type` 来开闭 mark。
@@ -186,7 +186,7 @@ class App extends React.Component {
 
 这就是了！我们只做了一点微小的工作就为编辑器实现了一堆新特性！并且，我们能够将快捷键逻辑抽离并测试，使得代码更容易维护。
 
-其实，除非你有键值有特殊的了解，你可能都不知道我们当前的快捷键是什么。
+其实，除非你对键值有特殊的了解，你可能都不知道我们当前的快捷键是什么。
 
 我们来解决这个问题吧。
 
@@ -210,7 +210,7 @@ function MarkHotkey(options) {
 
   return {
     onKeyDown(event, data, change) {
-      // 改变比较方式来使用按键名称。
+      // 改变比较方式，使用按键名称进行比较。
       if (!event.metaKey || keycode(event.which) != key || event.altKey != isAltKey) return
       event.preventDefault()
       change.toggleMark(type)
@@ -265,7 +265,7 @@ class App extends React.Component {
 }
 ```
 
-这就是插件的强大支持了。插件在增强代码表达能力的同时也使得代码更精简。并且，由于 Slate 是将插件作为一等公民设计的，使用它们也是非常简单的！
+这就是插件的强大之处了。插件在增强代码表达能力的同时也使得代码更精简。并且，由于 Slate 是将插件作为一等公民设计的，使用它们也是非常简单的！
 
 <br/>
 <p align="center"><strong>Next:</strong><br/><a href="./saving-to-a-database.md">保存到数据库</a></p>
