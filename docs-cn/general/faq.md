@@ -1,31 +1,30 @@
 
 # FAQ
 
-A series of common questions people have about Slate:
+这是一些关于 Slate 的常见问题：
 
-- [Why is content pasted as plain text?](#why-is-content-is-pasted-as-plain-text)
-- [What can a `Block` node have as its children?](#what-can-a-block-node-have-as-its-children)
-- [What browsers and devices does Slate support?](#what-browsers-and-devices-does-slate-support)
+- [为什么粘贴的内容转换成了纯文本？](#为什么粘贴的内容转换成了纯文本？)
+- [Block 节点能有什么样的子节点？](#Block 节点能有什么样的子节点？)
+- [Slate 支持什么浏览器和设备？](#Slate 支持什么浏览器和设备？)
 
+### 为什么粘贴的内容转换成了纯文本？
 
-### Why is content pasted as plain text?
+和其它编辑器不同，Slate 的核心原则之一是它 **不** 对编辑内容预设一个特殊的 "schema"。这意味着 Slate 的核心对【块级引用】和【加粗格式】是不了解的。
 
-One of Slate's core principles is that, unlike most other editors, it does **not** prescribe a specific "schema" to the content you are editing. This means that Slate's core has no concept of "block quotes" or "bold formatting".
+在多数情形下，这都能提高灵活性且没有太多问题，不过在一些特殊场景下你也需要投入一些额外的工作，而粘贴就是这些场景之一。
 
-For this most part, this leads to increased flexbility without many downsides, but there are certain cases where you have to do a bit more work. Pasting is one of those cases.
-
-Since Slate knows nothing about your schema, it can't know how to parse pasted HTML content (or other content). So, by default whenever a user pastes content into a Slate editor, it will parse it as plain text. If you want it to be smarter about pasted content, you need to define an [`onPaste`](../reference/slate-react/editor.md#onpaste) handler that parses the content as you wish.
-
-
-### What can a `Block` node have as its children?
-
-With Slate, you can use `Block` node to created complex nested structures. Block nodes may contain nested block nodes (both void and non-void), inline nodes, text nodes and just regular DOM elements (with `contentEditable = {false}`).
-
-If you have an element that is not going to be editable, you can choose between a `void` node or just a DOM element with `contentEditable = {false}`. Opt for the `void` node if you would like it represented in the Slate schema, and for Slate to be aware of it.
+由于 Slate 对你的 schema 没有任何了解，因而它是不知道如何解析粘贴入的 HTML（或其它内容）的。所以，默认情况下不论用户向 Slate 编辑器中粘贴入了什么内容，它都会将其解析为纯文本。如果你希望对粘贴内容有更智能的控制，你需要定义一个 [`onPaste`](../reference/slate-react/editor.md#onpaste) 回调以按照你的预期来解析内容。
 
 
-### What browsers and devices does Slate support?
+### Block 节点能有什么样的子节点？
 
-Slate's goal is to support all the modern browsers on both desktop and mobile devices.
+在 Slate 中，你可以使用 `Block` 节点来构建复杂的结构。Block 节点可以包含嵌套的 block 节点（既可以为空，也可以为非空）、inline 节点、文本节点和普通的 DOM 内容（要求 `contentEditable = {false}`）。
 
-However, right now Slate is in beta, so its support is not as full as it will later be. It's currently tested against the latest few versions of Chrome, Firefox and Safari on desktops. It isn't currently tested against Internet Explorer or Edge, or against mobile devices. If you want to add more browser or device support, we'd love for you to submit a pull request!
+如果需要处理一个不需可编辑的元素，你可以选择使用 `void` 节点或 `contentEditable = {false}` 的 DOM 元素。如果你需要在 Slate schema 中表达这个内容，并让 Slate 处理它，那么这里倾向于使用前者。
+
+
+### Slate 支持什么浏览器和设备？
+
+Slate 的目标是支持包括桌面和移动设备在内的所有现代浏览器。
+
+不过，现在 Slate 还处于 beta 状态，因此支持程度还没有达到预期。目前，它在最新的几个桌面版 Chrome、Firefox 和 Safari 版本中测试过。它还没有在 Internet Explorer、Edge 和移动设备上测试。如果你想支持更多的浏览器或设备，我们非常欢迎你提出 pull request！
