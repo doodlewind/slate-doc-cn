@@ -5,9 +5,9 @@
 import { Block } from 'slate'
 ```
 
-A block node in a Slate [`Document`](./document.md). Block nodes implement the [`Node`](./node.md) interface.
+一个 Slate [`Document`](./document.md) 中的块级节点。Block 节点实现了 [`Node`](./node.md) 接口。
 
-Block nodes may contain nested block nodes, inline nodes, and text nodes—just like in the DOM. They always contain at least one text node child.
+Block 节点可以包含嵌套的 block 节点、inline 节点，以及 text 节点——就像 DOM 一样。它始终包含至少一个 text 节点作为子节点。
 
 - [Properties](#properties)
   - [`data`](#data)
@@ -43,29 +43,29 @@ Block({
 ### `data`
 `Immutable.Map`
 
-Arbitrary data associated with the node. Defaults to an empty `Map`.
+与节点相关的任意数据。默认为一个空 `Map`。
 
 ### `isVoid`
 `Boolean`
 
-Whether the node is a "void" node, meaning that it has no child content (eg. images, videos, etc.). Defaults to `false`.
+节点是否为 "void"，这意味着其没有子内容（如图片、视频等）。默认为 `false`。 
 
-Note that even though a node may be "void", it will still contain a single, empty [`Text`](./text.md) node for consistency across other operations. However, when rendered by Slate that single [`Text`](./text.md) node will not be visible.
+注意即便节点为 "void，它仍然会包含一个空的 [`Text`](./text.md) 节点以保证适配其它操作的一致性。不过，在 Slate 渲染时这个 [`Text`](./text.md) 节点是不可见的。
 
 ### `key`
 `String`
 
-A unique identifier for the node.
+节点的唯一标识。
 
 ### `nodes`
 `Immutable.List`
 
-A list of child nodes. Defaults to a list with a single text node child.
+子节点列表。默认为包含单一文本节点的列表。
 
 ### `type`
 `String`
 
-The custom type of the node (eg. `blockquote` or `list-item`).
+节点的自定义类型（如 `blockquote` 或 `list-item`）。
 
 
 ## Computed Properties
@@ -73,12 +73,12 @@ The custom type of the node (eg. `blockquote` or `list-item`).
 ### `kind`
 `String`
 
-An immutable string value of `'block'` for easily separating this node from [`Inline`](./inline.md) or [`Text`](./text.md) nodes.
+不可变的 String，值为 `block` 以便于将这类节点与 [`Inline`](./inline.md) 和 [`Text`](./text.md) 节点区分开。
 
 ### `text`
 `String`
 
-A concatenated string of all of the descendant [`Text`](./text.md) nodes of this node.
+该节点的全部子 [`Text`](./text.md) 节点连接成的字符串。
 
 
 ## Static Methods
@@ -86,27 +86,27 @@ A concatenated string of all of the descendant [`Text`](./text.md) nodes of this
 ### `Block.create`
 `Block.create(properties: Object) => Block`
 
-Create a block from a plain Javascript object of `properties`.
+由原生 JS 对象 `properties` 创建一个 block。
 
 ### `Block.createList`
 `Block.createList(array: Array) => List`
 
-Create a list of block nodes from a plain Javascript `array`.
+由原生 JS `array` 数组创建一个 block 列表。
 
 ### `Block.fromJSON`
 `Block.fromJSON(object: Object) => Block`
 
-Create a block from a JSON `object`.
+由 JSON `object` 创建一个 block。
 
 ### `Block.isBlock`
 `Block.isBlock(value: Any) => Boolean`
 
-Returns a boolean if the passed in `value` is a `Block`.
+返回传入的 `value` 是否为 `Block` 的 boolean 值。
 
 
 ## Node Methods
 
-Blocks implement the [`Node`](./node.md) interface. For information about all of the node methods, see the [`Node` reference](./node.md).
+Block 实现了 [`Node`](./node.md) 接口。对所有 node 实例方法的相关信息，参见 [`Node` 文档](./node.md)。
 
 
 ## Instance Methods
@@ -114,4 +114,4 @@ Blocks implement the [`Node`](./node.md) interface. For information about all of
 ### `toJSON`
 `toJSON() => Object`
 
-Returns a JSON representation of the block.
+返回 block 的 JSON 表示。
