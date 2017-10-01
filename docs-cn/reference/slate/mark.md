@@ -5,7 +5,7 @@
 import { Mark } from 'slate'
 ```
 
-A formatting mark that can be associated with [`Characters`](./mark.md). Marks are how Slate represents rich formatting like **bold** or _italic_.
+与 [`Characters`](./mark.md) 相结合的格式化标记。Mark 是 Slate 表示如 **加粗** 和 _斜体_ 等富文本格式的方式。
 
 - [Properties](#properties)
   - [`data`](#data)
@@ -31,12 +31,12 @@ Mark({
 ### `data`
 `Data`
 
-A map of [`Data`](./data.md).
+[`Data`](./data.md) 格式的 map。.
 
 ### `type`
 `String`
 
-The custom type of the mark (eg. `bold` or `italic`).
+mark 的自定义格式（如 `bold` 或 `italic`）。
 
 
 ## Static Methods
@@ -44,22 +44,22 @@ The custom type of the mark (eg. `bold` or `italic`).
 ### `Mark.create`
 `Mark.create(properties: Object) => Mark`
 
-Create a mark from a plain Javascript object of `properties`.
+由原生 JS `properties` 对象构造出一个 mark。
 
 ### `Mark.createSet`
 `Mark.createSet(array: Array) => Set`
 
-Create a set of marks from a plain Javascript `array`.
+由原生 JS `array` 数组构造出一个 character 集合。
 
 ### `Mark.fromJSON`
 `Mark.fromJSON(object: Object) => Mark`
 
-Create a mark from a JSON `object`.
+由 JSON `object` 创建一个 mark。
 
 ### `Mark.isMark`
 `Mark.isMark(maybeMark: Any) => Boolean`
 
-Returns a boolean if the passed in argument is a `Mark`.
+返回传入参数是否为 `Mark` 的布尔值。
 
 
 ## Instance Methods
@@ -67,4 +67,4 @@ Returns a boolean if the passed in argument is a `Mark`.
 ### `toJSON`
 `toJSON() => Object`
 
-Returns a JSON representation of the mark.
+返回 mark 的 JSON 表示。
