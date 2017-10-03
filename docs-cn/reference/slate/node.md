@@ -1,7 +1,7 @@
 
 # `Node`
 
-`Node` is not a publicly accessible module, but instead an interface that [`Document`](./document.md), [`Block`](./block.md) and [`Inline`](./inline.md) all implement.
+`Node` 不是向外开放的模块，而是由 [`Document`](./document.md)、[`Block`](./block.md) 与 [`Inline`](./inline.md) 共同实现的接口。
 
 - [Properties](#properties)
   - [`nodes`](#nodes)
@@ -48,16 +48,16 @@
 ### `key`
 `String`
 
-A short-lived, unique identifier for the node.
+暂时的唯一标记符，用于标记该 node。
 
-By default, keys are **not** meant to be long-lived unique identifiers for nodes that you might store in a database, or elsewhere. They are meant purely to identify a node inside of a single Slate instance. For that reason, they are simply auto-incrementing strings. (eg. `'0'`, `'1'`, `'2'`, ...) 
+默认情况下，key **并不是** 可用于在数据库等场景下对 node 的持久标识。它们仅用于在一个独立的 Slate 实例内部标识 node。因此，它们只是简单的自增字符串。（如 `'0'`、`'1'`、`'2'`……）
 
-If you want to make your keys uniqueness long-lived, you'll need to supply your own key generating function via the [`setKeyGenerator`](../utils/utils.md#setkeygenerator) util.
+如果希望将 key 的唯一性持久化，你需要使用 [`setKeyGenerator`](../utils/utils.md#setkeygenerator) util 以提供自己的 key 生成函数。
 
 ### `nodes`
 `Immutable.List`
 
-A list of child nodes. Defaults to a list with a single text node child.
+子节点列表。默认为包含单一文本节点的列表。
 
 
 ## Computed Properties
@@ -65,12 +65,14 @@ A list of child nodes. Defaults to a list with a single text node child.
 ### `kind`
 `String`
 
-An immutable string value of `'block'` for easily separating this node from [`Inline`](./inline.md) or [`Text`](./text.md) nodes.
+<!-- TODO 修复原文 typo -->
+
+不可变的 String，值为 `'document'`、`'block'`、`'inline'` 或 `'text'` 以区分节点类型。
 
 ### `text`
 `String`
 
-A concatenated string of all of the descendant [`Text`](./text.md) nodes of this node.
+该节点的全部子 [`Text`](./text.md) 节点连接成的字符串。
 
 
 ## Methods
@@ -78,159 +80,159 @@ A concatenated string of all of the descendant [`Text`](./text.md) nodes of this
 ### `filterDescendants`
 `filterDescendants(iterator: Function) => List`
 
-Deeply filter the descendant nodes of a node by `iterator`.
+根据 `iterator` 深度过滤节点的多个后代节点。
 
 ### `findDescendant`
 `findDescendant(iterator: Function) => Node || Void`
 
-Deeply find a descendant node by `iterator`.
+根据 `iterator` 深度查找单个后代节点。
 
 ### `getBlocksAtRange`
 `getBlocksAtRange(range: Selection) => List`
 
-Get all of the bottom-most [`Block`](./block.md) nodes in a `range`.
+获取 `range` 中全部最底层的 [`Block`](./block.md) 节点。
 
 ### `getBlocks`
 `getBlocks() => List`
 
-Get all of the bottom-most [`Block`](./block.md) node descendants.
+获取节点后代中全部最底层的 [`Block`](./block.md) 节点。
 
 ### `getCharactersAtRange`
 `getCharactersAtRange(range: Selection) => List`
 
-Get a list of all of the [`Characters`](./character.md) in a `range`.
+获取 `range` 中的 [`Character`](./character.md) 列表。
 
 ### `getChild`
 `getChild(key: String || Node) => Node || Void`
 
-Get a child by `key`.
+根据 `key` 获取子节点。
 
 ### `getClosestBlock`
 `getClosestBlock(key: String || Node) => Node || Void`
 
-Get the closest [`Block`](./block.md) node to a descendant node by `key`.
+根据后代节点的 `key` 获得与其最接近的 [`Block`](./block.md) 节点。
 
 ### `getClosestInline`
 `getClosestInline(key: String || Node) => Node || Void`
 
-Get the closest [`Inline`](./inline.md) node to a descendant node by `key`.
+根据后代节点的 `key` 获得与其最接近的 [`Inline`](./inline.md) 节点。
 
 ### `getClosest`
 `getClosest(key: String || Node, match: Function) => Node || Void`
 
-Get the closest parent node of a descendant node by `key` that matches a `match` function.
+根据后代节点的 `key` 获得与其最接近且满足 `match` 函数的父节点。
 
 ### `getDepth`
 `getDepth(key: String || Node) => Number`
 
-Get the depth of a descendant node by `key`.
+根据 `key` 获得后代节点的深度。
 
 ### `getDescendant`
 `getDescendant(key: String || Node) => Node || Void`
 
-Get a descendant node by `key`.
+根据 `key` 获取后代节点。
 
 ### `getFirstText`
 `getFirstText() => Node || Void`
 
-Get the first child text node inside a node.
+获得节点中第一个 text 子节点。
 
 ### `getFragmentAtRange`
 `getFragmentAtRange(range: Selection) => Document`
 
-Get a document fragment of the nodes in a `range`.
+获得节点落在 `range` 中的文档 fragment。
 
 ### `getFurthest`
 `getFurthest(key: String, iterator: Function) => Node || Null`
 
-Get the furthest parent of a node by `key` that matches an `iterator`.
+根据 `key` 获得匹配 `iterator` 的最远父节点。
 
 ### `getFurthestAncestor`
 `getFurthestAncestor(key: String) => Node || Null`
 
-Get the furthest ancestor of a node by `key`.
+根据 `key` 获得最远祖先节点。
 
 ### `getFurthestBlock`
 `getFurthestBlock(key: String) => Node || Null`
 
-Get the furthest block parent of a node by `key`.
+根据 `key` 获得最远的 block 祖先节点。
 
 ### `getFurthestInline`
 `getFurthestInline(key: String) => Node || Null`
 
-Get the furthest inline parent of a node by `key`.
+根据 `key` 获得最远的 inline 祖先节点。
 
 ### `getFurthestOnlyChildAncestor`
 `getFurthestOnlyChildAncestor(key: String) => Node || Null`
 
-Get the furthest ancestor of a node by `key` that has only one child.
+根据 `key` 获得仅有一个子节点的最远祖先节点。
 
 ### `getInlinesAtRange`
 `getInlinesAtRange(range: Selection) => List`
 
-Get all of the top-most [`Inline`](./inline.md) nodes in a `range`.
+获得 `range` 中所有最顶层的 [`Inline`](./inline.md) 节点。
 
 ### `getLastText`
 `getLastText() => Node || Void`
 
-Get the last child text node inside a node.
+获得节点中最后一个子 text 节点。
 
 ### `getMarksAtRange`
 `getMarksAtRange(range: Selection) => Set`
 
-Get a set of all of the marks in a `range`.
+获得 `range` 中全部 mark 的集合。
 
 ### `getNextBlock`
 `getNextBlock(key: String || Node) => Node || Void`
 
-Get the next, bottom-most [`Block`](./block.md) node after a descendant by `key`.
+获得 `key` 节点后代中的下一个最底层 [`Block`](./block.md) 节点。
 
 ### `getNextSibling`
 `getNextSibling(key: String || Node) => Node || Void`
 
-Get the next sibling of a descendant by `key`.
+根据 `key` 在后代中查找下一个兄弟节点。
 
 ### `getNextText`
 `getNextText(key: String || Node) => Node || Void`
 
-Get the next [`Text`](./text.md) node after a descendant by `key`.
+根据 `key` 获得后代中的下一个 [`Text`](./text.md) 节点。
 
 ### `getParent`
 `getParent(key: String || Node) => Node || Void`
 
-Get the parent node of a descendant by `key`.
+根据 `key` 获得后代中的父节点。
 
 ### `getPreviousBlock`
 `getPreviousBlock(key: String || Node) => Node || Void`
 
-Get the previous, bottom-most [`Block`](./block.md) node before a descendant by `key`.
+获得 `key` 节点后代中的上一个最底层 [`Block`](./block.md) 节点。
 
 ### `getPreviousSibling`
 `getPreviousSibling(key: String || Node) => Node || Void`
 
-Get the previous sibling of a descendant by `key`.
+根据 `key` 在后代中查找上一个兄弟节点。
 
 ### `getPreviousText`
 `getPreviousText(key: String || Node) => Node || Void`
 
-Get the previous [`Text`](./text.md) node before a descendant by `key`.
+根据 `key` 获得后代中的上一个 [`Text`](./text.md) 节点。
 
 ### `getTextAtOffset`
 `getTextAtOffset(offset: Number) => Text || Void`
 
-Get the [`Text`](./text.md) node at an `offset`.
+获得 `offset` 位置的 [`Text`](./text.md) 节点。
 
 ### `getTextsAtRange`
 `getTextsAtRange(range: Selection) => List`
 
-Get all of the [`Text`](./text.md) nodes in a `range`.
+获得 `range` 中所有的 [`Text`](./text.md) 节点。
 
 ### `hasChild`
 `hasChild(key: String || Node) => Boolean`
 
-Check whether the node has a child node by `key`.
+检查节点是否有键值为 `key` 的子节点。
 
 ### `hasDescendant`
 `hasDescendant(key: String || Node) => Boolean`
 
-Check whether the node has a descendant node by `key`.
+检查节点是否有键值为 `key` 的后代节点。
