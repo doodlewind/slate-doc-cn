@@ -5,11 +5,11 @@
 import { Selection } from 'slate'
 ```
 
-A selection of a Slate [`Document`](./document.md). Selections in Slate are modeled after the native [DOM Selection API](https://developer.mozilla.org/en-US/docs/Web/API/Selection), using terms like "anchor", "focus" and "collapsed".
+Slate [`Document`](./document.md) 中的选择范围。Slate 中的 Selection 是按照原生 [DOM Selection API](https://developer.mozilla.org/en-US/docs/Web/API/Selection) 设计的，使用形如 "anchor"、"focus" 和 "collapsed" 的术语。
 
-The "anchor" is the fixed point in a selection, and the "focus" is the non-fixed point, which may move when you move the cursor (eg. when pressing `Shift + Right Arrow`).
+"anchor" 是选择范围中固定不动的端点，而 "focus" 为非固定的端点，在移动光标位置时可能移动（如按下 `Shift + →` 时）。
 
-Often times, you don't need to specifically know which point is the "anchor" and which is the "focus", and you just need to know which comes first and last in the document. For these cases, there are many convenience equivalent properties and methods referring to the "start" and "end" points.
+很多情况下，你不需要知道哪个端点是 "anchor"，哪个端点又是 "focus"，只想知道它们在文档中的前后顺序。这时，通过 "start" 和 "end" 点可以使用很多便捷而等效的属性和方法。
 
 - [Properties](#properties)
   - [`anchorKey`](#anchorkey)
@@ -58,64 +58,64 @@ Selection({
 ### `anchorKey`
 `String`
 
-The key of the text node at the selection's anchor point.
+选择范围锚点所在文本节点的 key。
 
 ### `anchorOffset`
 `Number`
 
-The number of characters from the start of the text node at the selection's anchor point.
+从选择范围锚点所在文本节点开始位置起的字符数量。
 
 ### `focusKey`
 `String`
 
-The key of the text node at the selection's focus point.
+选择范围焦点所在文本节点的 key。
 
 ### `focusOffset`
 `Number`
 
-The number of characters from the start of the text node at the selection's focus point.
+从选择范围焦点所在文本节点开始位置起的字符数量。
 
 ### `isBackward`
 `Boolean`
 
-Whether the selection is backward. A selection is considered "backward" when its focus point references a location earlier in the document than its anchor point.
+选择范围是否反向。若选择范围焦点在文档中位置出现于锚点前，则认为其【反向】。
 
 ### `isFocused`
 `Boolean`
 
-Whether the selection currently has focus.
+选择范围是否具有焦点。
 
 
 ## Computed Properties
 
-These properties aren't supplied when creating a selection, but are instead computed based on the real properties.
+在创建选择范围时并不提供这些属性，它们是通过真实属性计算得出的。
 
 ### `isBlurred`
 `Boolean`
 
-The opposite of `isFocused`, for convenience.
+为方便起见，与 `isFocused` 相反。
 
 ### `isCollapsed`
 `Boolean`
 
-Whether the selection is collapsed. A selection is considered "collapsed" when the anchor point and focus point of the selection are the same.
+选择范围是否收缩。当选择范围中锚点与焦点相等时认为其【收缩】。
 
 ### `isExpanded`
 `Boolean`
 
-The opposite of `isCollapsed`, for convenience.
+为方便起见，与 `isExpanded` 相反。
 
 ### `isForward`
 `Boolean`
 
-The opposite of `isBackward`, for convenience.
+为方便起见，与 `isBackward` 相反。
 
 ### `startKey`
 ### `startOffset`
 ### `endKey`
 ### `endOffset`
 
-A few convenience properties for accessing the first and last point of the selection. When the selection is forward, `start` refers to the `anchor` point and `end` refers to the `focus` point. And when it's backward they are reversed.
+用于访问选择范围首尾位置的若干便捷属性。当选择范围为前向时，`start` 指向 `anchor` 端点，`end` 指向 `focus` 端点。当选择范围为后向时则相反。
 
 
 ## Static Methods
@@ -123,17 +123,17 @@ A few convenience properties for accessing the first and last point of the selec
 ### `Selection.create`
 `Selection.create(properties: Object) => Selection`
 
-Create a new `Selection` instance with `properties`.
+使用 `properties` 创建新 `Selection` 实例。
 
 ### `Selection.fromJSON`
 `Selection.fromJSON(object: Object) => Selection`
 
-Create a selection from a JSON `object`.
+由 JSON `object` 创建选择范围。
 
 ### `Selection.isSelection`
 `Selection.isSelection(maybeSelection: Any) => Boolean`
 
-Returns a boolean if the passed in argument is a `Selection`.
+返回传入参数是否为 `Selection` 的 boolean 值。
 
 
 ## Instance Methods
@@ -141,7 +141,7 @@ Returns a boolean if the passed in argument is a `Selection`.
 ### `toJSON`
 `toJSON() => Object`
 
-Returns a JSON representation of the selection.
+返回选择范围的 JSON 表示。
 
 
 ## Checking Methods
@@ -149,29 +149,29 @@ Returns a JSON representation of the selection.
 ### `has{Edge}AtStartOf`
 `has{Edge}AtStartOf(node: Node) => Boolean`
 
-Determine whether a selection has an edge at the start of a `node`. Where `{Edge}` can be one of: `Anchor`, `Focus`, `Start`, `End` or `Edge` (referring to either point).
+判断选择范围是否有位于 `node` 开始位置的边缘。`{Edge}` 可为 `Anchor`、`Focus`、`Start`、`End` 或 `Edge`（对应其中任一端点）。
 
 ### `has{Edge}AtEndOf`
 `has{Edge}AtEndOf(node: Node) => Boolean`
 
-Determine whether a selection has an edge at the end of a `node`. Where `{Edge}` can be one of: `Anchor`, `Focus`, `Start`, `End` or `Edge` (referring to either point).
+判断选择范围是否有位于 `node` 结束位置的边缘。`{Edge}` 可为 `Anchor`、`Focus`、`Start`、`End` 或 `Edge`（对应其中任一端点）。
 
 ### `has{Edge}Between`
 `has{Edge}Between(node: Node, start: Number, end: Number) => Boolean`
 
-Determine whether a selection has an edge in a `node` between its `start` and `end` offset. Where `{Edge}` can be one of: `Anchor`, `Focus`, `Start`, `End` or `Edge` (referring to either point).
+判断选择范围是否有位于 `node` 中 `start` 与 `end` 之间位置的边缘。`{Edge}` 可为 `Anchor`、`Focus`、`Start`、`End` 或 `Edge`（对应其中任一端点）。
 
 ### `has{Edge}In`
 `has{Edge}In(node: Node) => Boolean`
 
-Determine whether a selection has an edge inside a `node`. Where `{Edge}` can be one of: `Anchor`, `Focus`, `Start`, `End` or `Edge` (referring to either point).
+判断选择范围是否有位于 `node` 内位置的边缘。`{Edge}` 可为 `Anchor`、`Focus`、`Start`、`End` 或 `Edge`（对应其中任一端点）。
 
 ### `isAtStartOf`
 `isAtStartOf(node: Node) => Boolean`
 
-Determine whether the selection is at the start of a `node`.
+判断选择范围是否位于 `node` 开始位置。
 
 ### `isAtEndOf`
 `isAtEndOf(node: Node) => Boolean`
 
-Determine whether the selection is at the end of a `node`.
+判断选择范围是否位于 `node` 结束位置。
