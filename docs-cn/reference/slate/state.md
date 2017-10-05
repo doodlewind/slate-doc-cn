@@ -5,11 +5,11 @@
 import { State } from 'slate'
 ```
 
-A `State` is the top-level representation of data in Slate, containing both a [`Document`](./document.md) and a [`Selection`](./selection.md). It's what you need to paste into the Slate [`<Editor>`](../slate-react/editor.md) to render something onto the page.
+`State` 中包含 [`Document`](./document.md) 和 [`Selection`](./selection.md)，是 Slate 中对数据的顶层表示方式。你需要将它传入 Slate [`<Editor>`](../slate-react/editor.md) 中来渲染页面。
 
-All changes to the document and selection are also performed through the state object, so that they can stay in sync, and be propagated to its internal history of undo/redo state.
+所有对文档和选中范围的变更都是通过 state 对象实现的，这样它们能够保持同步，并衍生出其内部的撤销 / 重做历史。
 
-For convenience, in addition to changes, many of the [`Selection`](./selection.md) and [`Document`](./document.md) properties are exposed as proxies on the `State` object.
+为方便起见，除了 change 外，许多 [`Selection`](./selection.md) 与 [`Document`](./document.md) 的属性也通过代理的形式在 `State` 对象上开放。
 
 - [Properties](#properties)
   - [`document`](#document)
@@ -56,139 +56,139 @@ State({
 ### `document`
 `Document`
 
-The current document of the state.
+当前 state 对应的文档。
 
 ### `selection`
 `Selection`
 
-The current selection of the state.
+当前 state 对应的选择范围。
 
 
 ## Computed Properties
 
-These properties aren't supplied when creating a `State`, but are instead computed based on the current `document` and `selection`.
+这些属性不需在创建 `State` 时提供，而是通过当前 `document` 与 `selection` 计算得出。
 
 ### `{edge}Text`
 `Text`
 
-Get the leaf [`Text`](./text.md) node at `{edge}`. Where `{edge}` is one of: `anchor`, `focus`, `start` or `end`.
+获得 `{edge}` 位置的叶子 [`Text`](./text.md) 节点。`{edge}` 可为：`anchor`、`focus`、`start` 或 `end`。
 
 
 ### `{edge}Block`
 `Block`
 
-Get the leaf [`Block`](./block.md) node at `{edge}`. Where `{edge}` is one of: `anchor`, `focus`, `start` or `end`.
+获得 `{edge}` 位置的叶子 [`Block`](./block.md) 节点。`{edge}` 可为：`anchor`、`focus`、`start` 或 `end`。
 
 ### `marks`
 `Set`
 
-Get a set of the [`Marks`](./mark.md) in the current selection.
+获得当前选择范围中的 [`Marks`](./mark.md) 集合。
 
 ### `activeMarks`
 `Set`
 
-Get a subset of the [`Marks`](./mark.md) that are present in _all_ the characters in the current selection. It can be used to determine the active/inactive state of toolbar buttons corresponding to marks, based on the usual rich text editing conventions.
+获得当前选择范围中 _全部_ 字符对应的 [`Marks`](./mark.md) 子集。这可以用来在常见富文本编辑器习惯的基础上，根据 mark 来判断工具栏按钮的激活 / 非激活状态。
 
 ### `blocks`
 `List`
 
-Get a list of the lowest-depth [`Block`](./block.md) nodes in the current selection.
+获得当前选择范围中最底层 [`Block`](./block.md) 节点的列表。
 
 ### `fragment`
 `Document`
 
-Get a [`Document`](./document.md) fragment of the current selection.
+获得当前选择范围的 [`Document`](./document.md) fragment 表示。
 
 ### `inlines`
 `List`
 
-Get a list of the lowest-depth [`Inline`](./inline.md) nodes in the current selection.
+获得当前选择范围中最底层 [`Inline`](./inline.md) 节点的列表。
 
 ### `texts`
 `List`
 
-Get a list of the [`Text`](./text.md) nodes in the current selection.
+获得当前选择范围中全部 [`Text`](./text.md) 节点的列表。
 
 ### `characters`
 `List`
 
-Get a list of the [`Character`](./character.md) objects in the current selection.
+获得当前选择范围中全部 [`Character`](./character.md) 对象的列表。
 
 ### `hasUndos`
 `Boolean`
 
-Whether there are undoable snapshots to revert to in the history.
+历史记录中是否存在可撤销的快照。
 
 ### `hasRedos`
 `Boolean`
 
-Whether there are redoable snapshots to revert to in the history.
+历史记录中是否存在可重做的快照。
 
 ## Selection-like Properties
 
-These properties are exact proxies of their [`Selection`](./selection) equivalents.
+这些属性是与 [`Selection`](./selection) 相等价的准确代理。
 
 ### `{edge}Key`
 `String`
 
-Get the current key at an `{edge}`. Where `{edge}` is one of: `anchor`, `focus`, `start` or `end`.
+获得 `{edge}` 中的当前 key。`{edge}` 可为：`anchor`、`focus`、`start` 或 `end`。
 
 ### `{edge}Offset`
 `Number`
 
-Get the current offset at an `{edge}`. Where `{edge}` is one of: `anchor`, `focus`, `start` or `end`.
+获得 `{edge}` 中的当前偏移量。`{edge}` 可为：`anchor`、`focus`、`start` 或 `end`。
 
 ### `isBackward`
 `Boolean`
 
-Whether the current selection is backward.
+当前选择范围是否反向。
 
 ### `isBlurred`
 `Boolean`
 
-Whether the current selection is blurred.
+当前选择范围是否失去焦点。
 
 ### `isCollapsed`
 `Boolean`
 
-Whether the current selection is collapsed.
+当前选择范围是否收缩。
 
 ### `isExpanded`
 `Boolean`
 
-Whether the current selection is expanded.
+当前选择范围是否扩展。
 
 ### `isFocused`
 `Boolean`
 
-Whether the current selection is focused.
+当前选择范围是否获得焦点。
 
 ### `isForward`
 `Boolean`
 
-Whether the current selection is forward.
+当前选择范围是否前向。
 
 ### `isEmpty`
 `Boolean`
 
-Whether the current selection is empty.
+当前选择范围是否为空。
 
 ## Static Methods
 
 ### `State.create`
 `State.create(properties: Object) => State`
 
-Create a new `State` instance with `properties`.
+由 `properties` 对象创建一个新 `State` 实例。
 
 ### `State.fromJSON`
 `State.fromJSON(object: Object) => State`
 
-Create a state from a JSON `object`.
+由 JSON `object` 创建一个 state。
 
 ### `State.isState`
 `State.isState(maybeState: Any) => Boolean`
 
-Returns a boolean if the passed in argument is a `State`.
+返回传入参数是否为 `State` 的 boolean 值。
 
 
 ## Instance Methods
@@ -196,9 +196,9 @@ Returns a boolean if the passed in argument is a `State`.
 ### `change`
 `change() => Change`
 
-Create a new [`Change`](./change.md) that acts on the current state.
+创建一个作用于当前 state 的新 [`Change`](./change.md)。
 
 ### `toJSON`
 `toJSON() => Object`
 
-Returns a JSON representation of the state.
+返回 state 的 JSON 表示。
