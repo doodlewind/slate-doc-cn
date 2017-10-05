@@ -5,7 +5,7 @@
 import { Text } from 'slate'
 ```
 
-A text node in a Slate [`Document`](./document.md). Text nodes are always the bottom-most leaves in the document, just like in the DOM.
+Slate [`Document`](./document.md) 中的文本节点。文本节点总是文档中最底层的叶子节点，和 DOM 保持一致。
 
 - [Properties](#properties)
   - [`characters`](#characters)
@@ -31,12 +31,12 @@ Text({
 
 ### `characters`
 
-A list of [`Characters`](./character.md) with associated [`Marks`](./mark.md) that make up the text node's content.
+组成文本节点内容，并与 [`Mark`](./mark.md) 相关联的 [`Characters`](./character.md) 列表。
 
 ### `key`
 `String`
 
-A unique identifier for the node.
+节点的唯一标识。
 
 
 ## Computed Properties
@@ -44,12 +44,12 @@ A unique identifier for the node.
 ### `kind`
 `String`
 
-An immutable string value of `'text'` for easily separating this node from [`Inline`](./inline.md) or [`Block`](./block.md) nodes.
+不可变的 String，值为 `'text'` 以便于将这类节点与 [`Inline`](./inline.md) 和 [`Block`](./block.md) 节点区分开。
 
 ### `text`
 `String`
 
-A concatenated string of all of the characters in the text node.
+该文本节点内全部字符连接成的字符串。
 
 
 ## Static Methods
@@ -57,17 +57,17 @@ A concatenated string of all of the characters in the text node.
 ### `Text.create`
 `Text.create(properties: Object) => Text`
 
-Create a text from a plain Javascript object of `properties`.
+由原生 JS `properties` 对象创建一个 text。
 
 ### `Text.fromJSON`
 `Text.fromJSON(object: Object) => Text`
 
-Create a text from a JSON `object`.
+由 JSON `object` 创建一个 text。
 
 ### `Text.isText`
 `Text.isText(maybeText: Any) => Boolean`
 
-Returns a boolean if the passed in argument is a `Text`.
+返回传入的参数是否为 `Text` 的 boolean 值。
 
 
 ## Instance Methods
@@ -75,4 +75,4 @@ Returns a boolean if the passed in argument is a `Text`.
 ### `toJSON`
 `toJSON() => Object`
 
-Returns a JSON representation of the text.
+返回 text 的 JSON 表示。
