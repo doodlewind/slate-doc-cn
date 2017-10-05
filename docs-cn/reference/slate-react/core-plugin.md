@@ -1,7 +1,7 @@
 
 # Core Plugin
 
-Slate's editor is very unopinionated. The only logic it handles by default is logic associated with the `contenteditable` functionality itself—managing text, selections, etc. That logic in contained in a single plugin, called the "core" plugin.
+Slate 编辑器本身的约束非常少。它默认下仅有的逻辑是与 `contenteditable` 本身功能相关的逻辑——处理文本、选择范围等。这些逻辑包含在一个单独的插件中，其名为 "core" 插件。
 
 - [Default Behavior](#behavior)
 - [Overriding Defaults](#overriding-defaults)
@@ -9,62 +9,62 @@ Slate's editor is very unopinionated. The only logic it handles by default is lo
 
 ## Default Behavior
 
-The default behavior of the core plugin performs the following logic:
+核心插件的默认行为，将执行下列逻辑：
 
 ### `onBeforeInput`
 
-When text is entered, the core plugin inserts the text from `event.data` into the editor.
+当输入文本时，核心插件将 `event.data` 中的文本插入编辑器中。
 
 ### `onBlur`
 
-When the editor is blurred, the core plugin updates the selection in Slate's internal data model without re-rendering.
+当编辑器失去焦点时，核心插件更新 Slate 内部的数据模型，并不执行重绘。
 
 ### `onFocus`
 
-When the editor is focused, the core plugin updates the selection in Slate's internal data model without re-rendering.
+当编辑器获得焦点时，核心插件更新 Slate 内部的数据模型，并不执行重绘。
 
 ### `onCopy`
 
-When the user copies part of the document, the core plugin adds the copied text to the clipboard with a serialized version of the document intact, so that it can be deserialized and inserted on paste, preserving formatting.
+当用户复制部分文档时，核心插件为所复制文本附带上完整的文档序列化内容后，将其添加到剪贴板，从而能够在粘贴时反序列化并插入文档以保留格式。
 
 ### `onCut`
 
-When the user cuts part of the document, the core plugin runs the same logic it runs for `onCopy`, but it also delete's the content in the current selection.
+当用户剪切部分文档时，核心插件执行与 `onCopy` 相同的逻辑，但其也会删除当前选中范围下的内容。
 
 ### `onDrop`
 
-When the user drops content into the editor, the core plugin handles drops of type `text` and `html` as plain text, and does nothing for drops of type `files`.
+当用户向编辑器中放下内容时，核心插件将 `text` 与 `html` 类型处理为纯文本，对 `files` 类型不作处理。
 
 ### `onKeyDown`
 
-When a key is pressed, the core plugin handles performing some of the "native" behavior that `contenteditable` elements must do. For example it splits blocks on `enter`, removes characters `backspace`, triggers an undo state from the history on `cmd-z`, etc.
+在按键时，核心插件处理部分 `contenteditable` 元素所需执行的【原生】行为。例如在按下 `enter` 时拆分 block、在按下 `backspace` 时移除字符、在按下 `cmd-z` 时触发对历史记录的撤销等。
 
 ### `onPaste`
 
-When the user pastes content into the editor, the core plugin handles all pastes of type `text` and `html` as plain text, and does nothing for pastes of type `files`.
+当用户向编辑器中粘贴内容时，核心插件将 `text` 与 `html` 类型的粘贴处理为纯文本，对 `files` 类型不作处理。
 
 ### `onSelect`
 
-When the user makes a new selection in the DOM, the core plugin updates that selection in Slate's internal data model, re-rendering if it needs to. 
+当用户在 DOM 中选择了新内容时，核心插件更新 Slate 内部数据模型中的选择范围，并按需执行重绘。
 
 ### `render`
 
-Renders all of the default contents of the editor!
+渲染编辑器中全部默认内容！
 
 ### `schema`
 
-The core plugin defines a schema that enforces a few constraints on the content and defines default block and inline node renderer components—wrapping in a `<div>` and `<span>`, respectively. Each of these components contains `shouldComponentUpdate` logic that prevents unnecessary re-renders.
+核心插件定义的 schema 保证了对内容的若干约束，并定义了默认的 block 和 inline 节点渲染器组件——各自包裹在 `<div>` 和 `<span>` 中。每个组件都包含了避免不必要重绘的 `shouldComponentUpdate` 逻辑。
 
-The default block component also controls its own placeholder logic, which is controlled via the [`<Editor>`](../slate-react/editor.md)'s placeholder options.
+默认的 block 组件也包含了对其 placeholder 的控制逻辑，这是通过 [`<Editor>`](../slate-react/editor.md) 的 placeholder 选项控制的。
 
 
 ## Overriding Defaults
 
-Any plugin you add to the editor will override the default behavior of the core plugin, because it is always resolved last.
+所有你添加的插件都会覆盖核心插件的默认行为，这是因为核心插件总是在最后解析。
 
-However, sometimes you might want to disable the logic of the core plugin without actually adding any logic yourself. For example, you might want to prevent the `enter` key from performing any action. In those cases, you'll need to define a "noop" handler. 
+不过，有时候你可能希望在不添加新逻辑的前提下，禁用核心插件的逻辑。例如，你可能想要阻止 `enter` 键执行任何操作。这时，你需要定义一个 "noop" 回调。
 
-A noop `onBeforeInput` handler looks like:
+一个无操作 `onBeforeInput` 回调形如：
 
 ```js
 function onBeforeInput(event, data, state) {
@@ -73,4 +73,4 @@ function onBeforeInput(event, data, state) {
 }
 ```
 
-Notice that is calls `event.preventDefault()` to prevent the default browser behavior, and it returns the current `state` to prevent the editor from continuing to resolve its plugins stack.
+注意在上例中调用了 `event.preventDefault()` 来阻止默认浏览器行为，并返回了当前 `state` 来阻止编辑器继续解析其插件栈。
