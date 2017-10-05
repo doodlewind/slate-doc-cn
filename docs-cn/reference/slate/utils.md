@@ -8,7 +8,7 @@ import {
 } from 'slate'
 ```
 
-Utility functions that ship with Slate that may be useful for certain use cases.
+Slate 附带的实用工具函数，在特定场合下可能有用。
 
 - [`resetKeyGenerator`](#resetkeygenerator)
 - [`setKeyGenerator`](#setkeygenerator)
@@ -19,11 +19,11 @@ Utility functions that ship with Slate that may be useful for certain use cases.
 ### `resetKeyGenerator`
 `resetkeygenerator() => Void`
 
-Resets Slate's internal key generating function to its default state. This is useful for server-side rendering, or anywhere you want to ensure fresh, deterministic creation of keys.
+重置 Slate 内置的 key 生成函数至其默认状态。这可用于服务端渲染，或任何需要保证 key 生成过程具备新鲜性与决定性的场合。
 
 ### `setKeyGenerator`
 `setKeyGenerator(generator: Function) => Void`
 
-Allows you to specify your own key generating function, instead of using Slate's built-in default generator which simply uses auto-incrementing number strings. (eg. `'0'`, `'1'`, `'2'`, ...)
+可用于指定你自己的 key 生成函数，以取代 Slate 自带的、仅使用自增数字字符串的默认生成器。（例如 `'0'`、`'1'`、`'2'`…）
 
-This will act globally on all uses of the Slate dependency.
+它会对全局下所有 Slate 的依赖生效。
