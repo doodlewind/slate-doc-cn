@@ -5,7 +5,7 @@
 import { findDOMNode } from 'slate-react'
 ```
 
-React-specific utility functions for Slate that may be useful in certain use cases.
+为 Slate 提供的 React 专用工具函数。特定情况下可能有用。
 
 - [`findDOMNode`](#finddomnode)
 
@@ -15,4 +15,4 @@ React-specific utility functions for Slate that may be useful in certain use cas
 ### `findDOMNode`
 `findDOMNode(node: Node) => DOMElement`
 
-Find the DOM node for a Slate [`Node`](../slate/node.md). Modelled after React's built-in `findDOMNode` helper.
+寻找 Slate [`Node`](../slate/node.md) 对应的 DOM 节点。仿照 React 内置的 `findDOMNode` 辅助函数设计。
