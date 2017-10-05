@@ -1,7 +1,7 @@
 
 # Schemas
 
-Every Slate editor has a "schema" associated with it, which contains information about the structure of its content. It lets you specify how to render each different type of node. And for more advanced use cases it lets you enforce rules about what the content of the editor can and cannot be.
+每个 Slate 编辑器均有一个与之相关联的 "schema"，其中包含了与编辑器内容结构相关的信息。你可以通过它指定如何渲染不同类型的节点。在更复杂的情景下，你还可以制定规则来强制保证编辑器中内容的合法性。
 
 - [Properties](#properties)
   - [`marks`](#marks)
@@ -27,7 +27,7 @@ Every Slate editor has a "schema" associated with it, which contains information
 }
 ```
 
-The top-level properties of a schema all give you a way to define `rules` that the schema enforces. The `nodes` and `marks` properties are just convenient ways to define the most common set of rules.
+Schema 中的顶级属性提供的其实都是定义 `rules` 约束的方式。`nodes` 与 `marks` 属性都只是用于定义常用规则子集的快捷方式。
 
 ### `marks`
 `Object type: Component || Function || Object || String`
@@ -50,7 +50,7 @@ The top-level properties of a schema all give you a way to define `rules` that t
 }
 ```
 
-An object that defines the [`Marks`](./mark.md) in the schema by `type`. Each key in the object refers to a mark by its `type`. The value defines how Slate will render the mark, and can either be a React component, an object of styles, or a class name.
+通过 `type` 来定义 schema 中 [`Marks`](./mark.md) 的对象。对象中每个 key 均指向相应 `type` 的 mark。对象的值定义了 Slate 渲染 mark 的方式，它可以是 React 组件、样式对象，或 class 名。
 
 ### `nodes`
 `Object<type, Component || Function>` <br/>
@@ -70,7 +70,7 @@ An object that defines the [`Marks`](./mark.md) in the schema by `type`. Each ke
 }
 ```
 
-An object that defines the [`Block`](./block.md) and [`Inline`](./inline.md) nodes in the schema by `type`. Each key in the object refers to a node by its `type`. The values defines how Slate will render the node, and can optionally define any other property of a schema `Rule`.
+通过 `type` 定义 schema 中 [`Block`](./block.md) 和 [`Inline`](./inline.md) 节点的对象。对象中每个 key 均指向相应 `type` 的 node。对象的值定义了 Slate 渲染 node 的方式，也可以为其定义其它 schema `Rule` 支持的属性。
 
 ### `rules`
 `Array<Rule>`
@@ -85,9 +85,9 @@ An object that defines the [`Block`](./block.md) and [`Inline`](./inline.md) nod
 ]
 ```
 
-An array of rules that define the schema's behavior. Each of the rules are evaluated in order to determine a match.
+定义 schema 行为的规则数组。将依序对每条规则求值来判断是否匹配。
 
-Internally, the `marks` and `nodes` properties of a schema are simply converted into `rules`.
+在内部，schema 中的 `marks` 和 `nodes` 属性都转换为了 `rules`。
 
 
 ## Rule Properties
@@ -102,7 +102,7 @@ Internally, the `marks` and `nodes` properties of a schema are simply converted 
 }
 ```
 
-Slate schemas are built up of a set of rules. Each of the properties will add certain functionality to the schema, based on the properties it defines. 
+Slate schema 是基于一系列规则的。每条规则都会基于其定义的属性，为 schema 添加特定的功能。
 
 ### `match`
 `Function match(object: Node || Mark)`
@@ -113,7 +113,7 @@ Slate schemas are built up of a set of rules. Each of the properties will add ce
 }
 ```
 
-The `match` property is the only required property of a rule. It determines which objects the rule applies to. 
+`match` 是规则中仅有的必选属性。它用于判断规则对哪些对象应用。
 
 ### `decorate`
 `Function decorate(text: Node, object: Node) => List<Characters>`
@@ -133,7 +133,7 @@ The `match` property is the only required property of a rule. It determines whic
 }
 ```
 
-The `decorate` property allows you define a function that will apply extra marks to all of the ranges of text inside a node. It is called with a [`Text`](./text.md) node and the matched node. It should return a list of characters with the desired marks, which will then be added to the text before rendering.
+你可以通过 `decorate` 属性定义额外的 mark 以应用到 node 中的文本范围上。调用它的方式是传入 [`Text`](./text.md) 节点和被匹配的节点。它将返回带有所需 marks 的字符列表，而后在渲染前添加到文本上。
 
 ### `normalize`
 `Function normalize(change: Change, object: Node, failure: Any) => Change`
@@ -150,7 +150,7 @@ The `decorate` property allows you define a function that will apply extra marks
 }
 ```
 
-The `normalize` property is a function to run that recovers the editor's state after the `validate` property of a rule has determined that an object is invalid. It is passed a [`Change`](./change.md) that it can use to make modifications. It is also passed the return value of the `validate` function, which makes it easy to quickly determine the failure reason from the validation.
+`normalize` 属性是在规则 `validate` 校验失败后，用于恢复编辑器状态的函数。它既接受用于更改状态的 [`Change`](./change.md)，也接受 `validate` 函数校验失败时的返回值，以便于快速判断校验失败的原因。
 
 ### `render`
 `Component` <br/>
@@ -164,7 +164,7 @@ The `normalize` property is a function to run that recovers the editor's state a
 }
 ```
 
-The `render` property determines which React component Slate will use to render a [`Node`](./node.md) or [`Mark`](./mark.md). Mark renderers can also be defined as an object of styles or a class name string for convenience.
+`render` 属性指定了 Slate 用于渲染 [`Node`](./node.md) 和 [`Mark`](./mark.md) 的 React 组件。为方便起见，Mark 的渲染器亦可指定为样式对象或 class 名字符串。
 
 ### `validate`
 `Function validate(object: Node) => Any || Void`
@@ -178,11 +178,11 @@ The `render` property determines which React component Slate will use to render 
 }
 ```
 
-The `validate` property allows you to define a constraint that the matching object must abide by. It should return either `Void` if the object is valid, or any non-void value if it is invalid. This makes it easy to return the exact reason that the object is invalid, which makes it simple to recover from the invalid state with the `normalize` property.
+`validate` 属性定义了所匹配对象所必须满足的约束。它在目标对象有效时返回 `Void`，在其无效时返回非空值。这种方式更易于返回对象无效的原因，从而简化了使用 `normalize` 属性从无效状态中恢复的过程。
 
 ## Static Methods
 
 ### `Schema.isSchema`
 `Schema.isSchema(maybeSchema: Any) => Boolean`
 
-Returns a boolean if the passed in argument is a `Schema`.
+返回传入的参数是否为 `Schema` 的 boolean 值。
