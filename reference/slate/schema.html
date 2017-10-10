@@ -625,7 +625,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="schemas">Schemas</h1>
-<p>Every Slate editor has a &quot;schema&quot; associated with it, which contains information about the structure of its content. It lets you specify how to render each different type of node. And for more advanced use cases it lets you enforce rules about what the content of the editor can and cannot be.</p>
+<p>&#x6BCF;&#x4E2A; Slate &#x7F16;&#x8F91;&#x5668;&#x5747;&#x6709;&#x4E00;&#x4E2A;&#x4E0E;&#x4E4B;&#x76F8;&#x5173;&#x8054;&#x7684; &quot;schema&quot;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x4E0E;&#x7F16;&#x8F91;&#x5668;&#x5185;&#x5BB9;&#x7ED3;&#x6784;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B83;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x6E32;&#x67D3;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x8282;&#x70B9;&#x3002;&#x5728;&#x66F4;&#x590D;&#x6742;&#x7684;&#x60C5;&#x666F;&#x4E0B;&#xFF0C;&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x5236;&#x5B9A;&#x89C4;&#x5219;&#x6765;&#x5F3A;&#x5236;&#x4FDD;&#x8BC1;&#x7F16;&#x8F91;&#x5668;&#x4E2D;&#x5185;&#x5BB9;&#x7684;&#x5408;&#x6CD5;&#x6027;&#x3002;</p>
 <ul>
 <li><a href="#properties">Properties</a><ul>
 <li><a href="#marks"><code>marks</code></a></li>
@@ -653,7 +653,7 @@
   rules<span class="token punctuation">:</span> Array
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The top-level properties of a schema all give you a way to define <code>rules</code> that the schema enforces. The <code>nodes</code> and <code>marks</code> properties are just convenient ways to define the most common set of rules.</p>
+<p>Schema &#x4E2D;&#x7684;&#x9876;&#x7EA7;&#x5C5E;&#x6027;&#x63D0;&#x4F9B;&#x7684;&#x5176;&#x5B9E;&#x90FD;&#x662F;&#x5B9A;&#x4E49; <code>rules</code> &#x7EA6;&#x675F;&#x7684;&#x65B9;&#x5F0F;&#x3002;<code>nodes</code> &#x4E0E; <code>marks</code> &#x5C5E;&#x6027;&#x90FD;&#x53EA;&#x662F;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x5E38;&#x7528;&#x89C4;&#x5219;&#x5B50;&#x96C6;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x5F0F;&#x3002;</p>
 <h3 id="marks"><code>marks</code></h3>
 <p><code>Object type: Component || Function || Object || String</code></p>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
@@ -670,7 +670,7 @@
   bold<span class="token punctuation">:</span> <span class="token string">&apos;my-bold-class-name&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>An object that defines the <a href="mark.html"><code>Marks</code></a> in the schema by <code>type</code>. Each key in the object refers to a mark by its <code>type</code>. The value defines how Slate will render the mark, and can either be a React component, an object of styles, or a class name.</p>
+<p>&#x901A;&#x8FC7; <code>type</code> &#x6765;&#x5B9A;&#x4E49; schema &#x4E2D; <a href="mark.html"><code>Marks</code></a> &#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5BF9;&#x8C61;&#x4E2D;&#x6BCF;&#x4E2A; key &#x5747;&#x6307;&#x5411;&#x76F8;&#x5E94; <code>type</code> &#x7684; mark&#x3002;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#x5B9A;&#x4E49;&#x4E86; Slate &#x6E32;&#x67D3; mark &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x662F; React &#x7EC4;&#x4EF6;&#x3001;&#x6837;&#x5F0F;&#x5BF9;&#x8C61;&#xFF0C;&#x6216; class &#x540D;&#x3002;</p>
 <h3 id="nodes"><code>nodes</code></h3>
 <p><code>Object<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type,</span> <span class="token attr-name">Component</span> <span class="token attr-name">||</span> <span class="token attr-name">Function</span><span class="token punctuation">&gt;</span></span></code> <br>
 <code>Object<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>type,</span> <span class="token attr-name">Rule</span><span class="token punctuation">&gt;</span></span></code></p>
@@ -685,7 +685,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>An object that defines the <a href="block.html"><code>Block</code></a> and <a href="inline.html"><code>Inline</code></a> nodes in the schema by <code>type</code>. Each key in the object refers to a node by its <code>type</code>. The values defines how Slate will render the node, and can optionally define any other property of a schema <code>Rule</code>.</p>
+<p>&#x901A;&#x8FC7; <code>type</code> &#x5B9A;&#x4E49; schema &#x4E2D; <a href="block.html"><code>Block</code></a> &#x548C; <a href="inline.html"><code>Inline</code></a> &#x8282;&#x70B9;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5BF9;&#x8C61;&#x4E2D;&#x6BCF;&#x4E2A; key &#x5747;&#x6307;&#x5411;&#x76F8;&#x5E94; <code>type</code> &#x7684; node&#x3002;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#x5B9A;&#x4E49;&#x4E86; Slate &#x6E32;&#x67D3; node &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E3A;&#x5176;&#x5B9A;&#x4E49;&#x5176;&#x5B83; schema <code>Rule</code> &#x652F;&#x6301;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
 <h3 id="rules"><code>rules</code></h3>
 <p><code>Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Rule</span><span class="token punctuation">&gt;</span></span></code></p>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">[</span>
@@ -696,8 +696,8 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">]</span>
 </code></pre>
-<p>An array of rules that define the schema&apos;s behavior. Each of the rules are evaluated in order to determine a match.</p>
-<p>Internally, the <code>marks</code> and <code>nodes</code> properties of a schema are simply converted into <code>rules</code>.</p>
+<p>&#x5B9A;&#x4E49; schema &#x884C;&#x4E3A;&#x7684;&#x89C4;&#x5219;&#x6570;&#x7EC4;&#x3002;&#x5C06;&#x4F9D;&#x5E8F;&#x5BF9;&#x6BCF;&#x6761;&#x89C4;&#x5219;&#x6C42;&#x503C;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5339;&#x914D;&#x3002;</p>
+<p>&#x5728;&#x5185;&#x90E8;&#xFF0C;schema &#x4E2D;&#x7684; <code>marks</code> &#x548C; <code>nodes</code> &#x5C5E;&#x6027;&#x90FD;&#x8F6C;&#x6362;&#x4E3A;&#x4E86; <code>rules</code>&#x3002;</p>
 <h2 id="rule-properties">Rule Properties</h2>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
   match<span class="token punctuation">:</span> Function<span class="token punctuation">,</span>
@@ -707,14 +707,14 @@
   validate<span class="token punctuation">:</span> Function
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Slate schemas are built up of a set of rules. Each of the properties will add certain functionality to the schema, based on the properties it defines. </p>
+<p>Slate schema &#x662F;&#x57FA;&#x4E8E;&#x4E00;&#x7CFB;&#x5217;&#x89C4;&#x5219;&#x7684;&#x3002;&#x6BCF;&#x6761;&#x89C4;&#x5219;&#x90FD;&#x4F1A;&#x57FA;&#x4E8E;&#x5176;&#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4E3A; schema &#x6DFB;&#x52A0;&#x7279;&#x5B9A;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
 <h3 id="match"><code>match</code></h3>
 <p><code>Function match(object: Node || Mark)</code></p>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
   match<span class="token punctuation">:</span> <span class="token punctuation">(</span>object<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> object<span class="token punctuation">.</span>kind <span class="token operator">==</span> <span class="token string">&apos;block&apos;</span> <span class="token operator">&amp;&amp;</span> object<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">&apos;code&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The <code>match</code> property is the only required property of a rule. It determines which objects the rule applies to. </p>
+<p><code>match</code> &#x662F;&#x89C4;&#x5219;&#x4E2D;&#x4EC5;&#x6709;&#x7684;&#x5FC5;&#x9009;&#x5C5E;&#x6027;&#x3002;&#x5B83;&#x7528;&#x4E8E;&#x5224;&#x65AD;&#x89C4;&#x5219;&#x5BF9;&#x54EA;&#x4E9B;&#x5BF9;&#x8C61;&#x5E94;&#x7528;&#x3002;</p>
 <h3 id="decorate"><code>decorate</code></h3>
 <p><code>Function decorate(text: Node, object: Node) =&gt; List<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Characters</span><span class="token punctuation">&gt;</span></span></code></p>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
@@ -730,7 +730,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The <code>decorate</code> property allows you define a function that will apply extra marks to all of the ranges of text inside a node. It is called with a <a href="text.html"><code>Text</code></a> node and the matched node. It should return a list of characters with the desired marks, which will then be added to the text before rendering.</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>decorate</code> &#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x989D;&#x5916;&#x7684; mark &#x4EE5;&#x5E94;&#x7528;&#x5230; node &#x4E2D;&#x7684;&#x6587;&#x672C;&#x8303;&#x56F4;&#x4E0A;&#x3002;&#x8C03;&#x7528;&#x5B83;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x4F20;&#x5165; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x548C;&#x88AB;&#x5339;&#x914D;&#x7684;&#x8282;&#x70B9;&#x3002;&#x5B83;&#x5C06;&#x8FD4;&#x56DE;&#x5E26;&#x6709;&#x6240;&#x9700; marks &#x7684;&#x5B57;&#x7B26;&#x5217;&#x8868;&#xFF0C;&#x800C;&#x540E;&#x5728;&#x6E32;&#x67D3;&#x524D;&#x6DFB;&#x52A0;&#x5230;&#x6587;&#x672C;&#x4E0A;&#x3002;</p>
 <h3 id="normalize"><code>normalize</code></h3>
 <p><code>Function normalize(change: Change, object: Node, failure: Any) =&gt; Change</code></p>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
@@ -743,7 +743,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The <code>normalize</code> property is a function to run that recovers the editor&apos;s state after the <code>validate</code> property of a rule has determined that an object is invalid. It is passed a <a href="change.html"><code>Change</code></a> that it can use to make modifications. It is also passed the return value of the <code>validate</code> function, which makes it easy to quickly determine the failure reason from the validation.</p>
+<p><code>normalize</code> &#x5C5E;&#x6027;&#x662F;&#x5728;&#x89C4;&#x5219; <code>validate</code> &#x6821;&#x9A8C;&#x5931;&#x8D25;&#x540E;&#xFF0C;&#x7528;&#x4E8E;&#x6062;&#x590D;&#x7F16;&#x8F91;&#x5668;&#x72B6;&#x6001;&#x7684;&#x51FD;&#x6570;&#x3002;&#x5B83;&#x65E2;&#x63A5;&#x53D7;&#x7528;&#x4E8E;&#x66F4;&#x6539;&#x72B6;&#x6001;&#x7684; <a href="change.html"><code>Change</code></a>&#xFF0C;&#x4E5F;&#x63A5;&#x53D7; <code>validate</code> &#x51FD;&#x6570;&#x6821;&#x9A8C;&#x5931;&#x8D25;&#x65F6;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E8E;&#x5FEB;&#x901F;&#x5224;&#x65AD;&#x6821;&#x9A8C;&#x5931;&#x8D25;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
 <h3 id="render"><code>render</code></h3>
 <p><code>Component</code> <br>
 <code>Function</code> <br>
@@ -753,7 +753,7 @@
   render<span class="token punctuation">:</span> <span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>code<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The <code>render</code> property determines which React component Slate will use to render a <a href="node.html"><code>Node</code></a> or <a href="mark.html"><code>Mark</code></a>. Mark renderers can also be defined as an object of styles or a class name string for convenience.</p>
+<p><code>render</code> &#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x4E86; Slate &#x7528;&#x4E8E;&#x6E32;&#x67D3; <a href="node.html"><code>Node</code></a> &#x548C; <a href="mark.html"><code>Mark</code></a> &#x7684; React &#x7EC4;&#x4EF6;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;Mark &#x7684;&#x6E32;&#x67D3;&#x5668;&#x4EA6;&#x53EF;&#x6307;&#x5B9A;&#x4E3A;&#x6837;&#x5F0F;&#x5BF9;&#x8C61;&#x6216; class &#x540D;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
 <h3 id="validate"><code>validate</code></h3>
 <p><code>Function validate(object: Node) =&gt; Any || Void</code></p>
 <pre class="language-"><code class="lang-js"><span class="token punctuation">{</span>
@@ -763,11 +763,11 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The <code>validate</code> property allows you to define a constraint that the matching object must abide by. It should return either <code>Void</code> if the object is valid, or any non-void value if it is invalid. This makes it easy to return the exact reason that the object is invalid, which makes it simple to recover from the invalid state with the <code>normalize</code> property.</p>
+<p><code>validate</code> &#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x4E86;&#x6240;&#x5339;&#x914D;&#x5BF9;&#x8C61;&#x6240;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x7684;&#x7EA6;&#x675F;&#x3002;&#x5B83;&#x5728;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x6709;&#x6548;&#x65F6;&#x8FD4;&#x56DE; <code>Void</code>&#xFF0C;&#x5728;&#x5176;&#x65E0;&#x6548;&#x65F6;&#x8FD4;&#x56DE;&#x975E;&#x7A7A;&#x503C;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x66F4;&#x6613;&#x4E8E;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x65E0;&#x6548;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x4ECE;&#x800C;&#x7B80;&#x5316;&#x4E86;&#x4F7F;&#x7528; <code>normalize</code> &#x5C5E;&#x6027;&#x4ECE;&#x65E0;&#x6548;&#x72B6;&#x6001;&#x4E2D;&#x6062;&#x590D;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
 <h2 id="static-methods">Static Methods</h2>
 <h3 id="schemaisschema"><code>Schema.isSchema</code></h3>
 <p><code>Schema.isSchema(maybeSchema: Any) =&gt; Boolean</code></p>
-<p>Returns a boolean if the passed in argument is a <code>Schema</code>.</p>
+<p>&#x8FD4;&#x56DE;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A; <code>Schema</code> &#x7684; boolean &#x503C;&#x3002;</p>
 
                                 
                                 </section>
@@ -811,7 +811,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Schema","level":"4.9","depth":1,"next":{"title":"Selection","level":"4.10","depth":1,"path":"reference/slate/selection.md","ref":"./reference/slate/selection.md","articles":[]},"previous":{"title":"Node","level":"4.8","depth":1,"path":"reference/slate/node.md","ref":"./reference/slate/node.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/schema.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Schema","level":"4.9","depth":1,"next":{"title":"Selection","level":"4.10","depth":1,"path":"reference/slate/selection.md","ref":"./reference/slate/selection.md","articles":[]},"previous":{"title":"Node","level":"4.8","depth":1,"path":"reference/slate/node.md","ref":"./reference/slate/node.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/schema.md","mtime":"2017-10-05T05:18:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

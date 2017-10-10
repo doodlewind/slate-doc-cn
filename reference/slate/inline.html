@@ -627,8 +627,8 @@
                                 <h1 id="inline"><code>Inline</code></h1>
 <pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Inline <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 </code></pre>
-<p>A inline node in a Slate <a href="document.html"><code>Document</code></a>. Inline nodes implement the <a href="node.html"><code>Node</code></a> interface.</p>
-<p>Inline nodes may contain nested inline nodes and text nodes&#x2014;just like in the DOM. They always contain at least one text node child.</p>
+<p>Slate <a href="document.html"><code>Document</code></a> Inline &#x8282;&#x70B9;&#x5B9E;&#x73B0;&#x4E86; <a href="node.html"><code>Node</code></a> &#x63A5;&#x53E3;&#x3002;</p>
+<p>Block &#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5D4C;&#x5957;&#x7684; inline &#x8282;&#x70B9;&#x4EE5;&#x53CA; text &#x8282;&#x70B9;&#x2014;&#x2014;&#x5C31;&#x50CF; DOM &#x4E00;&#x6837;&#x3002;&#x5B83;&#x59CB;&#x7EC8;&#x5305;&#x542B;&#x81F3;&#x5C11;&#x4E00;&#x4E2A; text &#x8282;&#x70B9;&#x4F5C;&#x4E3A;&#x5B50;&#x8282;&#x70B9;&#x3002;</p>
 <ul>
 <li><a href="#properties">Properties</a><ul>
 <li><a href="#data"><code>data</code></a></li>
@@ -667,46 +667,47 @@
 </code></pre>
 <h3 id="data"><code>data</code></h3>
 <p><code>Immutable.Map</code></p>
-<p>Arbitrary data associated with the node. Defaults to an empty <code>Map</code>.</p>
+<p>&#x4E0E;&#x8282;&#x70B9;&#x76F8;&#x5173;&#x7684;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x4E00;&#x4E2A;&#x7A7A; <code>Map</code>&#x3002;</p>
 <h3 id="isvoid"><code>isVoid</code></h3>
 <p><code>Boolean</code></p>
-<p>Whether the node is a &quot;void&quot; node, meaning that it has no child content (eg. emoji, icons, etc.). Defaults to <code>false</code>.</p>
-<p>Note that even though a node may be &quot;void&quot;, it will still contain a single, empty <a href="text.html"><code>Text</code></a> node for consistency across other operations. However, when rendered by Slate that single <a href="text.html"><code>Text</code></a> node will not be visible.</p>
+<p>&#x8282;&#x70B9;&#x662F;&#x5426;&#x4E3A; &quot;void&quot;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5176;&#x6CA1;&#x6709;&#x5B50;&#x5185;&#x5BB9;&#xFF08;&#x5982; emoji &#x8868;&#x60C5;&#x3001;&#x56FE;&#x6807;&#x7B49;&#xFF09;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A; <code>false</code>&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x5373;&#x4FBF;&#x8282;&#x70B9;&#x4E3A; &quot;void&quot;&#xFF0C;&#x5B83;&#x4ECD;&#x7136;&#x4F1A;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x7A7A;&#x7684; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x4EE5;&#x4FDD;&#x8BC1;&#x9002;&#x914D;&#x5176;&#x5B83;&#x64CD;&#x4F5C;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5728; Slate &#x6E32;&#x67D3;&#x65F6;&#x8FD9;&#x4E2A; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x662F;&#x4E0D;&#x53EF;&#x89C1;&#x7684;&#x3002;</p>
 <h3 id="key"><code>key</code></h3>
 <p><code>String</code></p>
-<p>A unique identifier for the node.</p>
+<p>&#x8282;&#x70B9;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x3002;</p>
 <h3 id="nodes"><code>nodes</code></h3>
 <p><code>Immutable.List</code></p>
-<p>A list of child nodes. Defaults to a list with a single text node child.</p>
+<p>&#x5B50;&#x8282;&#x70B9;&#x5217;&#x8868;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x5305;&#x542B;&#x5355;&#x4E00;&#x6587;&#x672C;&#x8282;&#x70B9;&#x7684;&#x5217;&#x8868;&#x3002;</p>
 <h3 id="type"><code>type</code></h3>
 <p><code>String</code></p>
-<p>The custom type of the node (eg. <code>link</code> or <code>hashtag</code>).</p>
+<p>&#x8282;&#x70B9;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#xFF08;&#x5982; <code>link</code> &#x6216; <code>hashtag</code>&#xFF09;&#x3002;</p>
 <h2 id="computed-properties">Computed Properties</h2>
 <h3 id="kind"><code>kind</code></h3>
 <p><code>String</code></p>
-<p>An immutable string value of <code>&apos;inline&apos;</code> for easily separating this node from <a href="block.html"><code>Block</code></a> or <a href="text.html"><code>Text</code></a> nodes.</p>
+<p>&#x4E0D;&#x53EF;&#x53D8;&#x7684; String&#xFF0C;&#x503C;&#x4E3A; <code>&apos;inline&apos;</code> &#x4EE5;&#x4FBF;&#x4E8E;&#x5C06;&#x8FD9;&#x7C7B;&#x8282;&#x70B9;&#x4E0E; <a href="block.html"><code>Block</code></a> &#x548C; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x533A;&#x5206;&#x5F00;&#x3002;</p>
 <h3 id="text"><code>text</code></h3>
 <p><code>String</code></p>
-<p>A concatenated string of all of the descendant <a href="text.html"><code>Text</code></a> nodes of this node.</p>
+<p>&#x8BE5;&#x8282;&#x70B9;&#x7684;&#x5168;&#x90E8;&#x5B50; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x8FDE;&#x63A5;&#x6210;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
 <h2 id="static-methods">Static Methods</h2>
 <h3 id="inlinecreate"><code>Inline.create</code></h3>
-<p><code>Inline.create(properties: Object) =&gt; Block</code></p>
-<p>Create a block from a plain Javascript object of <code>properties</code>.</p>
+<p><code>Inline.create(properties: Object) =&gt; Inline</code></p>
+<!-- TODO 原文签名与描述错误 -->
+<p>&#x7531;&#x539F;&#x751F; JS <code>properties</code> &#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; inline&#x3002;</p>
 <h3 id="inlinecreatelist"><code>Inline.createList</code></h3>
 <p><code>Inline.createList(array: Array) =&gt; List</code></p>
-<p>Create a list of inline nodes from a plain Javascript <code>array</code>.</p>
+<p>&#x7531;&#x539F;&#x751F; JS <code>array</code> &#x6570;&#x7EC4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; inline &#x5217;&#x8868;&#x3002;</p>
 <h3 id="inlinefromjson"><code>Inline.fromJSON</code></h3>
 <p><code>Inline.fromJSON(object: Object) =&gt; Inline</code></p>
-<p>Create an inline from a JSON <code>object</code>.</p>
+<p>&#x7531; JSON <code>object</code> &#x521B;&#x5EFA;&#x4E00;&#x4E2A; inline&#x3002;</p>
 <h3 id="inlineisinline"><code>Inline.isInline</code></h3>
 <p><code>Inline.isInline(maybeInline: Any) =&gt; Boolean</code></p>
-<p>Returns a boolean if the passed in argument is a <code>Inline</code>.</p>
+<p>&#x8FD4;&#x56DE;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A; <code>Inline</code> &#x7684; boolean &#x503C;&#x3002;</p>
 <h2 id="node-methods">Node Methods</h2>
-<p>Inlines implement the <a href="node.html"><code>Node</code></a> interface. For information about all of the node methods, see the <a href="node.html"><code>Node</code> reference</a>.</p>
+<p>Inline &#x5B9E;&#x73B0;&#x4E86; <a href="node.html"><code>Node</code></a> &#x63A5;&#x53E3;&#x3002;&#x5BF9;&#x6240;&#x6709; node &#x65B9;&#x6CD5;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x53C2;&#x89C1; <a href="node.html"><code>Node</code> &#x6587;&#x6863;</a>&#x3002;</p>
 <h2 id="instance-methods">Instance Methods</h2>
 <h3 id="tojson"><code>toJSON</code></h3>
 <p><code>toJSON() =&gt; Object</code></p>
-<p>Returns a JSON representation of the inline.</p>
+<p>&#x8FD4;&#x56DE; inline &#x7684; JSON &#x8868;&#x793A;&#x3002;</p>
 
                                 
                                 </section>
@@ -750,7 +751,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Inline","level":"4.6","depth":1,"next":{"title":"Mark","level":"4.7","depth":1,"path":"reference/slate/mark.md","ref":"./reference//slate/mark.md","articles":[]},"previous":{"title":"Document","level":"4.5","depth":1,"path":"reference/slate/document.md","ref":"./reference/slate/document.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/inline.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Inline","level":"4.6","depth":1,"next":{"title":"Mark","level":"4.7","depth":1,"path":"reference/slate/mark.md","ref":"./reference//slate/mark.md","articles":[]},"previous":{"title":"Document","level":"4.5","depth":1,"path":"reference/slate/document.md","ref":"./reference/slate/document.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/inline.md","mtime":"2017-09-30T11:01:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -627,9 +627,9 @@
                                 <h1 id="change"><code>Change</code></h1>
 <pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Change <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 </code></pre>
-<p>A change allows you to define a series of changes you&apos;d like to make to the current <a href="document.html"><code>Document</code></a> or <a href="selection.html"><code>Selection</code></a> in a <a href="state.html"><code>State</code></a>.</p>
-<p>All changes are performed through <code>Change</code> objects, so that a history of changes can be preserved for use in undo/redo operations, and to make collaborative editing possible.</p>
-<p>Change methods can either operate on the <a href="document.html"><code>Document</code></a>, the <a href="selection.html"><code>Selection</code></a>, or both at once.</p>
+<p>&#x901A;&#x8FC7; Change&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E00;&#x7CFB;&#x5217;&#x5BF9;&#x5F53;&#x524D; <a href="state.html"><code>State</code></a> &#x4E2D; <a href="document.html"><code>Document</code></a> &#x6216; <a href="selection.html"><code>Selection</code></a> &#x7684;&#x53D8;&#x6362;&#x3002;</p>
+<p>&#x6240;&#x6709;&#x7684;&#x53D8;&#x6362;&#x90FD;&#x662F;&#x90FD;&#x901A;&#x8FC7; <code>Change</code> &#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x56E0;&#x800C;&#x53D8;&#x6362;&#x7684;&#x5386;&#x53F2;&#x80FD;&#x591F;&#x5728;&#x64A4;&#x9500;&#x3001;&#x91CD;&#x505A;&#x64CD;&#x4F5C;&#x4E2D;&#x4FDD;&#x5B58;&#xFF0C;&#x5E76;&#x4F7F;&#x534F;&#x540C;&#x7F16;&#x8F91;&#x6210;&#x4E3A;&#x53EF;&#x80FD;&#x3002;</p>
+<p>&#x53D8;&#x6362;&#x53EF;&#x4EE5;&#x64CD;&#x4F5C; <a href="document.html"><code>Document</code></a> &#x3001;<a href="selection.html"><code>Selection</code></a>&#xFF0C;&#x6216;&#x540C;&#x65F6;&#x64CD;&#x4F5C;&#x4E8C;&#x8005;&#x3002;</p>
 <ul>
 <li><a href="#properties">Properties</a><ul>
 <li><a href="#state"><code>state</code></a></li>
@@ -730,17 +730,17 @@
 </ul>
 <h2 id="properties">Properties</h2>
 <h3 id="state"><code>state</code></h3>
-<p>A <a href="state.html"><code>State</code></a> with the change&apos;s current operations applied. Each time you run a new change function this property will be updated.</p>
+<p>&#x5F53;&#x524D; change &#x6240;&#x5E94;&#x7528;&#x5230;&#x7684; <a href="state.html"><code>State</code></a>&#x3002; &#x6BCF;&#x6B21;&#x6267;&#x884C;&#x65B0;&#x7684; change &#x51FD;&#x6570;&#xFF0C;&#x90FD;&#x4F1A;&#x66F4;&#x65B0;&#x8BE5;&#x5C5E;&#x6027;&#x3002;</p>
 <h2 id="methods">Methods</h2>
 <h3 id="apply"><code>apply</code></h3>
 <p><code>apply(options: Object) =&gt; Change</code></p>
-<p>Applies current change steps, saving them to the history if needed.</p>
+<p>&#x5E94;&#x7528;&#x5F53;&#x524D; change &#x6B65;&#x9AA4;&#xFF0C;&#x82E5;&#x9700;&#x8981;&#x5219;&#x5C06;&#x5176;&#x4FDD;&#x5B58;&#x5230;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x4E2D;&#x3002;</p>
 <h3 id="call"><code>call</code></h3>
 <p><code>call(customChange: Function, ...arguments) =&gt; Change</code></p>
-<p>This method calls the provided function argument <code>customChange</code> with the current instance of the <code>Change</code> object as the first argument and passes through the remaining arguments.</p>
-<p>The function signature for <code>customChange</code> is:</p>
+<p>&#x8BE5;&#x65B9;&#x6CD5;&#x8C03;&#x7528; <code>customChange</code> &#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x7684; <code>Change</code> &#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x4F5C;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x5E76;&#x4F20;&#x5165;&#x5269;&#x4F59;&#x7684;&#x5176;&#x5B83;&#x53C2;&#x6570;&#x3002;</p>
+<p><code>customChange</code> &#x7684;&#x51FD;&#x6570;&#x7B7E;&#x540D;&#x4E3A;&#xFF1A;</p>
 <p><code>customChange(change: Change, ...arguments)</code></p>
-<p>The purpose of <code>call</code> is to enable custom change methods to exist and called in a chain. For example:</p>
+<p><code>call</code> &#x7684;&#x4F5C;&#x7528;&#x662F;&#x5141;&#x8BB8;&#x7F16;&#x5199;&#x81EA;&#x5B9A;&#x4E49;&#x7684; change &#x51FD;&#x6570;&#x5E76;&#x4F7F;&#x5176;&#x652F;&#x6301;&#x94FE;&#x5F0F;&#x8C03;&#x7528;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
 <pre class="language-"><code>return state.change()
   .call(myCustomInsertTableChange, columns, rows)
   .focus()
@@ -748,255 +748,261 @@
 </code></pre><h2 id="current-state-changes">Current State Changes</h2>
 <h3 id="deletebackward"><code>deleteBackward</code></h3>
 <p><code>deleteBackward(n: Number) =&gt; Change</code></p>
-<p>Delete backward <code>n</code> characters at the current cursor. If the selection is expanded, this method is equivalent to a regular <a href="#delete"><code>delete()</code></a>. <code>n</code> defaults to <code>1</code>.</p>
+<p>&#x5728;&#x5F53;&#x524D;&#x5149;&#x6807;&#x4F4D;&#x7F6E;&#x5411;&#x540E;&#x5220;&#x9664; <code>n</code> &#x4E2A;&#x5B57;&#x7B26;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7B49;&#x4EF7;&#x4E8E;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684; <a href="#delete"><code>delete()</code></a>&#x3002;<code>n</code> &#x9ED8;&#x8BA4;&#x4E3A; <code>1</code>&#x3002;</p>
 <h3 id="deleteforward"><code>deleteForward</code></h3>
 <p><code>deleteForward(n: Number) =&gt; Change</code></p>
-<p>Delete forward <code>n</code> characters at the current cursor. If the selection is expanded, this method is equivalent to a regular <a href="#delete"><code>delete()</code></a>. <code>n</code> defaults to <code>1</code>.</p>
+<p>&#x5728;&#x5F53;&#x524D;&#x5149;&#x6807;&#x4F4D;&#x7F6E;&#x5411;&#x524D;&#x5220;&#x9664; <code>n</code> &#x4E2A;&#x5B57;&#x7B26;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7B49;&#x4EF7;&#x4E8E;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684; <a href="#delete"><code>delete()</code></a>&#x3002;<code>n</code> &#x9ED8;&#x8BA4;&#x4E3A; <code>1</code>&#x3002;</p>
 <h3 id="delete"><code>delete</code></h3>
 <p><code>delete() =&gt; Change</code></p>
-<p>Delete everything in the current selection.</p>
+<p>&#x5220;&#x9664;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x3002;</p>
 <h3 id="insertblock"><code>insertBlock</code></h3>
 <p><code>insertBlock(block: Block) =&gt; Change</code> <br>
 <code>insertBlock(properties: Object) =&gt; Change</code> <br>
 <code>insertBlock(type: String) =&gt; Change</code></p>
-<p>Insert a new block at the same level as the current block, splitting the current block to make room if it is non-empty. If the selection is expanded, it will be deleted first.</p>
+<p>&#x5728;&#x4E0E;&#x5F53;&#x524D; block &#x540C;&#x6DF1;&#x5EA6;&#x7684;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x65B0; block&#xFF0C;&#x82E5;&#x5F53;&#x524D; block &#x975E;&#x7A7A;&#xFF0C;&#x5C06;&#x5176;&#x5207;&#x5206;&#x4E3A;&#x4E24;&#x4E2A; block &#x4EE5;&#x4E3A;&#x5176;&#x817E;&#x51FA;&#x7A7A;&#x95F4;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;</p>
 <h3 id="insertfragment"><code>insertFragment</code></h3>
 <p><code>insertFragment(fragment: Document) =&gt; Change</code></p>
-<p>Insert a <a href="document.html"><code>fragment</code></a> at the current selection. If the selection is expanded, it will be deleted first.</p>
+<p>&#x5728;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x4E00;&#x4E2A; <a href="document.html"><code>fragment</code></a>&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;</p>
 <h3 id="insertinline"><code>insertInline</code></h3>
 <p><code>insertInline(inline: Inline) =&gt; Change</code> <br>
 <code>insertInline(properties: Object) =&gt; Change</code></p>
-<p>Insert a new inline at the current cursor position, splitting the text to make room if it is non-empty. If the selection is expanded, it will be deleted first.</p>
+<p>&#x5728;&#x5F53;&#x524D;&#x5149;&#x6807;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x65B0; inline&#xFF0C;&#x82E5;&#x5F53;&#x524D; text &#x975E;&#x7A7A;&#xFF0C;&#x5C06;&#x5176;&#x5207;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x4EE5;&#x4E3A;&#x5176;&#x817E;&#x51FA;&#x7A7A;&#x95F4;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;</p>
 <h3 id="inserttext"><code>insertText</code></h3>
 <p><code>insertText(text: String) =&gt; Change</code></p>
-<p>Insert a string of <code>text</code> at the current selection. If the selection is expanded, it will be deleted first.</p>
+<p>&#x5728;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x4E00;&#x4E2A; text &#x5B57;&#x7B26;&#x4E32;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;</p>
 <h3 id="addmark"><code>addMark</code></h3>
 <p><code>addMark(mark: Mark) =&gt; Change</code> <br>
 <code>addMark(properties: Object) =&gt; Change</code> <br>
 <code>addMark(type: String) =&gt; Change</code></p>
-<p>Add a <a href="mark.html"><code>mark</code></a> to the characters in the current selection. For convenience, you can pass a <code>type</code> string or <code>properties</code> object to implicitly create a <a href="mark.html"><code>Mark</code></a> of that type.</p>
+<p>&#x4E3A;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x7684;&#x5B57;&#x7B26;&#x6DFB;&#x52A0; <a href="mark.html"><code>mark</code></a>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x6765;&#x9690;&#x5F0F;&#x5730;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BE5;&#x7C7B;&#x578B;&#x7684; <a href="mark.html"><code>Mark</code></a>&#x3002;</p>
 <h3 id="setblock"><code>setBlock</code></h3>
 <p><code>setBlock(properties: Object) =&gt; Change</code> <br>
 <code>setBlock(type: String) =&gt; Change</code></p>
-<p>Set the <code>properties</code> of the <a href="block.html"><code>Block</code></a> in the current selection. For convenience, you can pass a <code>type</code> string to set the blocks&apos;s type only.</p>
+<p>&#x6839;&#x636E; <code>properties</code> &#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185; <a href="block.html"><code>Block</code></a>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x8BE5; block &#x7684;&#x7C7B;&#x578B;&#x3002;</p>
 <h3 id="setinline"><code>setInline</code></h3>
 <p><code>setInline(properties: Object) =&gt; Change</code> <br>
 <code>setInline(type: String) =&gt; Change</code></p>
-<p>Set the <code>properties</code> of the <a href="inline.html"><code>Inline</code></a> nodes in the current selection. For convenience, you can pass a <code>type</code> string to set the inline&apos;s type only.</p>
+<p>&#x6839;&#x636E; <code>properties</code> &#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185; <a href="inline.html"><code>Inline</code></a>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x8BE5; inline &#x7684;&#x7C7B;&#x578B;&#x3002;</p>
 <h3 id="splitblock"><code>splitBlock</code></h3>
 <p><code>splitBlock(depth: Number) =&gt; Change</code></p>
-<p>Split the <a href="block.html"><code>Block</code></a> in the current selection by <code>depth</code> levels. If the selection is expanded, it will be deleted first. <code>depth</code> defaults to <code>1</code>.</p>
+<p>&#x6839;&#x636E; <code>depth</code> &#x7EA7;&#x522B;&#x6765;&#x5207;&#x5206;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684; <a href="block.html"><code>Block</code></a>&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;<code>depth</code> &#x9ED8;&#x8BA4;&#x4E3A; <code>1</code>&#x3002;</p>
 <h3 id="splitinline"><code>splitInline</code></h3>
 <p><code>splitInline(depth: Number) =&gt; Change</code></p>
-<p>Split the <a href="inline.html"><code>Inline</code></a> node in the current selection by <code>depth</code> levels. If the selection is expanded, it will be deleted first. <code>depth</code> defaults to <code>Infinity</code>.</p>
+<p>&#x6839;&#x636E; <code>depth</code> &#x7EA7;&#x522B;&#x6765;&#x5207;&#x5206;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684; <a href="block.html"><code>Inline</code></a>&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;<code>depth</code> &#x9ED8;&#x8BA4;&#x4E3A; <code>Infinity</code>&#x3002;</p>
 <h3 id="removemark"><code>removeMark</code></h3>
 <p><code>removeMark(mark: Mark) =&gt; Change</code> <br>
 <code>removeMark(properties: Object) =&gt; Change</code> <br>
 <code>removeMark(type: String) =&gt; Change</code></p>
-<p>Remove a <a href="mark.html"><code>mark</code></a> from the characters in the current selection. For convenience, you can pass a <code>type</code> string or <code>properties</code> object to implicitly create a <a href="mark.html"><code>Mark</code></a> of that type.</p>
+<p>&#x79FB;&#x9664;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5B57;&#x7B26;&#x7684; <a href="mark.html"><code>mark</code></a>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x6765;&#x9690;&#x5F0F;&#x5730;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BE5;&#x7C7B;&#x578B;&#x7684; <a href="mark.html"><code>Mark</code></a>&#x3002;</p>
 <h3 id="togglemark"><code>toggleMark</code></h3>
 <p><code>toggleMark(mark: Mark) =&gt; Change</code> <br>
 <code>toggleMark(properties: Object) =&gt; Change</code> <br>
 <code>toggleMark(type: String) =&gt; Change</code></p>
-<p>Add or remove a <a href="mark.html"><code>mark</code></a> from the characters in the current selection, depending on it already exists on any or not. For convenience, you can pass a <code>type</code> string or <code>properties</code> object to implicitly create a <a href="mark.html"><code>Mark</code></a> of that type.</p>
+<p>&#x6DFB;&#x52A0;&#x6216;&#x5220;&#x9664;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5B57;&#x7B26;&#x7684; <a href="mark.html"><code>mark</code></a>&#xFF0C;&#x4F9D;&#x636E;&#x662F;&#x5176;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E8E;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x6765;&#x9690;&#x5F0F;&#x5730;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BE5;&#x7C7B;&#x578B;&#x7684; <a href="mark.html"><code>Mark</code></a>&#x3002;</p>
 <h3 id="unwrapblock"><code>unwrapBlock</code></h3>
 <p><code>unwrapBlock([type: String], [data: Data]) =&gt; Change</code></p>
-<p>Unwrap all <a href="block.html"><code>Block</code></a> nodes in the current selection that match a <code>type</code> and/or <code>data</code>.</p>
+<p>&#x6839;&#x636E;&#x5BF9; <code>type</code> &#x548C; / &#x6216; <code>data</code> &#x7684;&#x5339;&#x914D;&#xFF0C;&#x89E3;&#x5305;&#x6240;&#x6709;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="unwrapinline"><code>unwrapInline</code></h3>
 <p><code>unwrapInline([type: String], [data: Data]) =&gt; Change</code></p>
-<p>Unwrap all <a href="inline.html"><code>Inline</code></a> nodes in the current selection that match a <code>type</code> and/or <code>data</code>.</p>
+<p>&#x6839;&#x636E;&#x5BF9; <code>type</code> &#x548C; / &#x6216; <code>data</code> &#x7684;&#x5339;&#x914D;&#xFF0C;&#x89E3;&#x5305;&#x6240;&#x6709;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684; <a href="block.html"><code>Inline</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="wrapblock"><code>wrapBlock</code></h3>
 <p><code>wrapBlock(type: String, [data: Data]) =&gt; Change</code></p>
-<p>Wrap the <a href="block.html"><code>Block</code></a> nodes in the current selection with a new <a href="block.html"><code>Block</code></a> node of <code>type</code>, with optional <code>data</code>.</p>
+<p>&#x4F7F;&#x7528;&#x7C7B;&#x578B;&#x4E3A; <code>type</code> &#x7684;&#x65B0; <a href="block.html"><code>Block</code></a> &#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x5305;&#x88F9;&#x8D77;&#x6765;&#xFF0C;&#x53EF;&#x9644;&#x52A0; <code>data</code> &#x4FE1;&#x606F;&#x3002;</p>
 <h3 id="wrapinline"><code>wrapInline</code></h3>
 <p><code>wrapInline(type: String, [data: Data]) =&gt; Change</code></p>
-<p>Wrap the <a href="inline.html"><code>Inline</code></a> nodes in the current selection with a new <a href="inline.html"><code>Inline</code></a> node of <code>type</code>, with optional <code>data</code>.</p>
+<p>&#x4F7F;&#x7528;&#x7C7B;&#x578B;&#x4E3A; <code>type</code> &#x7684;&#x65B0; <a href="inline.html"><code>Inline</code></a> &#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684; <a href="inline.html"><code>Inline</code></a> &#x8282;&#x70B9;&#x5305;&#x88F9;&#x8D77;&#x6765;&#xFF0C;&#x53EF;&#x9644;&#x52A0; <code>data</code> &#x4FE1;&#x606F;&#x3002;</p>
 <h3 id="wraptext"><code>wrapText</code></h3>
 <p><code>wrapText(prefix: String, [suffix: String]) =&gt; Change</code></p>
-<p>Surround the text in the current selection with <code>prefix</code> and <code>suffix</code> strings. If the <code>suffix</code> is ommitted, the <code>prefix</code> will be used instead.</p>
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6587;&#x672C;&#x7528; <code>prefix</code> &#x548C; <code>suffix</code> &#x5B57;&#x7B26;&#x4E32;&#x56F4;&#x8D77;&#x6765;&#x3002;&#x82E5;&#x7701;&#x7565;&#x4E86; <code>suffix</code>&#xFF0C;&#x5C06;&#x4F7F;&#x7528; <code>prefix</code> &#x66FF;&#x4EE3;&#x4E4B;&#x3002;</p>
 <h2 id="selection-changes">Selection Changes</h2>
 <h3 id="blur"><code>blur</code></h3>
 <p><code>blur() =&gt; Change</code></p>
-<p>Blur the current selection.</p>
+<p>&#x4F7F;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5931;&#x53BB;&#x7126;&#x70B9;&#x3002;</p>
 <h3 id="collapsetoedge"><code>collapseTo{Edge}</code></h3>
 <p><code>collapseTo{Edge}() =&gt; Change</code></p>
-<p>Collapse the current selection to its <code>{Edge}</code>. Where <code>{Edge}</code> is either <code>Anchor</code>, <code>Focus</code>, <code>Start</code> or <code>End</code>.</p>
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x6536;&#x7F29;&#x81F3;&#x5176; <code>{Edge}</code>&#x3002;<code>{Edge}</code> &#x53EF;&#x4E3A; <code>Anchor</code>&#x3001;<code>Focus</code>&#x3001;<code>Start</code> &#x6216; <code>End</code>&#x3002;</p>
 <h3 id="collapsetoedgeof"><code>collapseTo{Edge}Of</code></h3>
 <p><code>collapseTo{Edge}Of(node: Node) =&gt; Change</code></p>
-<p>Collapse the current selection to the <code>{Edge}</code> of <code>node</code>. Where <code>{Edge}</code> is either <code>Start</code> or <code>End</code>.</p>
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x6536;&#x7F29;&#x81F3; <code>node</code> &#x7684; <code>{Edge}</code>&#x3002;<code>{Edge}</code> &#x53EF;&#x4E3A; <code>Start</code> &#x6216; <code>End</code>&#x3002;</p>
 <h3 id="collapsetoedgeofdirectionblock"><code>collapseTo{Edge}Of{Direction}Block</code></h3>
 <p><code>collapseTo{Edge}Of{Direction}Block() =&gt; Change</code></p>
-<p>Collapse the current selection to the <code>{Edge}</code> of the next <a href="block.html"><code>Block</code></a> node in <code>{Direction}</code>. Where <code>{Edge}</code> is either <code>{Start}</code> or <code>{End}</code> and <code>{Direction}</code> is either <code>Next</code> or <code>Previous</code>.</p>
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x6309;&#x7167; <code>{Direction}</code> &#x65B9;&#x5411;&#x6536;&#x7F29;&#x81F3;&#x4E0B;&#x4E00;&#x4E2A; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x7684; <code>{Edge}</code>&#x3002;<code>{Edge}</code> &#x53EF;&#x4E3A; <code>Start</code> &#x6216; <code>End</code>&#xFF0C;<code>{Direction}</code> &#x53EF;&#x4E3A; <code>Next</code> &#x6216; <code>Previous</code>&#x3002;</p>
 <h3 id="collapsetoedgeofdirectiontext"><code>collapseTo{Edge}Of{Direction}Text</code></h3>
 <p><code>collapseTo{Edge}Of{Direction}Text() =&gt; Change</code></p>
-<p>Collapse the current selection to the <code>{Edge}</code> of the next <a href="text.html"><code>Text</code></a> node in <code>{Direction}</code>. Where <code>{Edge}</code> is either <code>{Start}</code> or <code>{End}</code> and <code>{Direction}</code> is either <code>Next</code> or <code>Previous</code>.</p>
+<!-- TODO 修复原文 start 与 end 格式 -->
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x6309;&#x7167; <code>{Direction}</code> &#x65B9;&#x5411;&#x6536;&#x7F29;&#x81F3;&#x4E0B;&#x4E00;&#x4E2A; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x7684; <code>{Edge}</code>&#x3002;<code>{Edge}</code> &#x53EF;&#x4E3A; <code>Start</code> &#x6216; <code>End</code>&#xFF0C;<code>{Direction}</code> &#x53EF;&#x4E3A; <code>Next</code> &#x6216; <code>Previous</code>&#x3002;</p>
 <h3 id="extend"><code>extend</code></h3>
 <p><code>extend(n: Number) =&gt; Change</code></p>
-<p>Extend the current selection&apos;s points by <code>n</code> characters. <code>n</code> can be positive or negative to indicate direction.</p>
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x6269;&#x5C55; <code>n</code> &#x4E2A;&#x5B57;&#x7B26;&#x3002;<code>n</code> &#x7684;&#x6B63;&#x8D1F;&#x7528;&#x4E8E;&#x6307;&#x793A;&#x65B9;&#x5411;&#x3002;</p>
 <h3 id="extendtoedgeof"><code>extendTo{Edge}Of</code></h3>
 <p><code>extendTo{Edge}Of(node: Node) =&gt; Change</code></p>
-<p>Extend the current selection to the <code>{Edge}</code> of a <code>node</code>. Where <code>{Edge}</code> is either <code>Start</code> or <code>End</code>.</p>
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x6269;&#x5C55;&#x81F3; <code>node</code> &#x7684; <code>{Edge}</code>&#x3002;<code>{Edge}</code> &#x53EF;&#x4E3A; <code>Start</code> &#x6216; <code>End</code>&#x3002;</p>
 <h3 id="flip"><code>flip</code></h3>
 <p><code>flip() =&gt; Change</code></p>
-<p>Flip the selection.</p>
+<p>&#x7FFB;&#x8F6C;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x3002;</p>
 <h3 id="focus"><code>focus</code></h3>
 <p><code>focus() =&gt; Change</code></p>
-<p>Focus the current selection.</p>
+<p>&#x4F7F;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x83B7;&#x5F97;&#x7126;&#x70B9;&#x3002;</p>
 <h3 id="move"><code>move</code></h3>
 <p><code>move(n: Number) =&gt; Change</code></p>
-<p>Move the current selection&apos;s offsets by  <code>n</code>.</p>
+<p>&#x6839;&#x636E; <code>n</code> &#x79FB;&#x52A8;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x3002;</p>
 <h3 id="moveedge"><code>move{Edge}</code></h3>
 <p><code>move{Edge}(n: Number) =&gt; Change</code></p>
-<p>Move the current selection&apos;s <code>edge</code> offset by  <code>n</code>. <code>edge</code> can be one of <code>Start</code>, <code>End</code>.</p>
+<!-- TODO 修复原文 Edge 格式 -->
+<p>&#x6839;&#x636E; <code>n</code> &#x79FB;&#x52A8;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4; <code>{Edge}</code> &#x7684;&#x504F;&#x79FB;&#x91CF;&#x3002;<code>{Edge}</code> &#x53EF;&#x4E3A; <code>Start</code> &#x6216; <code>End</code>&#x3002;</p>
 <h3 id="moveoffsetsto"><code>moveOffsetsTo</code></h3>
 <p><code>moveOffsetsTo(anchorOffset: Number, focusOffset: Number) =&gt; Change</code></p>
-<p>Move the current selection&apos;s offsets to a new <code>anchorOffset</code> and <code>focusOffset</code>.</p>
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x79FB;&#x52A8;&#x81F3;&#x65B0;&#x7684; <code>anchorOffset</code> &#x548C; <code>focusOffset</code>&#x3002;</p>
 <h3 id="movetorangeof"><code>moveToRangeOf</code></h3>
 <p><code>moveToRangeOf(node: Node) =&gt; Change</code></p>
-<p>Move the current selection&apos;s anchor point to the start of a <code>node</code> and its focus point to the end of the <code>node</code>.</p>
+<p>&#x5C06;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x7684;&#x951A;&#x70B9;&#x79FB;&#x52A8;&#x81F3; <code>node</code> &#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x7126;&#x70B9;&#x79FB;&#x52A8;&#x81F3; <code>node</code> &#x7684;&#x7ED3;&#x675F;&#x3002;</p>
 <h3 id="select"><code>select</code></h3>
 <p><code>select(properties: Selection || Object) =&gt; Change</code></p>
-<p>Set the current selection to a selection with merged <code>properties</code>. The <code>properties</code> can either be a <a href="selection.html"><code>Selection</code></a> object or a plain Javascript object of selection properties.</p>
+<p>&#x4F7F;&#x7528;&#x5408;&#x5E76;&#x7684; <code>properties</code> &#x66F4;&#x65B0;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x3002;<code>properties</code> &#x53EF;&#x4E3A; <a href="selection.html"><code>Selection</code></a> &#x5BF9;&#x8C61;&#x6216;&#x5E26; selection &#x76F8;&#x5173;&#x5C5E;&#x6027;&#x7684;&#x539F;&#x751F; JS &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="selectall"><code>selectAll</code></h3>
 <p><code>selectAll() =&gt; Change</code></p>
-<p>Select the entire document and focus the selection.</p>
+<p>&#x9009;&#x62E9;&#x5F53;&#x524D;&#x5168;&#x90E8;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x5E76;&#x83B7;&#x5F97;&#x7126;&#x70B9;&#x3002;</p>
 <h3 id="deselect"><code>deselect</code></h3>
 <p><code>deselect() =&gt; Change</code></p>
-<p>Unset the selection.</p>
+<p>&#x53D6;&#x6D88;&#x9009;&#x62E9;&#x3002;</p>
 <h2 id="node-changes">Node Changes</h2>
 <h3 id="addmarkbykey"><code>addMarkByKey</code></h3>
 <p><code>addMarkByKey(key: String, offset: Number, length: Number, mark: Mark) =&gt; Change</code></p>
-<p>Add a <code>mark</code> to <code>length</code> characters starting at an <code>offset</code> in a <a href="node.html"><code>Node</code></a> by its <code>key</code>.</p>
+<p>&#x6839;&#x636E; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x4E3A;&#x5176;&#x4E2D;&#x7531; <code>offset</code> &#x5F00;&#x59CB;&#x7684; <code>length</code> &#x4E2A;&#x5B57;&#x7B26;&#x6DFB;&#x52A0; <code>mark</code>&#x3002;</p>
 <h3 id="insertnodebykey"><code>insertNodeByKey</code></h3>
 <p><code>insertNodeByKey(key: String, index: Number, node: Node) =&gt; Change</code></p>
-<p>Insert a <code>node</code> at <code>index</code> inside a parent <a href="node.html"><code>Node</code></a> by its <code>key</code>.</p>
+<p>&#x6839;&#x636E;&#x7236; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x7684; <code>index</code> &#x4F4D;&#x7F6E;&#x63D2;&#x5165; <code>node</code>&#x3002;</p>
 <h3 id="insertfragmentbykey"><code>insertFragmentByKey</code></h3>
 <p><code>insertFragmentByKey(key: String, index: Number, fragment: Fragment) =&gt; Transform</code></p>
-<p>Insert a <a href="fragment.md"><code>Fragment</code></a> at <code>index</code> inside a parent <a href="node.html"><code>Node</code></a> by its <code>key</code>.</p>
+<!-- TODO 修复原文 fragment 大小写 -->
+<p>&#x6839;&#x636E;&#x7236; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x7684; <code>index</code> &#x4F4D;&#x7F6E;&#x63D2;&#x5165; <a href="fragment.md"><code>fragment</code></a>&#x3002;</p>
 <h3 id="inserttextbykey"><code>insertTextByKey</code></h3>
 <p><code>insertTextByKey(key: String, offset: Number, text: String, [marks: Set]) =&gt; Change</code></p>
-<p>Insert <code>text</code> at an <code>offset</code> in a <a href="text.html"><code>Text Node</code></a> with optional <code>marks</code>.</p>
+<!-- TODO 修复原文 key 描述 -->
+<p>&#x6839;&#x636E;&#x7236; <a href="text.html"><code>Text Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x4ECE; <code>offset</code> &#x8D77;&#x7684;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x5E26;&#x53EF;&#x9009; <code>marks</code> &#x7684; <code>text</code>&#x3002;</p>
 <h3 id="movenodebykey"><code>moveNodeByKey</code></h3>
 <p><code>moveNodeByKey(key: String, newKey: String, newIndex: Number) =&gt; Change</code></p>
-<p>Move a <a href="node.html"><code>Node</code></a> by its <code>key</code> to a new parent node with its <code>newKey</code> and at a <code>newIndex</code>.</p>
+<p>&#x6839;&#x636E; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x5C06;&#x5176;&#x79FB;&#x52A8;&#x5230;&#x5E26; <code>newKey</code> &#x7684;&#x65B0;&#x7236;&#x8282;&#x70B9;&#x4E0B;&#xFF0C;&#x76F8;&#x5E94;&#x4E0B;&#x6807;&#x4E3A; <code>newIndex</code>&#x3002;</p>
 <h3 id="removemarkbykey"><code>removeMarkByKey</code></h3>
 <p><code>removeMarkByKey(key: String, offset: Number, length: Number, mark: Mark) =&gt; Change</code></p>
-<p>Remove a <code>mark</code> from <code>length</code> characters starting at an <code>offset</code> in a <a href="node.html"><code>Node</code></a> by its <code>key</code>.</p>
+<p>&#x6839;&#x636E; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x79FB;&#x9664;&#x5176;&#x4E2D;&#x4ECE; <code>offset</code> &#x5F00;&#x59CB; <code>length</code> &#x4E2A;&#x5B57;&#x7B26;&#x7684; <code>mark</code>&#x3002; </p>
 <h3 id="removenodebykey"><code>removeNodeByKey</code></h3>
 <p><code>removeNodeByKey(key: String) =&gt; Change</code></p>
-<p>Remove a <a href="node.html"><code>Node</code></a> from the document by its <code>key</code>.</p>
+<p>&#x6839;&#x636E; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x5C06;&#x5176;&#x4ECE;&#x6587;&#x6863;&#x4E2D;&#x79FB;&#x9664;&#x3002;</p>
 <h3 id="removetextbykey"><code>removeTextByKey</code></h3>
 <p><code>removeTextByKey(key: String, offset: Number, length: Number) =&gt; Change</code></p>
-<p>Remove <code>length</code> characters of text starting at an <code>offset</code> in a <a href="node.html"><code>Node</code></a> by its <code>key</code>.</p>
+<p>&#x6839;&#x636E; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x79FB;&#x9664;&#x5176;&#x4E2D;&#x4ECE; <code>offset</code> &#x5F00;&#x59CB; <code>length</code> &#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x6587;&#x672C;&#x3002;</p>
 <h3 id="setmarkbykey"><code>setMarkByKey</code></h3>
 <p><code>setMarkByKey(key: String, offset: Number, length: Number, mark: Mark, properties: Object) =&gt; Change</code></p>
-<p>Set a dictionary of <code>properties</code> on a <a href="mark.html"><code>mark</code></a> on a <a href="node.html"><code>Node</code></a> by its <code>key</code>.</p>
+<p>&#x6839;&#x636E; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x4E3A;&#x5176;&#x8BBE;&#x7F6E; <code>properties</code> &#x8BCD;&#x5178;&#x5BF9;&#x5E94;&#x7684; <a href="mark.html"><code>mark</code></a>&#x3002;</p>
 <h3 id="setnodebykey"><code>setNodeByKey</code></h3>
 <p><code>setNodeByKey(key: String, properties: Object) =&gt; Change</code> <br>
 <code>setNodeByKey(key: String, type: String) =&gt; Change</code></p>
-<p>Set a dictionary of <code>properties</code> on a <a href="node.html"><code>Node</code></a> by its <code>key</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<p>&#x6839;&#x636E; <a href="node.html"><code>Node</code></a> &#x7684; <code>key</code>&#xFF0C;&#x4E3A;&#x5176;&#x8BBE;&#x7F6E; <code>properties</code> &#x8BCD;&#x5178;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="splitnodebykey"><code>splitNodeByKey</code></h3>
 <p><code>splitNodeByKey(key: String, offset: Number) =&gt; Change</code></p>
-<p>Split a node by its <code>key</code> at an <code>offset</code>.</p>
+<p>&#x6839;&#x636E;&#x4ECE; <code>offset</code> &#x5F00;&#x59CB;&#x7684; <code>key</code> &#x5207;&#x5206;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="unwrapinlinebykey"><code>unwrapInlineByKey</code></h3>
 <p><code>unwrapInlineByKey(key: String, properties: Object) =&gt; Change</code> <br>
 <code>unwrapInlineByKey(key: String, type: String) =&gt; Change</code></p>
-<p>Unwrap all inner content of an <a href="inline.html"><code>Inline</code></a> node that match <code>properties</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<!-- TODO 修复原文 key 描述 -->
+<p>&#x6839;&#x636E; <a href="inline.html"><code>Inline</code></a> &#x7684; <code>key</code>&#xFF0C;&#x89E3;&#x5305;&#x5176;&#x4E2D;&#x5339;&#x914D; <code>properties</code> &#x7684;&#x8282;&#x70B9;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="unwrapblockbykey"><code>unwrapBlockByKey</code></h3>
 <p><code>unwrapBlockByKey(key: String, properties: Object) =&gt; Change</code> <br>
 <code>unwrapBlockByKey(key: String, type: String) =&gt; Change</code></p>
-<p>Unwrap all inner content of a <a href="block.html"><code>Block</code></a> node that match <code>properties</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<!-- TODO 修复原文 key 描述 -->
+<p>&#x6839;&#x636E; <a href="block.html"><code>Block</code></a> &#x7684; <code>key</code>&#xFF0C;&#x89E3;&#x5305;&#x5176;&#x4E2D;&#x5339;&#x914D; <code>properties</code> &#x7684;&#x8282;&#x70B9;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="unwrapnodebykey"><code>unwrapNodeByKey</code></h3>
 <p><code>unwrapNodeByKey(key: String) =&gt; Change</code></p>
-<p>Unwrap a single node from its parent. If the node is surrounded with siblings, its parent will be split. If the node is the only child, the parent is removed, and simply replaced by the node itself. Cannot unwrap a root node.</p>
+<p>&#x6839;&#x636E; <code>key</code>&#xFF0C;&#x5C06;&#x8282;&#x70B9;&#x4ECE;&#x5176;&#x7236;&#x8282;&#x70B9;&#x4E2D;&#x89E3;&#x5305;&#x51FA;&#x6765;&#x3002;&#x82E5;&#x8BE5;&#x8282;&#x70B9;&#x524D;&#x540E;&#x5B58;&#x5728;&#x5144;&#x5F1F;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x5207;&#x5206;&#x5176;&#x7236;&#x8282;&#x70B9;&#x3002;&#x82E5;&#x8BE5;&#x8282;&#x70B9;&#x4E3A;&#x552F;&#x4E00;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x5C06;&#x7236;&#x8282;&#x70B9;&#x79FB;&#x9664;&#x5E76;&#x66FF;&#x6362;&#x4E3A;&#x8BE5;&#x8282;&#x70B9;&#x3002;&#x4E0D;&#x652F;&#x6301;&#x89E3;&#x5305;&#x6839;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="wrapblockbykey"><code>wrapBlockByKey</code></h3>
 <p><code>wrapBlockByKey(key: String, properties: Object) =&gt; Change</code> <br>
 <code>wrapBlockByKey(key: String, type: String) =&gt; Change</code></p>
-<p>Wrap the given node in a <a href="block.html"><code>Block</code></a> node that match <code>properties</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<p>&#x5C06;&#x6EE1;&#x8DB3; <code>properties</code> &#x7684;&#x7ED9;&#x5B9A;&#x8282;&#x70B9;&#x5305;&#x88F9;&#x5728; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x4E2D;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="wrapinlinebykey"><code>wrapInlineByKey</code></h3>
 <p><code>wrapInlineByKey(key: String, properties: Object) =&gt; Change</code> <br>
 <code>wrapInlineByKey(key: String, type: String) =&gt; Change</code></p>
-<p>Wrap the given node in a <a href="inline.html"><code>Inline</code></a> node that match <code>properties</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<p>&#x5C06;&#x6EE1;&#x8DB3; <code>properties</code> &#x7684;&#x7ED9;&#x5B9A;&#x8282;&#x70B9;&#x5305;&#x88F9;&#x5728; <a href="inline.html"><code>Inline</code></a> &#x8282;&#x70B9;&#x4E2D;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h2 id="document-changes">Document Changes</h2>
 <h3 id="deletebackwardatrange"><code>deleteBackwardAtRange</code></h3>
 <p><code>deleteBackwardAtRange(range: Selection, n: Number) =&gt; Change</code></p>
-<p>Delete backward <code>n</code> characters at a <code>range</code>. If the <code>range</code> is expanded, this method is equivalent to a regular <a href="#delete"><code>delete()</code></a>. <code>n</code> defaults to <code>1</code>.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x5411;&#x540E;&#x5220;&#x9664; <code>n</code> &#x4E2A;&#x5B57;&#x7B26;&#x3002;&#x82E5; <code>range</code> &#x5904;&#x4E8E;&#x5C55;&#x5F00;&#x72B6;&#x6001;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x7B49;&#x4EF7;&#x4E8E;&#x666E;&#x901A;&#x7684; <a href="#delete"><code>delete()</code></a>&#x3002;<code>n</code> &#x9ED8;&#x8BA4;&#x4E3A; <code>1</code>&#x3002;</p>
 <h3 id="deleteforwardatrange"><code>deleteForwardAtRange</code></h3>
 <p><code>deleteForwardAtRange(range: Selection, n: Number) =&gt; Change</code></p>
-<p>Delete forward <code>n</code> characters at a <code>range</code>. If the <code>range</code> is expanded, this method is equivalent to a regular <a href="#delete"><code>delete()</code></a>. <code>n</code> defaults to <code>1</code>.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x5411;&#x524D;&#x5220;&#x9664; <code>n</code> &#x4E2A;&#x5B57;&#x7B26;&#x3002;&#x82E5; <code>range</code> &#x5904;&#x4E8E;&#x5C55;&#x5F00;&#x72B6;&#x6001;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x7B49;&#x4EF7;&#x4E8E;&#x666E;&#x901A;&#x7684; <a href="#delete"><code>delete()</code></a>&#x3002;<code>n</code> &#x9ED8;&#x8BA4;&#x4E3A; <code>1</code>&#x3002;</p>
 <h3 id="deleteatrange"><code>deleteAtRange</code></h3>
 <p><code>deleteAtRange(range: Selection, ) =&gt; Change</code></p>
-<p>Delete everything in a <code>range</code>.</p>
+<p>&#x5220;&#x9664; <code>range</code> &#x4E2D;&#x5168;&#x90E8;&#x5185;&#x5BB9;&#x3002;</p>
 <h3 id="insertblockatrange"><code>insertBlockAtRange</code></h3>
 <p><code>insertBlockAtRange(range: Selection, block: Block) =&gt; Change</code> <br>
 <code>insertBlockAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>insertBlockAtRange(range: Selection, type: String) =&gt; Change</code></p>
-<p>Insert a new block at the same level as the leaf block at a <code>range</code>, splitting the current block to make room if it is non-empty. If the selection is expanded, it will be deleted first.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x4E0E;&#x53F6;&#x5B50; block &#x76F8;&#x540C;&#x6DF1;&#x5EA6;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x63D2;&#x5165;&#x65B0; block&#x3002;&#x82E5;&#x5F53;&#x524D; block &#x975E;&#x7A7A;&#xFF0C;&#x5C06;&#x5176;&#x5207;&#x5206;&#x4EE5;&#x817E;&#x51FA;&#x7A7A;&#x95F4;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;</p>
 <h3 id="insertfragmentatrange"><code>insertFragmentAtRange</code></h3>
 <p><code>insertFragmentAtRange(range: Selection, fragment: Document) =&gt; Change</code></p>
-<p>Insert a <a href="document.html"><code>fragment</code></a> at a <code>range</code>. If the selection is expanded, it will be deleted first.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A; <a href="document.html"><code>fragment</code></a>&#x3002;&#x82E5;&#x5F53;&#x524D; block &#x975E;&#x7A7A;&#xFF0C;&#x5C06;&#x5176;&#x5207;&#x5206;&#x4EE5;&#x817E;&#x51FA;&#x7A7A;&#x95F4;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;</p>
 <h3 id="insertinlineatrange"><code>insertInlineAtRange</code></h3>
 <p><code>insertInlineAtRange(range: Selection, inline: Inline) =&gt; Change</code> <br>
 <code>insertInlineAtRange(range: Selection, properties: Object) =&gt; Change</code></p>
-<p>Insert a new inline at a <code>range</code>, splitting the text to make room if it is non-empty. If the selection is expanded, it will be deleted first.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A; inline &#x8282;&#x70B9;&#x3002;&#x82E5;&#x5F53;&#x524D;&#x6587;&#x672C;&#x975E;&#x7A7A;&#xFF0C;&#x5C06;&#x5176;&#x5207;&#x5206;&#x4EE5;&#x817E;&#x51FA;&#x7A7A;&#x95F4;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;</p>
 <h3 id="inserttextatrange"><code>insertTextAtRange</code></h3>
 <p><code>insertTextAtRange(range: Selection, text: String) =&gt; Change</code></p>
-<p>Insert a string of <code>text</code> at a <code>range</code>. If the selection is expanded, it will be deleted first.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A; <code>text</code> &#x5B57;&#x7B26;&#x4E32;&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;</p>
 <h3 id="addmarkatrange"><code>addMarkAtRange</code></h3>
 <p><code>addMarkAtRange(range: Selection, mark: Mark) =&gt; Change</code> <br>
 <code>addMarkAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>addMarkAtRange(range: Selection, type: String) =&gt; Change</code></p>
-<p>Add a <a href="mark.html"><code>mark</code></a> to the characters in a <code>range</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object to implicitly create a <a href="mark.html"><code>Mark</code></a> of that type.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x6DFB;&#x52A0; <a href="mark.html"><code>mark</code></a>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x6765;&#x9690;&#x5F0F;&#x5730;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BE5;&#x7C7B;&#x578B;&#x7684; <a href="mark.html"><code>Mark</code></a>&#x3002;</p>
 <h3 id="setblockatrange"><code>setBlockAtRange</code></h3>
 <p><code>setBlockAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>setBlock(range: Selection, type: String) =&gt; Change</code></p>
-<p>Set the <code>properties</code> of the <a href="block.html"><code>Block</code></a> in a <code>range</code>. For convenience, you can pass a <code>type</code> string to set the blocks&apos;s type only.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x8BBE;&#x7F6E; <a href="block.html"><code>Block</code></a> &#x7684; <code>properties</code>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6765;&#x8BBE;&#x7F6E; block &#x7C7B;&#x578B;&#x3002;</p>
 <h3 id="setinlineatrange"><code>setInlineAtRange</code></h3>
 <p><code>setInlineAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>setInline(range: Selection, type: String) =&gt; Change</code></p>
-<p>Set the <code>properties</code> of the <a href="inline.html"><code>Inline</code></a> nodes in a <code>range</code>. For convenience, you can pass a <code>type</code> string to set the inline&apos;s type only.</p>
+<p>&#x5728; <code>range</code> &#x4E2D;&#x8BBE;&#x7F6E; <a href="inline.html"><code>Inline</code></a> &#x7684; <code>properties</code>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6765;&#x8BBE;&#x7F6E; inline &#x7C7B;&#x578B;&#x3002;</p>
 <h3 id="splitblockatrange"><code>splitBlockAtRange</code></h3>
 <p><code>splitBlockAtRange(range: Selection, depth: Number) =&gt; Change</code></p>
-<p>Split the <a href="block.html"><code>Block</code></a> in a <code>range</code> by <code>depth</code> levels. If the selection is expanded, it will be deleted first. <code>depth</code> defaults to <code>1</code>.</p>
+<p>&#x6839;&#x636E; <code>depth</code> &#x7EA7;&#x522B;&#x6765;&#x5207;&#x5206; <code>range</code> &#x5185;&#x7684; <a href="block.html"><code>Block</code></a>&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;<code>depth</code> &#x9ED8;&#x8BA4;&#x4E3A; <code>1</code>&#x3002;</p>
 <h3 id="splitinlineatrange"><code>splitInlineAtRange</code></h3>
 <p><code>splitInlineAtRange(range: Selection, depth: Number) =&gt; Change</code></p>
-<p>Split the <a href="inline.html"><code>Inline</code></a> node in a <code>range</code> by <code>depth</code> levels. If the selection is expanded, it will be deleted first. <code>depth</code> defaults to <code>Infinity</code>.</p>
+<p>&#x6839;&#x636E; <code>depth</code> &#x7EA7;&#x522B;&#x6765;&#x5207;&#x5206; <code>range</code> &#x5185;&#x7684; <a href="inline.html"><code>Inline</code></a>&#x3002;&#x82E5;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5DF2;&#x6269;&#x5C55;&#xFF0C;&#x5219;&#x5148;&#x5C06;&#x5176;&#x5220;&#x9664;&#x3002;<code>depth</code> &#x9ED8;&#x8BA4;&#x4E3A; <code>Infinity</code>&#x3002;</p>
 <h3 id="removemarkatrange"><code>removeMarkAtRange</code></h3>
 <p><code>removeMarkAtRange(range: Selection, mark: Mark) =&gt; Change</code> <br>
 <code>removeMarkAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>removeMarkAtRange(range: Selection, type: String) =&gt; Change</code></p>
-<p>Remove a <a href="mark.html"><code>mark</code></a> from the characters in a <code>range</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object to implicitly create a <a href="mark.html"><code>Mark</code></a> of that type.</p>
+<p>&#x79FB;&#x9664; <code>range</code> &#x5185;&#x5B57;&#x7B26;&#x7684; <a href="mark.html"><code>mark</code></a>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x6765;&#x9690;&#x5F0F;&#x5730;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BE5;&#x7C7B;&#x578B;&#x7684; <a href="mark.html"><code>Mark</code></a>&#x3002;</p>
 <h3 id="togglemarkatrange"><code>toggleMarkAtRange</code></h3>
 <p><code>toggleMarkAtRange(range: Selection, mark: Mark) =&gt; Change</code> <br>
 <code>toggleMarkAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>toggleMarkAtRange(range: Selection, type: String) =&gt; Change</code></p>
-<p>Add or remove a <a href="mark.html"><code>mark</code></a> from the characters in a <code>range</code>, depending on whether any of them already have the mark. For convenience, you can pass a <code>type</code> string or <code>properties</code> object to implicitly create a <a href="mark.html"><code>Mark</code></a> of that type.</p>
+<p>&#x6DFB;&#x52A0;&#x6216;&#x5220;&#x9664; <code>range</code> &#x5185;&#x5B57;&#x7B26;&#x7684; <a href="mark.html"><code>mark</code></a>&#xFF0C;&#x4F9D;&#x636E;&#x662F;&#x5176;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E8E;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x5185;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x6765;&#x9690;&#x5F0F;&#x5730;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8BE5;&#x7C7B;&#x578B;&#x7684; <a href="mark.html"><code>Mark</code></a>&#x3002;</p>
 <h3 id="unwrapblockatrange"><code>unwrapBlockAtRange</code></h3>
 <p><code>unwrapBlockAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>unwrapBlockAtRange(range: Selection, type: String) =&gt; Change</code></p>
-<p>Unwrap all <a href="block.html"><code>Block</code></a> nodes in a <code>range</code> that match <code>properties</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<p>&#x6839;&#x636E;&#x5BF9; <code>properties</code> &#x7684;&#x5339;&#x914D;&#xFF0C;&#x89E3;&#x5305; <code>range</code> &#x5185;&#x7684; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="unwrapinlineatrange"><code>unwrapInlineAtRange</code></h3>
 <p><code>unwrapInlineAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>unwrapInlineAtRange(range: Selection, type: String) =&gt; Change</code></p>
-<p>Unwrap all <a href="inline.html"><code>Inline</code></a> nodes in a <code>range</code> that match <code>properties</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<p>&#x6839;&#x636E;&#x5BF9; <code>properties</code> &#x7684;&#x5339;&#x914D;&#xFF0C;&#x89E3;&#x5305; <code>range</code> &#x5185;&#x7684; <a href="inline.html"><code>Inline</code></a> &#x8282;&#x70B9;&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="wrapblockatrange"><code>wrapBlockAtRange</code></h3>
 <p><code>wrapBlockAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>wrapBlockAtRange(range: Selection, type: String) =&gt; Change</code></p>
-<p>Wrap the <a href="block.html"><code>Block</code></a> nodes in a <code>range</code> with a new <a href="block.html"><code>Block</code></a> node with <code>properties</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<p>&#x5C06; <code>range</code> &#x5185;&#x7684; <a href="block.html"><code>Block</code></a> &#x5305;&#x88F9;&#x4E3A;&#x4E00;&#x4E2A;&#x5177;&#x5907; <code>properties</code> &#x7684;&#x65B0; <a href="block.html"><code>Block</code></a>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="wrapinlineatrange"><code>wrapInlineAtRange</code></h3>
 <p><code>wrapInlineAtRange(range: Selection, properties: Object) =&gt; Change</code> <br>
 <code>wrapInlineAtRange(range: Selection, type: String) =&gt; Change</code></p>
-<p>Wrap the <a href="inline.html"><code>Inline</code></a> nodes in a <code>range</code> with a new <a href="inline.html"><code>Inline</code></a> node with <code>properties</code>. For convenience, you can pass a <code>type</code> string or <code>properties</code> object.</p>
+<p>&#x5C06; <code>range</code> &#x5185;&#x7684; <a href="inline.html"><code>Inline</code></a> &#x5305;&#x88F9;&#x4E3A;&#x4E00;&#x4E2A;&#x5177;&#x5907; <code>properties</code> &#x7684;&#x65B0; <a href="inline.html"><code>Inline</code></a>&#x3002;&#x4E3A;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F20;&#x5165; <code>type</code> &#x5B57;&#x7B26;&#x4E32;&#x6216; <code>properties</code> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="wraptextatrange"><code>wrapTextAtRange</code></h3>
 <p><code>wrapTextAtRange(range: Selection, prefix: String, [suffix: String]) =&gt; Change</code></p>
-<p>Surround the text in a <code>range</code> with <code>prefix</code> and <code>suffix</code> strings. If the <code>suffix</code> is ommitted, the <code>prefix</code> will be used instead.</p>
+<p>&#x5C06; <code>range</code> &#x5185;&#x7684;&#x6587;&#x672C;&#x7528; <code>prefix</code> &#x548C; <code>suffix</code> &#x5B57;&#x7B26;&#x4E32;&#x56F4;&#x8D77;&#x6765;&#x3002;&#x82E5;&#x7701;&#x7565;&#x4E86; <code>suffix</code>&#xFF0C;&#x5C06;&#x4F7F;&#x7528; <code>prefix</code> &#x66FF;&#x4EE3;&#x4E4B;&#x3002;</p>
 <h2 id="history-changes">History Changes</h2>
 <h3 id="redo"><code>redo</code></h3>
 <p><code>redo() =&gt; Change</code></p>
-<p>Move forward one step in the history.</p>
+<p>&#x5728;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x4E2D;&#x524D;&#x8FDB;&#x4E00;&#x6B65;&#x3002;</p>
 <h3 id="undo"><code>undo</code></h3>
 <p><code>undo() =&gt; Change</code></p>
-<p>Move backward one step in the history.</p>
+<p>&#x5728;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x4E2D;&#x540E;&#x9000;&#x4E00;&#x6B65;&#x3002;</p>
 
                                 
                                 </section>
@@ -1040,7 +1046,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Change","level":"4.2","depth":1,"next":{"title":"Character","level":"4.3","depth":1,"path":"reference/slate/character.md","ref":"./reference/slate/character.md","articles":[]},"previous":{"title":"Block","level":"4.1","depth":1,"path":"reference/slate/block.md","ref":"./reference/slate/block.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/change.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Change","level":"4.2","depth":1,"next":{"title":"Character","level":"4.3","depth":1,"path":"reference/slate/character.md","ref":"./reference/slate/character.md","articles":[]},"previous":{"title":"Block","level":"4.1","depth":1,"path":"reference/slate/block.md","ref":"./reference/slate/block.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/change.md","mtime":"2017-09-30T10:17:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

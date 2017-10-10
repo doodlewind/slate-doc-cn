@@ -625,11 +625,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <p><br></p>
-<p></p><p align="center"><strong>Previous:</strong><br><a href="saving-to-a-database.html">Saving to a Database</a></p>
+<p></p><p align="center"><strong>Previous:</strong><br><a href="saving-to-a-database.html">&#x4FDD;&#x5B58;&#x5230;&#x6570;&#x636E;&#x5E93;</a></p>
 <br><p></p>
-<h1 id="saving-and-loading-html-content">Saving and Loading HTML Content</h1>
-<p>In the previous guide, we looked at how to serialize the Slate editor&apos;s content and save it for later. What if you want to save the content as HTML? It&apos;s a slightly more involved process, but this guide will show you how to do it.</p>
-<p>Let&apos;s start with a basic editor:</p>
+<h1 id="&#x5B58;&#x53D6;-html-&#x5185;&#x5BB9;">&#x5B58;&#x53D6; HTML &#x5185;&#x5BB9;</h1>
+<p>&#x5728;&#x524D;&#x4E00;&#x7BC7;&#x6559;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C55;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x5E8F;&#x5217;&#x5316; Slate &#x7F16;&#x8F91;&#x5668;&#x7684;&#x5185;&#x5BB9;&#x4F9B;&#x540E;&#x7EED;&#x4FDD;&#x5B58;&#x4F7F;&#x7528;&#x3002;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x5C06;&#x5185;&#x5BB9;&#x5B58;&#x50A8;&#x4E3A; HTML &#x5462;&#xFF1F;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x7A0D;&#x5FAE;&#x590D;&#x6742;&#x4E00;&#x4E9B;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x7BC7;&#x6559;&#x7A0B;&#x4F1A;&#x544A;&#x8BC9;&#x4F60;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
+<p>&#x6211;&#x4EEC;&#x4ECE;&#x4E00;&#x4E2A;&#x57FA;&#x7840;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x5F00;&#x59CB;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Editor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -653,18 +653,18 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>That will render a basic Slate editor on your page.</p>
-<p>Now... we need to add the <a href="../reference/serializers/html.md"><code>Html</code></a> serializer. And to do that, we need to tell it a bit about the schema we plan on using. For this example, we&apos;ll work with a schema that has a few different parts:</p>
+<p>&#x8FD9;&#x53EF;&#x4EE5;&#x5728;&#x9875;&#x9762;&#x4E0A;&#x6E32;&#x67D3;&#x51FA;&#x4E00;&#x4E2A;&#x57FA;&#x7840;&#x7684; Slate &#x7F16;&#x8F91;&#x5668;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x2026;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6DFB;&#x52A0; <a href="../reference/serializers/html.md"><code>Html</code></a> &#x5E8F;&#x5217;&#x5316;&#x5668;&#x3002;&#x8981;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BF9;&#x4F7F;&#x7528;&#x7684; schema &#x6709;&#x4E00;&#x4E9B;&#x4E86;&#x89E3;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x7531;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x90E8;&#x5206;&#x7EC4;&#x6210;&#x7684; schema&#xFF1A;</p>
 <ul>
-<li>A <code>paragraph</code> block.</li>
-<li>A <code>code</code> block for code samples.</li>
-<li>A <code>quote</code> block for quotes...</li>
-<li>And <code>bold</code>, <code>italic</code> and <code>underline</code> formatting.</li>
+<li>&#x4E00;&#x4E2A; <code>paragraph</code> block&#x3002;</li>
+<li>&#x4E00;&#x4E2A;&#x5C55;&#x793A;&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#x7684; <code>code</code> block&#x3002;</li>
+<li>&#x4E00;&#x4E2A;&#x5C55;&#x793A;&#x5F15;&#x7528;&#x7684; <code>quote</code> block&#x3002;</li>
+<li>&#x4EE5;&#x53CA; <code>bold</code>&#x3001;<code>italic</code> &#x548C; <code>underline</code> &#x683C;&#x5F0F;&#x3002;</li>
 </ul>
-<p>By default, the <code>Html</code> serializer, knows nothing about our schema just like Slate itself. To fix this, we need to pass it a set of <code>rules</code>. Each rule defines how to serialize and deserialize a Slate object.</p>
-<p>To start, let&apos;s create a new rule with a <code>deserialize</code> function for paragraph blocks.</p>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>Html</code> &#x5E8F;&#x5217;&#x5316;&#x5668;&#x548C; Slate &#x4E00;&#x6837;&#x4E0D;&#x4E86;&#x89E3; schema &#x4E2D;&#x5185;&#x5BB9;&#x3002;&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x4E00;&#x7CFB;&#x5217;&#x7684; <code>rules</code> &#x4F20;&#x5165;&#x5B83;&#x3002;&#x6BCF;&#x6761;&#x89C4;&#x5219;&#x90FD;&#x5B9A;&#x4E49;&#x4E86;&#x5982;&#x4F55;&#x5E8F;&#x5217;&#x5316;&#x4E0E;&#x53CD;&#x5E8F;&#x5217;&#x5316; Slate &#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x4F5C;&#x4E3A;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x521B;&#x5EFA;&#x4E00;&#x6761;&#x5305;&#x542B;&#x5BF9;&#x6BB5;&#x843D; block <code>deserialize</code> &#x51FD;&#x6570;&#x7684;&#x89C4;&#x5219;&#x3002;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token punctuation">[</span>
-  <span class="token comment" spellcheck="true">// Add our first rule with a deserializing function.</span>
+  <span class="token comment" spellcheck="true">// &#x901A;&#x8FC7;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x51FD;&#x6570;&#x6DFB;&#x52A0;&#x6211;&#x4EEC;&#x7684;&#x7B2C;&#x4E00;&#x6761;&#x89C4;&#x5219;&#x3002;</span>
   <span class="token punctuation">{</span>
     <span class="token function">deserialize</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span>el<span class="token punctuation">.</span>tagName<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">&apos;p&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -678,9 +678,9 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">]</span>
 </code></pre>
-<p>The <code>el</code> argument that the <code>deserialize</code> function receives is just a DOM element. And the <code>next</code> argument is a function that will deserialize any element(s) we pass it, which is how you recurse through each node&apos;s children.</p>
-<p>A quick note on <code>el.tagName</code> -- in browser environments, Slate uses the native <code>DOMParser</code> to parse HTML, which returns uppercase tag names. In server-side or node environments, we recommend <a href="https://docs.slatejs.org/reference/serializers/html.html#parsehtml" target="_blank">providing parse5</a> to parse HTML; however, parse5 returns lowercase tag names due to some subtle complexities in specifications. Consequentially, we recommend using case-insensitive tag comparisons, so your code just works everywhere without having to worry about the parser implementation.</p>
-<p>Okay, that&apos;s <code>deserialize</code>, now let&apos;s define the <code>serialize</code> property of the paragraph rule as well:</p>
+<p><code>deserialize</code> &#x51FD;&#x6570;&#x63A5;&#x53D7;&#x7684; <code>el</code> &#x53C2;&#x6570;&#x5C31;&#x662F;&#x4E00;&#x4E2A; DOM &#x5143;&#x7D20;&#x3002;<code>next</code> &#x53C2;&#x6570;&#x662F;&#x7528;&#x4E8E;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x4EFB;&#x4F55;&#xFF08;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#xFF09;&#x4F20;&#x5165;&#x5143;&#x7D20;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x9012;&#x5F52;&#x5730;&#x904D;&#x5386;&#x5B50;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x7B80;&#x8981;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B; <code>el.tagName</code> -- &#x5728;&#x6D4F;&#x89C8;&#x5668;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;Slate &#x4F7F;&#x7528;&#x539F;&#x751F;&#x7684; <code>DOMParser</code> &#x6765;&#x89E3;&#x6790; HTML&#xFF0C;&#x8FD9;&#x4F1A;&#x8FD4;&#x56DE;&#x5927;&#x5199;&#x7684;&#x6807;&#x7B7E;&#x540D;&#x79F0;&#x3002;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x6216; node &#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x63A8;&#x8350;<a href="https://docs.slatejs.org/reference/serializers/html.html#parsehtml" target="_blank">&#x4F7F;&#x7528; parse5</a> &#x6765;&#x89E3;&#x6790; HTML&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;parse5 &#x7531;&#x4E8E;&#x4E00;&#x4E9B;&#x89C4;&#x8303;&#x4E0A;&#x7684;&#x7EC6;&#x5FAE;&#x590D;&#x6742;&#x6027;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x5C0F;&#x5199;&#x7684;&#x6807;&#x7B7E;&#x540D;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x5BF9;&#x5927;&#x5C0F;&#x5199;&#x4E0D;&#x654F;&#x611F;&#x7684;&#x6807;&#x7B7E;&#x5BF9;&#x6BD4;&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6839;&#x636E; parser &#x5B9E;&#x73B0;&#x53BB;&#x505A;&#x9002;&#x914D;&#x4E86;&#x3002;</p>
+<p>&#x597D;&#xFF0C;&#x8FD9;&#x5C31;&#x662F; <code>deserialize</code> &#x4E86;&#x3002;&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x6BB5;&#x843D;&#x89C4;&#x5219;&#x7684; <code>serialize</code> &#x5C5E;&#x6027;&#x5427;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
     <span class="token function">deserialize</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -692,7 +692,7 @@
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token comment" spellcheck="true">// Add a serializing function property to our rule...</span>
+    <span class="token comment" spellcheck="true">// &#x4E3A;&#x89C4;&#x5219;&#x6DFB;&#x52A0;&#x6DFB;&#x52A0;&#x5E8F;&#x5217;&#x5316;&#x51FD;&#x6570;&#x2026;</span>
     <span class="token function">serialize</span><span class="token punctuation">(</span>object<span class="token punctuation">,</span> children<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span>object<span class="token punctuation">.</span>kind <span class="token operator">==</span> <span class="token string">&apos;block&apos;</span> <span class="token operator">&amp;&amp;</span> object<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">&apos;paragraph&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token punctuation">{</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
@@ -701,11 +701,12 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">]</span>
 </code></pre>
-<p>The <code>serialize</code> function should also feel familiar. It&apos;s just taking <a href="../reference/slate">Slate models</a> and turning them into React elements, which will then be rendered to an HTML string.</p>
+<p><code>serialize</code> &#x51FD;&#x6570;&#x5E94;&#x8BE5;&#x4F1A;&#x8BA9;&#x4F60;&#x611F;&#x5230;&#x719F;&#x6089;&#x3002;&#x5B83;&#x6240;&#x505A;&#x7684;&#x5C31;&#x662F;&#x83B7;&#x53D6; <a href="../reference/slate">Slate models</a> &#x5E76;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A; React &#x5143;&#x7D20;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5C06;&#x5176;&#x6E32;&#x67D3;&#x4E3A; HTML &#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<p><code>serialize</code> &#x51FD;&#x6570;&#x63A5;&#x53D7;&#x7684; <code>object</code> &#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A; <a href="../reference/slate/node.html"><code>Node</code></a>&#x3001;&#x4E00;&#x4E2A; <a href="../reference/slate/mark.html"><code>Mark</code></a> &#x6216;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x4E0D;&#x53EF;&#x53D8; <a href="../reference/serializers/html.md#ruleserialize"><code>String</code></a> &#x5BF9;&#x8C61;&#x3002;<code>children</code> &#x53C2;&#x6570;&#x5219;&#x662F;&#x4E00;&#x4E2A;&#x63CF;&#x8FF0;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5D4C;&#x5957;&#x5B50;&#x8282;&#x70B9;&#x7684; React &#x5143;&#x7D20;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E8E;&#x9012;&#x5F52;&#x3002;</p>
 <p>The <code>object</code> argument of the <code>serialize</code> function will either be a <a href="../reference/slate/node.html"><code>Node</code></a>, a <a href="../reference/slate/mark.html"><code>Mark</code></a> or a special immutable <a href="../reference/serializers/html.md#ruleserialize"><code>String</code></a> object. And the <code>children</code> argument is a React element describing the nested children of the object in question, for recursing.</p>
-<p>Okay, so now our serializer can handle <code>paragraph</code> nodes.</p>
-<p>Let&apos;s add the other types of blocks we want:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Refactor block tags into a dictionary for cleanliness.</span>
+<p>&#x597D;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x5668;&#x5C31;&#x53EF;&#x4EE5;&#x5904;&#x7406; <code>paragraph</code> &#x8282;&#x70B9;&#x4E86;&#x3002;</p>
+<p>&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x5176;&#x5B83; block &#x7C7B;&#x578B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x4F7F;&#x7528;&#x8BCD;&#x5178;&#x91CD;&#x6784; block &#x6807;&#x7B7E;&#x6765;&#x4FDD;&#x6301;&#x4EE3;&#x7801;&#x7B80;&#x6D01;&#x3002;</span>
 <span class="token keyword">const</span> BLOCK_TAGS <span class="token operator">=</span> <span class="token punctuation">{</span>
   p<span class="token punctuation">:</span> <span class="token string">&apos;paragraph&apos;</span><span class="token punctuation">,</span>
   blockquote<span class="token punctuation">:</span> <span class="token string">&apos;quote&apos;</span><span class="token punctuation">,</span>
@@ -714,7 +715,7 @@
 
 <span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// Switch deserialize to handle more blocks...</span>
+    <span class="token comment" spellcheck="true">// &#x4FEE;&#x6539; deserialize &#x6765;&#x5904;&#x7406;&#x66F4;&#x591A;&#x7C7B;&#x578B;&#x7684; block&#x2026;</span>
     <span class="token function">deserialize</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">const</span> type <span class="token operator">=</span> BLOCK_TAGS<span class="token punctuation">[</span>el<span class="token punctuation">.</span>tagName<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>type<span class="token punctuation">)</span> <span class="token keyword">return</span>
@@ -724,7 +725,7 @@
         nodes<span class="token punctuation">:</span> <span class="token function">next</span><span class="token punctuation">(</span>el<span class="token punctuation">.</span>childNodes<span class="token punctuation">)</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token comment" spellcheck="true">// Switch serialize to handle more blocks...</span>
+    <span class="token comment" spellcheck="true">// &#x4FEE;&#x6539; serialize &#x6765;&#x5904;&#x7406;&#x66F4;&#x591A;&#x7C7B;&#x578B;&#x7684; block&#x2026;</span>
     <span class="token function">serialize</span><span class="token punctuation">(</span>object<span class="token punctuation">,</span> children<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span>object<span class="token punctuation">.</span>kind <span class="token operator">!=</span> <span class="token string">&apos;block&apos;</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
       <span class="token keyword">switch</span> <span class="token punctuation">(</span>object<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -736,16 +737,16 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">]</span>
 </code></pre>
-<p>Now each of our block types is handled.</p>
-<p>You&apos;ll notice that even though code blocks are nested in a <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span></code> and a <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span></code> element, we don&apos;t need to specifically handle that case in our <code>deserialize</code> function, because the <code>Html</code> serializer will automatically recurse through <code>el.childNodes</code> if no matching deserializer is found. This way, unknown tags will just be skipped over in the tree, instead of their contents omitted completely.</p>
-<p>Okay. So now our serializer can handle blocks, but we need to add our marks to it as well. Let&apos;s do that with a new rule...</p>
+<p>&#x73B0;&#x5728;&#x6BCF;&#x79CD; block &#x7C7B;&#x578B;&#x90FD;&#x80FD;&#x591F;&#x5904;&#x7406;&#x4E86;&#x3002;</p>
+<p>&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x5373;&#x4FBF;&#x4EE3;&#x7801; block &#x5D4C;&#x5957;&#x5728; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span></code> &#x548C; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span></code> &#x5143;&#x7D20;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x5728; <code>deserialize</code> &#x51FD;&#x6570;&#x4E2D;&#x7279;&#x6B8A;&#x5904;&#x7406;&#x8FD9;&#x79CD;&#x60C5;&#x5F62;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; <code>Html</code> &#x5E8F;&#x5217;&#x5316;&#x5668;&#x4F1A;&#x5728;&#x672A;&#x627E;&#x5230;&#x5339;&#x914D;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x5668;&#x65F6;&#x81EA;&#x52A8;&#x5BF9; <code>el.childNodes</code> &#x8FDB;&#x884C;&#x9012;&#x5F52;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x6811;&#x79CD;&#x672A;&#x77E5;&#x7684;&#x6807;&#x7B7E;&#x5C31;&#x53EA;&#x4F1A;&#x88AB;&#x8DF3;&#x8FC7;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5C06;&#x5176;&#x5185;&#x5BB9;&#x5B8C;&#x5168;&#x5FFD;&#x7565;&#x3002;</p>
+<p>&#x597D;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x5668;&#x80FD;&#x591F;&#x5904;&#x7406; block &#x7C7B;&#x578B;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x4E5F;&#x9700;&#x8981;&#x6DFB;&#x52A0; mark&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x6761;&#x65B0;&#x89C4;&#x5219;&#x6765;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x70B9;&#x2026;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> BLOCK_TAGS <span class="token operator">=</span> <span class="token punctuation">{</span>
   blockquote<span class="token punctuation">:</span> <span class="token string">&apos;quote&apos;</span><span class="token punctuation">,</span>
   p<span class="token punctuation">:</span> <span class="token string">&apos;paragraph&apos;</span><span class="token punctuation">,</span>
   pre<span class="token punctuation">:</span> <span class="token string">&apos;code&apos;</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// Add a dictionary of mark tags.</span>
+<span class="token comment" spellcheck="true">// &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7528;&#x4E8E; mark &#x6807;&#x7B7E;&#x7684;&#x65B0;&#x8BCD;&#x5178;&#x3002;</span>
 <span class="token keyword">const</span> MARK_TAGS <span class="token operator">=</span> <span class="token punctuation">{</span>
   em<span class="token punctuation">:</span> <span class="token string">&apos;italic&apos;</span><span class="token punctuation">,</span>
   strong<span class="token punctuation">:</span> <span class="token string">&apos;bold&apos;</span><span class="token punctuation">,</span>
@@ -772,7 +773,7 @@
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token comment" spellcheck="true">// Add a new rule that handles marks...</span>
+  <span class="token comment" spellcheck="true">// &#x6DFB;&#x52A0;&#x4E00;&#x6761;&#x5904;&#x7406; mark &#x7684;&#x65B0;&#x89C4;&#x5219;&#x2026;</span>
   <span class="token punctuation">{</span>
     <span class="token function">deserialize</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">const</span> type <span class="token operator">=</span> MARK_TAGS<span class="token punctuation">[</span>el<span class="token punctuation">.</span>tagName<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
@@ -794,14 +795,14 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">]</span>
 </code></pre>
-<p>Great, that&apos;s all of the rules we need! Now let&apos;s create a new <code>Html</code> serializer and pass in those rules:</p>
+<p>&#x5F88;&#x68D2;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x7684;&#x5168;&#x90E8;&#x89C4;&#x5219;&#x4E86;&#xFF01;&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>Html</code> &#x5E8F;&#x5217;&#x5316;&#x5668;&#x5E76;&#x4F20;&#x5165;&#x8FD9;&#x4E9B;&#x89C4;&#x5219;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Html <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 
-<span class="token comment" spellcheck="true">// Create a new serializer instance with our `rules` from above.</span>
+<span class="token comment" spellcheck="true">// &#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x7684;&#x89C4;&#x5219;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x5668;&#x3002;</span>
 <span class="token keyword">const</span> html <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Html</span><span class="token punctuation">(</span><span class="token punctuation">{</span> rules <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>And finally, now that we have our serializer initialized, we can update our app to use it to save and load content, like so:</p>
-<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// Load the initial state from Local Storage or a default.</span>
+<p>&#x6700;&#x540E;&#xFF0C;&#x65E2;&#x7136;&#x6211;&#x4EEC;&#x521D;&#x59CB;&#x5316;&#x4E86;&#x5E8F;&#x5217;&#x5316;&#x5668;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x66F4;&#x65B0;&#x5E94;&#x7528;&#x6765;&#x5B58;&#x53D6;&#x5185;&#x5BB9;&#x4E86;&#xFF0C;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token comment" spellcheck="true">// &#x4ECE; Local Storage &#x4E2D;&#x5BFC;&#x5165;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x6216;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x3002;</span>
 <span class="token keyword">const</span> initialState <span class="token operator">=</span> <span class="token punctuation">(</span>
   localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">&apos;content&apos;</span><span class="token punctuation">)</span> <span class="token operator">||</span>
   <span class="token string">&apos;&lt;p&gt;&lt;/p&gt;&apos;</span>
@@ -811,7 +812,7 @@
 
   state <span class="token operator">=</span> <span class="token punctuation">{</span>
     state<span class="token punctuation">:</span> html<span class="token punctuation">.</span><span class="token function">deserialize</span><span class="token punctuation">(</span>initialState<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token comment" spellcheck="true">// Add a schema with our nodes and marks...</span>
+    <span class="token comment" spellcheck="true">// &#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x7684; nodes &#x548C; marks &#x6DFB;&#x52A0; schema&#x2026;</span>
     schema<span class="token punctuation">:</span> <span class="token punctuation">{</span>
       nodes<span class="token punctuation">:</span> <span class="token punctuation">{</span>
         code<span class="token punctuation">:</span> props <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>pre <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span><span class="token punctuation">,</span>
@@ -827,7 +828,7 @@
   <span class="token punctuation">}</span>
 
   onChange <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// When the document changes, save the serialized HTML to Local Storage.</span>
+    <span class="token comment" spellcheck="true">// &#x5F53;&#x6587;&#x6863;&#x53D8;&#x66F4;&#x65F6;&#xFF0C;&#x5C06;&#x5E8F;&#x5217;&#x5316;&#x540E;&#x7684; HTML &#x5B58;&#x50A8;&#x5230; Local Storage &#x4E2D;&#x3002;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>document <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>state<span class="token punctuation">.</span>document<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">const</span> string <span class="token operator">=</span> html<span class="token punctuation">.</span><span class="token function">serialize</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
       localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">&apos;content&apos;</span><span class="token punctuation">,</span> string<span class="token punctuation">)</span>
@@ -848,7 +849,7 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>And that&apos;s it! When you make any changes in your editor, you should see the updated HTML being saved to Local Storage. And when you refresh the page, those changes should be carried over.</p>
+<p>&#x8FD9;&#x5C31;&#x884C;&#x4E86;&#xFF01;&#x5F53;&#x4F60;&#x4FEE;&#x6539;&#x7F16;&#x8F91;&#x5668;&#x5185;&#x5BB9;&#x65F6;&#xFF0C;&#x4F60;&#x5C31;&#x80FD;&#x5728; Local Storage &#x4E2D;&#x770B;&#x5230;&#x66F4;&#x65B0;&#x540E;&#x7684; HTML &#x4E86;&#x3002;&#x5F53;&#x4F60;&#x5237;&#x65B0;&#x9875;&#x9762;&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B;&#x53D8;&#x66F4;&#x4E5F;&#x80FD;&#x591F;&#x4E00;&#x5E76;&#x4FDD;&#x7559;&#x3002;</p>
 
                                 
                                 </section>
@@ -892,7 +893,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"存取 HTML 内容","level":"2.7","depth":1,"next":{"title":"FAQ","level":"3.1","depth":1,"path":"general/faq.md","ref":"./general/faq.md","articles":[]},"previous":{"title":"保存到数据库","level":"2.6","depth":1,"path":"walkthroughs/saving-to-a-database.md","ref":"./walkthroughs/saving-to-a-database.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/saving-and-loading-html-content.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"存取 HTML 内容","level":"2.7","depth":1,"next":{"title":"FAQ","level":"3.1","depth":1,"path":"general/faq.md","ref":"./general/faq.md","articles":[]},"previous":{"title":"保存到数据库","level":"2.6","depth":1,"path":"walkthroughs/saving-to-a-database.md","ref":"./walkthroughs/saving-to-a-database.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"walkthroughs/saving-and-loading-html-content.md","mtime":"2017-09-30T04:33:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

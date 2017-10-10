@@ -625,7 +625,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="custom-nodes">Custom Nodes</h1>
-<p>Slate will render custom nodes for <a href="../slate/block.html"><code>Block</code></a> and <a href="../slate/inline.html"><code>Inline</code></a> models, based on what you pass in as your schema. This allows you to completely customize the rendering behavior of your Slate editor.</p>
+<p>Slate &#x6839;&#x636E;&#x4F20;&#x5165;&#x7684; schema&#xFF0C;&#x4E3A; <a href="../slate/block.html"><code>Block</code></a> &#x548C; <a href="../slate/inline.html"><code>Inline</code></a> &#x6E32;&#x67D3;&#x81EA;&#x5B9A;&#x4E49;&#x8282;&#x70B9;&#x3002;&#x8FD9;&#x5141;&#x8BB8;&#x4F60;&#x5B8C;&#x5168;&#x5730;&#x5B9A;&#x5236; Slate &#x7F16;&#x8F91;&#x5668;&#x7684;&#x6E32;&#x67D3;&#x884C;&#x4E3A;&#x3002;</p>
 <ul>
 <li><a href="#properties">Properties</a><ul>
 <li><a href="#attributes"><code>attributes</code></a></li>
@@ -653,7 +653,7 @@
 </code></pre>
 <h3 id="attributes"><code>attributes</code></h3>
 <p><code>Object</code></p>
-<p>A dictionary of DOM attributes that you must attach to the main DOM element of the node you render. For example:</p>
+<p>DOM &#x5C5E;&#x6027;&#x5B57;&#x5178;&#xFF0C;&#x5FC5;&#x987B;&#x6DFB;&#x52A0;&#x5230;&#x6240;&#x6E32;&#x67D3;&#x8282;&#x70B9;&#x5BF9;&#x5E94;&#x7684;&#x4E3B; DOM &#x5143;&#x7D20;&#x4E0A;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">return</span> <span class="token punctuation">(</span>
   <span class="token operator">&lt;</span>p <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
 <span class="token punctuation">)</span>
@@ -666,7 +666,7 @@
 </code></pre>
 <h3 id="children"><code>children</code></h3>
 <p><code>Object</code></p>
-<p>A set of React children elements that are composed of internal Slate components that handle all of the editing logic of the editor for you. You must render these as the children of your non-void nodes. For example:</p>
+<p>&#x7531; Slate &#x5185;&#x90E8;&#x7EC4;&#x4EF6;&#x7EC4;&#x6210;&#x7684; React &#x5B50;&#x5143;&#x7D20;&#x96C6;&#x5408;&#xFF0C;&#x5B83;&#x4E3A;&#x4F60;&#x5904;&#x7406;&#x7F16;&#x8F91;&#x5668;&#x5185;&#x6240;&#x6709;&#x7684;&#x7F16;&#x8F91;&#x903B;&#x8F91;&#x3002;&#x4F60;&#x5FC5;&#x987B;&#x5728;&#x975E;&#x7A7A;&#x8282;&#x70B9;&#x4E2D;&#x5C06;&#x5B83;&#x4EEC;&#x4F5C;&#x4E3A;&#x5B50;&#x8282;&#x70B9;&#x6E32;&#x67D3;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">return</span> <span class="token punctuation">(</span>
   <span class="token operator">&lt;</span>p <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">.</span>attributes<span class="token punctuation">}</span><span class="token operator">&gt;</span>
     <span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span>
@@ -675,7 +675,7 @@
 </code></pre>
 <h3 id="editor"><code>editor</code></h3>
 <p><code>Editor</code></p>
-<p>A reference to the Slate <a href="editor.html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Editor</span><span class="token punctuation">&gt;</span></span></code></a> instance. This allows you to retrieve the current <code>state</code> of the editor, or perform a <code>change</code> on the state. For example:</p>
+<p>&#x5BF9; Slate <a href="editor.html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Editor</span><span class="token punctuation">&gt;</span></span></code></a> &#x5B9E;&#x4F8B;&#x7684;&#x5F15;&#x7528;&#x3002;&#x8FD9;&#x5141;&#x8BB8;&#x4F60;&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x7684;&#x7F16;&#x8F91;&#x5668; <code>state</code>&#xFF0C;&#x6216;&#x5BF9; state &#x6267;&#x884C; <code>change</code>&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> state <span class="token operator">=</span> editor<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <pre class="language-"><code class="lang-js">editor<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span><span class="token punctuation">(</span>change<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
@@ -684,19 +684,19 @@
 </code></pre>
 <h3 id="isselected"><code>isSelected</code></h3>
 <p><code>Boolean</code></p>
-<p>A boolean representing whether the node you are rendering is currently selected. You can use this to render a visual representation of the selection.</p>
+<p>&#x8868;&#x793A;&#x5F53;&#x524D;&#x6E32;&#x67D3;&#x8282;&#x70B9;&#x662F;&#x5426;&#x9009;&#x4E2D;&#x7684; boolean&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x7528;&#x4E8E;&#x53EF;&#x89C6;&#x5316;&#x5730;&#x6E32;&#x67D3;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x3002;</p>
 <h3 id="node"><code>node</code></h3>
 <p><code>Node</code></p>
-<p>A reference to the <a href="../slate/node.html"><code>Node</code></a> being rendered.</p>
+<p>&#x5BF9;&#x5F53;&#x524D;&#x6E32;&#x67D3; <a href="../slate/node.html"><code>Node</code></a> &#x7684;&#x5F15;&#x7528;&#x3002;</p>
 <h3 id="parent"><code>parent</code></h3>
 <p><code>Node</code></p>
-<p>A reference to the parent of the current <a href="../slate/node.html"><code>Node</code></a> being rendered.</p>
+<p>&#x5BF9;&#x5F53;&#x524D;&#x6E32;&#x67D3; <a href="../slate/node.html"><code>Node</code></a> &#x7236;&#x8282;&#x70B9;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
 <h3 id="readonly"><code>readOnly</code></h3>
 <p><code>Boolean</code></p>
-<p>Whether the editor is in &quot;read-only&quot; mode, where all of the rendering is the same, but the user is prevented from editing the editor&apos;s content.</p>
+<p>&#x7F16;&#x8F91;&#x5668;&#x662F;&#x5426;&#x5904;&#x4E8E; &quot;read-only&quot; &#x6A21;&#x5F0F;&#xFF0C;&#x8FD9;&#x65F6;&#x6E32;&#x67D3;&#x65B9;&#x5F0F;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#xFF0C;&#x4F46;&#x7528;&#x6237;&#x4E0D;&#x80FD;&#x7F16;&#x8F91;&#x5185;&#x5BB9;&#x3002;</p>
 <h3 id="state"><code>state</code></h3>
 <p><code>State</code></p>
-<p>A reference to the current <a href="../slate/state.html"><code>State</code></a> of the editor.</p>
+<p>&#x5BF9;&#x5F53;&#x524D;&#x7F16;&#x8F91;&#x5668; <a href="../slate/state.html"><code>State</code></a> &#x7684;&#x5F15;&#x7528;&#x3002;</p>
 
                                 
                                 </section>
@@ -740,7 +740,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Custom Nodes","level":"5.3","depth":1,"next":{"title":"Plugins","level":"5.4","depth":1,"path":"reference/slate-react/plugins.md","ref":"./reference/slate-react/plugins.md","articles":[]},"previous":{"title":"Placeholder","level":"5.2","depth":1,"path":"reference/slate-react/placeholder.md","ref":"./reference/slate-react/placeholder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/custom-nodes.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Custom Nodes","level":"5.3","depth":1,"next":{"title":"Plugins","level":"5.4","depth":1,"path":"reference/slate-react/plugins.md","ref":"./reference/slate-react/plugins.md","articles":[]},"previous":{"title":"Placeholder","level":"5.2","depth":1,"path":"reference/slate-react/placeholder.md","ref":"./reference/slate-react/placeholder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/custom-nodes.md","mtime":"2017-10-10T08:07:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

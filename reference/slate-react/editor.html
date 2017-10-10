@@ -627,7 +627,7 @@
                                 <h1 id="editor"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Editor</span><span class="token punctuation">&gt;</span></span></code></h1>
 <pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Editor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate-react&apos;</span>
 </code></pre>
-<p>The top-level React component that renders the Slate editor itself.</p>
+<p>&#x6E32;&#x67D3; Slate &#x7F16;&#x8F91;&#x5668;&#x7684;&#x9876;&#x5C42; React &#x7EC4;&#x4EF6;&#x3002;</p>
 <ul>
 <li><a href="#properties">Properties</a><ul>
 <li><a href="#autocorrect"><code>autoCorrect</code></a></li>
@@ -690,37 +690,37 @@
 </code></pre>
 <h3 id="autocorrect"><code>autoCorrect</code></h3>
 <p><code>Boolean</code></p>
-<p>Whether the editor should attempt to autocorrect spellcheck errors.</p>
+<p>&#x7F16;&#x8F91;&#x5668;&#x662F;&#x5426;&#x5C1D;&#x8BD5;&#x81EA;&#x52A8;&#x66F4;&#x6B63;&#x62FC;&#x5199;&#x9519;&#x8BEF;&#x3002;</p>
 <h3 id="autofocus"><code>autoFocus</code></h3>
 <p><code>Boolean</code></p>
-<p>An optional attribute that, when set to true, attempts to give the content editable element focus when it&apos;s loaded onto the page.</p>
+<p>&#x53EF;&#x9009;&#x503C;&#x3002;&#x5F53;&#x8BBE;&#x7F6E;&#x4E3A; true &#x65F6;&#xFF0C;&#x5C1D;&#x8BD5;&#x5728; content editable &#x5143;&#x7D20;&#x52A0;&#x8F7D;&#x81F3;&#x9875;&#x9762;&#x65F6;&#x81EA;&#x52A8;&#x4F7F;&#x5176;&#x83B7;&#x5F97;&#x7126;&#x70B9;&#x3002;</p>
 <h3 id="classname"><code>className</code></h3>
 <p><code>String</code></p>
-<p>An optional class name to apply to the content editable element.</p>
+<p>&#x5E94;&#x7528;&#x5230; content editable &#x5143;&#x7D20;&#x4E0A;&#x53EF;&#x9009;&#x7684; class &#x540D;&#x3002;</p>
 <h3 id="onchange"><code>onChange</code></h3>
 <p><code>Function onChange(change: Change)</code></p>
-<p>A change handler that will be called with the <code>change</code> that applied the change. You should usually pass the newly changed <code>change.state</code> back into the editor through its <code>state</code> property. This hook allows you to add persistence logic to your editor.</p>
+<p>&#x4F20;&#x5165; <code>change</code> &#x4EE5;&#x5E94;&#x7528;&#x53D8;&#x66F4;&#x7684;&#x56DE;&#x8C03;&#x3002;&#x4E00;&#x822C;&#x800C;&#x8A00;&#x4F60;&#x9700;&#x8981;&#x5C06;&#x65B0;&#x7684; <code>change.state</code> &#x901A;&#x8FC7;&#x7F16;&#x8F91;&#x5668;&#x7684; <code>state</code> &#x5C5E;&#x6027;&#x4F20;&#x5165;&#x3002;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x5141;&#x8BB8;&#x4F60;&#x5728;&#x6B64;&#x4E3A;&#x7F16;&#x8F91;&#x5668;&#x6DFB;&#x52A0;&#x6301;&#x4E45;&#x5316;&#x903B;&#x8F91;&#x3002;</p>
 <h3 id="plugins"><code>plugins</code></h3>
 <p><code>Array</code></p>
-<p>An array of <a href="plugins.html"><code>Plugins</code></a> that define the editor&apos;s behavior.</p>
+<p>&#x5B9A;&#x4E49;&#x7F16;&#x8F91;&#x5668;&#x884C;&#x4E3A;&#x7684; <a href="plugins.html"><code>Plugins</code></a> &#x6570;&#x7EC4;&#x3002;</p>
 <h3 id="readonly"><code>readOnly</code></h3>
 <p><code>Boolean</code></p>
-<p>Whether the editor should be in &quot;read-only&quot; mode, where all of the rendering is the same, but the user is prevented from editing the editor&apos;s content.</p>
+<p>&#x7F16;&#x8F91;&#x5668;&#x662F;&#x5426;&#x5E94;&#x5904;&#x4E8E; &quot;read-only&quot; &#x6A21;&#x5F0F;&#x3002;&#x8FD9;&#x65F6;&#x6E32;&#x67D3;&#x65B9;&#x5F0F;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#xFF0C;&#x4F46;&#x7528;&#x6237;&#x4E0D;&#x80FD;&#x7F16;&#x8F91;&#x5185;&#x5BB9;&#x3002;</p>
 <h3 id="spellcheck"><code>spellCheck</code></h3>
 <p><code>Boolean</code></p>
-<p>Whether spellcheck is turned on for the editor.</p>
+<p>&#x662F;&#x5426;&#x4E3A;&#x7F16;&#x8F91;&#x5668;&#x542F;&#x7528;&#x62FC;&#x5199;&#x68C0;&#x67E5;&#x3002;</p>
 <h3 id="role"><code>role</code></h3>
 <p><code>String</code></p>
-<p>ARIA property to define the role of the editor, it defaults to <code>textbox</code> when editable.</p>
+<p>&#x5B9A;&#x4E49;&#x7F16;&#x8F91;&#x5668; role &#x7684; ARIA &#x5C5E;&#x6027;&#xFF0C;&#x5728;&#x53EF;&#x7F16;&#x8F91;&#x65F6;&#x9ED8;&#x8BA4;&#x4E3A; <code>textbox</code>&#x3002;</p>
 <h3 id="state"><code>state</code></h3>
 <p><code>State</code></p>
-<p>A <a href="../slate/state.html"><code>State</code></a> object representing the current state of the editor.</p>
+<p>&#x4EE3;&#x8868;&#x5F53;&#x524D;&#x7F16;&#x8F91;&#x5668;&#x72B6;&#x6001;&#x7684; <a href="../slate/state.html"><code>State</code></a> &#x5BF9;&#x8C61;&#x3002;</p>
 <h3 id="style"><code>style</code></h3>
 <p><code>Object</code></p>
-<p>An optional dictionary of styles to apply to the content editable element.</p>
+<p>&#x5E94;&#x7528;&#x5230; content editable &#x5143;&#x7D20;&#x4E2D;&#x7684;&#x53EF;&#x9009;&#x6837;&#x5F0F;&#x5B57;&#x5178;&#x3002;</p>
 <h3 id="tabindex"><code>tabIndex</code></h3>
 <p><code>Number</code></p>
-<p>Indicates if it should participate to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex" target="_blank">sequential keyboard navigation</a>.</p>
+<p>&#x6307;&#x793A;&#x5176;&#x662F;&#x5426;&#x53C2;&#x4E0E;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex" target="_blank">&#x5E8F;&#x5217;&#x952E;&#x76D8;&#x5BFC;&#x822A;</a>&#x3002;</p>
 <h2 id="placeholder-properties">Placeholder Properties</h2>
 <pre class="language-"><code class="lang-js"><span class="token operator">&lt;</span>Editor
   placeholder<span class="token operator">=</span><span class="token punctuation">{</span>String <span class="token operator">||</span> Element<span class="token punctuation">}</span>
@@ -730,13 +730,13 @@
 </code></pre>
 <h3 id="placeholder"><code>placeholder</code></h3>
 <p><code>String || Element</code></p>
-<p>A placeholder string (or React element) that will be rendered as the default block type&apos;s placeholder.</p>
+<p>&#x4F5C;&#x4E3A;&#x9ED8;&#x8BA4; block &#x7C7B;&#x578B;&#x5360;&#x4F4D;&#x7B26;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF08;&#x6216; React &#x7EC4;&#x4EF6;&#xFF09;&#x3002;</p>
 <h3 id="placeholderclassname"><code>placeholderClassName</code></h3>
 <p><code>String</code></p>
-<p>An optional class name to apply to the default block type&apos;s placeholder.</p>
+<p>&#x5E94;&#x7528;&#x5230; block &#x7C7B;&#x578B;&#x5360;&#x4F4D;&#x7B26;&#x7684;&#x53EF;&#x9009; class &#x540D;&#x3002;</p>
 <h3 id="placeholderstyle"><code>placeholderStyle</code></h3>
 <p><code>Object</code></p>
-<p>An optional dictionary of styles to apply to the default block type&apos;s placeholder. If <code>placeholder</code> is a string, and no class name or style dictionary is passed, this property will default to <code>{ opacity: &apos;0.333&apos; }</code>.</p>
+<p>&#x5E94;&#x7528;&#x5230; block &#x7C7B;&#x578B;&#x5360;&#x4F4D;&#x7B26;&#x7684;&#x53EF;&#x9009;&#x6837;&#x5F0F;&#x5B57;&#x5178;&#x3002;&#x82E5; <code>placeholder</code> &#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x4E14;&#x672A;&#x4F20;&#x9012; class &#x540D;&#x4E0E;&#x6837;&#x5F0F;&#x5B57;&#x5178;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x9ED8;&#x8BA4;&#x4E3A; <code>{ opacity: &apos;0.333&apos; }</code>&#x3002;</p>
 <h2 id="plugin-like-properties">Plugin-like Properties</h2>
 <p>In addition to its own properties, the editor allows passing any of the properties that a <a href="plugins.html">plugin</a> defines as well.</p>
 <p>These properties are actually just a convenience&#x2014;an implicit plugin definition. Internally, they are grouped together and turned into a plugin that is given first priority in the plugin stack.</p>
@@ -836,7 +836,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Editor","level":"5.1","depth":1,"next":{"title":"Placeholder","level":"5.2","depth":1,"path":"reference/slate-react/placeholder.md","ref":"./reference/slate-react/placeholder.md","articles":[]},"previous":{"title":"resetKeyGenerator","level":"4.14","depth":1,"path":"reference/slate/utils.md","ref":"./reference/slate/utils.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/editor.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Editor","level":"5.1","depth":1,"next":{"title":"Placeholder","level":"5.2","depth":1,"path":"reference/slate-react/placeholder.md","ref":"./reference/slate-react/placeholder.md","articles":[]},"previous":{"title":"resetKeyGenerator","level":"4.14","depth":1,"path":"reference/slate/utils.md","ref":"./reference/slate/utils.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/editor.md","mtime":"2017-10-10T08:32:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

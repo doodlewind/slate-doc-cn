@@ -630,7 +630,7 @@
   setKeyGenerator<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 </code></pre>
-<p>Utility functions that ship with Slate that may be useful for certain use cases.</p>
+<p>Slate &#x9644;&#x5E26;&#x7684;&#x5B9E;&#x7528;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x7279;&#x5B9A;&#x573A;&#x5408;&#x4E0B;&#x53EF;&#x80FD;&#x6709;&#x7528;&#x3002;</p>
 <ul>
 <li><a href="#resetkeygenerator"><code>resetKeyGenerator</code></a></li>
 <li><a href="#setkeygenerator"><code>setKeyGenerator</code></a></li>
@@ -638,11 +638,11 @@
 <h2 id="functions">Functions</h2>
 <h3 id="resetkeygenerator"><code>resetKeyGenerator</code></h3>
 <p><code>resetkeygenerator() =&gt; Void</code></p>
-<p>Resets Slate&apos;s internal key generating function to its default state. This is useful for server-side rendering, or anywhere you want to ensure fresh, deterministic creation of keys.</p>
+<p>&#x91CD;&#x7F6E; Slate &#x5185;&#x7F6E;&#x7684; key &#x751F;&#x6210;&#x51FD;&#x6570;&#x81F3;&#x5176;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#x3002;&#x8FD9;&#x53EF;&#x7528;&#x4E8E;&#x670D;&#x52A1;&#x7AEF;&#x6E32;&#x67D3;&#xFF0C;&#x6216;&#x4EFB;&#x4F55;&#x9700;&#x8981;&#x4FDD;&#x8BC1; key &#x751F;&#x6210;&#x8FC7;&#x7A0B;&#x5177;&#x5907;&#x65B0;&#x9C9C;&#x6027;&#x4E0E;&#x51B3;&#x5B9A;&#x6027;&#x7684;&#x573A;&#x5408;&#x3002;</p>
 <h3 id="setkeygenerator"><code>setKeyGenerator</code></h3>
 <p><code>setKeyGenerator(generator: Function) =&gt; Void</code></p>
-<p>Allows you to specify your own key generating function, instead of using Slate&apos;s built-in default generator which simply uses auto-incrementing number strings. (eg. <code>&apos;0&apos;</code>, <code>&apos;1&apos;</code>, <code>&apos;2&apos;</code>, ...)</p>
-<p>This will act globally on all uses of the Slate dependency.</p>
+<p>&#x53EF;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x4F60;&#x81EA;&#x5DF1;&#x7684; key &#x751F;&#x6210;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x53D6;&#x4EE3; Slate &#x81EA;&#x5E26;&#x7684;&#x3001;&#x4EC5;&#x4F7F;&#x7528;&#x81EA;&#x589E;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x9ED8;&#x8BA4;&#x751F;&#x6210;&#x5668;&#x3002;&#xFF08;&#x4F8B;&#x5982; <code>&apos;0&apos;</code>&#x3001;<code>&apos;1&apos;</code>&#x3001;<code>&apos;2&apos;</code>&#x2026;&#xFF09;</p>
+<p>&#x5B83;&#x4F1A;&#x5BF9;&#x5168;&#x5C40;&#x4E0B;&#x6240;&#x6709; Slate &#x7684;&#x4F9D;&#x8D56;&#x751F;&#x6548;&#x3002;</p>
 
                                 
                                 </section>
@@ -686,7 +686,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"setKeyGenerator","level":"4.13","depth":1,"next":{"title":"resetKeyGenerator","level":"4.14","depth":1,"path":"reference/slate/utils.md","ref":"./reference/slate/utils.md","articles":[]},"previous":{"title":"Text","level":"4.12","depth":1,"path":"reference/slate/text.md","ref":"./reference/slate/text.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/utils.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"setKeyGenerator","level":"4.13","depth":1,"next":{"title":"resetKeyGenerator","level":"4.14","depth":1,"path":"reference/slate/utils.md","ref":"./reference/slate/utils.md","articles":[]},"previous":{"title":"Text","level":"4.12","depth":1,"path":"reference/slate/text.md","ref":"./reference/slate/text.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/utils.md","mtime":"2017-10-05T11:55:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

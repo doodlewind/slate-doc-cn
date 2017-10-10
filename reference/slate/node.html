@@ -625,7 +625,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="node"><code>Node</code></h1>
-<p><code>Node</code> is not a publicly accessible module, but instead an interface that <a href="document.html"><code>Document</code></a>, <a href="block.html"><code>Block</code></a> and <a href="inline.html"><code>Inline</code></a> all implement.</p>
+<p><code>Node</code> &#x4E0D;&#x662F;&#x5411;&#x5916;&#x5F00;&#x653E;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x800C;&#x662F;&#x7531; <a href="document.html"><code>Document</code></a>&#x3001;<a href="block.html"><code>Block</code></a> &#x4E0E; <a href="inline.html"><code>Inline</code></a> &#x5171;&#x540C;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
 <ul>
 <li><a href="#properties">Properties</a><ul>
 <li><a href="#nodes"><code>nodes</code></a></li>
@@ -675,116 +675,117 @@
 <h2 id="properties">Properties</h2>
 <h3 id="key"><code>key</code></h3>
 <p><code>String</code></p>
-<p>A short-lived, unique identifier for the node.</p>
-<p>By default, keys are <strong>not</strong> meant to be long-lived unique identifiers for nodes that you might store in a database, or elsewhere. They are meant purely to identify a node inside of a single Slate instance. For that reason, they are simply auto-incrementing strings. (eg. <code>&apos;0&apos;</code>, <code>&apos;1&apos;</code>, <code>&apos;2&apos;</code>, ...) </p>
-<p>If you want to make your keys uniqueness long-lived, you&apos;ll need to supply your own key generating function via the <a href="../utils/utils.md#setkeygenerator"><code>setKeyGenerator</code></a> util.</p>
+<p>&#x6682;&#x65F6;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BB0;&#x7B26;&#xFF0C;&#x7528;&#x4E8E;&#x6807;&#x8BB0;&#x8BE5; node&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;key <strong>&#x5E76;&#x4E0D;&#x662F;</strong> &#x53EF;&#x7528;&#x4E8E;&#x5728;&#x6570;&#x636E;&#x5E93;&#x7B49;&#x573A;&#x666F;&#x4E0B;&#x5BF9; node &#x7684;&#x6301;&#x4E45;&#x6807;&#x8BC6;&#x3002;&#x5B83;&#x4EEC;&#x4EC5;&#x7528;&#x4E8E;&#x5728;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684; Slate &#x5B9E;&#x4F8B;&#x5185;&#x90E8;&#x6807;&#x8BC6; node&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5B83;&#x4EEC;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x81EA;&#x589E;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#xFF08;&#x5982; <code>&apos;0&apos;</code>&#x3001;<code>&apos;1&apos;</code>&#x3001;<code>&apos;2&apos;</code>&#x2026;&#x2026;&#xFF09;</p>
+<p>&#x5982;&#x679C;&#x5E0C;&#x671B;&#x5C06; key &#x7684;&#x552F;&#x4E00;&#x6027;&#x6301;&#x4E45;&#x5316;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528; <a href="../utils/utils.md#setkeygenerator"><code>setKeyGenerator</code></a> util &#x4EE5;&#x63D0;&#x4F9B;&#x81EA;&#x5DF1;&#x7684; key &#x751F;&#x6210;&#x51FD;&#x6570;&#x3002;</p>
 <h3 id="nodes"><code>nodes</code></h3>
 <p><code>Immutable.List</code></p>
-<p>A list of child nodes. Defaults to a list with a single text node child.</p>
+<p>&#x5B50;&#x8282;&#x70B9;&#x5217;&#x8868;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x5305;&#x542B;&#x5355;&#x4E00;&#x6587;&#x672C;&#x8282;&#x70B9;&#x7684;&#x5217;&#x8868;&#x3002;</p>
 <h2 id="computed-properties">Computed Properties</h2>
 <h3 id="kind"><code>kind</code></h3>
 <p><code>String</code></p>
-<p>An immutable string value of <code>&apos;block&apos;</code> for easily separating this node from <a href="inline.html"><code>Inline</code></a> or <a href="text.html"><code>Text</code></a> nodes.</p>
+<!-- TODO 修复原文 typo -->
+<p>&#x4E0D;&#x53EF;&#x53D8;&#x7684; String&#xFF0C;&#x503C;&#x4E3A; <code>&apos;document&apos;</code>&#x3001;<code>&apos;block&apos;</code>&#x3001;<code>&apos;inline&apos;</code> &#x6216; <code>&apos;text&apos;</code> &#x4EE5;&#x533A;&#x5206;&#x8282;&#x70B9;&#x7C7B;&#x578B;&#x3002;</p>
 <h3 id="text"><code>text</code></h3>
 <p><code>String</code></p>
-<p>A concatenated string of all of the descendant <a href="text.html"><code>Text</code></a> nodes of this node.</p>
+<p>&#x8BE5;&#x8282;&#x70B9;&#x7684;&#x5168;&#x90E8;&#x5B50; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x8FDE;&#x63A5;&#x6210;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
 <h2 id="methods">Methods</h2>
 <h3 id="filterdescendants"><code>filterDescendants</code></h3>
 <p><code>filterDescendants(iterator: Function) =&gt; List</code></p>
-<p>Deeply filter the descendant nodes of a node by <code>iterator</code>.</p>
+<p>&#x6839;&#x636E; <code>iterator</code> &#x6DF1;&#x5EA6;&#x8FC7;&#x6EE4;&#x8282;&#x70B9;&#x7684;&#x591A;&#x4E2A;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="finddescendant"><code>findDescendant</code></h3>
 <p><code>findDescendant(iterator: Function) =&gt; Node || Void</code></p>
-<p>Deeply find a descendant node by <code>iterator</code>.</p>
+<p>&#x6839;&#x636E; <code>iterator</code> &#x6DF1;&#x5EA6;&#x67E5;&#x627E;&#x5355;&#x4E2A;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getblocksatrange"><code>getBlocksAtRange</code></h3>
 <p><code>getBlocksAtRange(range: Selection) =&gt; List</code></p>
-<p>Get all of the bottom-most <a href="block.html"><code>Block</code></a> nodes in a <code>range</code>.</p>
+<p>&#x83B7;&#x53D6; <code>range</code> &#x4E2D;&#x5168;&#x90E8;&#x6700;&#x5E95;&#x5C42;&#x7684; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getblocks"><code>getBlocks</code></h3>
 <p><code>getBlocks() =&gt; List</code></p>
-<p>Get all of the bottom-most <a href="block.html"><code>Block</code></a> node descendants.</p>
+<p>&#x83B7;&#x53D6;&#x8282;&#x70B9;&#x540E;&#x4EE3;&#x4E2D;&#x5168;&#x90E8;&#x6700;&#x5E95;&#x5C42;&#x7684; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getcharactersatrange"><code>getCharactersAtRange</code></h3>
 <p><code>getCharactersAtRange(range: Selection) =&gt; List</code></p>
-<p>Get a list of all of the <a href="character.html"><code>Characters</code></a> in a <code>range</code>.</p>
+<p>&#x83B7;&#x53D6; <code>range</code> &#x4E2D;&#x7684; <a href="character.html"><code>Character</code></a> &#x5217;&#x8868;&#x3002;</p>
 <h3 id="getchild"><code>getChild</code></h3>
 <p><code>getChild(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get a child by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x53D6;&#x5B50;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getclosestblock"><code>getClosestBlock</code></h3>
 <p><code>getClosestBlock(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the closest <a href="block.html"><code>Block</code></a> node to a descendant node by <code>key</code>.</p>
+<p>&#x6839;&#x636E;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x7684; <code>key</code> &#x83B7;&#x5F97;&#x4E0E;&#x5176;&#x6700;&#x63A5;&#x8FD1;&#x7684; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getclosestinline"><code>getClosestInline</code></h3>
 <p><code>getClosestInline(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the closest <a href="inline.html"><code>Inline</code></a> node to a descendant node by <code>key</code>.</p>
+<p>&#x6839;&#x636E;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x7684; <code>key</code> &#x83B7;&#x5F97;&#x4E0E;&#x5176;&#x6700;&#x63A5;&#x8FD1;&#x7684; <a href="inline.html"><code>Inline</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getclosest"><code>getClosest</code></h3>
 <p><code>getClosest(key: String || Node, match: Function) =&gt; Node || Void</code></p>
-<p>Get the closest parent node of a descendant node by <code>key</code> that matches a <code>match</code> function.</p>
+<p>&#x6839;&#x636E;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x7684; <code>key</code> &#x83B7;&#x5F97;&#x4E0E;&#x5176;&#x6700;&#x63A5;&#x8FD1;&#x4E14;&#x6EE1;&#x8DB3; <code>match</code> &#x51FD;&#x6570;&#x7684;&#x7236;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getdepth"><code>getDepth</code></h3>
 <p><code>getDepth(key: String || Node) =&gt; Number</code></p>
-<p>Get the depth of a descendant node by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x7684;&#x6DF1;&#x5EA6;&#x3002;</p>
 <h3 id="getdescendant"><code>getDescendant</code></h3>
 <p><code>getDescendant(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get a descendant node by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x53D6;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getfirsttext"><code>getFirstText</code></h3>
 <p><code>getFirstText() =&gt; Node || Void</code></p>
-<p>Get the first child text node inside a node.</p>
+<p>&#x83B7;&#x5F97;&#x8282;&#x70B9;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A; text &#x5B50;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getfragmentatrange"><code>getFragmentAtRange</code></h3>
 <p><code>getFragmentAtRange(range: Selection) =&gt; Document</code></p>
-<p>Get a document fragment of the nodes in a <code>range</code>.</p>
+<p>&#x83B7;&#x5F97;&#x8282;&#x70B9;&#x843D;&#x5728; <code>range</code> &#x4E2D;&#x7684;&#x6587;&#x6863; fragment&#x3002;</p>
 <h3 id="getfurthest"><code>getFurthest</code></h3>
 <p><code>getFurthest(key: String, iterator: Function) =&gt; Node || Null</code></p>
-<p>Get the furthest parent of a node by <code>key</code> that matches an <code>iterator</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x5339;&#x914D; <code>iterator</code> &#x7684;&#x6700;&#x8FDC;&#x7236;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getfurthestancestor"><code>getFurthestAncestor</code></h3>
 <p><code>getFurthestAncestor(key: String) =&gt; Node || Null</code></p>
-<p>Get the furthest ancestor of a node by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x6700;&#x8FDC;&#x7956;&#x5148;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getfurthestblock"><code>getFurthestBlock</code></h3>
 <p><code>getFurthestBlock(key: String) =&gt; Node || Null</code></p>
-<p>Get the furthest block parent of a node by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x6700;&#x8FDC;&#x7684; block &#x7956;&#x5148;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getfurthestinline"><code>getFurthestInline</code></h3>
 <p><code>getFurthestInline(key: String) =&gt; Node || Null</code></p>
-<p>Get the furthest inline parent of a node by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x6700;&#x8FDC;&#x7684; inline &#x7956;&#x5148;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getfurthestonlychildancestor"><code>getFurthestOnlyChildAncestor</code></h3>
 <p><code>getFurthestOnlyChildAncestor(key: String) =&gt; Node || Null</code></p>
-<p>Get the furthest ancestor of a node by <code>key</code> that has only one child.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x6700;&#x8FDC;&#x7956;&#x5148;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getinlinesatrange"><code>getInlinesAtRange</code></h3>
 <p><code>getInlinesAtRange(range: Selection) =&gt; List</code></p>
-<p>Get all of the top-most <a href="inline.html"><code>Inline</code></a> nodes in a <code>range</code>.</p>
+<p>&#x83B7;&#x5F97; <code>range</code> &#x4E2D;&#x6240;&#x6709;&#x6700;&#x9876;&#x5C42;&#x7684; <a href="inline.html"><code>Inline</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getlasttext"><code>getLastText</code></h3>
 <p><code>getLastText() =&gt; Node || Void</code></p>
-<p>Get the last child text node inside a node.</p>
+<p>&#x83B7;&#x5F97;&#x8282;&#x70B9;&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B50; text &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getmarksatrange"><code>getMarksAtRange</code></h3>
 <p><code>getMarksAtRange(range: Selection) =&gt; Set</code></p>
-<p>Get a set of all of the marks in a <code>range</code>.</p>
+<p>&#x83B7;&#x5F97; <code>range</code> &#x4E2D;&#x5168;&#x90E8; mark &#x7684;&#x96C6;&#x5408;&#x3002;</p>
 <h3 id="getnextblock"><code>getNextBlock</code></h3>
 <p><code>getNextBlock(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the next, bottom-most <a href="block.html"><code>Block</code></a> node after a descendant by <code>key</code>.</p>
+<p>&#x83B7;&#x5F97; <code>key</code> &#x8282;&#x70B9;&#x540E;&#x4EE3;&#x4E2D;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x6700;&#x5E95;&#x5C42; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getnextsibling"><code>getNextSibling</code></h3>
 <p><code>getNextSibling(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the next sibling of a descendant by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x5728;&#x540E;&#x4EE3;&#x4E2D;&#x67E5;&#x627E;&#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getnexttext"><code>getNextText</code></h3>
 <p><code>getNextText(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the next <a href="text.html"><code>Text</code></a> node after a descendant by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x540E;&#x4EE3;&#x4E2D;&#x7684;&#x4E0B;&#x4E00;&#x4E2A; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getparent"><code>getParent</code></h3>
 <p><code>getParent(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the parent node of a descendant by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x540E;&#x4EE3;&#x4E2D;&#x7684;&#x7236;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getpreviousblock"><code>getPreviousBlock</code></h3>
 <p><code>getPreviousBlock(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the previous, bottom-most <a href="block.html"><code>Block</code></a> node before a descendant by <code>key</code>.</p>
+<p>&#x83B7;&#x5F97; <code>key</code> &#x8282;&#x70B9;&#x540E;&#x4EE3;&#x4E2D;&#x7684;&#x4E0A;&#x4E00;&#x4E2A;&#x6700;&#x5E95;&#x5C42; <a href="block.html"><code>Block</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getprevioussibling"><code>getPreviousSibling</code></h3>
 <p><code>getPreviousSibling(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the previous sibling of a descendant by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x5728;&#x540E;&#x4EE3;&#x4E2D;&#x67E5;&#x627E;&#x4E0A;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="getprevioustext"><code>getPreviousText</code></h3>
 <p><code>getPreviousText(key: String || Node) =&gt; Node || Void</code></p>
-<p>Get the previous <a href="text.html"><code>Text</code></a> node before a descendant by <code>key</code>.</p>
+<p>&#x6839;&#x636E; <code>key</code> &#x83B7;&#x5F97;&#x540E;&#x4EE3;&#x4E2D;&#x7684;&#x4E0A;&#x4E00;&#x4E2A; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="gettextatoffset"><code>getTextAtOffset</code></h3>
 <p><code>getTextAtOffset(offset: Number) =&gt; Text || Void</code></p>
-<p>Get the <a href="text.html"><code>Text</code></a> node at an <code>offset</code>.</p>
+<p>&#x83B7;&#x5F97; <code>offset</code> &#x4F4D;&#x7F6E;&#x7684; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="gettextsatrange"><code>getTextsAtRange</code></h3>
 <p><code>getTextsAtRange(range: Selection) =&gt; List</code></p>
-<p>Get all of the <a href="text.html"><code>Text</code></a> nodes in a <code>range</code>.</p>
+<p>&#x83B7;&#x5F97; <code>range</code> &#x4E2D;&#x6240;&#x6709;&#x7684; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x3002;</p>
 <h3 id="haschild"><code>hasChild</code></h3>
 <p><code>hasChild(key: String || Node) =&gt; Boolean</code></p>
-<p>Check whether the node has a child node by <code>key</code>.</p>
+<p>&#x68C0;&#x67E5;&#x8282;&#x70B9;&#x662F;&#x5426;&#x6709;&#x952E;&#x503C;&#x4E3A; <code>key</code> &#x7684;&#x5B50;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="hasdescendant"><code>hasDescendant</code></h3>
 <p><code>hasDescendant(key: String || Node) =&gt; Boolean</code></p>
-<p>Check whether the node has a descendant node by <code>key</code>.</p>
+<p>&#x68C0;&#x67E5;&#x8282;&#x70B9;&#x662F;&#x5426;&#x6709;&#x952E;&#x503C;&#x4E3A; <code>key</code> &#x7684;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x3002;</p>
 
                                 
                                 </section>
@@ -828,7 +829,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Node","level":"4.8","depth":1,"next":{"title":"Schema","level":"4.9","depth":1,"path":"reference/slate/schema.md","ref":"./reference/slate/schema.md","articles":[]},"previous":{"title":"Mark","level":"4.7","depth":1,"path":"reference/slate/mark.md","ref":"./reference//slate/mark.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/node.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Node","level":"4.8","depth":1,"next":{"title":"Schema","level":"4.9","depth":1,"path":"reference/slate/schema.md","ref":"./reference/slate/schema.md","articles":[]},"previous":{"title":"Mark","level":"4.7","depth":1,"path":"reference/slate/mark.md","ref":"./reference//slate/mark.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/node.md","mtime":"2017-10-03T11:11:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

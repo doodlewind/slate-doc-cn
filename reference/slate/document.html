@@ -627,9 +627,9 @@
                                 <h1 id="document"><code>Document</code></h1>
 <pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Document <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate&apos;</span>
 </code></pre>
-<p>The top-level node in Slate&apos;s document model.</p>
-<p>Documents are made up of block nodes, inline nodes, and text nodes&#x2014;just like in the DOM. Note that direct descendants of a document node have to be block nodes.</p>
-<p>In some places, you&apos;ll see mention of &quot;fragments&quot;, which are also <code>Document</code> objects, just that aren&apos;t attached to the main <code>State</code>. For example, when cutting-and-pasting a selection of content, that content will be referred to as a document &quot;fragment&quot;.</p>
+<p>Slate &#x4E2D;&#x6587;&#x6863;&#x6A21;&#x578B;&#x7684;&#x9876;&#x5C42;&#x8282;&#x70B9;&#x3002;</p>
+<p>Document &#x662F;&#x7531; block &#x8282;&#x70B9;&#x3001;inline &#x8282;&#x70B9;&#x548C; text &#x8282;&#x70B9;&#x7EC4;&#x6210;&#x7684;&#x2014;&#x2014;&#x548C; DOM &#x4E00;&#x81F4;&#x3002;&#x6CE8;&#x610F; document &#x8282;&#x70B9;&#x7684;&#x76F4;&#x63A5;&#x5B50;&#x8282;&#x70B9;&#x5FC5;&#x987B;&#x662F; block &#x8282;&#x70B9;&#x3002;</p>
+<p>&#x5728;&#x4E00;&#x4E9B;&#x5730;&#x65B9;&#xFF0C;&#x4F60;&#x4F1A;&#x770B;&#x5230; &quot;fragment&quot; &#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x8FD9;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x672A;&#x6302;&#x8F7D;&#x5230;&#x4E3B; <code>State</code> &#x7684; <code>Docuement</code> &#x5BF9;&#x8C61;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x526A;&#x8D34;&#x9009;&#x62E9;&#x7684;&#x5185;&#x5BB9;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8BA4;&#x4E3A;&#x5185;&#x5BB9;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x6863; &quot;fragment&quot;&#x3002;</p>
 <ul>
 <li><a href="#properties">Properties</a><ul>
 <li><a href="#data"><code>data</code></a></li>
@@ -660,33 +660,34 @@
 </code></pre>
 <h3 id="data"><code>data</code></h3>
 <p><code>Immutable.Map</code></p>
-<p>Arbitrary data associated with the document. Defaults to an empty <code>Map</code>.</p>
+<p>&#x4EFB;&#x610F;&#x4E0E; document &#x5173;&#x8054;&#x7684; data &#x5BF9;&#x8C61;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x7A7A; <code>Map</code>&#x3002;</p>
 <h3 id="nodes"><code>nodes</code></h3>
 <p><code>Immutable.List</code></p>
-<p>A list of child nodes.</p>
+<p>&#x5B50;&#x8282;&#x70B9;&#x5217;&#x8868;&#x3002;</p>
 <h2 id="computed-properties">Computed Properties</h2>
 <h3 id="kind"><code>kind</code></h3>
 <p><code>String</code></p>
-<p>An immutable string value of <code>&apos;document&apos;</code> for easily separating this node from <a href="block.html"><code>Block</code></a>, <a href="inline.html"><code>Inline</code></a> or <a href="text.html"><code>Text</code></a> nodes.</p>
+<p>&#x4E0D;&#x53EF;&#x53D8;&#x7684; String&#xFF0C;&#x503C;&#x4E3A; <code>document</code> &#x4EE5;&#x4FBF;&#x4E8E;&#x5C06;&#x8FD9;&#x7C7B;&#x8282;&#x70B9;&#x4E0E; <a href="block.html"><code>Block</code></a>&#x3001;<a href="inline.html"><code>Inline</code></a> &#x548C; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x533A;&#x5206;&#x5F00;&#x3002;</p>
 <h3 id="text"><code>text</code></h3>
 <p><code>String</code></p>
-<p>A concatenated string of all of the descendant <a href="text.html"><code>Text</code></a> nodes of this node.</p>
+<p>&#x8BE5;&#x8282;&#x70B9;&#x7684;&#x5168;&#x90E8;&#x5B50; <a href="text.html"><code>Text</code></a> &#x8282;&#x70B9;&#x8FDE;&#x63A5;&#x6210;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
 <h2 id="static-methods">Static Methods</h2>
 <h3 id="documentcreate"><code>Document.create</code></h3>
 <p><code>Document.create(properties: Object) =&gt; Document</code></p>
-<p>Create a block from a plain Javascript object of <code>properties</code>.</p>
+<!-- TODO 原文 block 错误 -->
+<p>&#x7531;&#x539F;&#x751F; JS <code>properties</code> &#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; document&#x3002;</p>
 <h3 id="documentfromjson"><code>Document.fromJSON</code></h3>
 <p><code>Document.fromJSON(object: Object) =&gt; Document</code></p>
-<p>Create a document from a JSON <code>object</code>.</p>
+<p>&#x7531; JSON <code>object</code> &#x521B;&#x5EFA;&#x4E00;&#x4E2A; document&#x3002;</p>
 <h3 id="documentisdocument"><code>Document.isDocument</code></h3>
 <p><code>Document.isDocument(maybeDocument: Any) =&gt; Boolean</code></p>
-<p>Returns a boolean if the passed in argument is a <code>Document</code>.</p>
+<p>&#x8FD4;&#x56DE;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x662F;&#x5426;&#x4E3A; <code>Document</code> &#x7684; boolean &#x503C;&#x3002;</p>
 <h2 id="node-methods">Node Methods</h2>
-<p>Documents implement the <a href="node.html"><code>Node</code></a> interface. For information about all of the node methods, see the <a href="node.html"><code>Node</code> reference</a>.</p>
+<p>Document &#x5B9E;&#x73B0;&#x4E86; <a href="node.html"><code>Node</code></a> &#x63A5;&#x53E3;&#x3002;&#x5BF9;&#x6240;&#x6709; node &#x65B9;&#x6CD5;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x53C2;&#x89C1; <a href="node.html"><code>Node</code> &#x6587;&#x6863;</a>&#x3002;</p>
 <h2 id="instance-methods">Instance Methods</h2>
 <h3 id="tojson"><code>toJSON</code></h3>
 <p><code>toJSON() =&gt; Object</code></p>
-<p>Returns a JSON representation of the document.</p>
+<p>&#x8FD4;&#x56DE; document &#x7684; JSON &#x8868;&#x793A;&#x3002;</p>
 
                                 
                                 </section>
@@ -730,7 +731,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Document","level":"4.5","depth":1,"next":{"title":"Inline","level":"4.6","depth":1,"path":"reference/slate/inline.md","ref":"./reference/slate/inline.md","articles":[]},"previous":{"title":"Data","level":"4.4","depth":1,"path":"reference/slate/data.md","ref":"./reference//slate/data.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/document.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-27T05:49:39.592Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Document","level":"4.5","depth":1,"next":{"title":"Inline","level":"4.6","depth":1,"path":"reference/slate/inline.md","ref":"./reference/slate/inline.md","articles":[]},"previous":{"title":"Data","level":"4.4","depth":1,"path":"reference/slate/data.md","ref":"./reference//slate/data.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate/document.md","mtime":"2017-09-30T10:59:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
