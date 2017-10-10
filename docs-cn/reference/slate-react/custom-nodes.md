@@ -1,7 +1,7 @@
 
 # Custom Nodes
 
-Slate will render custom nodes for [`Block`](../slate/block.md) and [`Inline`](../slate/inline.md) models, based on what you pass in as your schema. This allows you to completely customize the rendering behavior of your Slate editor.
+Slate 根据传入的 schema，为 [`Block`](../slate/block.md) 和 [`Inline`](../slate/inline.md) 渲染自定义节点。这允许你完全地定制 Slate 编辑器的渲染行为。
 
 - [Properties](#properties)
   - [`attributes`](#attributes)
@@ -31,7 +31,7 @@ Slate will render custom nodes for [`Block`](../slate/block.md) and [`Inline`](.
 ### `attributes`
 `Object`
 
-A dictionary of DOM attributes that you must attach to the main DOM element of the node you render. For example:
+DOM 属性字典，必须添加到所渲染节点对应的主 DOM 元素上。例如：
 
 ```js
 return (
@@ -49,7 +49,7 @@ return (
 ### `children`
 `Object`
 
-A set of React children elements that are composed of internal Slate components that handle all of the editing logic of the editor for you. You must render these as the children of your non-void nodes. For example:
+由 Slate 内部组件组成的 React 子元素集合，它为你处理编辑器内所有的编辑逻辑。你必须在非空节点中将它们作为子节点渲染。例如：
 
 ```js
 return (
@@ -62,7 +62,7 @@ return (
 ### `editor`
 `Editor`
 
-A reference to the Slate [`<Editor>`](./editor.md) instance. This allows you to retrieve the current `state` of the editor, or perform a `change` on the state. For example:
+对 Slate [`<Editor>`](./editor.md) 实例的引用。这允许你获得当前的编辑器 `state`，或对 state 执行 `change`。例如：
 
 ```js
 const state = editor.getState()
@@ -76,24 +76,24 @@ editor.change((change) => {
 ### `isSelected`
 `Boolean`
 
-A boolean representing whether the node you are rendering is currently selected. You can use this to render a visual representation of the selection.
+表示当前渲染节点是否选中的 boolean。你可以将其用于可视化地渲染选择范围。
 
 ### `node`
 `Node`
 
-A reference to the [`Node`](../slate/node.md) being rendered.
+对当前渲染 [`Node`](../slate/node.md) 的引用。
 
 ### `parent`
 `Node`
 
-A reference to the parent of the current [`Node`](../slate/node.md) being rendered.
+对当前渲染 [`Node`](../slate/node.md) 父节点的引用。
 
 ### `readOnly`
 `Boolean`
 
-Whether the editor is in "read-only" mode, where all of the rendering is the same, but the user is prevented from editing the editor's content.
+编辑器是否处于 "read-only" 模式，这时渲染方式保持不变，但用户不能编辑内容。
 
 ### `state`
 `State`
 
-A reference to the current [`State`](../slate/state.md) of the editor.
+对当前编辑器 [`State`](../slate/state.md) 的引用。
