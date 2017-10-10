@@ -5,7 +5,7 @@
 import { Placeholder } from 'slate-react'
 ```
 
-A simple component that adds a placeholder to a node. It encapsulates all of the Slate-related logic that determines when to render the placeholder, so you don't have to think about it.
+为节点添加占位符的简单组件。它封装了所有与 Slate 相关的占位符渲染判断逻辑，这样不需要你来操心了。
 
 - [Properties](#properties)
   - [`children`](#children)
@@ -34,34 +34,34 @@ A simple component that adds a placeholder to a node. It encapsulates all of the
 ### `children`
 `Any`
 
-React child elements to render inside the placeholder `<span>` element.
+渲染到占位符 `<span>` 元素内的 React 子元素。
 
 ### `className`
 `String`
 
-An optional class name string to add to the placeholder `<span>` element.
+添加到占位符 `<span>` 元素内的可选 class 名字符串。
 
 ### `firstOnly`
 `Boolean`
 
-An optional toggle that allows the Placeholder to render even if it is not the first node of the parent. This is useful for cases where the Placeholder should show up at every empty instance of the node. Defaults to `true`.
+可选的开关，允许 Placeholder 在其不是父节点下第一个 node 时渲染。这可适用于 Placeholder 需要在每个节点空实例下渲染的场景。默认为 `true`。
 
 ### `node`
 `Node`
 
-The node to render the placeholder element on top of. The placeholder is positioned absolutely, covering the entire node.
+占位符元素渲染时的顶级节点。占位符将绝对定位，覆盖整个节点。
 
 ### `parent`
 `Node`
 
-The node to check for non-empty content, to determine whether the placeholder should be shown or not, if `firstOnly` is set to `false`.
+检查非空内容的节点。在 `firstOnly` 设置为 `false` 时，它用于判断是否需展示占位符。
 
 ### `state`
 `State`
 
-The current state of the editor.
+编辑器的当前状态。
 
 ### `style`
 `Object`
 
-An optional dictionary of styles to pass to the placeholder `<span>` element.
+传递给占位符 `<span>` 元素的可选样式字典。
