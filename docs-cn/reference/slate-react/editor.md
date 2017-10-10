@@ -5,7 +5,7 @@
 import { Editor } from 'slate-react'
 ```
 
-The top-level React component that renders the Slate editor itself.
+渲染 Slate 编辑器的顶层 React 组件。
 
 - [Properties](#properties)
   - [`autoCorrect`](#autocorrect)
@@ -64,57 +64,57 @@ The top-level React component that renders the Slate editor itself.
 ### `autoCorrect`
 `Boolean`
 
-Whether the editor should attempt to autocorrect spellcheck errors.
+编辑器是否尝试自动更正拼写错误。
 
 ### `autoFocus`
 `Boolean`
 
-An optional attribute that, when set to true, attempts to give the content editable element focus when it's loaded onto the page.
+可选值。当设置为 true 时，尝试在 content editable 元素加载至页面时自动使其获得焦点。
 
 ### `className`
 `String`
 
-An optional class name to apply to the content editable element.
+应用到 content editable 元素上可选的 class 名。
 
 ### `onChange`
 `Function onChange(change: Change)`
 
-A change handler that will be called with the `change` that applied the change. You should usually pass the newly changed `change.state` back into the editor through its `state` property. This hook allows you to add persistence logic to your editor.
+传入 `change` 以应用变更的回调。一般而言你需要将新的 `change.state` 通过编辑器的 `state` 属性传入。这个钩子允许你在此为编辑器添加持久化逻辑。
 
 ### `plugins`
 `Array`
 
-An array of [`Plugins`](./plugins.md) that define the editor's behavior.
+定义编辑器行为的 [`Plugins`](./plugins.md) 数组。
 
 ### `readOnly`
 `Boolean`
 
-Whether the editor should be in "read-only" mode, where all of the rendering is the same, but the user is prevented from editing the editor's content.
+编辑器是否应处于 "read-only" 模式。这时渲染方式保持不变，但用户不能编辑内容。
 
 ### `spellCheck`
 `Boolean`
 
-Whether spellcheck is turned on for the editor.
+是否为编辑器启用拼写检查。
 
 ### `role`
 `String`
 
-ARIA property to define the role of the editor, it defaults to `textbox` when editable.
+定义编辑器 role 的 ARIA 属性，在可编辑时默认为 `textbox`。
 
 ### `state`
 `State`
 
-A [`State`](../slate/state.md) object representing the current state of the editor.
+代表当前编辑器状态的 [`State`](../slate/state.md) 对象。
 
 ### `style`
 `Object`
 
-An optional dictionary of styles to apply to the content editable element.
+应用到 content editable 元素中的可选样式字典。
 
 ### `tabIndex`
 `Number`
 
-Indicates if it should participate to [sequential keyboard navigation](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex).
+指示其是否参与[序列键盘导航](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)。
 
 ## Placeholder Properties
 
@@ -129,26 +129,26 @@ Indicates if it should participate to [sequential keyboard navigation](https://d
 ### `placeholder`
 `String || Element`
 
-A placeholder string (or React element) that will be rendered as the default block type's placeholder.
+作为默认 block 类型占位符的字符串（或 React 组件）。
 
 ### `placeholderClassName`
 `String`
 
-An optional class name to apply to the default block type's placeholder.
+应用到 block 类型占位符的可选 class 名。
 
 ### `placeholderStyle`
 `Object`
 
-An optional dictionary of styles to apply to the default block type's placeholder. If `placeholder` is a string, and no class name or style dictionary is passed, this property will default to `{ opacity: '0.333' }`.
+应用到 block 类型占位符的可选样式字典。若 `placeholder` 为字符串且未传递 class 名与样式字典，该属性默认为 `{ opacity: '0.333' }`。
 
 
 ## Plugin-like Properties
 
-In addition to its own properties, the editor allows passing any of the properties that a [plugin](./plugins.md) defines as well.
+在自有属性基础上，编辑器也允许传入任意由 [plugin](./plugins.md) 定义的属性。
 
-These properties are actually just a convenience—an implicit plugin definition. Internally, they are grouped together and turned into a plugin that is given first priority in the plugin stack.
+这些属性实际上都仅为便捷起见的隐式插件定义。在内部，它们将组合为一个在插件栈上具备最高优先级的插件。
 
-For example, these two snippets of code are equivalent:
+例如，如下的代码示例是等价的：
 
 ```js
 const plugins = [
@@ -190,7 +190,7 @@ const plugins = [
 ### `onSelect`
 ### `schema`
 
-To see how these properties behave, check out the [Plugins reference](./plugins.md).
+要查看这些属性的行为，请查阅 [Plugins](./plugins.md) 文档。
 
 
 ## Methods
@@ -198,24 +198,24 @@ To see how these properties behave, check out the [Plugins reference](./plugins.
 ### `blur`
 `blur() => Void`
 
-Programmatically blur the editor.
+编程式地使编辑器失去焦点。
 
 ### `focus`
 `focus() => Void`
 
-Programmatically focus the editor.
+编程式地使编辑器获得焦点。
 
 ### `getSchema`
 `getSchema() => Schema`
 
-Return the editor's current schema.
+返回编辑器的当前 schema。
 
 ### `getState`
 `getState() => State`
 
-Return the editor's current state.
+返回编辑器的当前 state。
 
 ### `onChange`
 `onChange(change: Change) => Void`
 
-Invoking this method will update the state of the editor with the `change`, running it through all of it's plugins, and passing it the parent component, before it cycles back down as the new `state` property of the editor.
+触发该方法时将使用 `change` 更新编辑器状态。在其成为编辑器的新 `state` 前，它将在全部插件中传递一遍，并传入父组件。
