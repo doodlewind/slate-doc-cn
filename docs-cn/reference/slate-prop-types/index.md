@@ -5,7 +5,7 @@
 import Types from 'slate-prop-types'
 ```
 
-A set of React prop types for Slate editors and plugins.
+供 Slate 编辑器与插件使用的 React prop types 集合。
 
 - [Example](#example)
 - [Exports](#exports)
@@ -57,88 +57,88 @@ class Toolbar extends React.Component {
 
 ### `block`
 
-Ensure that a value is a Slate `Block`.
+保证值为 Slate `Block`。
 
 ### `blocks`
 
-Ensure that a value is an immutable `List` of Slate [`Block`](../slate/block.md) objects.
+保证值为 Slate [`Block`](../slate/block.md) 对象组成的不可变 `List`。
 
 ### `change`
 
-Ensure that a value is a Slate `Change`.
+保证值为 Slate `Change`。
 
 ### `character`
 
-Ensure that a value is a Slate `Character`.
+保证值为 Slate `Character`。
 
 ### `characters`
 
-Ensure that a value is an immutable `List` of Slate `Character` objects.
+保证值为 Slate `Character` 对象组成的不可变 `List`。
 
 ### `data`
 
-Ensure that a value is a Slate `Data`.
+保证值为 Slate `Data`。
 
 ### `document`
 
-Ensure that a value is a Slate `Document`.
+保证值为 Slate `Document`。
 
 ### `history`
 
-Ensure that a value is a Slate `History`.
+保证值为 Slate `History`。
 
 ### `inline`
 
-Ensure that a value is a Slate `Inline`.
+保证值为 Slate `Inline`。
 
 ### `inlines`
 
-Ensure that a value is an immutable `List` of Slate [`Inline`](../slate/inline.md) objects.
+保证值为 Slate [`Inline`](../slate/inline.md) 对象组成的不可变 `List`。
 
 ### `mark`
 
-Ensure that a value is a Slate `Mark`.
+保证值为 Slate `Mark`。
 
 ### `marks`
 
-Ensure that a value is an immutable `Set` of Slate `Mark` objects.
+保证值为 Slate `Mark` 对象组成的不可变 `List`。
 
 ### `node`
 
-Ensure that a value is a Slate `Node`.
+保证值为 Slate `Node`。
 
 ### `nodes`
 
-Ensure that a value is an immutable `List` of Slate `Node` objects.
+保证值为 Slate `Node` 对象组成的不可变 `List`。
 
 ### `range`
 
-Ensure that a value is a Slate `Range`.
+保证值为 Slate `Range`。
 
 ### `ranges`
 
-Ensure that a value is an immutable `List` of Slate `Range` objects.
+保证值为 Slate `Range` 对象组成的不可变 `List`。
 
 ### `schema`
 
-Ensure that a value is a Slate `Schema`.
+保证值为 Slate `Schema`。
 
 ### `selection`
 
-Ensure that a value is a Slate `Selection`.
+保证值为 Slate `Selection`。
 
 ### `stack`
 
-Ensure that a value is a Slate `Stack`.
+保证值为 Slate `Stack`。
 
 ### `state`
 
-Ensure that a value is a Slate `State`.
+保证值为 Slate `State`。
 
 ### `text`
 
-Ensure that a value is a Slate `Text`.
+保证值为 Slate `Text`。
 
 ### `texts`
 
-Ensure that a value is a Slate `Texts`.
+保证值为 Slate `Text` 对象组成的不可变 `List`。
