@@ -1,11 +1,11 @@
 
 # Plugins
 
-Plugins can be attached to an editor to alter its behavior in different ways. Plugins are just simple Javascript objects, containing a set of properties that control different behaviors—event handling, change handling, rendering, etc.
+插件可挂载到编辑器上，以不同方式更改其行为。插件是简单的 JS 对象，包含控制不同行为的属性——事件处理、change 处理、渲染等。
 
-Each editor has a "middleware stack" of plugins, which has a specific order.
+每个编辑器都有一个带特定顺序的插件【中间件栈】。
 
-When the editor needs to resolve a plugin-related handler, it will loop through its plugin stack, searching for the first plugin that successfully returns a value. After receiving that value, the editor will **not** continue to search the remaining plugins; it returns early. If you'd like for the stack to continue, a plugin handler should return `undefined`.
+当编辑器需解析插件相关回调时，它将遍历插件栈，搜索第一个返回了值的插件。在获得该值后，编辑器 **不会** 继续搜索剩余插件，而是尽早返回。如果你希望继续栈上操作，插件回调需要返回 `undefined`。
 
 - [Conventions](#conventions)
 - [Event Handler Properties](#event-handle-properties)
@@ -28,12 +28,12 @@ When the editor needs to resolve a plugin-related handler, it will loop through 
 
 ## Conventions
 
-A plugin should always export a function that takes options. This way even if it doesn't take any options now, it won't be a breaking API change to take more options in the future. So a basic plugin might look like this:
+插件应当总是开放一个接受选项的函数。这样，即便它实际上不需要输入参数，也不会在未来需要传入更多参数时造成破坏性的 API 变更。一个基本的插件可能形如：
 
 ```js
 export default function MySlatePlugin(options) {
   return {
-    // Return properties that describe your logic here...
+    // 返回描述自定义逻辑的属性…
   }
 }
 ```
@@ -56,33 +56,33 @@ export default function MySlatePlugin(options) {
 }
 ```
 
-All of the event handler properties are passed the same React `event` object you are used to from React's event handlers. They are also passed a `data` object with Slate-specific information relating to the event, the current `change` of the editor, and the `editor` instance itself.
+全部的插件回调属性都会传入和 React 事件回调一致的 React `event` 对象。它们同时传入一个包含相关 Slate 信息的 `data` 对象、当前编辑器 `change`、以及 `editor` 实例本身。
 
-Each event handler can choose to return a new `change` object, in which case the editor's state will be updated. If nothing is returned, the editor will simply continue resolving the plugin stack.
+每个事件回调都可以在需要更新编辑器状态时，返回一个新的 `change` 对象。如果没有返回内容，编辑器将继续解析插件栈。
 
 ### `onBeforeInput`
 `Function onBeforeInput(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called right before a string of text is inserted into the `contenteditable` element.
+该回调在字符文本插入 `contenteditable` 元素前出发。
 
-Make sure to `event.preventDefault()` if you do not want the default insertion behavior to occur! If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+如果不希望发生默认的插入行为，请记得 `event.preventDefault()`！如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
 ### `onBlur`
 `Function onBlur(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called when the editor's `contenteditable` element is blurred. If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+该回调在编辑器 `contenteditable` 元素失去焦点时触发。如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
 ### `onFocus`
 `Function onFocus(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called when the editor's `contenteditable` element is focused. If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+该回调在编辑器 `contenteditable` 元素获得焦点时触发。如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
 ### `onCopy`
 `Function onCopy(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called when there is a copy event in the editor's `contenteditable` element.
+该回调在编辑器 `contenteditable` 元素中发生复制事件时触发。
 
-The `data` object contains a `type` string and associated data for that type. Right now the only type supported is `"fragment"`:
+`data` 对象包含了 `type` 字符串，及与该类型相关的数据。目前仅支持 `"fragment"` 类型：
 
 ```js
 {
@@ -91,19 +91,19 @@ The `data` object contains a `type` string and associated data for that type. Ri
 }
 ```
 
-If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
 ### `onCut`
 `Function onCut(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is equivalent to the `onCopy` handler. If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+该回调等价于 `onCopy` 回调。如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
 ### `onDrop`
 `Function onDrop(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called when the user drops content into the `contenteditable` element. The event is already prevented by default, so you must define a state change to have any affect occur.
+该回调在用户向 `contenteditable` 元素中放下内容时调用。该事件已禁用默认行为，因此你必须自定义状态变更来实现功能。
 
-The `data` object is a convenience object created to standardize the drop metadata across browsers. Every data object has a `type` property, which can be one of `text`, `html` or `files`, and a `target` property which is a [`Selection`](../slate/selection.md) indicating where the drop occurred. Depending on the type, its structure will be:
+`data` 对象是用于将跨浏览器 drop 元数据标准化的便捷对象。每个 data 对象都有一个 `type` 属性，其可为 `text`、`html` 或 `files` 其中之一，也有一个类型为 [`Selection`](../slate/selection.md) 的 `target` 属性来指示在哪里发生 drop 行为。根据类型不同，其结构为：
 
 ```js
 {
@@ -126,14 +126,16 @@ The `data` object is a convenience object created to standardize the drop metada
 }
 ```
 
-If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
 ### `onKeyDown`
 `Function onKeyDown(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called when any key is pressed in the `contenteditable` element, before any action is taken.
+该回调在 `contenteditable` 元素中按键刚刚被按下、任何其它动作触发前触发。
 
-The `data` object contains the `key` which is a string name of the key that was pressed, as well as it's `code`. It also contains a series of helpful utility properties for determining hotkey logic. For example, `isCtrl` which is true if the `control` key was pressed, or
+`data` 对象包含了按键的字符串名称 `key` 及其 `code`。它也包含了一系列有用的工具属性以便于判断热键逻辑。例如，在 `control` 键按下时，`isCtrl` 为真：
+
+<!-- TODO 原文 `or` typo -->
 
 ```js
 {
@@ -151,27 +153,27 @@ The `data` object contains the `key` which is a string name of the key that was 
 }
 ```
 
-The `isMod` boolean is `true` if the `control` key was pressed on Windows or the `command` key was pressed on Mac _without_ the `alt/option` key also being pressed. This is a convenience for adding hotkeys like `command+b`.
+当 Windows 上 `control` 键或 Mac 上 `command` 键按下，且 `alt/option` 键 _没有_ 按下时，`isMod` 布尔值为 `true`。这便于添加 `command+b` 一类的快捷键。
 
-The `isModAlt` boolean is `true` if the `control` key was pressed on Windows or the `command` key was pressed on Mac _and_ the `alt/option` key was also being pressed. This is a convenience for secondary hotkeys like `command+option+1`.
+当 Windows 上 `control` 键或 Mac 上 `command` 键按下，且 `alt/option` 键 _有_ 按下时，`isModAlt` 布尔值为 `true`。这便于添加 `command+option+1` 一类的次级快捷键。
 
-The `isLine` and `isWord` booleans represent whether the "line modifier" or "word modifier" hotkeys are pressed when deleting or moving the cursor. For example, on a Mac `option + right` moves the cursor to the right one word at a time.
+`isLine` 与 `isWord` 布尔值代表删除或移动光标时，【行修饰符】与【词修饰符】快捷键是否按下。例如，在 Mac 上 `option + →` 每次将光标向右移动一个词。
 
-Make sure to `event.preventDefault()` if you do not want the default insertion behavior to occur! If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+如果不希望发生默认的插入行为，请确保调用了 `event.preventDefault()`！如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
 ### `onKeyUp`
 `Function onKeUp(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called when any key is released in the `contenteditable` element.
+该回调在 `contenteditable` 元素中按键被释放时触发。
 
-The `data` object contains the same information as the `data` object of `onKeyDown`.
+`data` 对象中包含了与 `onKeyDown` 中 `data` 对象相同的信息。
 
 ### `onPaste`
 `Function onPaste(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called when the user pastes content into the `contenteditable` element. The event is already prevented by default, so you must define a state change to have any affect occur.
+该回调在用户向 `contenteditable` 元素中粘贴内容时触发。该事件已禁用默认行为，因此你必须自定义状态变更来实现功能。
 
-The `data` object is a convenience object created to standardize the paste metadata across browsers. Every data object has a `type` property, which can be one of `text`, `html` or `files`. Depending on the type, it's structure will be:
+`data` 对象是用于将跨浏览器 drop 元数据标准化的便捷对象。每个 data 对象都有一个 `type` 属性，其可为 `text`、`html` 或 `files` 其中之一，也有一个类型为 [`Selection`](../slate/selection.md) 的 `target` 属性来指示在哪里发生 drop 行为。根据类型不同，其结构为：
 
 ```js
 {
@@ -191,18 +193,18 @@ The `data` object is a convenience object created to standardize the paste metad
 }
 ```
 
-If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
 ### `onSelect`
 `Function onSelect(event: Event, data: Object, change: Change, editor: Editor) => Change || Void`
 
-This handler is called whenever the native DOM selection changes.
+该回调在原生 DOM 选择范围变更时触发。
 
-The `data` object contains a [`Selection`](../slate/selection.md) object representing the new selection.
+`data` 对象包含了表示新选择范围的 [`Selection`](../slate/selection.md) 对象。
 
-If no other plugin handles this event, it will be handled by the [Core plugin](./core.md).
+如果没有其它插件处理该事件，将由 [Core plugin](./core.md) 处理。
 
-_Note: This is **not** Slate's internal selection representation (although it mirrors it). If you want to get notified when Slate's selection changes, use the [`onChange`](../slate-react/editor.md#onchange) property of the `<Editor>`. This handler is instead meant to give you lower-level access to the DOM selection handling, which **is not always triggered** as you'd expect._
+_注意：这 **不是** Slate 内部的选择范围表示（内部选择范围确实镜像了它）。如果你希望在 Slate 中选择范围更改时获得提示，使用 `<Editor>` 的 [`onChange`](../slate-react/editor.md#onchange) 属性。这个回调用于向你开放对底层 DOM 选择范围的控制，而原生行为 **不会** 总是按照你的预期触发。_
 
 
 ## Other Properties
@@ -216,19 +218,19 @@ _Note: This is **not** Slate's internal selection representation (although it mi
 ### `onChange`
 `Function onChange(change: Change) => Any || Void`
 
-The `onChange` handler isn't a native browser event handler. Instead, it is invoked whenever the editor state changes. This allows plugins to augment a change however they want.
+`onChange` 回调不是浏览器的原生事件回调，而是在编辑器状态变更时触发。这允许插件根据需要增加 change。
 
 ### `onBeforeChange`
 `Function onBeforeChange(change: Change) => Change || Void`
 
-The `onBeforeChange` handler isn't a native browser event handler. Instead, it is invoked whenever the editor receives a new state and before propagating a new change to `onChange`.
+`onBeforeChange` 回调不是浏览器的原生事件回调，而是在编辑器接收到新 state 并传播 change 到 `onChange` 前触发。
 
 ### `render`
 `Function render(props: Object, state: State, editor: Editor) => Object || Void`
 
-The `render` property allows you to define higher-order-component-like behavior. It is passed all of the properties of the editor, including `props.children`. You can then choose to wrap the existing `children` in any custom elements or proxy the properties however you choose. This can be useful for rendering toolbars, styling the editor, rendering validation, etc. Remember that the `render` function has to render `props.children` for editor's children to render.
+`render` 属性允许你定义类似高阶组件的行为。它传入所有编辑器的属性，包括 `props.children`。你可以将已经存在的 `chidren` 用任何自定义元素包裹，或根据需要盖里属性。这在渲染工具栏、为编辑器添加样式、对渲染进行校验等场景时能够有所帮助。记得 `render` 函数需要渲染 `props.children` 以渲染编辑器的子节点。
 
 ### `schema`
 `Object`
 
-The `schema` property allows you to define a set of rules that will be added to the editor's schema. The rules from each of the schemas returned by the plugins are collected into a single schema for the editor, and the rules are applied in the same order as the plugin stack.
+`schema` 属性允许你定义一系列添加到编辑器 schema 中的规则。从各插件 schema 中返回的规则将被整合为一个编辑器的新 schema，其应用规则的顺序与插件栈顺序一致。
