@@ -738,9 +738,9 @@
 <p><code>Object</code></p>
 <p>&#x5E94;&#x7528;&#x5230; block &#x7C7B;&#x578B;&#x5360;&#x4F4D;&#x7B26;&#x7684;&#x53EF;&#x9009;&#x6837;&#x5F0F;&#x5B57;&#x5178;&#x3002;&#x82E5; <code>placeholder</code> &#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x4E14;&#x672A;&#x4F20;&#x9012; class &#x540D;&#x4E0E;&#x6837;&#x5F0F;&#x5B57;&#x5178;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x9ED8;&#x8BA4;&#x4E3A; <code>{ opacity: &apos;0.333&apos; }</code>&#x3002;</p>
 <h2 id="plugin-like-properties">Plugin-like Properties</h2>
-<p>In addition to its own properties, the editor allows passing any of the properties that a <a href="plugins.html">plugin</a> defines as well.</p>
-<p>These properties are actually just a convenience&#x2014;an implicit plugin definition. Internally, they are grouped together and turned into a plugin that is given first priority in the plugin stack.</p>
-<p>For example, these two snippets of code are equivalent:</p>
+<p>&#x5728;&#x81EA;&#x6709;&#x5C5E;&#x6027;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x7F16;&#x8F91;&#x5668;&#x4E5F;&#x5141;&#x8BB8;&#x4F20;&#x5165;&#x4EFB;&#x610F;&#x7531; <a href="plugins.html">plugin</a> &#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x5B9E;&#x9645;&#x4E0A;&#x90FD;&#x4EC5;&#x4E3A;&#x4FBF;&#x6377;&#x8D77;&#x89C1;&#x7684;&#x9690;&#x5F0F;&#x63D2;&#x4EF6;&#x5B9A;&#x4E49;&#x3002;&#x5728;&#x5185;&#x90E8;&#xFF0C;&#x5B83;&#x4EEC;&#x5C06;&#x7EC4;&#x5408;&#x4E3A;&#x4E00;&#x4E2A;&#x5728;&#x63D2;&#x4EF6;&#x6808;&#x4E0A;&#x5177;&#x5907;&#x6700;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x63D2;&#x4EF6;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x4E0B;&#x7684;&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#xFF1A;</p>
 <pre class="language-"><code class="lang-js"><span class="token keyword">const</span> plugins <span class="token operator">=</span> <span class="token punctuation">[</span>
   somePlugin
 <span class="token punctuation">]</span>
@@ -776,23 +776,23 @@
 <h3 id="onpaste"><code>onPaste</code></h3>
 <h3 id="onselect"><code>onSelect</code></h3>
 <h3 id="schema"><code>schema</code></h3>
-<p>To see how these properties behave, check out the <a href="plugins.html">Plugins reference</a>.</p>
+<p>&#x8981;&#x67E5;&#x770B;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x8BF7;&#x67E5;&#x9605; <a href="plugins.html">Plugins</a> &#x6587;&#x6863;&#x3002;</p>
 <h2 id="methods">Methods</h2>
 <h3 id="blur"><code>blur</code></h3>
 <p><code>blur() =&gt; Void</code></p>
-<p>Programmatically blur the editor.</p>
+<p>&#x7F16;&#x7A0B;&#x5F0F;&#x5730;&#x4F7F;&#x7F16;&#x8F91;&#x5668;&#x5931;&#x53BB;&#x7126;&#x70B9;&#x3002;</p>
 <h3 id="focus"><code>focus</code></h3>
 <p><code>focus() =&gt; Void</code></p>
-<p>Programmatically focus the editor.</p>
+<p>&#x7F16;&#x7A0B;&#x5F0F;&#x5730;&#x4F7F;&#x7F16;&#x8F91;&#x5668;&#x83B7;&#x5F97;&#x7126;&#x70B9;&#x3002;</p>
 <h3 id="getschema"><code>getSchema</code></h3>
 <p><code>getSchema() =&gt; Schema</code></p>
-<p>Return the editor&apos;s current schema.</p>
+<p>&#x8FD4;&#x56DE;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x5F53;&#x524D; schema&#x3002;</p>
 <h3 id="getstate"><code>getState</code></h3>
 <p><code>getState() =&gt; State</code></p>
-<p>Return the editor&apos;s current state.</p>
+<p>&#x8FD4;&#x56DE;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x5F53;&#x524D; state&#x3002;</p>
 <h3 id="onchange"><code>onChange</code></h3>
 <p><code>onChange(change: Change) =&gt; Void</code></p>
-<p>Invoking this method will update the state of the editor with the <code>change</code>, running it through all of it&apos;s plugins, and passing it the parent component, before it cycles back down as the new <code>state</code> property of the editor.</p>
+<p>&#x89E6;&#x53D1;&#x8BE5;&#x65B9;&#x6CD5;&#x65F6;&#x5C06;&#x4F7F;&#x7528; <code>change</code> &#x66F4;&#x65B0;&#x7F16;&#x8F91;&#x5668;&#x72B6;&#x6001;&#x3002;&#x5728;&#x5176;&#x6210;&#x4E3A;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x65B0; <code>state</code> &#x524D;&#xFF0C;&#x5B83;&#x5C06;&#x5728;&#x5168;&#x90E8;&#x63D2;&#x4EF6;&#x4E2D;&#x4F20;&#x9012;&#x4E00;&#x904D;&#xFF0C;&#x5E76;&#x4F20;&#x5165;&#x7236;&#x7EC4;&#x4EF6;&#x3002;</p>
 
                                 
                                 </section>
@@ -836,7 +836,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Editor","level":"5.1","depth":1,"next":{"title":"Placeholder","level":"5.2","depth":1,"path":"reference/slate-react/placeholder.md","ref":"./reference/slate-react/placeholder.md","articles":[]},"previous":{"title":"resetKeyGenerator","level":"4.14","depth":1,"path":"reference/slate/utils.md","ref":"./reference/slate/utils.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/editor.md","mtime":"2017-10-10T08:32:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Editor","level":"5.1","depth":1,"next":{"title":"Placeholder","level":"5.2","depth":1,"path":"reference/slate-react/placeholder.md","ref":"./reference/slate-react/placeholder.md","articles":[]},"previous":{"title":"resetKeyGenerator","level":"4.14","depth":1,"path":"reference/slate/utils.md","ref":"./reference/slate/utils.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/editor.md","mtime":"2017-10-10T09:02:23.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-14T12:47:22.111Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

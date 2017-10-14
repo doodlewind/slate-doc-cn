@@ -627,7 +627,7 @@
                                 <h1 id="placeholder"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Placeholder</span><span class="token punctuation">&gt;</span></span></code></h1>
 <pre class="language-"><code class="lang-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Placeholder <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;slate-react&apos;</span>
 </code></pre>
-<p>A simple component that adds a placeholder to a node. It encapsulates all of the Slate-related logic that determines when to render the placeholder, so you don&apos;t have to think about it.</p>
+<p>&#x4E3A;&#x8282;&#x70B9;&#x6DFB;&#x52A0;&#x5360;&#x4F4D;&#x7B26;&#x7684;&#x7B80;&#x5355;&#x7EC4;&#x4EF6;&#x3002;&#x5B83;&#x5C01;&#x88C5;&#x4E86;&#x6240;&#x6709;&#x4E0E; Slate &#x76F8;&#x5173;&#x7684;&#x5360;&#x4F4D;&#x7B26;&#x6E32;&#x67D3;&#x5224;&#x65AD;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x4E0D;&#x9700;&#x8981;&#x4F60;&#x6765;&#x64CD;&#x5FC3;&#x4E86;&#x3002;</p>
 <ul>
 <li><a href="#properties">Properties</a><ul>
 <li><a href="#children"><code>children</code></a></li>
@@ -653,25 +653,25 @@
 </code></pre>
 <h3 id="children"><code>children</code></h3>
 <p><code>Any</code></p>
-<p>React child elements to render inside the placeholder <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span></code> element.</p>
+<p>&#x6E32;&#x67D3;&#x5230;&#x5360;&#x4F4D;&#x7B26; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span></code> &#x5143;&#x7D20;&#x5185;&#x7684; React &#x5B50;&#x5143;&#x7D20;&#x3002;</p>
 <h3 id="classname"><code>className</code></h3>
 <p><code>String</code></p>
-<p>An optional class name string to add to the placeholder <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span></code> element.</p>
+<p>&#x6DFB;&#x52A0;&#x5230;&#x5360;&#x4F4D;&#x7B26; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span></code> &#x5143;&#x7D20;&#x5185;&#x7684;&#x53EF;&#x9009; class &#x540D;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
 <h3 id="firstonly"><code>firstOnly</code></h3>
 <p><code>Boolean</code></p>
-<p>An optional toggle that allows the Placeholder to render even if it is not the first node of the parent. This is useful for cases where the Placeholder should show up at every empty instance of the node. Defaults to <code>true</code>.</p>
+<p>&#x53EF;&#x9009;&#x7684;&#x5F00;&#x5173;&#xFF0C;&#x5141;&#x8BB8; Placeholder &#x5728;&#x5176;&#x4E0D;&#x662F;&#x7236;&#x8282;&#x70B9;&#x4E0B;&#x7B2C;&#x4E00;&#x4E2A; node &#x65F6;&#x6E32;&#x67D3;&#x3002;&#x8FD9;&#x53EF;&#x9002;&#x7528;&#x4E8E; Placeholder &#x9700;&#x8981;&#x5728;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7A7A;&#x5B9E;&#x4F8B;&#x4E0B;&#x6E32;&#x67D3;&#x7684;&#x573A;&#x666F;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A; <code>true</code>&#x3002;</p>
 <h3 id="node"><code>node</code></h3>
 <p><code>Node</code></p>
-<p>The node to render the placeholder element on top of. The placeholder is positioned absolutely, covering the entire node.</p>
+<p>&#x5360;&#x4F4D;&#x7B26;&#x5143;&#x7D20;&#x6E32;&#x67D3;&#x65F6;&#x7684;&#x9876;&#x7EA7;&#x8282;&#x70B9;&#x3002;&#x5360;&#x4F4D;&#x7B26;&#x5C06;&#x7EDD;&#x5BF9;&#x5B9A;&#x4F4D;&#xFF0C;&#x8986;&#x76D6;&#x6574;&#x4E2A;&#x8282;&#x70B9;&#x3002;</p>
 <h3 id="parent"><code>parent</code></h3>
 <p><code>Node</code></p>
-<p>The node to check for non-empty content, to determine whether the placeholder should be shown or not, if <code>firstOnly</code> is set to <code>false</code>.</p>
+<p>&#x68C0;&#x67E5;&#x975E;&#x7A7A;&#x5185;&#x5BB9;&#x7684;&#x8282;&#x70B9;&#x3002;&#x5728; <code>firstOnly</code> &#x8BBE;&#x7F6E;&#x4E3A; <code>false</code> &#x65F6;&#xFF0C;&#x5B83;&#x7528;&#x4E8E;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x5C55;&#x793A;&#x5360;&#x4F4D;&#x7B26;&#x3002;</p>
 <h3 id="state"><code>state</code></h3>
 <p><code>State</code></p>
-<p>The current state of the editor.</p>
+<p>&#x7F16;&#x8F91;&#x5668;&#x7684;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x3002;</p>
 <h3 id="style"><code>style</code></h3>
 <p><code>Object</code></p>
-<p>An optional dictionary of styles to pass to the placeholder <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span></code> element.</p>
+<p>&#x4F20;&#x9012;&#x7ED9;&#x5360;&#x4F4D;&#x7B26; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span></code> &#x5143;&#x7D20;&#x7684;&#x53EF;&#x9009;&#x6837;&#x5F0F;&#x5B57;&#x5178;&#x3002;</p>
 
                                 
                                 </section>
@@ -715,7 +715,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Placeholder","level":"5.2","depth":1,"next":{"title":"Custom Nodes","level":"5.3","depth":1,"path":"reference/slate-react/custom-nodes.md","ref":"./reference/slate-react/custom-nodes.md","articles":[]},"previous":{"title":"Editor","level":"5.1","depth":1,"path":"reference/slate-react/editor.md","ref":"./reference/slate-react/editor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/placeholder.md","mtime":"2017-09-14T06:18:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-10T08:32:44.000Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Placeholder","level":"5.2","depth":1,"next":{"title":"Custom Nodes","level":"5.3","depth":1,"path":"reference/slate-react/custom-nodes.md","ref":"./reference/slate-react/custom-nodes.md","articles":[]},"previous":{"title":"Editor","level":"5.1","depth":1,"path":"reference/slate-react/editor.md","ref":"./reference/slate-react/editor.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","prism","github"],"root":"./docs-cn","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/ianstormtaylor/slate"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"Readme.md"},"variables":{},"gitbook":"3.2.2"},"file":{"path":"reference/slate-react/placeholder.md","mtime":"2017-10-10T09:14:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-14T12:47:22.111Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
