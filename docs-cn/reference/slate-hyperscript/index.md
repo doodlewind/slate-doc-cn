@@ -6,7 +6,7 @@ import h from 'slate-hyperscript'
 import { createHyperscript } from 'slate-hyperscript'
 ```
 
-A hyperscript helper for writing Slate documents with JSX!
+帮助你使用 JSX 编写 Slate 文档的 hyperscript 工具！
 
 - [Example](#example)
 - [Exports](#methods)
@@ -72,12 +72,12 @@ const state = (
 ### `h`
 `Function`
 
-The default export of `slate-hyperscript` is a barebones hyperscript helper that you can immediately start using to create Slate objects.
+默认情况下 `slate-hyperscript` 导出的是一个简单的 hyperscript 辅助函数，你能够直接用它来创建 Slate 对象。
 
 ### `createHyperscript`
 `createHyperscript(options: Object) => Function`
 
-The other export is a `createHyperscript` helper that you can use to create your own, smarter, schema-aware hyperscript helper. You can pass it `options` that tell it about your schema to make creating objects much terser.
+另一个导出的内容是 `createHyperscript` 辅助函数，你可以用它来创建你自己的、更智能的、与 schema 相关的 hyperscript 辅助函数。你可以为其传入提供 schema 信息的 `options`，从而更加简练地创建对象。
 
 ```js
 {
