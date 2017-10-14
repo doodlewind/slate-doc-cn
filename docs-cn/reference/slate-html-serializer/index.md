@@ -5,9 +5,9 @@
 import Html from 'slate-html-serializer'
 ```
 
-The HTML serializer lets you parse and stringify arbitrary HTML content, based on your specific schema's use case. You must pass a series of `rules` to define how your Slate schema should be serialized to and from HTML.
+你可以使用 HTML 序列化器来根据你的 schema 使用场景，解析并序列化任意的 HTML 内容。你需要传入一系列的 `rules` 来定义 Slate schema 如何与 HTML 互相转换。
 
-For an example of the HTML serializer in action, check out the [`paste-html` example](../../../examples/paste-html).
+对可用的 HTML 序列化器例子，可参见 [`paset-html` 示例](http://slatejs.org/#/paste-html)。
 
 - [Example](#example)
 - [Properties](#properties)
@@ -42,40 +42,40 @@ new Html({
 ### `rules`
 `Array`
 
-An array of rules to initialize the HTML serializer with, defining your schema.
+初始化 HTML 序列化器的规则数组，用于定义 schema。
 
 ### `defaultBlock`
 `String|Object|Block`
 
-A set of properties to use for blocks which do not match any rule. Can be a string such as `'paragraph'` or an object with a `type` attribute such as `{ type: 'paragraph' }`, or even a [`Block`](../slate/block.md).
+供未匹配到规则的 block 使用的属性集合。可为形如 `'paragraph'` 的字符串、形如 `{ type: 'paragraph' }` 这样带有 `type` 属性的对象，甚至一个 [`Block`](../slate/block.md)。
 
 ### `parseHtml`
 `Function`
 
-A function to parse an HTML string and return a DOM object. Defaults to using the native `DOMParser` in browser environments that support it. For older browsers or server-side rendering, you can include the [parse5](https://www.npmjs.com/package/parse5) package and pass `parse5.parseFragment` as the `parseHtml` option.
+用于解析 HTML 字符串并返回 DOM 对象的函数。默认在支持的浏览器环境下使用原生的 `DOMParser`。对较旧的浏览器或服务端渲染的场景，你可以导入 [parse5](https://www.npmjs.com/package/parse5) 包并将 `parse5.parseFragment` 作为 `parseHtml` 选项提供。
 
 ## Methods
 
 ### `Html.deserialize`
 `Html.deserialize(html: String, [options: Object]) => State`
 
-Deserialize an HTML `string` into a [`State`](../slate/state.md). How the string is deserialized will be determined by the rules that the HTML serializer was constructed with.
+反序列号 HTML `string` 为 [`State`](../slate/state.md)。字符串的反序列化方式取决于构造 HTML 序列化器的规则。
 
-If you pass `toJSON: true` as an option, the return value will be a JSON object instead of a [`State`](../slate/state.md) object.
+如果你将 `toJSON: true` 作为选项传入，返回值将为 JSON 对象而非 [`State`](../slate/state.md) 对象。
 
 ### `Html.serialize`
 `Html.serialize(state: State, [options: Object]) => String || Array`
 
-Serialize a `state` into an HTML string. How the string is serialized will be determined by the rules that the HTML serializer was constructed with. 
+将 `state` 序列化为 HTML 字符串。字符串的反序列化方式取决于构造 HTML 序列化器的规则。
 
-If you pass `render: false` as an option, the return value will instead be an iterable list of the top-level React elements, to be rendered as children in your own React component.
+如果你将 `render: false` 作为选项传入，返回值将替换为顶层 React 元素的 iterable 列表，以将其作为子节点在你的 React 组件中渲染。
 
 
 ## Rules
 
-To initialize an HTML serializer, you must pass it an array of rules, defining your schema. Each rule defines how to deserialize and serialize a node or mark, by implementing two functions.
+要初始化一个 HTML 序列化器，你需要传入一个规则数组来定义 schema。每条规则通过实现两个函数接口的形式，来定义如何反序列化与序列化 node 或 mark。
 
-Each rule must define two properties:
+每条规则必须定义两个属性：
 
 ```js
 {
@@ -88,9 +88,9 @@ Each rule must define two properties:
 #### `rule.deserialize`
 `rule.deserialize(el: Element, next: Function) => Object || Void`
 
-The `deserialize` function receives a DOM element and should return a plain Javascript object representing the deserialized state, or nothing if the rule in question doesn't know how to deserialize the object, in which case the next rule in the stack will be attempted.
+`deserialize` 函数接收一个 DOM 元素并返回表示反序列化后状态的纯 JS 对象，并在规则不能确定如何反序列化对象时返回空值，此时将尝试规则栈中的下一条规则。
 
-The object should be one of:
+对象需为下列格式其中之一：
 
 ```js
 {
@@ -124,6 +124,6 @@ The object should be one of:
 #### `rule.serialize`
 `rule.serialize(object: Node || Mark || String, children: String || Element || Array) => Element || Void`
 
-The `serialize` function should return a React element representing the serialized HTML, or nothing if the rule in question doesn't know how to serialize the object, in which case the next rule in the stack will be attempted.
+`serialize` 函数返回代表序列化后 HTML 的 React 元素，并在规则不能确定如何序列化对象时返回空值，此时将尝试规则栈中的下一条规则。
 
-The function will be called with either a `Node`, a `Mark`, or a special `String` immutable object, with a `kind: 'string'` property and a `text` property containing the text string.
+该函数调用时将传入以下三者其中之一：`Node`、`Mark`、带 `kind: 'string'` 属性与文本 `text` 属性的特殊 `String` 不可变对象。
