@@ -5,7 +5,7 @@
 import Plain from 'slate-plain-serializer'
 ```
 
-A serializer that converts a Slate [`State`](../slate/state.md) to and from a plain text string.
+支持 Slate [`State`](../slate/state.md) 与纯文本字符串之间相互转换的序列化器。
 
 - [Example](#example)
 - [Static Methods](#methods)
@@ -27,11 +27,11 @@ Check out http://slatejs.org for examples!
 ### `Plain.deserialize`
 `Plain.deserialize(string: String, [options: Object]) => State`
 
-Deserialize a plain text `string` into a [`State`](../slate/state.md). A series of blocks will be created by splitting the input string on `\n` characters. Each block is given a type of `'line'`.
+将纯文本 `string` 反序列化为 [`State`](../slate/state.md)。将通过 `\n` 字符切分出一系列的 block。每个 block 都会获得一个 `line` 类型。
 
-If you pass `toJSON: true` as an option, the return value will be a JSON object instead of a [`State`](../slate/state.md) object.
+如果你将 `toJSON: true` 作为选项传入，返回值将为 JSON 对象而非 [`State`](../slate/state.md) 对象。
 
 ### `Plain.serialize`
 `Plain.serialize(state: State) => String`
 
-Serialize a `state` into a plain text string. Each direct child block of the document will be separated by a `\n` character.
+将 `state` 序列化为纯文本。文档的每个直接子 block 节点都将由 `\n` 字符分隔。
