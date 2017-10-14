@@ -5,7 +5,7 @@
 import Simulator from 'slate-simulator'
 ```
 
-A simulator to help writing tests for Slate editors and plugins.
+为编写 Slate 编辑器与插件测试提供帮助的模拟器。
 
 - [Example](#example)
 - [Methods](#methods)
@@ -48,40 +48,40 @@ const nextState = simulator.state
 ### `beforeInput`
 `beforeInput(event: Object, data: Object) => Simulator`
 
-Simulator a `beforeinput` event with an `event` object and `data` object.
+以 `event` 对象与 `data` 对象模拟 `beforeinput` 事件。
 
 ### `blur`
 `blur(event: Object, data: Object) => Simulator`
 
-Simulator a `blur` event with an `event` object and `data` object.
+以 `event` 对象与 `data` 对象模拟 `blur` 事件。
 
 ### `copy`
 `copy(event: Object, data: Object) => Simulator`
 
-Simulator a `copy` event with an `event` object and `data` object.
+以 `event` 对象与 `data` 对象模拟 `copy` 事件。
 
 ### `cut`
 `cut(event: Object, data: Object) => Simulator`
 
-Simulator a `cut` event with an `event` object and `data` object.
+以 `event` 对象与 `data` 对象模拟 `cut` 事件。
 
 ### `drop`
 `drop(event: Object, data: Object) => Simulator`
 
-Simulator a `drop` event with an `event` object and `data` object.
+以 `event` 对象与 `data` 对象模拟 `drop` 事件。
 
 ### `focus`
 `focus(event: Object, data: Object) => Simulator`
 
-Simulator a `focus` event with an `event` object and `data` object.
+以 `event` 对象与 `data` 对象模拟 `focus` 事件。
 
 ### `keyDown`
 `keyDown(event: Object, data: Object) => Simulator`
 
-Simulator a `keyDown` event with an `event` object and `data` object.
+以 `event` 对象与 `data` 对象模拟 `keyDown` 事件。
 
 ### `select`
 `select(event: Object, data: Object) => Simulator`
 
-Simulator a `select` event with an `event` object and `data` object.
+以 `event` 对象与 `data` 对象模拟 `select` 事件。
 
