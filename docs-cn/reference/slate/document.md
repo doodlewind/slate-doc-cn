@@ -63,7 +63,6 @@ Document({
 ### `Document.create`
 `Document.create(properties: Object) => Document`
 
-<!-- TODO 原文 block 错误 -->
 由原生 JS `properties` 对象创建一个 document。
 
 ### `Document.fromJSON`

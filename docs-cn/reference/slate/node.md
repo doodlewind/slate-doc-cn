@@ -65,8 +65,6 @@
 ### `kind`
 `String`
 
-<!-- TODO 修复原文 typo -->
-
 不可变的 String，值为 `'document'`、`'block'`、`'inline'` 或 `'text'` 以区分节点类型。
 
 ### `text`

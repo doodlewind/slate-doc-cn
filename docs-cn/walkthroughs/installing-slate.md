@@ -1,18 +1,16 @@
 
 # 安装 Slate
 
-<!-- TODO 更新 peer dependencies 及子模块 -->
-
-Slate 是以 NPM 模块的方式发布的，因此你可以这样安装它：
+Slate 是以 NPM 模块的方式发布的 monorepo，因此你可以这样安装它：
 
 ```
-npm install slate
+npm install slate slate-react
 ```
 
 同时，你也需要确保 React 已作为 Slate 的 peer dependencies 正确安装：
 
 ```
-npm install react react-dom
+npm install react react-dom immutable
 ```
 
 _注意，如果你需要使用 Slate 的预构建版本，你可以在执行 `npm install slate` 后获取打包后的 `dist/slate.js` 文件！查阅[使用构建后源码](./using-the-bundled-source.md)指南以了解更多相关信息。_

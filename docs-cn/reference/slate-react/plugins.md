@@ -135,7 +135,6 @@ export default function MySlatePlugin(options) {
 
 `data` 对象包含了按键的字符串名称 `key` 及其 `code`。它也包含了一系列有用的工具属性以便于判断热键逻辑。例如，在 `control` 键按下时，`isCtrl` 为真：
 
-<!-- TODO 原文 `or` typo -->
 
 ```js
 {

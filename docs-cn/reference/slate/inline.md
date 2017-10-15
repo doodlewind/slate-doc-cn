@@ -86,8 +86,6 @@ Inline({
 ### `Inline.create`
 `Inline.create(properties: Object) => Inline`
 
-<!-- TODO 原文签名与描述错误 -->
-
 由原生 JS `properties` 对象创建一个 inline。
 
 ### `Inline.createList`

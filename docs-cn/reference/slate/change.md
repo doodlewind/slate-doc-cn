@@ -261,8 +261,6 @@ return state.change()
 ### `collapseTo{Edge}Of{Direction}Text`
 `collapseTo{Edge}Of{Direction}Text() => Change`
 
-<!-- TODO 修复原文 start 与 end 格式 -->
-
 将当前选择范围按照 `{Direction}` 方向收缩至下一个 [`Text`](./text.md) 节点的 `{Edge}`。`{Edge}` 可为 `Start` 或 `End`，`{Direction}` 可为 `Next` 或 `Previous`。
 
 ### `extend`
@@ -292,8 +290,6 @@ return state.change()
 
 ### `move{Edge}`
 `move{Edge}(n: Number) => Change`
-
-<!-- TODO 修复原文 Edge 格式 -->
 
 根据 `n` 移动当前选择范围 `{Edge}` 的偏移量。`{Edge}` 可为 `Start` 或 `End`。
 
@@ -338,14 +334,10 @@ return state.change()
 ### `insertFragmentByKey`
 `insertFragmentByKey(key: String, index: Number, fragment: Fragment) => Transform`
 
-<!-- TODO 修复原文 fragment 大小写 -->
-
-根据父 [`Node`](./node.md) 的 `key`，在其中的 `index` 位置插入 [`fragment`](./fragment.md)。
+根据父 [`Node`](./node.md) 的 `key`，在其中的 `index` 位置插入 [`Fragment`](./fragment.md)。
 
 ### `insertTextByKey`
 `insertTextByKey(key: String, offset: Number, text: String, [marks: Set]) => Change`
-
-<!-- TODO 修复原文 key 描述 -->
 
 根据父 [`Text Node`](./text.md) 的 `key`，在其中从 `offset` 起的位置插入带可选 `marks` 的 `text`。
 
@@ -389,15 +381,11 @@ return state.change()
 `unwrapInlineByKey(key: String, properties: Object) => Change` <br/>
 `unwrapInlineByKey(key: String, type: String) => Change`
 
-<!-- TODO 修复原文 key 描述 -->
-
 根据 [`Inline`](./inline.md) 的 `key`，解包其中匹配 `properties` 的节点。为方便起见，你可以传入 `type` 字符串或 `properties` 对象。
 
 ### `unwrapBlockByKey`
 `unwrapBlockByKey(key: String, properties: Object) => Change` <br/>
 `unwrapBlockByKey(key: String, type: String) => Change`
-
-<!-- TODO 修复原文 key 描述 -->
 
 根据 [`Block`](./block.md) 的 `key`，解包其中匹配 `properties` 的节点。为方便起见，你可以传入 `type` 字符串或 `properties` 对象。
 

@@ -98,12 +98,10 @@ Block({
 
 由 JSON `object` 创建一个 block。
 
-<!-- TODO 原文 value 为 maybeBlock -->
-
 ### `Block.isBlock`
-`Block.isBlock(value: Any) => Boolean`
+`Block.isBlock(maybeBlock: Any) => Boolean`
 
-返回传入的 `value` 是否为 `Block` 的 boolean 值。
+返回传入的参数是否为 `Block` 的 boolean 值。
 
 
 ## Node Methods

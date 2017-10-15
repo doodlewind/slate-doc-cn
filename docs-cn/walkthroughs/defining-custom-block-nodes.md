@@ -48,8 +48,6 @@ class App extends React.Component {
 
 这里主要的问题是，代码块并不像一个普通的段落那样渲染，它们需要不同的渲染方式。为了实现这一点，我们需要为 `code` 节点定义一个 "renderer"。
 
-<!-- TODO 原文标点 typo -->
-
 节点（译者注，Node 对象）的 renderer 就是简单的 React 组件，像这样：
 
 ```js
