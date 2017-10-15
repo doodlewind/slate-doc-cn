@@ -1,5 +1,6 @@
 {
   "gitbook": "3.2.2",
+  "title": "Slate",
   "root": "./docs-cn",
   "structure": {
     "readme": "Introduction.md",
