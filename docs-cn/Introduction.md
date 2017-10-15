@@ -87,14 +87,12 @@ Slate 鼓励你编写小而可复用的模块。下面这些公用的插件已�
 
 ### 文档
 
-<!-- TODO 更新文档链接至中文页 -->
+如果这是你第一次使用 Slate，不妨查看 [Getting Started](./walkthroughs/installing-slate.md) 中的实战部分来了解 Slate 的架构和思维模型。在你熟悉之后，还可以查看完整的 [API 参考](./reference/slate-react/editor.md)。
 
-如果这是你第一次使用 Slate，不妨查看 [Getting Started](http://docs.slatejs.org/walkthroughs/installing-slate.html) 中的实战部分来了解 Slate 的架构和思维模型。在你熟悉之后，还可以查看完整的 [API 参考](http://docs.slatejs.org/reference/slate-react/editor.html)。
-
-- [**实战**](http://docs.slatejs.org/walkthroughs/installing-slate.html)
-- [**API 参考**](http://docs.slatejs.org/reference/slate-react/editor.html)
-- [**FAQ**](http://docs.slatejs.org/general/faq.html)
-- [**资源**](http://docs.slatejs.org/general/resources.html)
+- [**实战**](./walkthroughs/installing-slate.md)
+- [**API 参考**](./reference/slate-react/editor.md)
+- [**FAQ**](./general/faq.md)
+- [**资源**](./general/resources.md)
 
 如果这还不够，你还可以随时阅读添加了大量 Readme 并重度注释的[源码](./src)。
 
