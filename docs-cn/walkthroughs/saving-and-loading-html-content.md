@@ -96,8 +96,6 @@ const rules = [
 
 `serialize` 函数接受的 `object` 参数可以是一个 [`Node`](../reference/slate/node.md)、一个 [`Mark`](../reference/slate/mark.md) 或一个特殊的不可变 [`String`](../reference/serializers/html.md#ruleserialize) 对象。`children` 参数则是一个描述当前对象嵌套子节点的 React 元素，以便于递归。
 
-The `object` argument of the `serialize` function will either be a [`Node`](../reference/slate/node.md), a [`Mark`](../reference/slate/mark.md) or a special immutable [`String`](../reference/serializers/html.md#ruleserialize) object. And the `children` argument is a React element describing the nested children of the object in question, for recursing.
-
 好，现在我们的序列化器就可以处理 `paragraph` 节点了。
 
 添加一些我们需要的其它 block 类型：
