@@ -21,14 +21,15 @@ Slate 开放了一套用于构建编辑器的模块。其中，最重要的是 `
 
 ```js
 // 导入 Slate Editor
-import { Editor } from 'slate'
+import { Editor } from 'slate-react'
 ```
 
 在渲染编辑器的基础上，你还需要给 Slate 一个【初始状态】以作为内容渲染。我们将使用 Slate 附带的 `State` 模型来创建一个仅包含单个段落下若干文本的全新初始状态：
 
 ```js
 // 导入 `State` 模型。
-import { Editor, State } from 'slate'
+import { Editor } from 'slate-react'
+import { State } from 'slate'
 
 // 构建初始状态…
 const initialState = State.fromJSON({
@@ -58,7 +59,8 @@ const initialState = State.fromJSON({
 ```js
 // 导入 React！
 import React from 'react'
-import { Editor, State } from 'slate'
+import { Editor } from 'slate-react'
+import { State } from 'slate'
 
 const initialState = State.fromJSON({
   document: {
