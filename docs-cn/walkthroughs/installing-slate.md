@@ -29,10 +29,10 @@ import { Editor } from 'slate-react'
 ```js
 // 导入 `State` 模型。
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
 // 构建初始状态…
-const initialState = State.fromJSON({
+const initialState = Value.fromJSON({
   document: {
     nodes: [
       {
@@ -60,9 +60,9 @@ const initialState = State.fromJSON({
 // 导入 React！
 import React from 'react'
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
-const initialState = State.fromJSON({
+const initialState = Value.fromJSON({
   document: {
     nodes: [
       {
