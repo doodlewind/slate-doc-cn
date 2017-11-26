@@ -3,17 +3,8 @@
 
 Slate will render custom nodes for [`Block`](../slate/block.md) and [`Inline`](../slate/inline.md) models, based on what you pass in as your schema. This allows you to completely customize the rendering behavior of your Slate editor.
 
-- [Properties](#properties)
-  - [`attributes`](#attributes)
-  - [`children`](#children)
-  - [`editor`](#editor)
-  - [`isSelected`](#isselected)
-  - [`node`](#node)
-  - [`parent`](#parent)
-  - [`readOnly`](#readonly)
-  - [`state`](#state)
 
-## Properties
+## Props
 
 ```js
 <{Custom}
@@ -24,7 +15,6 @@ Slate will render custom nodes for [`Block`](../slate/block.md) and [`Inline`](.
   node={Node}
   parent={Node}
   readOnly={Boolean}
-  state={State}
 />
 ```
 
@@ -62,10 +52,10 @@ return (
 ### `editor`
 `Editor`
 
-A reference to the Slate [`<Editor>`](./editor.md) instance. This allows you to retrieve the current `state` of the editor, or perform a `change` on the state. For example:
+A reference to the Slate [`<Editor>`](./editor.md) instance. This allows you to retrieve the current `value` of the editor, or perform a `change` on the value. For example:
 
 ```js
-const state = editor.getState()
+const value = editor.value
 ```
 ```js
 editor.change((change) => {
@@ -93,7 +83,16 @@ A reference to the parent of the current [`Node`](../slate/node.md) being render
 
 Whether the editor is in "read-only" mode, where all of the rendering is the same, but the user is prevented from editing the editor's content.
 
-### `state`
-`State`
+## `shouldNodeComponentUpdate`
 
-A reference to the current [`State`](../slate/state.md) of the editor.
+By default, Slate implements a `shouldComponentUpdate` preventing useless re-renders for node components. While the default implementation covers most use cases, you can customize the logic to fit your needs. For example:
+
+```js
+class CustomNode extends React.Component {
+  static shouldNodeComponentUpdate(previousProps, nextProps) {
+    // return true here to trigger a re-render
+  }
+}
+```
+
+If `shouldNodeComponentUpdate` returns false, Slate will still figure out whether a re-render is needed or not.

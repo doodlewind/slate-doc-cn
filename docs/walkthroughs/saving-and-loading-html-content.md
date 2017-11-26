@@ -10,22 +10,22 @@ In the previous guide, we looked at how to serialize the Slate editor's content 
 Let's start with a basic editor:
 
 ```js
-import { Editor } from 'slate'
+import { Editor } from 'slate-react'
 
 class App extends React.Component {
 
   state = {
-    state: Plain.deserialize('')
+    value: Plain.deserialize('')
   }
 
-  onChange({ state }) {
-    this.setState({ state })
+  onChange({ value }) {
+    this.setState({ value })
   }
 
   render() {
     return (
       <Editor
-        state={this.state.state}
+        value={this.state.value}
         onChange={this.onChange}
       />
     )
@@ -200,7 +200,7 @@ const rules = [
 Great, that's all of the rules we need! Now let's create a new `Html` serializer and pass in those rules:
 
 ```js
-import { Html } from 'slate'
+import Html from 'slate-html-serializer'
 
 // Create a new serializer instance with our `rules` from above.
 const html = new Html({ rules })
@@ -209,8 +209,8 @@ const html = new Html({ rules })
 And finally, now that we have our serializer initialized, we can update our app to use it to save and load content, like so:
 
 ```js
-// Load the initial state from Local Storage or a default.
-const initialState = (
+// Load the initial value from Local Storage or a default.
+const initialValue = (
   localStorage.getItem('content') ||
   '<p></p>'
 )
@@ -218,40 +218,46 @@ const initialState = (
 class App extends React.Component {
 
   state = {
-    state: html.deserialize(initialState),
-    // Add a schema with our nodes and marks...
-    schema: {
-      nodes: {
-        code: props => <pre {...props.attributes}>{props.children}</pre>,
-        paragraph: props => <p {...props.attributes}>{props.children}</p>,
-        quote: props => <blockquote {...props.attributes}>{props.children}</blockquote>,
-      },
-      marks: {
-        bold: props => <strong>{props.children}</strong>,
-        italic: props => <em>{props.children}</em>,
-        underline: props => <u>{props.children}</u>,
-      }
-    }
+    value: html.deserialize(initialValue),
   }
 
-  onChange = ({ state }) => {
+  onChange = ({ value }) => {
     // When the document changes, save the serialized HTML to Local Storage.
-    if (state.document != this.state.state.document) {
-      const string = html.serialize(state)
+    if (value.document != this.state.value.document) {
+      const string = html.serialize(value)
       localStorage.setItem('content', string)
     }
 
-    this.setState({ state })
+    this.setState({ value })
   }
 
   render() {
     return (
       <Editor
-        schema={this.state.schema}
-        state={this.state.state}
+        value={this.state.value}
         onChange={this.onChange}
+        // Add the ability to render our nodes and marks...
+        renderNode={this.renderNode}
+        renderMark={this.renderMark}
       />
     )
+  }
+  
+  renderNode = (props) => {
+    switch (props.node.type) {
+      case 'code': return <pre {...props.attributes}><code>{props.children}</code></pre>
+      case 'paragraph': return <p {...props.attributes}>{props.children}</p>
+      case 'quote': return <blockquote {...props.attributes}>{props.children}</blockquote>
+    }
+  }
+
+  // Add a `renderMark` method to render marks.
+  renderMark = (props) => {
+    switch (props.mark.type) {
+      case 'bold': return <strong>{props.children}</strong>
+      case 'italic': return <em>{props.children}</em>
+      case 'underline': return <u>{props.children}</u>
+    }
   }
 
 }

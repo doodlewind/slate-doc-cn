@@ -17,20 +17,15 @@ Starting with our app from earlier:
 class App extends React.Component {
 
   state = {
-    state: initialState,
-    schema: {
-      marks: {
-        bold: props => <strong>{props.children}</strong>
-      }
-    }
+    value: initialValue,
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
-  onKeyDown = (event, data, change) => {
-    if (!event.metaKey || event.which != 66) return
+  onKeyDown = (event, change) => {
+    if (event.key != 'b' || !event.metaKey) return
     event.preventDefault()
     change.toggleMark('bold')
     return true
@@ -39,23 +34,29 @@ class App extends React.Component {
   render() {
     return (
       <Editor
-        schema={this.state.schema}
-        state={this.state.state}
+        value={this.state.value}
         onChange={this.onChange}
         onKeyDown={this.onKeyDown}
+        renderMark={this.renderMark}
       />
     )
+  }
+
+  renderMark = (props) => {
+    switch (props.mark.type) {
+      case 'bold': return <strong>{props.children}</strong>
+    }
   }
 
 }
 ```
 
-Let's write a new function, that takes a set of options: the mark `type` to toggle and the key `code` to press.
+Let's write a new function, that takes a set of options: the mark `type` to toggle and the `key` to press.
 
 ```js
 function MarkHotkey(options) {
   // Grab our options from the ones passed in.
-  const { type, code, isAltKey = false } = options
+  const { type, key } = options
 }
 ```
 
@@ -67,13 +68,13 @@ In this case our plugin object will have one property: a `onKeyDown` handler, wi
 
 ```js
 function MarkHotkey(options) {
-  const { type, code, isAltKey = false } = options
+  const { type, key } = options
 
   // Return our "plugin" object, containing the `onKeyDown` handler.
   return {
-    onKeyDown(event, data, change) {
-      // Check that the key pressed matches our `code` option.
-      if (!event.metaKey || event.which != code || event.altKey != isAltKey) return
+    onKeyDown(event, change) {
+      // Check that the key pressed matches our `key` option.
+      if (!event.metaKey || event.key != key) return
 
       // Prevent the default characters from being inserted.
       event.preventDefault()
@@ -91,14 +92,10 @@ Boom! Now we're getting somewhere. That code is reusable for any type of mark.
 Now that we have our plugin, let's remove the hard-coded logic from our app, and replace it with our brand new `MarkHotkey` plugin instead, passing in the same options that will keep our **bold** functionality intact:
 
 ```js
-function BoldMark(props) {
-  return <strong>{props.children}</strong>
-}
-
 // Initialize our bold-mark-adding plugin.
 const boldPlugin = MarkHotkey({
   type: 'bold',
-  code: 66
+  key: 'b'
 })
 
 // Create an array of plugins.
@@ -109,16 +106,11 @@ const plugins = [
 class App extends React.Component {
 
   state = {
-    state: initialState,
-    schema: {
-      marks: {
-        bold: props => <strong>{props.children}</strong>
-      }
-    }
+    value: initialValue,
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
   render() {
@@ -126,11 +118,17 @@ class App extends React.Component {
       // Add the `plugins` property to the editor, and remove `onKeyDown`.
       <Editor
         plugins={plugins}
-        schema={this.state.schema}
-        state={this.state.state}
+        value={this.state.value}
         onChange={this.onChange}
+        renderMark={this.renderMark}
       />
     )
+  }
+  
+  renderMark = (props) => {
+    switch (props.mark.type) {
+      case 'bold': return <strong>{props.children}</strong>
+    }
   }
 
 }
@@ -143,129 +141,49 @@ Let's add _italic_, `code`, ~~strikethrough~~ and underline marks:
 ```js
 // Initialize a plugin for each mark...
 const plugins = [
-  MarkHotkey({ code: 66, type: 'bold' }),
-  MarkHotkey({ code: 67, type: 'code', isAltKey: true }),
-  MarkHotkey({ code: 73, type: 'italic' }),
-  MarkHotkey({ code: 68, type: 'strikethrough' }),
-  MarkHotkey({ code: 85, type: 'underline' })
-]
-
-class App extends React.Component {
-
-  state = {
-    state: initialState,
-    schema: {
-      marks: {
-        bold: props => <strong>{props.children}</strong>,
-        // Add our new mark renderers...
-        code: props => <code>{props.children}</code>,
-        italic: props => <em>{props.children}</em>,
-        strikethrough: props => <del>{props.children}</del>,
-        underline: props => <u>{props.children}</u>,
-      }
-    }
-  }
-
-  onChange = ({ state }) => {
-    this.setState({ state })
-  }
-
-  render() {
-    return (
-      <Editor
-        plugins={plugins}
-        schema={this.state.schema}
-        state={this.state.state}
-        onChange={this.onChange}
-      />
-    )
-  }
-
-}
-```
-
-And there you have it! We just added a ton of functionality to the editor with very little work. And we can keep all of our mark hotkey logic tested and isolated in a single place, making maintaining the code easier.
-
-Of course... now that it's reusable, we could actually make our `MarkHotkey` plugin a little easier to use. What if instead of a `code` argument it took the text of the `key` itself? That would make the calling code a lot clearer, since key codes are really obtuse.
-
-In fact, unless you have weirdly good keycode knowledge, you probably have no idea what our current hotkeys actually are.
-
-Let's fix that.
-
-Using the `keycode` module in npm makes this dead simple.
-
-First install it:
-
-```
-npm install keycode
-```
-
-And then we can add it our plugin:
-
-```js
-// Import the keycode module.
-import keycode from `keycode`
-
-function MarkHotkey(options) {
-  // Change the options to take a `key`.
-  const { type, key, isAltKey = false } = options
-
-  return {
-    onKeyDown(event, data, change) {
-      // Change the comparison to use the key name.
-      if (!event.metaKey || keycode(event.which) != key || event.altKey != isAltKey) return
-      event.preventDefault()
-      change.toggleMark(type)
-      return true
-    }
-  }
-}
-```
-
-And now we can make our app code much clearer for the next person who reads it:
-
-```js
-// Use the much clearer key names instead of key codes!
-const plugins = [
   MarkHotkey({ key: 'b', type: 'bold' }),
-  MarkHotkey({ key: 'c', type: 'code', isAltKey: true }),
+  MarkHotkey({ key: '`', type: 'code' }),
   MarkHotkey({ key: 'i', type: 'italic' }),
-  MarkHotkey({ key: 'd', type: 'strikethrough' }),
+  MarkHotkey({ key: '~', type: 'strikethrough' }),
   MarkHotkey({ key: 'u', type: 'underline' })
 ]
 
 class App extends React.Component {
 
   state = {
-    state: initialState,
-    schema: {
-      marks: {
-        bold: props => <strong>{props.children}</strong>,
-        code: props => <code>{props.children}</code>,
-        italic: props => <em>{props.children}</em>,
-        strikethrough: props => <del>{props.children}</del>,
-        underline: props => <u>{props.children}</u>,
-      }
-    }
+    value: initialValue,
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
   render() {
     return (
       <Editor
         plugins={plugins}
-        schema={this.state.schema}
-        state={this.state.state}
+        value={this.state.value}
         onChange={this.onChange}
+        renderMark={this.renderMark}
       />
     )
+  }
+  
+  renderMark = (props) => {
+    switch (props.mark.type) {
+      case 'bold': return <strong>{props.children}</strong>
+      // Add our new mark renderers...
+      case 'code': return <code>{props.children}</code>
+      case 'italic': return <em>{props.children}</em>
+      case 'strikethrough': return <del>{props.children}</del>
+      case 'underline': return <u>{props.children}</u>
+    }
   }
 
 }
 ```
+
+And there you have it! We just added a ton of functionality to the editor with very little work. And we can keep all of our mark hotkey logic tested and isolated in a single place, making maintaining the code easier.
 
 That's why plugins are awesome. They let you get really expressive while also making your codebase easier to manage. And since Slate is built with plugins as a primary consideration, using them is dead simple!
 

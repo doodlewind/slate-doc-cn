@@ -7,18 +7,6 @@ import { Text } from 'slate'
 
 A text node in a Slate [`Document`](./document.md). Text nodes are always the bottom-most leaves in the document, just like in the DOM.
 
-- [Properties](#properties)
-  - [`characters`](#characters)
-  - [`key`](#key)
-- [Computed Properties](#computed-properties)
-  - [`kind`](#kind)
-  - [`text`](#text)
-- [Static Methods](#static-methods)
-  - [`Text.create`](#textcreate)
-  - [`Text.fromJSON`](#textfromjson)
-  - [`Text.isText`](#textistext)
-- [Instance Methods](#instance-methods)
-  - [`toJSON`](#tojson)
 
 ## Properties
 
@@ -38,13 +26,13 @@ A list of [`Characters`](./character.md) with associated [`Marks`](./mark.md) th
 
 A unique identifier for the node.
 
-
-## Computed Properties
-
 ### `kind`
 `String`
 
 An immutable string value of `'text'` for easily separating this node from [`Inline`](./inline.md) or [`Block`](./block.md) nodes.
+
+
+## Computed Properties
 
 ### `text`
 `String`

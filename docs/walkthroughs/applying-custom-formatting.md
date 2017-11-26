@@ -15,22 +15,17 @@ So we start with our app from earlier:
 class App extends React.Component {
 
   state = {
-    state: initialState,
-    schema: {
-      nodes: {
-        code: CodeNode
-      }
-    }
+    value: initialValue,
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
-  onKeyDown = (event, data, change) => {
-    if (event.which != 67 || !event.metaKey || !event.altKey) return
+  onKeyDown = (event, change) => {
+    if (event.key != '`' || !event.metaKey) return
     event.preventDefault()
-    const isCode = change.state.blocks.some(block => block.type == 'code')
+    const isCode = change.value.blocks.some(block => block.type == 'code')
 
     change.setBlock(isCode ? 'paragraph' : 'code')
     return true
@@ -39,12 +34,18 @@ class App extends React.Component {
   render() {
     return (
       <Editor
-        state={this.state.state}
-        schema={this.state.schema}
+        value={this.state.value}
         onChange={this.onChange}
         onKeyDown={this.onKeyDown}
+        renderNode={this.renderNode}
       />
     )
+  }
+  
+  renderNode = (props) => {
+    switch (props.node.type) {
+      case 'code': return <CodeNode {...props} />
+    }
   }
 
 }
@@ -56,33 +57,27 @@ And now, we'll edit the `onKeyDown` handler to make it so that when you press `â
 class App extends React.Component {
 
   state = {
-    state: initialState,
-    schema: {
-      nodes: {
-        code: CodeNode
-      }
-    }
+    value: initialValue,
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
-  onKeyDown = (event, data, change) => {
+  onKeyDown = (event, change) => {
     if (!event.metaKey) return
 
     // Decide what to do based on the key code...
-    switch (event.which) {
+    switch (event.key) {
       // When "B" is pressed, add a "bold" mark to the text.
-      case 66: {
+      case 'b': {
         event.preventDefault()
         change.addMark('bold')
         return true
       }
       // When "`" is pressed, keep our existing code block logic.
-      case 67: {
-        if (!event.altKey) return
-        const isCode = change.state.blocks.some(block => block.type == 'code')
+      case '`': {
+        const isCode = change.value.blocks.some(block => block.type == 'code')
         event.preventDefault()
         change.setBlock(isCode ? 'paragraph' : 'code')
         return true
@@ -93,12 +88,18 @@ class App extends React.Component {
   render() {
     return (
       <Editor
-        schema={this.state.schema}
-        state={this.state.state}
+        value={this.state.value}
         onChange={this.onChange}
         onKeyDown={this.onKeyDown}
+        renderNode={this.renderNode}
       />
     )
+  }
+  
+  renderNode = (props) => {
+    switch (props.node.type) {
+      case 'code': return <CodeNode {...props} />
+    }
   }
 
 }
@@ -117,9 +118,7 @@ function BoldMark(props) {
 
 Pretty simple, right?
 
-And now, let's tell Slate about that mark.
-To do that, we'll add it to the `schema` object under a `marks` property.
-Also, let's allow our mark to be toggled by changing `addMark` to `toggleMark`.
+And now, let's tell Slate about that mark. To do that, we'll pass in the `renderMark` prop to our editor. Also, let's allow our mark to be toggled by changing `addMark` to `toggleMark`.
 
 ```js
 function BoldMark(props) {
@@ -129,36 +128,26 @@ function BoldMark(props) {
 class App extends React.Component {
 
   state = {
-    state: initialState,
-    schema: {
-      nodes: {
-        code: CodeNode
-      },
-      // Add our "bold" mark to the schema...
-      marks: {
-        bold: BoldMark
-      }
-    }
+    value: initialValue,
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
-  onKeyDown = (event, data, change) => {
+  onKeyDown = (event, change) => {
     if (!event.metaKey) return
 
-    switch (event.which) {
-      case 66: {
+    switch (event.key) {
+      case 'b': {
         event.preventDefault()
         change.toggleMark('bold')
         return true
       }
-      case 67: {
-        if (!event.altKey) return
-        const isCode = change.state.blocks.some(block => block.type == 'code')
+      case '`': {
+        const isCode = change.value.blocks.some(block => block.type == 'code')
         event.preventDefault()
-        state.setBlock(isCode ? 'paragraph' : 'code')
+        value.setBlock(isCode ? 'paragraph' : 'code')
         return true
       }
     }
@@ -167,12 +156,27 @@ class App extends React.Component {
   render() {
     return (
       <Editor
-        schema={this.state.schema}
-        state={this.state.state}
+        value={this.state.value}
         onChange={this.onChange}
         onKeyDown={this.onKeyDown}
+        renderNode={this.renderNode}
+        // Add the `renderMark` prop...
+        renderMark={this.renderMark}
       />
     )
+  }
+  
+  renderNode = (props) => {
+    switch (props.node.type) {
+      case 'code': return <CodeNode {...props} />
+    }
+  }
+
+  // Add a `renderMark` method to render marks.
+  renderMark = (props) => {
+    switch (props.mark.type) {
+      case 'bold': return <BoldMark {...props} />
+    }
   }
 
 }

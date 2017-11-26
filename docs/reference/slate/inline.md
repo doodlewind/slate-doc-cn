@@ -9,24 +9,6 @@ A inline node in a Slate [`Document`](./document.md). Inline nodes implement the
 
 Inline nodes may contain nested inline nodes and text nodes—just like in the DOM. They always contain at least one text node child.
 
-- [Properties](#properties)
-  - [`data`](#data)
-  - [`isVoid`](#isvoid)
-  - [`key`](#key)
-  - [`nodes`](#nodes)
-  - [`type`](#type)
-- [Computed Properties](#computed-properties)
-  - [`kind`](#kind)
-  - [`text`](#text)
-- [Static Methods](#static-methods)
-  - [`Inline.create`](#inlinecreate)
-  - [`Inline.createList`](#inlinecreatelist)
-  - [`Inline.fromJSON`](#inlinefromjson)
-  - [`Inline.isInline`](#inlineisinline)
-- [Node Methods](#node-methods)
-- [Instance Methods](#instance-methods)
-  - [`toJSON`](#tojson)
-
 
 ## Properties
 
@@ -57,6 +39,11 @@ Note that even though a node may be "void", it will still contain a single, empt
 
 A unique identifier for the node.
 
+### `kind`
+`String`
+
+An immutable string value of `'inline'` for easily separating this node from [`Block`](./block.md) or [`Text`](./text.md) nodes.
+
 ### `nodes`
 `Immutable.List`
 
@@ -70,11 +57,6 @@ The custom type of the node (eg. `link` or `hashtag`).
 
 ## Computed Properties
 
-### `kind`
-`String`
-
-An immutable string value of `'inline'` for easily separating this node from [`Block`](./block.md) or [`Text`](./text.md) nodes.
-
 ### `text`
 `String`
 
@@ -84,9 +66,9 @@ A concatenated string of all of the descendant [`Text`](./text.md) nodes of this
 ## Static Methods
 
 ### `Inline.create`
-`Inline.create(properties: Object) => Block`
+`Inline.create(properties: Object) => Inline`
 
-Create a block from a plain Javascript object of `properties`.
+Create an inline from a plain Javascript object of `properties`.
 
 ### `Inline.createList`
 `Inline.createList(array: Array) => List`

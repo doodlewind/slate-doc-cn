@@ -5,129 +5,55 @@
 import { Change } from 'slate'
 ```
 
-A change allows you to define a series of changes you'd like to make to the current [`Document`](./document.md) or [`Selection`](./selection.md) in a [`State`](./state.md).
+A change allows you to define a series of changes you'd like to make to the current [`Value`](./value.md).
 
 All changes are performed through `Change` objects, so that a history of changes can be preserved for use in undo/redo operations, and to make collaborative editing possible.
-
-Change methods can either operate on the [`Document`](./document.md), the [`Selection`](./selection.md), or both at once.
-
-- [Properties](#properties)
-  - [`state`](#state)
-- [Methods](#methods)
-  - [`apply`](#apply)
-  - [`call`](#call)
-- [Current State Changes](#current-state-changes)
-  - [`deleteBackward`](#deletebackward)
-  - [`deleteForward`](#deleteforward)
-  - [`delete`](#delete)
-  - [`insertBlock`](#insertblock)
-  - [`insertFragment`](#insertfragment)
-  - [`insertInline`](#insertinline)
-  - [`insertText`](#inserttext)
-  - [`addMark`](#addmark)
-  - [`setBlock`](#setblock)
-  - [`setInline`](#setinline)
-  - [`splitBlock`](#splitblock)
-  - [`splitInline`](#splitinline)
-  - [`removeMark`](#removemark)
-  - [`toggleMark`](#togglemark)
-  - [`unwrapBlock`](#unwrapblock)
-  - [`unwrapInline`](#unwrapinline)
-  - [`wrapBlock`](#wrapblock)
-  - [`wrapInline`](#wrapinline)
-  - [`wrapText`](#wraptext)
-- [Selection Changes](#selection-changes)
-  - [`blur`](#blur)
-  - [`collapseTo{Edge}Of`](#collapsetoedgeof)
-  - [`collapseTo{Edge}Of{Direction}Block`](#collapsetoedgeofdirectionblock)
-  - [`collapseTo{Edge}Of{Direction}Text`](#collapsetoedgeofdirectiontext)
-  - [`collapseTo{Edge}`](#collapsetoedge)
-  - [`extendTo{Edge}Of`](#extendtoedgeof)
-  - [`extend`](#extend)
-  - [`flip`](#flip)
-  - [`focus`](#focus)
-  - [`move`](#move)
-  - [`move{Edge}`](#moveedge)
-  - [`moveOffsetsTo`](#moveoffsetsto)
-  - [`moveToRangeOf`](#movetorangeof)
-  - [`select`](#select)
-  - [`selectAll`](#selectall)
-  - [`deselect`](#deselect)
-- [Node Changes](#node-changes)
-  - [`addMarkByKey`](#addmarkbykey)
-  - [`insertNodeByKey`](#insertnodebykey)
-  - [`insertFragmentByKey`](#insertfragmentbykey)
-  - [`insertTextByKey`](#inserttextbykey)
-  - [`moveNodeByKey`](#movenodebykey)
-  - [`removeMarkByKey`](#removemarkbykey)
-  - [`removeNodeByKey`](#removenodebykey)
-  - [`removeTextByKey`](#removetextbykey)
-  - [`setMarkByKey`](#setmarkbykey)
-  - [`setNodeByKey`](#setnodebykey)
-  - [`splitNodeByKey`](#splitnodebykey)
-  - [`unwrapInlineByKey`](#unwrapinlinebykey)
-  - [`unwrapBlockByKey`](#unwrapblockbykey)
-  - [`unwrapNodeByKey`](#unwrapnodebykey)
-  - [`wrapBlockByKey`](#wrapblockbykey)
-  - [`wrapInlineByKey`](#wrapinlinebykey)
-- [Document Changes](#document-changes)
-  - [`deleteAtRange`](#deleteatrange)
-  - [`deleteBackwardAtRange`](#deletebackwardatrange)
-  - [`deleteForwardAtRange`](#deleteforwardatrange)
-  - [`insertBlockAtRange`](#insertblockatrange)
-  - [`insertFragmentAtRange`](#insertfragmentatrange)
-  - [`insertInlineAtRange`](#insertinlineatrange)
-  - [`insertTextAtRange`](#inserttextatrange)
-  - [`addMarkAtRange`](#addmarkatrange)
-  - [`setBlockAtRange`](#setblockatrange)
-  - [`setInlineAtRange`](#setinlineatrange)
-  - [`splitBlockAtRange`](#splitblockatrange)
-  - [`splitInlineAtRange`](#splitinlineatrange)
-  - [`removeMarkAtRange`](#removemarkatrange)
-  - [`toggleMarkAtRange`](#togglemarkatrange)
-  - [`unwrapBlockAtRange`](#unwrapblockatrange)
-  - [`unwrapInlineAtRange`](#unwrapinlineatrange)
-  - [`wrapBlockAtRange`](#wrapblockatrange)
-  - [`wrapInlineAtRange`](#wrapinlineatrange)
-  - [`wrapTextAtRange`](#wraptextatrange)
-- [History Changes](#history-changes)
-  - [`redo`](#redo)
-  - [`undo`](#undo)
 
 
 ## Properties
 
-### `state`
+### `kind`
+`String`
 
-A [`State`](./state.md) with the change's current operations applied. Each time you run a new change function this property will be updated.
+A string with a value of `'change'`.
+
+### `value`
+
+A [`Value`](./value.md) with the change's current operations applied. Each time you run a new change function this property will be updated.
 
 
 ## Methods
 
-### `apply`
-`apply(options: Object) => Change`
-
-Applies current change steps, saving them to the history if needed.
-
 ### `call`
-`call(customChange: Function, ...arguments) => Change`
+`call(customChange: Function, ...args) => Change`
 
-This method calls the provided function argument `customChange` with the current instance of the `Change` object as the first argument and passes through the remaining arguments.
-
-The function signature for `customChange` is:
-
-`customChange(change: Change, ...arguments)`
+This method calls the provided `customChange` function with the current instance of the `Change` object as the first argument and passes through the remaining `args`.
 
 The purpose of `call` is to enable custom change methods to exist and called in a chain. For example:
 
-```
-return state.change()
-  .call(myCustomInsertTableChange, columns, rows)
-  .focus()
-  .apply()
+```js
+function addBoldMark(change) {
+  change.addMark('bold_mark')
+}
+
+function insertParagraph(change) {
+  change.insertBlock('paragraph_block')
+}
+
+function onSomeEvent(event, change) {
+  change
+    .call(insertParagraph)
+    .insertText('Some text...')
+    .extendToStartOfBlock()
+    .call(addBoldMark)
+    .collapseToEnd()
+}
 ```
 
-## Current State Changes
+
+## Current Value Changes
+
+These changes act on the `document` based on the current `selection`. They are equivalent to calling the [Document Changes](#document-changes) with the current selection as the `range` argument, but they are there for convenience, since you often want to act with the current selection, as a user would.
 
 ### `deleteBackward`
 `deleteBackward(n: Number) => Change`
@@ -211,22 +137,26 @@ Remove a [`mark`](./mark.md) from the characters in the current selection. For c
 Add or remove a [`mark`](./mark.md) from the characters in the current selection, depending on it already exists on any or not. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](./mark.md) of that type.
 
 ### `unwrapBlock`
-`unwrapBlock([type: String], [data: Data]) => Change`
+`unwrapBlock(type: String) => Change` <br/>
+`unwrapBlock(properties: Object) => Change` <br />
 
 Unwrap all [`Block`](./block.md) nodes in the current selection that match a `type` and/or `data`.
 
 ### `unwrapInline`
-`unwrapInline([type: String], [data: Data]) => Change`
+`unwrapInline(type: String) => Change` <br/>
+`unwrapInline(properties: Object) => Change` <br/>
 
 Unwrap all [`Inline`](./inline.md) nodes in the current selection that match a `type` and/or `data`.
 
 ### `wrapBlock`
-`wrapBlock(type: String, [data: Data]) => Change`
+`wrapBlock(type: String) => Change` <br/>
+`wrapBlock(properties: Object) => Change` <br/>
 
 Wrap the [`Block`](./block.md) nodes in the current selection with a new [`Block`](./block.md) node of `type`, with optional `data`.
 
 ### `wrapInline`
-`wrapInline(type: String, [data: Data]) => Change`
+`wrapInline(type: String) => Change` <br />
+`wrapInline(properties: Object) => Change` <br />
 
 Wrap the [`Inline`](./inline.md) nodes in the current selection with a new [`Inline`](./inline.md) node of `type`, with optional `data`.
 
@@ -237,6 +167,8 @@ Surround the text in the current selection with `prefix` and `suffix` strings. I
 
 
 ## Selection Changes
+
+These changes change the current `selection`, without touching the `document`.
 
 ### `blur`
 `blur() => Change`
@@ -256,12 +188,12 @@ Collapse the current selection to the `{Edge}` of `node`. Where `{Edge}` is eith
 ### `collapseTo{Edge}Of{Direction}Block`
 `collapseTo{Edge}Of{Direction}Block() => Change`
 
-Collapse the current selection to the `{Edge}` of the next [`Block`](./block.md) node in `{Direction}`. Where `{Edge}` is either `{Start}` or `{End}` and `{Direction}` is either `Next` or `Previous`.
+Collapse the current selection to the `{Edge}` of the next [`Block`](./block.md) node in `{Direction}`. Where `{Edge}` is either `Start` or `End` and `{Direction}` is either `Next` or `Previous`.
 
 ### `collapseTo{Edge}Of{Direction}Text`
 `collapseTo{Edge}Of{Direction}Text() => Change`
 
-Collapse the current selection to the `{Edge}` of the next [`Text`](./text.md) node in `{Direction}`. Where `{Edge}` is either `{Start}` or `{End}` and `{Direction}` is either `Next` or `Previous`.
+Collapse the current selection to the `{Edge}` of the next [`Text`](./text.md) node in `{Direction}`. Where `{Edge}` is either `Start` or `End` and `{Direction}` is either `Next` or `Previous`.
 
 ### `extend`
 `extend(n: Number) => Change`
@@ -291,7 +223,7 @@ Move the current selection's offsets by  `n`.
 ### `move{Edge}`
 `move{Edge}(n: Number) => Change`
 
-Move the current selection's `edge` offset by  `n`. `edge` can be one of `Start`, `End`.
+Move the current selection's `{Edge}` offset by  `n`. `{Edge}` can be one of `Start`, `End`.
 
 ### `moveOffsetsTo`
 `moveOffsetsTo(anchorOffset: Number, focusOffset: Number) => Change`
@@ -304,9 +236,9 @@ Move the current selection's offsets to a new `anchorOffset` and `focusOffset`.
 Move the current selection's anchor point to the start of a `node` and its focus point to the end of the `node`.
 
 ### `select`
-`select(properties: Selection || Object) => Change`
+`select(properties: Range || Object) => Change`
 
-Set the current selection to a selection with merged `properties`. The `properties` can either be a [`Selection`](./selection.md) object or a plain Javascript object of selection properties.
+Set the current selection to a range with merged `properties`. The `properties` can either be a [`Range`](./range.md) object or a plain Javascript object of selection properties.
 
 ### `selectAll`
 `selectAll() => Change`
@@ -319,7 +251,124 @@ Select the entire document and focus the selection.
 Unset the selection.
 
 
+## Document Changes
+
+These changes act on a specific [`Range`](./range.md) of the document.
+
+### `deleteBackwardAtRange`
+`deleteBackwardAtRange(range: Range, n: Number) => Change`
+
+Delete backward `n` characters at a `range`. If the `range` is expanded, this method is equivalent to a regular [`delete()`](#delete). `n` defaults to `1`.
+
+### `deleteForwardAtRange`
+`deleteForwardAtRange(range: Range, n: Number) => Change`
+
+Delete forward `n` characters at a `range`. If the `range` is expanded, this method is equivalent to a regular [`delete()`](#delete). `n` defaults to `1`.
+
+### `deleteAtRange`
+`deleteAtRange(range: Range, ) => Change`
+
+Delete everything in a `range`.
+
+### `insertBlockAtRange`
+`insertBlockAtRange(range: Range, block: Block) => Change` <br/>
+`insertBlockAtRange(range: Range, properties: Object) => Change` <br/>
+`insertBlockAtRange(range: Range, type: String) => Change`
+
+Insert a new block at the same level as the leaf block at a `range`, splitting the current block to make room if it is non-empty. If the selection is expanded, it will be deleted first.
+
+### `insertFragmentAtRange`
+`insertFragmentAtRange(range: Range, fragment: Document) => Change`
+
+Insert a [`fragment`](./document.md) at a `range`. If the selection is expanded, it will be deleted first.
+
+### `insertInlineAtRange`
+`insertInlineAtRange(range: Range, inline: Inline) => Change` <br/>
+`insertInlineAtRange(range: Range, properties: Object) => Change`
+
+Insert a new inline at a `range`, splitting the text to make room if it is non-empty. If the selection is expanded, it will be deleted first.
+
+### `insertTextAtRange`
+`insertTextAtRange(range: Range, text: String) => Change`
+
+Insert a string of `text` at a `range`. If the selection is expanded, it will be deleted first.
+
+### `addMarkAtRange`
+`addMarkAtRange(range: Range, mark: Mark) => Change` <br/>
+`addMarkAtRange(range: Range, properties: Object) => Change` <br/>
+`addMarkAtRange(range: Range, type: String) => Change`
+
+Add a [`mark`](./mark.md) to the characters in a `range`. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](./mark.md) of that type.
+
+### `setBlockAtRange`
+`setBlockAtRange(range: Range, properties: Object) => Change` <br/>
+`setBlock(range: Range, type: String) => Change`
+
+Set the `properties` of the [`Block`](./block.md) in a `range`. For convenience, you can pass a `type` string to set the blocks's type only.
+
+### `setInlineAtRange`
+`setInlineAtRange(range: Range, properties: Object) => Change` <br/>
+`setInline(range: Range, type: String) => Change`
+
+Set the `properties` of the [`Inline`](./inline.md) nodes in a `range`. For convenience, you can pass a `type` string to set the inline's type only.
+
+### `splitBlockAtRange`
+`splitBlockAtRange(range: Range, depth: Number) => Change`
+
+Split the [`Block`](./block.md) in a `range` by `depth` levels. If the selection is expanded, it will be deleted first. `depth` defaults to `1`.
+
+### `splitInlineAtRange`
+`splitInlineAtRange(range: Range, depth: Number) => Change`
+
+Split the [`Inline`](./inline.md) node in a `range` by `depth` levels. If the selection is expanded, it will be deleted first. `depth` defaults to `Infinity`.
+
+### `removeMarkAtRange`
+`removeMarkAtRange(range: Range, mark: Mark) => Change` <br/>
+`removeMarkAtRange(range: Range, properties: Object) => Change` <br/>
+`removeMarkAtRange(range: Range, type: String) => Change`
+
+Remove a [`mark`](./mark.md) from the characters in a `range`. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](./mark.md) of that type.
+
+### `toggleMarkAtRange`
+`toggleMarkAtRange(range: Range, mark: Mark) => Change` <br/>
+`toggleMarkAtRange(range: Range, properties: Object) => Change` <br/>
+`toggleMarkAtRange(range: Range, type: String) => Change`
+
+Add or remove a [`mark`](./mark.md) from the characters in a `range`, depending on whether any of them already have the mark. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](./mark.md) of that type.
+
+### `unwrapBlockAtRange`
+`unwrapBlockAtRange(range: Range, properties: Object) => Change` <br/>
+`unwrapBlockAtRange(range: Range, type: String) => Change`
+
+Unwrap all [`Block`](./block.md) nodes in a `range` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `unwrapInlineAtRange`
+`unwrapInlineAtRange(range: Range, properties: Object) => Change` <br/>
+`unwrapInlineAtRange(range: Range, type: String) => Change`
+
+Unwrap all [`Inline`](./inline.md) nodes in a `range` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `wrapBlockAtRange`
+`wrapBlockAtRange(range: Range, properties: Object) => Change` <br/>
+`wrapBlockAtRange(range: Range, type: String) => Change`
+
+Wrap the [`Block`](./block.md) nodes in a `range` with a new [`Block`](./block.md) node with `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `wrapInlineAtRange`
+`wrapInlineAtRange(range: Range, properties: Object) => Change` <br/>
+`wrapInlineAtRange(range: Range, type: String) => Change`
+
+Wrap the [`Inline`](./inline.md) nodes in a `range` with a new [`Inline`](./inline.md) node with `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `wrapTextAtRange`
+`wrapTextAtRange(range: Range, prefix: String, [suffix: String]) => Change`
+
+Surround the text in a `range` with `prefix` and `suffix` strings. If the `suffix` is ommitted, the `prefix` will be used instead.
+
+
 ## Node Changes
+
+These changes are lower-level, and act on a specific node by its `key`. They're often used in your custom components because you'll have access to `props.node`.
 
 ### `addMarkByKey`
 `addMarkByKey(key: String, offset: Number, length: Number, mark: Mark) => Change`
@@ -339,7 +388,7 @@ Insert a [`Fragment`](./fragment.md) at `index` inside a parent [`Node`](./node.
 ### `insertTextByKey`
 `insertTextByKey(key: String, offset: Number, text: String, [marks: Set]) => Change`
 
-Insert `text` at an `offset` in a [`Text Node`](./text.md) with optional `marks`.
+Insert `text` at an `offset` in a [`Text Node`](./text.md) by its `key` with optional `marks`.
 
 ### `moveNodeByKey`
 `moveNodeByKey(key: String, newKey: String, newIndex: Number) => Change`
@@ -355,6 +404,11 @@ Remove a `mark` from `length` characters starting at an `offset` in a [`Node`](.
 `removeNodeByKey(key: String) => Change`
 
 Remove a [`Node`](./node.md) from the document by its `key`.
+
+### `replaceNodeByKey`
+`replaceNodeByKey(key: String, node: Node) => Change`
+
+Replace a [`Node`](./node.md) in the document with a new [`Node`](./node.md) by its `key`.
 
 ### `removeTextByKey`
 `removeTextByKey(key: String, offset: Number, length: Number) => Change`
@@ -381,13 +435,13 @@ Split a node by its `key` at an `offset`.
 `unwrapInlineByKey(key: String, properties: Object) => Change` <br/>
 `unwrapInlineByKey(key: String, type: String) => Change`
 
-Unwrap all inner content of an [`Inline`](./inline.md) node that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+Unwrap all inner content of an [`Inline`](./inline.md) node by its `key` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
 
 ### `unwrapBlockByKey`
 `unwrapBlockByKey(key: String, properties: Object) => Change` <br/>
 `unwrapBlockByKey(key: String, type: String) => Change`
 
-Unwrap all inner content of a [`Block`](./block.md) node that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+Unwrap all inner content of a [`Block`](./block.md) node by its `key` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
 
 ### `unwrapNodeByKey`
 `unwrapNodeByKey(key: String) => Change`
@@ -406,120 +460,10 @@ Wrap the given node in a [`Block`](./block.md) node that match `properties`. For
 
 Wrap the given node in a [`Inline`](./inline.md) node that match `properties`. For convenience, you can pass a `type` string or `properties` object.
 
-## Document Changes
-
-### `deleteBackwardAtRange`
-`deleteBackwardAtRange(range: Selection, n: Number) => Change`
-
-Delete backward `n` characters at a `range`. If the `range` is expanded, this method is equivalent to a regular [`delete()`](#delete). `n` defaults to `1`.
-
-### `deleteForwardAtRange`
-`deleteForwardAtRange(range: Selection, n: Number) => Change`
-
-Delete forward `n` characters at a `range`. If the `range` is expanded, this method is equivalent to a regular [`delete()`](#delete). `n` defaults to `1`.
-
-### `deleteAtRange`
-`deleteAtRange(range: Selection, ) => Change`
-
-Delete everything in a `range`.
-
-### `insertBlockAtRange`
-`insertBlockAtRange(range: Selection, block: Block) => Change` <br/>
-`insertBlockAtRange(range: Selection, properties: Object) => Change` <br/>
-`insertBlockAtRange(range: Selection, type: String) => Change`
-
-Insert a new block at the same level as the leaf block at a `range`, splitting the current block to make room if it is non-empty. If the selection is expanded, it will be deleted first.
-
-### `insertFragmentAtRange`
-`insertFragmentAtRange(range: Selection, fragment: Document) => Change`
-
-Insert a [`fragment`](./document.md) at a `range`. If the selection is expanded, it will be deleted first.
-
-### `insertInlineAtRange`
-`insertInlineAtRange(range: Selection, inline: Inline) => Change` <br/>
-`insertInlineAtRange(range: Selection, properties: Object) => Change`
-
-Insert a new inline at a `range`, splitting the text to make room if it is non-empty. If the selection is expanded, it will be deleted first.
-
-### `insertTextAtRange`
-`insertTextAtRange(range: Selection, text: String) => Change`
-
-Insert a string of `text` at a `range`. If the selection is expanded, it will be deleted first.
-
-### `addMarkAtRange`
-`addMarkAtRange(range: Selection, mark: Mark) => Change` <br/>
-`addMarkAtRange(range: Selection, properties: Object) => Change` <br/>
-`addMarkAtRange(range: Selection, type: String) => Change`
-
-Add a [`mark`](./mark.md) to the characters in a `range`. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](./mark.md) of that type.
-
-### `setBlockAtRange`
-`setBlockAtRange(range: Selection, properties: Object) => Change` <br/>
-`setBlock(range: Selection, type: String) => Change`
-
-Set the `properties` of the [`Block`](./block.md) in a `range`. For convenience, you can pass a `type` string to set the blocks's type only.
-
-### `setInlineAtRange`
-`setInlineAtRange(range: Selection, properties: Object) => Change` <br/>
-`setInline(range: Selection, type: String) => Change`
-
-Set the `properties` of the [`Inline`](./inline.md) nodes in a `range`. For convenience, you can pass a `type` string to set the inline's type only.
-
-### `splitBlockAtRange`
-`splitBlockAtRange(range: Selection, depth: Number) => Change`
-
-Split the [`Block`](./block.md) in a `range` by `depth` levels. If the selection is expanded, it will be deleted first. `depth` defaults to `1`.
-
-### `splitInlineAtRange`
-`splitInlineAtRange(range: Selection, depth: Number) => Change`
-
-Split the [`Inline`](./inline.md) node in a `range` by `depth` levels. If the selection is expanded, it will be deleted first. `depth` defaults to `Infinity`.
-
-### `removeMarkAtRange`
-`removeMarkAtRange(range: Selection, mark: Mark) => Change` <br/>
-`removeMarkAtRange(range: Selection, properties: Object) => Change` <br/>
-`removeMarkAtRange(range: Selection, type: String) => Change`
-
-Remove a [`mark`](./mark.md) from the characters in a `range`. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](./mark.md) of that type.
-
-### `toggleMarkAtRange`
-`toggleMarkAtRange(range: Selection, mark: Mark) => Change` <br/>
-`toggleMarkAtRange(range: Selection, properties: Object) => Change` <br/>
-`toggleMarkAtRange(range: Selection, type: String) => Change`
-
-Add or remove a [`mark`](./mark.md) from the characters in a `range`, depending on whether any of them already have the mark. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](./mark.md) of that type.
-
-### `unwrapBlockAtRange`
-`unwrapBlockAtRange(range: Selection, properties: Object) => Change` <br/>
-`unwrapBlockAtRange(range: Selection, type: String) => Change`
-
-Unwrap all [`Block`](./block.md) nodes in a `range` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
-
-### `unwrapInlineAtRange`
-`unwrapInlineAtRange(range: Selection, properties: Object) => Change` <br/>
-`unwrapInlineAtRange(range: Selection, type: String) => Change`
-
-Unwrap all [`Inline`](./inline.md) nodes in a `range` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
-
-### `wrapBlockAtRange`
-`wrapBlockAtRange(range: Selection, properties: Object) => Change` <br/>
-`wrapBlockAtRange(range: Selection, type: String) => Change`
-
-Wrap the [`Block`](./block.md) nodes in a `range` with a new [`Block`](./block.md) node with `properties`. For convenience, you can pass a `type` string or `properties` object.
-
-### `wrapInlineAtRange`
-`wrapInlineAtRange(range: Selection, properties: Object) => Change` <br/>
-`wrapInlineAtRange(range: Selection, type: String) => Change`
-
-Wrap the [`Inline`](./inline.md) nodes in a `range` with a new [`Inline`](./inline.md) node with `properties`. For convenience, you can pass a `type` string or `properties` object.
-
-### `wrapTextAtRange`
-`wrapTextAtRange(range: Selection, prefix: String, [suffix: String]) => Change`
-
-Surround the text in a `range` with `prefix` and `suffix` strings. If the `suffix` is ommitted, the `prefix` will be used instead.
-
 
 ## History Changes
+
+These changes use the history to undo/redo previously made changes.
 
 ### `redo`
 `redo() => Change`

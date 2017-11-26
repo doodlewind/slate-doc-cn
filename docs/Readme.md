@@ -13,10 +13,21 @@
 - [Saving and Loading HTML Content](./walkthroughs/saving-and-loading-html-content.md)
 
 
+## Guides
+
+- [Changes](./guides/changes.md)
+- [Data Model](./guides/data-model.md)
+- [Plugins](./guides/plugins.md)
+- [Rendering](./guides/rendering.md)
+- [Schemas](./guides/schemas.md)
+
+
 ## General
 
-- [FAQ](./general/faq.md)
 - [Resources](./general/resources.md)
+- [Contributing](../Contributing.md)
+- [Changelog](../Changelog.md)
+- [FAQ](./general/faq.md)
 
 
 ## Slate Core
@@ -24,15 +35,16 @@
 - [Block](./reference/slate/block.md)
 - [Change](./reference/slate/change.md)
 - [Character](./reference/slate/character.md)
-- [Data](./reference//slate/data.md)
+- [Data](./reference/slate/data.md)
 - [Document](./reference/slate/document.md)
 - [Inline](./reference/slate/inline.md)
 - [Mark](./reference//slate/mark.md)
 - [Node](./reference/slate/node.md)
+- [Operation](./reference/slate/operation.md)
+- [Range](./reference/slate/range.md)
 - [Schema](./reference/slate/schema.md)
-- [Selection](./reference/slate/selection.md)
-- [State](./reference/slate/state.md)
 - [Text](./reference/slate/text.md)
+- [Value](./reference/slate/value.md)
 - [setKeyGenerator](./reference/slate/utils.md)
 - [resetKeyGenerator](./reference/slate/utils.md)
 
@@ -40,11 +52,16 @@
 ## Slate React
 
 - [Editor](./reference/slate-react/editor.md)
-- [Placeholder](./reference/slate-react/placeholder.md)
-- [Custom Nodes](./reference/slate-react/custom-nodes.md)
 - [Plugins](./reference/slate-react/plugins.md)
-- [Core Plugin](./reference/slate-react/core-plugin.md)
+- [Custom Nodes](./reference/slate-react/custom-nodes.md)
+- [Core Plugins](./reference/slate-react/core-plugins.md)
 - [findDOMNode](./reference/slate-react/utils.md)
+- [findDOMRange](./reference/slate-react/utils.md)
+- [findNode](./reference/slate-react/utils.md)
+- [findRange](./reference/slate-react/utils.md)
+- [getEventRange](./reference/slate-react/utils.md)
+- [getEventTransfer](./reference/slate-react/utils.md)
+- [setEventTransfer](./reference/slate-react/utils.md)
 
 
 ## Other Packages

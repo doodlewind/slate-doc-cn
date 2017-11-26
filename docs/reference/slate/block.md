@@ -9,24 +9,6 @@ A block node in a Slate [`Document`](./document.md). Block nodes implement the [
 
 Block nodes may contain nested block nodes, inline nodes, and text nodes—just like in the DOM. They always contain at least one text node child.
 
-- [Properties](#properties)
-  - [`data`](#data)
-  - [`isVoid`](#isvoid)
-  - [`key`](#key)
-  - [`nodes`](#nodes)
-  - [`type`](#type)
-- [Computed Properties](#computed-properties)
-  - [`kind`](#kind)
-  - [`text`](#text)
-- [Static Methods](#static-methods)
-  - [`Block.create`](#blockcreate)
-  - [`Block.createList`](#blockcreatelist)
-  - [`Block.fromJSON`](#blockfromjson)
-  - [`Block.isBlock`](#blockisblock)
-- [Node Methods](#node-methods)
-- [Instance Methods](#instance-methods)
-  - [`toJSON`](#tojson)
-
 
 ## Properties
 
@@ -57,6 +39,11 @@ Note that even though a node may be "void", it will still contain a single, empt
 
 A unique identifier for the node.
 
+### `kind`
+`String`
+
+An immutable string value of `'block'` for easily separating this node from [`Inline`](./inline.md) or [`Text`](./text.md) nodes.
+
 ### `nodes`
 `Immutable.List`
 
@@ -69,11 +56,6 @@ The custom type of the node (eg. `blockquote` or `list-item`).
 
 
 ## Computed Properties
-
-### `kind`
-`String`
-
-An immutable string value of `'block'` for easily separating this node from [`Inline`](./inline.md) or [`Text`](./text.md) nodes.
 
 ### `text`
 `String`
@@ -99,9 +81,9 @@ Create a list of block nodes from a plain Javascript `array`.
 Create a block from a JSON `object`.
 
 ### `Block.isBlock`
-`Block.isBlock(value: Any) => Boolean`
+`Block.isBlock(maybeBlock: Any) => Boolean`
 
-Returns a boolean if the passed in `value` is a `Block`.
+Returns a boolean if the passed in argument is a `Block`.
 
 
 ## Node Methods

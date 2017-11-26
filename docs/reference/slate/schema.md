@@ -1,188 +1,369 @@
 
-# Schemas
+# `Schema`
 
-Every Slate editor has a "schema" associated with it, which contains information about the structure of its content. It lets you specify how to render each different type of node. And for more advanced use cases it lets you enforce rules about what the content of the editor can and cannot be.
-
-- [Properties](#properties)
-  - [`marks`](#marks)
-  - [`nodes`](#nodes)
-  - [`rules`](#rules)
-- [Rule Properties](#rule-properties)
-  - [`decorate`](#decorate)
-  - [`match`](#match)
-  - [`normalize`](#normalize)
-  - [`render`](#render)
-  - [`validate`](#validate)
-- [Static Methods](#static-methods)
-  - [`Schema.isSchema`](#schemaisschema)
+Every Slate editor has a "schema" associated with it, which contains information about the structure of its content. For the most basic cases, you'll just rely on Slate's default core schema. But for advanced use cases you can enforce rules about what the content of a Slate document can contain.
 
 
 ## Properties
 
 ```js
 {
-  nodes: Object,
-  marks: Object,
-  rules: Array
+  document: Object,
+  blocks: Object,
+  inlines: Object,
 }
 ```
 
-The top-level properties of a schema all give you a way to define `rules` that the schema enforces. The `nodes` and `marks` properties are just convenient ways to define the most common set of rules.
+The top-level properties of a schema all give you a way to define validation "rules" that the schema enforces.
 
-### `marks`
-`Object type: Component || Function || Object || String`
-
-```js
-{
-  bold: props => <strong>{props.children}</strong>
-}
-```
-```js
-{
-  bold: {
-    fontWeight: 'bold'
-  }
-}
-```
-```js
-{
-  bold: 'my-bold-class-name'
-}
-```
-
-An object that defines the [`Marks`](./mark.md) in the schema by `type`. Each key in the object refers to a mark by its `type`. The value defines how Slate will render the mark, and can either be a React component, an object of styles, or a class name.
-
-### `nodes`
-`Object<type, Component || Function>` <br/>
-`Object<type, Rule>`
+### `document`
+`Object`
 
 ```js
 {
-  quote: props => <blockquote {...props.attributes}>{props.children}</blockquote>
-}
-```
-```js
-{
-  code: {
-    render: props => <pre {...props.attributes}><code>{props.children}</code></pre>,
-    decorate: myCodeHighlighter
+  document: {
+    nodes: [{ types: ['paragraph'] }]
   }
 }
 ```
 
-An object that defines the [`Block`](./block.md) and [`Inline`](./inline.md) nodes in the schema by `type`. Each key in the object refers to a node by its `type`. The values defines how Slate will render the node, and can optionally define any other property of a schema `Rule`.
+A set of validation rules that apply to the top-level document.
 
-### `rules`
-`Array<Rule>`
+### `blocks`
+`Object`
 
 ```js
-[
-  {
-    match: { kind: 'block', type: 'code' },
-    render: props => <pre {...props.attributes}><code>{props.children}</code></pre>,
-    decorate: myCodeHighlighter
+{
+  blocks: {
+    list: {
+      nodes: [{ types: ['item'] }]
+    },
+    item: {
+      parent: { types: ['list'] }
+    },
   }
-]
+}
 ```
 
-An array of rules that define the schema's behavior. Each of the rules are evaluated in order to determine a match.
+A dictionary of blocks by type, each with its own set of validation rules.
 
-Internally, the `marks` and `nodes` properties of a schema are simply converted into `rules`.
+### `inlines`
+`Object`
+
+```js
+{
+  inlines: {
+    emoji: {
+      isVoid: true,
+      nodes: [{ kinds: ['text'] }]
+    },
+  }
+}
+```
+
+A dictionary of inlines by type, each with its own set of validation rules.
 
 
 ## Rule Properties
 
 ```js
 {
-  match: Function,
-  decorate: Function,
+  data: Object,
+  first: Object,
+  isVoid: Boolean,
+  last: Object,
+  nodes: Array,
   normalize: Function,
-  render: Component || Function || Object || String,
-  validate: Function
+  parent: Object,
+  text: RegExp,
 }
 ```
 
-Slate schemas are built up of a set of rules. Each of the properties will add certain functionality to the schema, based on the properties it defines. 
+Slate schemas are built up of a set of validation rules. Each of the properties will validate certain pieces of the document based on the properties it defines. 
 
-### `match`
-`Function match(object: Node || Mark)`
-
-```js
-{
-  match: (object) => object.kind == 'block' && object.type == 'code'
-}
-```
-
-The `match` property is the only required property of a rule. It determines which objects the rule applies to. 
-
-### `decorate`
-`Function decorate(text: Node, object: Node) => List<Characters>`
+### `data`
+`Object`
 
 ```js
 {
-  decorate: (text, node) => {
-    let { characters } = text
-    let first = characters.get(0)
-    let { marks } = first
-    let mark = Mark.create({ type: 'bold' })
-    marks = marks.add(mark)
-    first = first.merge({ marks })
-    characters = characters.set(0, first)
-    return characters
+  data: {
+    href: v => isUrl(v),
   }
 }
 ```
 
-The `decorate` property allows you define a function that will apply extra marks to all of the ranges of text inside a node. It is called with a [`Text`](./text.md) node and the matched node. It should return a list of characters with the desired marks, which will then be added to the text before rendering.
+A dictionary of data attributes and their corresponding validation functions. The functions should return a boolean indicating whether the data value is valid or not.
+
+### `first`
+`Object`
+
+```js
+{
+  first: { types: ['quote', 'paragraph'] },
+}
+```
+
+Will validate the first child node. The `first` definition can declare `kinds` and `types` properties.
+
+### `isVoid`
+`Boolean`
+
+```js
+{
+  isVoid: true,
+}
+```
+
+Will validate a node's `isVoid` property.
+
+### `last`
+`Object`
+
+```js
+{
+  last: { types: ['quote', 'paragraph'] },
+}
+```
+
+Will validate the last child node. The `last` definition can declare `kinds` and `types` properties.
+
+### `nodes`
+`Array`
+
+```js
+{
+  nodes: [
+    { types: ['image', 'video'], min: 1, max: 3 },
+    { types: ['paragraph'], min: 0 },
+  ]
+}
+```
+
+Will validate a node's children. The `nodes` definitions can declare the `kinds`, `types`, `min` and `max` properties.
+
+> 🤖 The `nodes` array is order-sensitive! The example above will require that the first node be either an `image` or `video`, and that it be followed by one or more `paragraph` nodes.
 
 ### `normalize`
-`Function normalize(change: Change, object: Node, failure: Any) => Change`
+`normalize(change: Change, reason: String, context: Object) => Void`
 
 ```js
 {
-  normalize: (change, node, invalidChildren) => {
-    invalidChildren.forEach((child) => {
-      change.removeNodeByKey(child.key)
-    })
-
-    return change
+  normalize: (change, reason, context) => {
+    case 'child_kind_invalid':
+      change.wrapBlockByKey(context.child.key, 'paragraph')
+      return
+    case 'child_type_invalid':
+      change.setNodeByKey(context.child.key, 'paragraph')
+      return
   }
 }
 ```
 
-The `normalize` property is a function to run that recovers the editor's state after the `validate` property of a rule has determined that an object is invalid. It is passed a [`Change`](./change.md) that it can use to make modifications. It is also passed the return value of the `validate` function, which makes it easy to quickly determine the failure reason from the validation.
+A function that can be provided to override the default behavior in the case of a rule being invalid. By default Slate will do what it can, but since it doesn't know much about your schema, it will often remove invalid nodes. If you want to override this behavior, and "fix" the node instead of removing it, pass a custom `normalize` function.
 
-### `render`
-`Component` <br/>
-`Function` <br/>
-`Object` <br/>
-`String`
+For more information on the arguments passed to `normalize`, see the [Invalid Reasons](#invalid-reasons) reference.
 
-```js
-{
-  render: (props) => <pre {...props.attributes}><code>{props.children}</code></pre>
-}
-```
-
-The `render` property determines which React component Slate will use to render a [`Node`](./node.md) or [`Mark`](./mark.md). Mark renderers can also be defined as an object of styles or a class name string for convenience.
-
-### `validate`
-`Function validate(object: Node) => Any || Void`
+### `parent`
+`Array`
 
 ```js
 {
-  validate: (node) => {
-    const invalidChildren = node.nodes.filter(child => child.kind == 'block')
-    return invalidChildren.size ? invalidChildren : null
-  }
+  parent: { types: ['list'] }
 }
 ```
 
-The `validate` property allows you to define a constraint that the matching object must abide by. It should return either `Void` if the object is valid, or any non-void value if it is invalid. This makes it easy to return the exact reason that the object is invalid, which makes it simple to recover from the invalid state with the `normalize` property.
+Will validate a node's parent. The parent definition can declare the `kinds` and/or `types` properties.
+
+### `text`
+`Array`
+
+```js
+{
+  text: /^\w+$/
+}
+```
+
+Will validate a node's text.
+
 
 ## Static Methods
+
+### `Schema.create`
+`Schema.create(properties: Object) => Schema`
+
+Create a new `Schema` instance with `properties`.
+
+### `Schema.fromJSON`
+`Schema.fromJSON(object: Object) => Schema`
+
+Create a schema from a JSON `object`.
 
 ### `Schema.isSchema`
 `Schema.isSchema(maybeSchema: Any) => Boolean`
 
 Returns a boolean if the passed in argument is a `Schema`.
+
+
+## Instance Methods
+
+### `toJSON`
+`toJSON() => Object`
+
+Returns a JSON representation of the schema.
+
+
+## Invalid Reasons
+
+When supplying your own `normalize` property for a schema rule, it will be called with `(change, reason, context)`. The `reason` will be one of a set of reasons, and `context` will vary depending on the reason. Here's the full set:
+
+### `child_kind_invalid`
+
+```js
+{
+  child: Node,
+  index: Number,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `child_required`
+
+```js
+{
+  index: Number,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `child_type_invalid`
+
+```js
+{
+  child: Node,
+  index: Number,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `child_unknown`
+
+```js
+{
+  child: Node,
+  index: Number,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `first_child_kind_invalid`
+
+```js
+{
+  child: Node,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `first_child_type_invalid`
+
+```js
+{
+  child: Node,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `last_child_kind_invalid`
+
+```js
+{
+  child: Node,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `last_child_type_invalid`
+
+```js
+{
+  child: Node,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `node_data_invalid`
+
+```js
+{
+  key: String,
+  node: Node,
+  rule: Object,
+  value: Mixed,
+}
+```
+
+### `node_is_void_invalid`
+
+```js
+{
+  node: Node,
+  rule: Object,
+}
+```
+
+### `node_kind_invalid`
+
+```js
+{
+  node: Node,
+  rule: Object,
+}
+```
+
+### `node_mark_invalid`
+
+```js
+{
+  mark: Mark,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `node_text_invalid`
+
+```js
+{
+  text: String,
+  node: Node,
+  rule: Object,
+}
+```
+
+### `parent_kind_invalid`
+
+```js
+{
+  node: Node,
+  parent: Node,
+  rule: Object,
+}
+```
+
+### `parent_type_invalid`
+
+```js
+{
+  node: Node,
+  parent: Node,
+  rule: Object,
+}
+```

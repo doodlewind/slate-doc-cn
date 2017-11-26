@@ -7,17 +7,6 @@ import { Mark } from 'slate'
 
 A formatting mark that can be associated with [`Characters`](./mark.md). Marks are how Slate represents rich formatting like **bold** or _italic_.
 
-- [Properties](#properties)
-  - [`data`](#data)
-  - [`type`](#type)
-- [Static Methods](#static-methods)
-  - [`Mark.create`](#markcreate)
-  - [`Mark.createSet`](#markcreateset)
-  - [`Mark.fromJSON`](#markfromjson)
-  - [`Mark.isMark`](#markismark)
-- [Instance Methods](#instance-methods)
-  - [`toJSON`](#tojson)
-
 
 ## Properties
 
@@ -32,6 +21,11 @@ Mark({
 `Data`
 
 A map of [`Data`](./data.md).
+
+### `kind`
+`String`
+
+A string with a value of `'mark'`.
 
 ### `type`
 `String`
