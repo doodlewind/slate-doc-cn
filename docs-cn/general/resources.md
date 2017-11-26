@@ -3,6 +3,11 @@
 
 这是一些对于使用 Slate 开发有所帮助的资源。
 
+## 类库
+
+- [`is-hotkey`](https://github.com/ianstormtaylor/is-hotkey) 是检查是否应该触发 `onKeyDown` 回调的简单方式，它能够自动为你处理 <kbd>cmd</kbd> vs. <kbd>ctrl</kbd> 等跨平台问题。
+- [`react-broadcast`](https://github.com/ReactTraining/react-broadcast) 在当你需要根据 `document` 外的状态来更新自定义节点时很好用。它使用了和 `react-router` 用于更新 `<Link>` 组件相同的模式。
+
 
 ## 工具
 
