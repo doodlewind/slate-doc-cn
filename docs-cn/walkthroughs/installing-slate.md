@@ -29,10 +29,10 @@ import { Editor } from 'slate-react'
 ```js
 // 导入 `State` 模型。
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
 // 构建初始状态…
-const initialState = State.fromJSON({
+const initialValue = Value.fromJSON({
   document: {
     nodes: [
       {
@@ -60,9 +60,9 @@ const initialState = State.fromJSON({
 // 导入 React！
 import React from 'react'
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
-const initialState = State.fromJSON({
+const initialValue = Value.fromJSON({
   document: {
     nodes: [
       {
@@ -88,7 +88,7 @@ class App extends React.Component {
 
   // 设置应用创建时的初始状态。
   state = {
-    state: initialState
+    state: initialValue
   }
 
   // 发生变更时，使用新的编辑器状态更新应用的 React 状态。
